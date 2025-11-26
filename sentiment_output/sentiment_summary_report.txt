@@ -1,0 +1,55 @@
+================================================================================
+SENTIMENT ANALYSIS SUMMARY REPORT
+Israel-Hamas War Discourse Analysis
+Generated: 2025-11-27 05:17:44
+================================================================================
+
+1. REDDIT SENTIMENT DISTRIBUTION (VADER)
+--------------------------------------------------------------------------------
+vader_label
+negative    4499
+positive    3326
+neutral     2148
+Name: count, dtype: int64
+
+Percentages:
+vader_label
+negative    45.111802
+positive    33.350045
+neutral     21.538153
+Name: proportion, dtype: float64
+
+2. YOUTUBE SENTIMENT DISTRIBUTION (VADER)
+--------------------------------------------------------------------------------
+vader_label
+positive    4204
+negative    3056
+neutral     2129
+Name: count, dtype: int64
+
+Percentages:
+vader_label
+positive    44.775801
+negative    32.548727
+neutral     22.675471
+Name: proportion, dtype: float64
+
+3. SENTIMENT BY STANCE - REDDIT (VADER)
+--------------------------------------------------------------------------------
+      vader_compound               vader_pos vader_neg vader_neu
+                mean median    std      mean      mean      mean
+Label                                                           
+I             -0.225 -0.285  0.565     0.100     0.138     0.763
+N             -0.036  0.000  0.499     0.098     0.096     0.806
+P             -0.120  0.000  0.552     0.105     0.118     0.778
+
+4. SENTIMENT BY STANCE - YOUTUBE (VADER)
+--------------------------------------------------------------------------------
+      vader_compound               vader_pos vader_neg vader_neu
+                mean median    std      mean      mean      mean
+label                                                           
+I              0.012    0.0  0.590     0.170     0.126     0.704
+N              0.090    0.0  0.506     0.166     0.121     0.713
+P              0.106    0.0  0.591     0.246     0.120     0.634
+
+================================================================================

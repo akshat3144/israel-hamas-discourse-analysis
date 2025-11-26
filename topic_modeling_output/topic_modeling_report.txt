@@ -1,0 +1,105 @@
+================================================================================
+TOPIC MODELING REPORT
+Israel-Hamas War Discourse Analysis
+Generated: 2025-11-27 05:18:47
+================================================================================
+
+1. REDDIT - TOP 20 WORDS
+--------------------------------------------------------------------------------
+dont: 1,435
+palestinians: 1,302
+jews: 1,158
+im: 768
+right: 740
+thats: 723
+state: 701
+land: 676
+country: 612
+did: 595
+years: 566
+doesnt: 547
+jewish: 538
+arab: 530
+world: 525
+youre: 483
+arabs: 471
+civilians: 464
+west: 463
+countries: 460
+
+2. YOUTUBE - TOP 20 WORDS
+--------------------------------------------------------------------------------
+free: 827
+dont: 554
+allah: 529
+world: 438
+palestinians: 427
+god: 387
+jews: 322
+support: 320
+country: 265
+children: 253
+stop: 247
+did: 239
+right: 232
+land: 224
+muslim: 223
+love: 215
+muslims: 199
+im: 195
+peace: 189
+thats: 186
+
+3. REDDIT - LDA TOPICS (Top 10 words per topic)
+--------------------------------------------------------------------------------
+
+Topic 1: people, like, im, dont, just, think, know, say, sure, thats
+
+Topic 2: israel, dont, people, just, palestinians, country, war, land, know, want
+
+Topic 3: jews, israel, arab, jewish, arabs, state, countries, land, palestine, palestinians
+
+Topic 4: hamas, war, children, just, like, people, military, israel, civilians, aid
+
+Topic 5: israel, hamas, gaza, palestinians, israeli, palestinian, people, genocide, west, state
+
+4. YOUTUBE - LDA TOPICS (Top 10 words per topic)
+--------------------------------------------------------------------------------
+
+Topic 1: palestine, free, israel, support, stand, country, love, palestina, live, muslim
+
+Topic 2: allah, people, god, children, help, bless, ya, al, muslim, islam
+
+Topic 3: israel, war, jews, stop, people, land, god, palestinians, genocide, killing
+
+Topic 4: dont, like, just, know, people, think, good, say, want, media
+
+Topic 5: hamas, israel, gaza, palestinians, india, palestinian, people, state, world, hai
+
+5. REDDIT - NMF TOPICS (Top 10 words per topic)
+--------------------------------------------------------------------------------
+
+Topic 1: people, dont, think, know, im, want, thats, youre, say, really
+
+Topic 2: hamas, gaza, civilians, idf, rockets, hostages, war, terrorist, aid, killed
+
+Topic 3: israel, jews, palestinians, state, land, palestine, palestinian, gaza, war, arab
+
+Topic 4: like, looks, sounds, look, feel, theyre, lot, israeli, world, mean
+
+Topic 5: just, point, youre, thats, say, new, shit, theyre, doesnt, bad
+
+6. YOUTUBE - NMF TOPICS (Top 10 words per topic)
+--------------------------------------------------------------------------------
+
+Topic 1: free, palestine, stand, palestina, river, sea, support, love, inshallah, im
+
+Topic 2: israel, support, stand, india, god, terrorist, bless, right, war, gaza
+
+Topic 3: people, dont, like, just, world, know, war, support, god, want
+
+Topic 4: hamas, gaza, terrorists, palestinians, terrorist, did, blame, hiding, bank, west
+
+Topic 5: allah, help, ya, protect, sha, palestine, bless, god, ameen, swt
+
+================================================================================
