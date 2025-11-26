@@ -2,3 +2,10 @@ google-generativeai
 pandas
 openpyxl
 python-dotenv
+matplotlib
+seaborn
+numpy
+textblob
+vaderSentiment
+scikit-learn
+wordcloud
