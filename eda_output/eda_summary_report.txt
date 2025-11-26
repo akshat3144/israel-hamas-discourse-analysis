@@ -1,0 +1,87 @@
+================================================================================
+EXPLORATORY DATA ANALYSIS SUMMARY REPORT
+Israel-Hamas War Discourse Analysis
+Generated: 2025-11-27 05:04:50
+================================================================================
+
+1. DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Reddit Posts/Comments: 9973
+YouTube Comments: 9389
+Total Data Points: 19362
+
+2. STANCE DISTRIBUTION
+--------------------------------------------------------------------------------
+
+Reddit:
+Label
+N    4632
+P    3540
+I    1771
+Name: count, dtype: int64
+
+Percentages:
+Label
+N    46.585538
+P    35.602937
+I    17.811526
+Name: proportion, dtype: float64
+
+YouTube:
+label
+P    4105
+N    4073
+I    1211
+Name: count, dtype: int64
+
+Percentages:
+label
+P    43.721376
+N    43.380552
+I    12.898072
+Name: proportion, dtype: float64
+
+3. ENGAGEMENT STATISTICS
+--------------------------------------------------------------------------------
+
+Reddit Score Statistics:
+count    9972.000000
+mean       11.877958
+std        58.273446
+min      -272.000000
+25%         1.000000
+50%         2.000000
+75%         8.000000
+max      2801.000000
+Name: score, dtype: float64
+
+YouTube Like Count Statistics:
+
+4. CONTENT LENGTH ANALYSIS
+--------------------------------------------------------------------------------
+
+Reddit Text Length:
+count    9973.000000
+mean      261.315753
+std       424.912895
+min         1.000000
+25%        61.000000
+50%       132.000000
+75%       290.000000
+max      7193.000000
+Name: text_length, dtype: float64
+
+YouTube Text Length:
+count    9389.000000
+mean       99.361913
+std       215.520076
+min         2.000000
+25%        28.000000
+50%        54.000000
+75%       106.000000
+max      8199.000000
+Name: text_length, dtype: float64
+
+================================================================================
+END OF REPORT
+================================================================================
