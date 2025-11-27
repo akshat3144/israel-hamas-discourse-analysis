@@ -14,6 +14,10 @@ import time
 import os
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Create output directory
 os.makedirs('perspective_output', exist_ok=True)
@@ -25,7 +29,10 @@ print("="*80)
 # ============================================================================
 # 1. SETUP API CLIENT
 # ============================================================================
-API_KEY = 'AIzaSyCTtb7Pl4I9MtvK_puN0OZJdolxo_LAeeA'
+API_KEY = os.getenv('PERSPECTIVE_API_KEY')
+
+if not API_KEY:
+    raise ValueError("API Key not found. Please set PERSPECTIVE_API_KEY in .env file")
 
 client = discovery.build(
     "commentanalyzer",
