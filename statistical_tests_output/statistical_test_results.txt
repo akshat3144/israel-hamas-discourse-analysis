@@ -1,0 +1,132 @@
+======================================================================
+STATISTICAL SIGNIFICANCE TEST RESULTS
+Phase 3: Sentiment Analysis Validation
+======================================================================
+
+TEST 1: CHI-SQUARE TEST
+Hypothesis: Stance and Sentiment are independent
+----------------------------------------------------------------------
+
+REDDIT:
+  Chi-square statistic: 262.0614
+  P-value: 0.000000
+  Degrees of freedom: 4
+  Conclusion: REJECT null hypothesis - Stance and Sentiment are DEPENDENT
+
+YOUTUBE:
+  Chi-square statistic: 215.3124
+  P-value: 0.000000
+  Degrees of freedom: 4
+  Conclusion: REJECT null hypothesis - Stance and Sentiment are DEPENDENT
+
+======================================================================
+TEST 2: ONE-WAY ANOVA
+Hypothesis: Mean sentiment scores are equal across all stances
+----------------------------------------------------------------------
+
+REDDIT (VADER Compound Score by Stance):
+  F-statistic: 85.6201
+  P-value: 0.000000
+  Conclusion: REJECT null hypothesis - Mean sentiment scores DIFFER significantly across stances
+
+YOUTUBE (VADER Compound Score by Stance):
+  F-statistic: 13.4243
+  P-value: 0.000002
+  Conclusion: REJECT null hypothesis - Mean sentiment scores DIFFER significantly across stances
+
+======================================================================
+TEST 3: INDEPENDENT T-TESTS
+Hypothesis: Mean sentiment scores are equal between Reddit and YouTube
+----------------------------------------------------------------------
+
+OVERALL SENTIMENT (Reddit vs YouTube):
+  Reddit mean compound score: -0.0991
+  YouTube mean compound score: 0.0869
+  T-statistic: -23.7235
+  P-value: 0.000000
+  Conclusion: REJECT null hypothesis - Platforms have DIFFERENT mean sentiments
+
+PRO-PALESTINE STANCE (Reddit vs YouTube):
+  Reddit mean: -0.1198
+  YouTube mean: 0.1059
+  T-statistic: -17.1715
+  P-value: 0.000000
+  Conclusion: REJECT null hypothesis - Platform difference is SIGNIFICANT
+
+PRO-ISRAEL STANCE (Reddit vs YouTube):
+  Reddit mean: -0.2248
+  YouTube mean: 0.0122
+  T-statistic: -11.0524
+  P-value: 0.000000
+  Conclusion: REJECT null hypothesis - Platform difference is SIGNIFICANT
+
+======================================================================
+TEST 4: CORRELATION ANALYSIS
+Hypothesis: Sentiment correlates with engagement metrics
+----------------------------------------------------------------------
+
+REDDIT (Sentiment × Score):
+  Pearson r: 0.0065 (p = 0.513438)
+  Spearman ρ: 0.0288 (p = 0.004028)
+  Conclusion: NO significant correlation
+
+YOUTUBE: No engagement metrics available in dataset
+
+======================================================================
+TEST 5: SUBJECTIVITY ANALYSIS (ANOVA)
+Hypothesis: Mean subjectivity is equal across stances
+----------------------------------------------------------------------
+
+REDDIT (Subjectivity by Stance):
+  F-statistic: 9.3152
+  P-value: 0.000091
+    Pro-Palestine: 0.3935
+    Pro-Israel: 0.4049
+    Neutral: 0.3738
+  Conclusion: REJECT null hypothesis - Subjectivity DIFFERS across stances
+
+YOUTUBE (Subjectivity by Stance):
+  F-statistic: 118.3479
+  P-value: 0.000000
+    Pro-Palestine: 0.4061
+    Pro-Israel: 0.3185
+    Neutral: 0.2905
+  Conclusion: REJECT null hypothesis - Subjectivity DIFFERS across stances
+
+======================================================================
+TEST 6: EFFECT SIZE (COHEN'S D)
+Measures practical significance of platform differences
+----------------------------------------------------------------------
+
+COHEN'S D (Effect Sizes):
+  Overall platform difference: -0.3411 (Small)
+  Pro-Palestine stance: -0.3939 (Small)
+  Pro-Israel stance: -0.4121 (Small)
+
+======================================================================
+SUMMARY OF ALL STATISTICAL TESTS
+======================================================================
+
+                        Test Statistic  P-value Significant
+         Chi-Square (Reddit)  262.0614 0.000000           ✓
+        Chi-Square (YouTube)  215.3124 0.000000           ✓
+              ANOVA (Reddit)   85.6201 0.000000           ✓
+             ANOVA (YouTube)   13.4243 0.000002           ✓
+            T-test (Overall)  -23.7235 0.000000           ✓
+              T-test (Pro-P)  -17.1715 0.000000           ✓
+              T-test (Pro-I)  -11.0524 0.000000           ✓
+        Correlation (Reddit)    0.0065 0.513438           ✗
+       Correlation (YouTube)    0.0000 1.000000           ✗
+ ANOVA Subjectivity (Reddit)    9.3152 0.000091           ✓
+ANOVA Subjectivity (YouTube)  118.3479 0.000000           ✓
+
+======================================================================
+INTERPRETATION GUIDE
+======================================================================
+✓ = Statistically significant (p < 0.05)
+✗ = Not statistically significant (p ≥ 0.05)
+
+Cohen's d interpretation:
+  |d| < 0.5 = Small effect
+  0.5 ≤ |d| < 0.8 = Medium effect
+  |d| ≥ 0.8 = Large effect
