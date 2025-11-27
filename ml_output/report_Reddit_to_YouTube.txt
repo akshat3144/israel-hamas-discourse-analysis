@@ -1,0 +1,13 @@
+Training Data: Reddit
+Testing Data: YouTube
+Model: Ensemble Voting Classifier (LR+SVM+RF+GB)
+==================================================
+               precision    recall  f1-score   support
+
+      Neutral       0.63      0.78      0.70      4073
+   Pro-Israel       0.44      0.25      0.32      1211
+Pro-Palestine       0.64      0.57      0.60      4105
+
+     accuracy                           0.62      9389
+    macro avg       0.57      0.53      0.54      9389
+ weighted avg       0.61      0.62      0.61      9389
