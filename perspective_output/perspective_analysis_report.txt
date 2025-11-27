@@ -1,0 +1,34 @@
+PERSPECTIVE API CRITICAL ANALYSIS REPORT
+==================================================
+
+1. PLATFORM COMPARISON (Mean Scores)
+------------------------------
+                   Reddit   YouTube
+TOXICITY         0.277589  0.236094
+IDENTITY_ATTACK  0.181675  0.167480
+INSULT           0.145542  0.150324
+THREAT           0.097503  0.056566
+
+2. REDDIT BREAKDOWN BY STANCE
+------------------------------
+               TOXICITY  IDENTITY_ATTACK    INSULT    THREAT
+Label_Full                                                  
+Neutral        0.178472         0.081324  0.086958  0.050855
+Pro-Israel     0.347359         0.262148  0.185871  0.139407
+Pro-Palestine  0.305212         0.199709  0.162789  0.101343
+
+3. YOUTUBE BREAKDOWN BY STANCE
+------------------------------
+               TOXICITY  IDENTITY_ATTACK    INSULT    THREAT
+Label_Full                                                  
+Neutral        0.215332         0.101606  0.151047  0.037907
+Pro-Israel     0.257262         0.202895  0.153755  0.069440
+Pro-Palestine  0.235689         0.197939  0.146171  0.062351
+
+4. KEY INSIGHTS
+------------------------------
+- Most Toxic Stance on Reddit: Pro-Israel (0.347)
+- Most Toxic Stance on YouTube: Pro-Israel (0.257)
+- Reddit has higher levels of Identity Attacks than YouTube.
+- 'Identity Attack' scores indicate discourse targeting race, religion, or ethnicity.
+- 'Threat' scores indicate severe hostility or intent to harm.
