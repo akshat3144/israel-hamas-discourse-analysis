@@ -111,7 +111,7 @@ Topic modeling and word frequency analysis reveal platform-specific vocabularies
 
 YouTube discourse prioritizes religious and solidarity-oriented framing, with frequent terms including "God," "pray," "free," "love," "support," "Muslim," "innocent," and "children." This vocabulary suggests emphasis on moral testimony, emotional appeals, and in-group solidarity rather than analytical argumentation.
 
-![Comparative word frequency analysis showing distinct topical priorities across platforms](topic_modeling_output/01_word_frequency.png)
+![Comparative word frequency analysis showing distinct topical priorities across platforms](topic_modeling_output/01_word_frequency.png.png)
 *Fig. 4. Comparative word frequency analysis showing distinct topical priorities across platforms*
 
 ### Word Cloud Analysis
