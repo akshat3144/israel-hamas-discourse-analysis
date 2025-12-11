@@ -87,19 +87,19 @@ The Google Perspective API was employed to assess four toxicity dimensions: `TOX
 
 Sentiment analysis reveals distinct emotional profiles across platforms. Reddit discourse demonstrates a negative skew with 45% of comments classified as negative, 37% positive, and 18% neutral. Conversely, YouTube exhibits a positive skew with 45% positive comments, 35% negative, and 20% neutral. This finding suggests that Reddit's deliberative architecture encourages critical, argumentative discourse, while YouTube's media-centric design fosters solidarity and emotional support expressions.
 
-![Fig. 1. Sentiment distribution comparison across Reddit and YouTube platforms, showing distinct emotional profiles](sentiment_output/05_platform_sentiment_comparison.png)
+![Sentiment distribution comparison across Reddit and YouTube platforms, showing distinct emotional profiles](sentiment_output/05_platform_sentiment_comparison.png)
 
 ### Content Structure and Length Analysis
 
 Structural analysis demonstrates significant differences in discourse depth. Reddit comments follow a long-tail distribution with substantial frequency of posts exceeding 100 words, reflecting an "essayist" communication culture. The platform's unlimited character allowance enables complex argumentation and detailed position development. YouTube comments concentrate heavily in the 10-50 word range, exhibiting characteristics of "reactive" communication culture. The median comment length is 78 words on Reddit versus 22 words on YouTube (Mann-Whitney U test: p < 0.001), confirming significant structural divergence.
 
-![Fig. 2. Text length distribution showing Reddit's long-tail pattern versus YouTube's concentration in shorter ranges](eda_output/05_text_length_distribution.png)
+![Text length distribution showing Reddit's long-tail pattern versus YouTube's concentration in shorter ranges](eda_output/05_text_length_distribution.png)
 
 ### Temporal Engagement Patterns
 
 Analysis of response timing on Reddit reveals a median response time of 360 minutes (6 hours), confirming the platform's function as an asynchronous deliberative space rather than real-time chat environment. This temporal pattern enables users to construct detailed responses and engage in sustained multi-turn exchanges. YouTube's flat comment structure lacks comparable threading depth, limiting temporal analysis applicability.
 
-![Fig. 3. Network visualization of user interactions showing temporal engagement patterns and discourse evolution over time](new/output.png)
+![Network visualization of user interactions showing temporal engagement patterns and discourse evolution over time](new/output.png)
 
 The temporal network analysis (Fig. 3) illustrates discourse evolution throughout the study period, revealing several key patterns in user engagement dynamics. Node size corresponds to user activity level (comment frequency), while edge thickness indicates interaction strength between users. The network exhibits a core-periphery structure, with highly active users forming a dense central cluster engaging in sustained discussions, surrounded by peripheral users contributing sporadically. Color gradients represent temporal entry points into the discourse, demonstrating that early participants (darker nodes) maintain consistent engagement while later entrants (lighter nodes) show more ephemeral participation patterns. This temporal stratification suggests that established discourse communities form early in conflict discussions and subsequently influence narrative framing for incoming participants. The limited number of bridging ties between temporal cohorts indicates minimal cross-temporal dialogue, with users predominantly engaging within their temporal peer groups. This finding has implications for understanding how discourse rigidity develops in political discussions, as early narrative establishment may constrain subsequent framing possibilities.
 
@@ -112,13 +112,12 @@ Topic modeling and word frequency analysis reveal platform-specific vocabularies
 YouTube discourse prioritizes religious and solidarity-oriented framing, with frequent terms including "God," "pray," "free," "love," "support," "Muslim," "innocent," and "children." This vocabulary suggests emphasis on moral testimony, emotional appeals, and in-group solidarity rather than analytical argumentation.
 
 ![Comparative word frequency analysis showing distinct topical priorities across platforms](topic_modeling_output/01_word_frequency.png.png)
-*Fig. 4. Comparative word frequency analysis showing distinct topical priorities across platforms*
 
 ### Word Cloud Analysis
 
 Corpus-level analysis through word cloud visualization provides additional insight into dominant themes and semantic emphasis patterns across the complete dataset. The visualization reveals several prominent thematic clusters that transcend individual platform characteristics while maintaining differential weighting patterns.
 
-![Fig. 5. Aggregate word cloud visualization displaying dominant terms and thematic clusters across the combined corpus](word_cloud/word-cloud.png)
+![Aggregate word cloud visualization displaying dominant terms and thematic clusters across the combined corpus](word_cloud/word-cloud.png)
 
 The word cloud demonstrates that "Israel," "Palestinian," and "Hamas" constitute the primary semantic anchors, appearing with highest frequency and centrality. Secondary clusters reveal emotional and evaluative terminology: "children," "innocent," "killed," and "civilians" appear prominently, indicating widespread engagement with humanitarian framing. Terms such as "attack," "war," "terrorist," and "violence" form a conflict-action semantic field, while "support," "right," and "defend" constitute a justification-oriented vocabulary. The relative prominence of "genocide" and "apartheid" suggests significant adoption of maximalist framing terminology. Interestingly, religious terminology ("God," "pray," "Muslim," "Jewish") maintains moderate but consistent presence, indicating faith-based framing as a non-negligible discourse component. The visualization reveals minimal presence of diplomatic or resolution-oriented vocabulary ("peace," "negotiate," "compromise"), suggesting that discourse across both platforms predominantly engages in blame attribution and moral evaluation rather than solution-oriented discussion. This lexical landscape reflects highly emotionally-charged discourse with limited space for nuanced political analysis or conflict resolution dialogue.
 
@@ -132,11 +131,11 @@ LDA topic modeling identified five primary themes across platforms: (1) Historic
 
 Flesch Reading Ease analysis demonstrates significant complexity differences both across platforms and within stance categories. Reddit comments exhibit lower FRE scores (mean: 47.3, SD: 18.2) compared to YouTube (mean: 62.8, SD: 15.7), indicating Reddit discourse requires college-level reading comprehension while YouTube discourse approximates middle school reading level (t-test: p < 0.001).
 
-![Fig. 6. Platform comparison of linguistic complexity measured via Flesch Reading Ease scores](advanced_analysis_output/04_complexity_platform_comparison.png)
+![Platform comparison of linguistic complexity measured via Flesch Reading Ease scores](advanced_analysis_output/04_complexity_platform_comparison.png)
 
 Stance-specific analysis reveals additional complexity stratification. Pro-Israel comments demonstrate slightly higher complexity scores on Reddit (mean FRE: 45.1) compared to Pro-Palestine comments (mean FRE: 48.9), suggesting differential rhetorical strategies wherein Pro-Israel discourse emphasizes formal argumentation while Pro-Palestine discourse prioritizes accessibility and emotional appeal.
 
-![Fig. 7. Linguistic complexity distribution across stance categories showing rhetorical strategy differences](advanced_analysis_output/05_complexity_by_stance.png)
+![Linguistic complexity distribution across stance categories showing rhetorical strategy differences](advanced_analysis_output/05_complexity_by_stance.png)
 
 ### Machine Learning Stance Classification
 
@@ -147,35 +146,34 @@ Ensemble classification results demonstrate strong within-platform performance b
 The ensemble model performance metrics across different training-testing configurations are as follows: YouTube-to-YouTube (Accuracy: 75.1%, Precision: 0.74, Recall: 0.75, F1: 0.74); Reddit-to-Reddit (Accuracy: 62.5%, Precision: 0.61, Recall: 0.63, F1: 0.62); Reddit-to-YouTube (Accuracy: 61.9%, Precision: 0.60, Recall: 0.62, F1: 0.61); YouTube-to-Reddit (Accuracy: 57.2%, Precision: 0.56, Recall: 0.57, F1: 0.56).
 
 ![Confusion matrix for Reddit-to-Reddit stance classification showing within-platform performance](ml_output/cm_Reddit_to_Reddit.png)
-*Fig. 8. Confusion matrix for Reddit-to-Reddit stance classification showing within-platform performance*
 
 ### Feature Importance and Discriminative Vocabulary
 
 Feature importance analysis from the ensemble models reveals the discriminative vocabulary used by each stance. Pro-Palestine comments are characterized by terms including "genocide," "apartheid," "children," "innocent," "occupation," and "ethnic cleansing." Pro-Israel comments emphasize "Hamas," "terrorist," "hostages," "defend," "attacked," and "rockets." Neutral comments exhibit balanced vocabulary without strong stance-indicative terms. This lexical polarization confirms that users adopt distinct semantic frames aligned with their political positions.
 
-![Fig. 9. Feature importance weights showing discriminative vocabulary for stance classification](ml_output/features_reddit.png)
+![Feature importance weights showing discriminative vocabulary for stance classification](ml_output/features_reddit.png)
 
 ### Network Homophily and Echo Chamber Metrics
 
 User interaction network analysis reveals asymmetric polarization patterns. Pro-Palestine users exhibit a homophily index of 0.78, indicating strong preference for engaging within same-stance threads. Pro-Israel users demonstrate a homophily index of 0.62, suggesting greater willingness to engage in cross-cutting discussion or potentially conduct "brigading" behavior in opposing threads. Neutral users show the lowest homophily (0.41), confirming their role as potential bridge actors between polarized communities.
 
-![Fig. 10. Echo chamber index comparison across stance categories demonstrating asymmetric polarization](network_output/03_echo_chamber_index.png)
+![Echo chamber index comparison across stance categories demonstrating asymmetric polarization](network_output/03_echo_chamber_index.png)
 
 Network visualization confirms stark community segregation, with Pro-Palestine and Pro-Israel user clusters demonstrating minimal interconnection. Modularity analysis yields a score of 0.73, indicating strong community structure. Only 8.3% of users exhibit balanced engagement across both stance communities, qualifying as potential bridge actors.
 
-![Fig. 11. User interaction network graph showing community segregation with nodes colored by stance](network_output/04_user_network_graph.png)
+![User interaction network graph showing community segregation with nodes colored by stance](network_output/04_user_network_graph.png)
 
 ### Algorithmic Amplification and Controversy
 
 Analysis of Reddit's `controversiality` flag reveals that controversial content (receiving mixed upvotes and downvotes) achieves significantly lower net scores (mean: 2.2) compared to non-controversial content (mean: 12.7). This finding contradicts the hypothesis that controversy drives engagement, instead suggesting that Reddit's community voting mechanism effectively penalizes divisive content through downvote mobilization.
 
-![Fig. 12. Amplification analysis comparing engagement metrics for controversial versus non-controversial content](advanced_analysis_output/02_amplification_controversy.png)
+![Amplification analysis comparing engagement metrics for controversial versus non-controversial content](advanced_analysis_output/02_amplification_controversy.png)
 
 ### Conversation Depth Analysis
 
 Thread depth analysis demonstrates that Reddit discussions achieve greater conversational depth with an average of 29.5 comments per thread compared to YouTube's 21.5 comments per video (t-test: p < 0.01). This quantitative difference corroborates qualitative findings that Reddit facilitates sustained multi-turn exchanges while YouTube promotes broadcast-style commentary with limited conversational development.
 
-![Fig. 13. Conversation volume comparison showing platform differences in discussion depth](advanced_analysis_output/09_conversation_volume.png)
+![Conversation volume comparison showing platform differences in discussion depth](advanced_analysis_output/09_conversation_volume.png)
 
 ## D. RQ4: Toxic Discourse and Harmful Speech
 
@@ -183,19 +181,19 @@ Thread depth analysis demonstrates that Reddit discussions achieve greater conve
 
 Perspective API analysis establishes Reddit as the significantly more toxic platform across all measured dimensions. Mean toxicity scores are 0.33 for Reddit versus 0.25 for YouTube (Mann-Whitney U: p < 0.001). Identity attack scores similarly favor Reddit (0.18 vs. 0.17, p < 0.05), suggesting that Reddit's anonymity and debate culture facilitate higher levels of aggressive and identity-targeting language.
 
-![Fig. 14. Platform toxicity comparison across multiple Perspective API dimensions](perspective_output/01_platform_toxicity_comparison.png)
+![Platform toxicity comparison across multiple Perspective API dimensions](perspective_output/01_platform_toxicity_comparison.png)
 
 ### Stance-Specific Toxicity Patterns
 
 Toxicity analysis by stance reveals asymmetric patterns with potential implications for understanding discourse dynamics. Pro-Israel comments exhibit the highest toxicity levels on both platforms (Reddit: 0.35, YouTube: 0.26), followed closely by Pro-Palestine comments (Reddit: 0.31, YouTube: 0.24). Neutral comments demonstrate significantly lower toxicity (Reddit: 0.19, YouTube: 0.15), confirming that political partisanship strongly predicts toxic language use.
 
-![Fig. 15. Reddit toxicity heatmap showing stance-specific patterns across multiple dimensions](perspective_output/02_reddit_toxicity_by_stance.png)
+![Reddit toxicity heatmap showing stance-specific patterns across multiple dimensions](perspective_output/02_reddit_toxicity_by_stance.png)
 
 ### Identity Attack Distribution
 
 Identity attack analysis specifically measures hateful speech targeting race, religion, ethnicity, or other identity characteristics. The distribution reveals that approximately 18% of Reddit comments exceed the 0.5 threshold for identity attacks compared to 15% on YouTube. This finding suggests that ostensibly "intellectual" political debate frequently devolves into ad hominem attacks on identity groups, particularly in the context of ethno-religious conflicts where identity and politics are deeply intertwined.
 
-![Fig. 16. Identity attack score distribution comparing platform-specific patterns of identity-targeting language](perspective_output/04_identity_attack_distribution.png)
+![Identity attack score distribution comparing platform-specific patterns of identity-targeting language](perspective_output/04_identity_attack_distribution.png)
 
 # IV. DISCUSSION
 
@@ -231,14 +229,6 @@ The Israel-Hamas conflict will continue to generate intense digital discourse. U
 
 The authors acknowledge the computational resources and support provided by Plaksha University, Mohali, Punjab, India. We thank Professor Rajesh Sharma, Program Chair of Computer Science & Artificial Intelligence at Plaksha University, for his guidance and invaluable feedback during the development of this research.
 
-# REFERENCES
-
-[References would be inserted here in IEEE format based on actual citations]
-
----
-
 **Authors' Affiliations:**
 
 Akshat Gupta, Raghav Sarna, Arsh Arora, and Mudasir Rasheed are with the Department of Computer Science & Artificial Intelligence, Plaksha University, Mohali, Punjab 140306, India.
-
-Direct correspondence to [corresponding author email].
