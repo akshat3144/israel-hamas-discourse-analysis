@@ -14,12 +14,12 @@ This project examines how social media platforms influence political discourse t
 
 ### Research Questions
 
-| RQ      | Question                                                                                    |
-| :------ | :------------------------------------------------------------------------------------------ |
+| RQ            | Question                                                                                    |
+| :------------ | :------------------------------------------------------------------------------------------ |
 | **RQ1** | How does the emotional tone differ between debate-centric Reddit and media-centric YouTube? |
 | **RQ2** | What distinct topics and narratives emerge on each platform?                                |
 | **RQ3** | To what extent do echo chambers exist, and are users consistent in their stance?            |
-| **RQ4** | Which platform—and which political stance—harbors the most toxic speech?                    |
+| **RQ4** | Which platform—and which political stance—harbors the most toxic speech?                  |
 
 ## 🔑 Key Findings
 
@@ -47,7 +47,6 @@ This project examines how social media platforms influence political discourse t
 ├── statistical_tests_output/      # Hypothesis testing results
 ├── word_cloud/                    # Word cloud visualizations
 ├── docs/                          # Documentation and reports
-├── report_conversion/             # Report conversion utilities
 │
 ├── eda_analysis.py                # Exploratory data analysis
 ├── sentiment_analysis.py          # VADER & TextBlob sentiment analysis
@@ -83,13 +82,11 @@ This project examines how social media platforms influence political discourse t
    git clone https://github.com/akshat3144/israel-hamas-discourse-analysis.git
    cd israel-hamas-discourse-analysis
    ```
-
 2. **Install dependencies**
 
    ```bash
    pip install -r requirements.txt
    ```
-
 3. **Set up environment variables** (for Perspective API)
 
    ```bash
@@ -148,8 +145,8 @@ python generate_wordclouds.py
 
 ### Machine Learning Performance
 
-| Train Set         | Test Set | Accuracy                      |
-| :---------------- | :------- | :---------------------------- |
+| Train Set          | Test Set | Accuracy                      |
+| :----------------- | :------- | :---------------------------- |
 | YouTube → YouTube | 75.1%    | High (repetitive slogans)     |
 | Reddit → Reddit   | 62.5%    | Moderate (nuanced discourse)  |
 | Reddit → YouTube  | 61.9%    | Cross-platform struggle       |
