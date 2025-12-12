@@ -1,1 +1,5 @@
 *.env
+*.html
+*.pdf
+*.md
+!README.md
