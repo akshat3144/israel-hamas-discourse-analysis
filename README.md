@@ -46,6 +46,8 @@ This project examines how social media platforms influence political discourse t
 ├── advanced_analysis_output/      # Statistical regression results
 ├── statistical_tests_output/      # Hypothesis testing results
 ├── word_cloud/                    # Word cloud visualizations
+├── docs/                          # Documentation and reports
+├── report_conversion/             # Report conversion utilities
 │
 ├── eda_analysis.py                # Exploratory data analysis
 ├── sentiment_analysis.py          # VADER & TextBlob sentiment analysis
@@ -55,15 +57,14 @@ This project examines how social media platforms influence political discourse t
 ├── perspective_analysis.py        # Google Perspective API toxicity
 ├── advanced_analysis.py           # Regression & complexity analysis
 ├── statistical_tests.py           # Statistical hypothesis testing
+├── structural_temporal_analysis.py # Structural & temporal analysis
 ├── label_reddit_data.py           # Data labeling utilities
 ├── label_youtube_data.py          # Data labeling utilities
 ├── generate_wordclouds.py         # Word cloud generation
 │
-├── EDA_Analysis.ipynb             # Interactive EDA notebook
-├── Phase3_Sentiment_TopicModeling.ipynb  # Sentiment & topic notebook
+├── eda.ipynb                      # Interactive EDA notebook
+├── sentiment_topic_modeling.ipynb # Sentiment & topic notebook
 │
-├── FINAL_COMPREHENSIVE_REPORT.md  # Complete research report
-├── IEEE_PUBLICATION_READY_REPORT.md  # IEEE formatted report
 └── requirements.txt               # Python dependencies
 ```
 
