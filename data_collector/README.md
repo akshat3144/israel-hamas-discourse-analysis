@@ -1,6 +1,6 @@
 # Israel–Hamas War Discourse Analysis: Data Collection System
 
-This project implements a comprehensive data collection system for analyzing online discourse about the **Israel–Hamas war** across **Reddit**, **YouTube**, and **Telegram**. The methodology is based on recent academic research examining social media narratives, sentiment patterns, and information dissemination during the conflict.
+This project implements a comprehensive data collection system for analyzing online discourse about the **Israel–Hamas war** across **Reddit** and **YouTube**. The methodology is based on recent academic research examining social media narratives, sentiment patterns, and information dissemination during the conflict.
 
 ---
 
@@ -8,7 +8,6 @@ This project implements a comprehensive data collection system for analyzing onl
 
 This implementation is inspired by and extends methodologies from:
 
-- **"Israel–Hamas war through Telegram, Reddit and Twitter"**\_Despoina Antonakaki & Sotiris Ioannidis (2025)\_Cross-platform analysis of discourse patterns and information flow
 - **"Sentiment analysis of the Hamas–Israel war on YouTube"** _(2025)_
   Sentiment dynamics and public opinion formation through video comments
 
@@ -19,7 +18,7 @@ This project enables researchers to collect, analyze, and compare public discour
 ## Key Features
 
 - **Multi-Platform Coverage** — Collects data from Reddit, YouTube, and Telegram simultaneously
-- **Targeted Collection** — Keyword-based filtering for relevant conflict discussions
+- **Targeted Collection** — Keyword-based filtering for r and YouTube
 - **Date Range Filtering** — Focus on specific time periods (Oct 2023 onwards)
 - **Rich Metadata** — Captures engagement metrics, timestamps, and user information
 - **Automated Processing** — Batch collection with built-in rate limiting
@@ -49,7 +48,6 @@ pip install -r requirements.txt
 
 - `pandas`, `numpy` — Data processing
 - `telethon` — Telegram data collection
-- `praw` — Reddit API wrapper
 - `google-api-python-client` — YouTube Data API
 - `python-dotenv` — Environment variable management
 - Additional libraries for sentiment analysis and topic modeling (optional)
@@ -60,16 +58,11 @@ pip install -r requirements.txt
 
 Create a `.env` file in your project root:
 
-```env
+````env
 # YouTube Data API v3
 YOUTUBE_API_KEY=your_youtube_api_key
 
 # Telegram API Credentials
-TELEGRAM_API_ID=your_api_id
-TELEGRAM_API_HASH=your_api_hash
-TELEGRAM_PHONE=+1234567890
-```
-
 **How to get API credentials:**
 
 - **YouTube:** Get your API key from [Google Cloud Console](https://console.cloud.google.com/) → Enable YouTube Data API v3
@@ -80,8 +73,7 @@ TELEGRAM_PHONE=+1234567890
 
 ## File Structure
 
-```
-data_collector/
+```_collector/
 ├── reddit_collector.py          # Reddit data collection (Public JSON)
 ├── youtube_collector.py         # YouTube data collection (API + keywords)
 ├── telegram_collector.py        # Telegram data collection (Telethon + date filter)
@@ -92,18 +84,16 @@ data_collector/
 └── collected_data/              # Output directory (auto-created)
     ├── reddit.xlsx
     ├── youtube.xlsx
-    └── telegram.xlsx
-```
-
----
-
-## Usage Guide
-
-### Step 1 — Reddit Data Collection
-
+    requirements.txt             # Python dependencies
+├── .env                         # API credentials (not tracked in git)
+├── README.md                    # Documentation
+├── docs/                        # Additional documentation
+└── collected_data/              # Output directory (auto-created)
+    ├── reddit.xlsx
+    └── youtube
 ```bash
 python reddit_collector.py
-```
+````
 
 **What it does:**
 

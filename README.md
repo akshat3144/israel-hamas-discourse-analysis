@@ -39,8 +39,7 @@ This project examines how social media platforms influence political discourse t
 │   └── youtube_labeled.xlsx
 ├── data_collector/                # Data collection scripts
 │   ├── reddit_collector.py
-│   ├── youtube_collector.py
-│   └── telegram_collector.py
+│   └── youtube_collector.py
 ├── eda_output/                    # Exploratory data analysis results
 ├── sentiment_output/              # Sentiment analysis results
 ├── topic_modeling_output/         # LDA/NMF topic modeling results
