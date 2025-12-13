@@ -5,10 +5,6 @@
 pandas
 numpy
 
-# Telegram Data Collection
-telethon
-cryptg  # Optional but recommended for better performance
-
 # Twitter Data Collection
 snscrape  # No API key needed
 # Alternative: tweepy  # If using Twitter API

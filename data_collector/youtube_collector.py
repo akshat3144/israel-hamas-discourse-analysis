@@ -20,7 +20,7 @@ API_KEY = os.getenv("YOUTUBE_API_KEY")
 class YouTubeCollector:
     """Collects data (comments + metadata) from YouTube channels or videos"""
 
-    def __init__(self, api_key: str, output_dir: str = "collected_data"):
+    def __init__(self, api_key: str, output_dir: str = "../data"):
         self.api_key = api_key
         self.youtube = build("youtube", "v3", developerKey=api_key)
         self.output_dir = output_dir

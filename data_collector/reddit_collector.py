@@ -18,7 +18,7 @@ class RedditCollector:
     Collects Reddit posts using Reddit's public JSON search endpoints
     """
 
-    def __init__(self, output_dir: str = "collected_data"):
+    def __init__(self, output_dir: str = "../data"):
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         self.base_url = "https://www.reddit.com"
