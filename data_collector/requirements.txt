@@ -1,0 +1,61 @@
+# Python Dependencies for Social Media Data Collection
+# Based on the Israel-Hamas War Research Paper Methodology
+
+# Core Data Processing
+pandas
+numpy
+
+# Telegram Data Collection
+telethon
+cryptg  # Optional but recommended for better performance
+
+# Twitter Data Collection
+snscrape  # No API key needed
+# Alternative: tweepy  # If using Twitter API
+
+# Reddit Data Collection
+praw  # Python Reddit API Wrapper
+
+# Data Storage
+openpyxl  # For Excel export
+pyarrow  # For Parquet format
+
+# Date/Time Handling
+python-dateutil
+pytz
+
+# Text Processing (for future analysis)
+nltk
+spacy
+transformers  # For BERT-based analysis
+torch  # Required for transformers
+
+# Sentiment Analysis
+textblob
+vaderSentiment
+
+# Topic Modeling (as used in the paper)
+bertopic
+gensim  # For LDA
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+plotly
+wordcloud
+
+# Progress Bars
+tqdm
+
+# Configuration Management
+python-dotenv
+
+# API Rate Limiting
+ratelimit
+
+# Logging
+colorlog
+
+# Data Validation
+jsonschema
