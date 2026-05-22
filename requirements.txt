@@ -10,3 +10,10 @@ textblob
 vaderSentiment
 scikit-learn
 wordcloud
+scipy
+statsmodels
+textstat
+networkx
+tqdm
+google-api-python-client
+langdetect
