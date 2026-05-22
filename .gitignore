@@ -4,3 +4,5 @@
 *.md
 !README.md
 docs/
+data/
+__pycache__/
