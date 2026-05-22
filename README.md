@@ -14,8 +14,8 @@ A comprehensive computational social science study analyzing political discourse
 
 This project systematically addresses four interconnected research questions:
 
-| RQ      | Question                                          | Focus                                                            |
-| ------- | ------------------------------------------------- | ---------------------------------------------------------------- |
+| RQ            | Question                                          | Focus                                                            |
+| ------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
 | **RQ1** | How does emotional tone differ between platforms? | Sentiment polarity, subjectivity, platform culture effects       |
 | **RQ2** | What distinct topics and narratives emerge?       | Discourse framing, narrative patterns, thematic differences      |
 | **RQ3** | Do echo chambers exist and are users polarized?   | User behavior consistency, network analysis, stance polarization |
@@ -25,8 +25,8 @@ This project systematically addresses four interconnected research questions:
 
 ## Module Breakdown & Outputs
 
-| Folder                       | Purpose                             | Key Outputs                                                       | Insights                                                                                             |
-| ---------------------------- | ----------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Folder                         | Purpose                             | Key Outputs                                                       | Insights                                                                                             |
+| ------------------------------ | ----------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `01_data_preparation`        | Shared preparation step             | Cleaned datasets (CSV), EDA visualizations                        | Data quality baseline, engagement patterns                                                           |
 | `02_emotional_tone_analysis` | RQ1: Emotional tone differences     | Sentiment distributions, statistical tests, comparative analysis  | Reddit is more negative; YouTube is more positive. Sentiment varies by platform and political stance |
 | `03_topics_and_narratives`   | RQ2: Topic & narrative analysis     | Topic models (LDA/NMF), word clouds, thematic summaries           | Reddit emphasizes political/territorial framing; YouTube emphasizes emotional/religious framing      |
@@ -38,21 +38,21 @@ This project systematically addresses four interconnected research questions:
 Each analysis module follows a consistent, professional structure with scripts, notebooks, and dedicated outputs:
 
 ```
-01_data_preparation/                    Data Cleaning & EDA
-├── exploratory_analysis.ipynb           Interactive exploration
+01_data_preparation/                      Data Cleaning & EDA
+├── exploratory_analysis.ipynb            Interactive exploration
 ├── scripts/
-│   └── eda_analysis.py                 Data quality & visualizations
+│   └── eda_analysis.py                   Data quality & visualizations
 ├── outputs/
 │   ├── eda_summary_report.txt
 │   ├── reddit_processed.csv
 │   └── youtube_processed.csv
-└── main.py                              Entry point
+└── main.py                               Entry point
 
-02_emotional_tone_analysis/             Sentiment Analysis (RQ1)
-├── sentiment_analysis.ipynb             Sentiment & statistics
+02_emotional_tone_analysis/               Sentiment Analysis (RQ1)
+├── sentiment_analysis.ipynb              Sentiment & statistics
 ├── scripts/
-│   ├── sentiment_analysis.py           VADER & TextBlob scoring
-│   └── statistical_tests.py            Statistical validation
+│   ├── sentiment_analysis.py             VADER & TextBlob scoring
+│   └── statistical_tests.py              Statistical validation
 ├── outputs/
 │   ├── sentiment_summary_report.txt
 │   ├── reddit_with_sentiment.csv
@@ -60,34 +60,34 @@ Each analysis module follows a consistent, professional structure with scripts, 
 │   └── [8+ visualization plots]
 └── main.py
 
-03_topics_and_narratives/               Topic Modeling (RQ2)
-├── topic_analysis.ipynb                Topic exploration
+03_topics_and_narratives/                 Topic Modeling (RQ2)
+├── topic_analysis.ipynb                  Topic exploration
 ├── scripts/
-│   ├── topic_modeling.py               LDA & NMF models
-│   └── generate_wordclouds.py          Word clouds & frequency
+│   ├── topic_modeling.py                 LDA & NMF models
+│   └── generate_wordclouds.py            Word clouds & frequency
 ├── outputs/
 │   ├── topic_modeling_report.txt
 │   ├── [7+ visualization plots]
 │   └── wordclouds/
 └── main.py
 
-04_echo_chambers/                       Network & Polarization (RQ3)
-├── network_analysis.ipynb              Network & ML analysis
+04_echo_chambers/                         Network & Polarization (RQ3)
+├── network_analysis.ipynb                Network & ML analysis
 ├── scripts/
-│   ├── advanced_analysis.py            Regression analysis
-│   ├── structural_temporal_analysis.py Temporal patterns
-│   ├── network_analysis.py             Echo chambers
-│   └── ml_stance_classification.py     Stance prediction
+│   ├── advanced_analysis.py              Regression analysis
+│   ├── structural_temporal_analysis.py   Temporal patterns
+│   ├── network_analysis.py               Echo chambers
+│   └── ml_stance_classification.py       Stance prediction
 ├── outputs/
 │   ├── regression_results.txt
 │   ├── [15+ visualization plots]
 │   └── ml_stance_classification/
 └── main.py
 
-05_toxicity_analysis/                   Toxicity Detection (RQ4)
-├── toxicity_assessment.ipynb           Toxicity patterns
+05_toxicity_analysis/                     Toxicity Detection (RQ4)
+├── toxicity_assessment.ipynb             Toxicity patterns
 ├── scripts/
-│   └── toxicity_assessment.py         Perspective API analysis
+│   └── toxicity_assessment.py            Perspective API analysis
 ├── outputs/
 │   ├── perspective_analysis_report.txt
 │   ├── reddit_perspective.csv
@@ -95,17 +95,12 @@ Each analysis module follows a consistent, professional structure with scripts, 
 │   └── [4+ visualization plots]
 └── main.py
 
-data/                                   Raw Input Data
-├── reddit_labeled.xlsx
-└── youtube_labeled.xlsx
+data/                                     Raw Input Data (place CSV files here)
+├── reddit_labeled.csv
+└── youtube_labeled.csv
 
-docs/                                   Reports & Analysis
-├── Final_Comprehensive_Report.md
-├── Phase3_Results_Summary.md
-└── Phase4_Results_Summary.md
-
-requirements.txt                        Dependencies
-README.md                               Documentation
+requirements.txt                          Dependencies
+README.md                                 Documentation
 ```
 
 ## Setup
