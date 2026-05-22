@@ -1,6 +1,7 @@
 """
-Phase 3: Statistical Significance Testing
-Validate findings with chi-square, ANOVA, t-tests, and correlation analysis
+Statistical Significance Testing for Sentiment Analysis
+RQ1: Validate sentiment findings with chi-square, ANOVA, Kruskal-Wallis,
+     Cramér's V, t-tests, and correlation analysis.
 """
 
 import pandas as pd
@@ -8,530 +9,302 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
-from scipy.stats import chi2_contingency, f_oneway, ttest_ind, pearsonr, spearmanr
-import os
+from scipy.stats import (chi2_contingency, f_oneway, ttest_ind,
+                          pearsonr, spearmanr, kruskal, mannwhitneyu)
+import warnings
+warnings.filterwarnings('ignore')
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 SENTIMENT_OUTPUT_DIR = ROOT_DIR / '02_emotional_tone_analysis' / 'outputs'
 OUTPUT_DIR = SENTIMENT_OUTPUT_DIR / 'statistical_tests'
-
-# Create output directory
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-print("="*70)
-print("PHASE 3: STATISTICAL SIGNIFICANCE TESTING")
-print("="*70)
-print()
+REDDIT_LABEL_COL  = 'Label'
+YOUTUBE_LABEL_COL = 'Label'
+
+print("=" * 70)
+print("STATISTICAL SIGNIFICANCE TESTING")
+print("=" * 70)
 
 # ============================================================================
-# 1. LOAD DATA WITH SENTIMENT SCORES
+# LOAD DATA
 # ============================================================================
-print("ðŸ“‚ Loading data with sentiment scores...")
-reddit_df = pd.read_csv(SENTIMENT_OUTPUT_DIR / 'reddit_with_sentiment.csv')
+print("\n📂 Loading sentiment-scored data...")
+reddit_df  = pd.read_csv(SENTIMENT_OUTPUT_DIR / 'reddit_with_sentiment.csv')
 youtube_df = pd.read_csv(SENTIMENT_OUTPUT_DIR / 'youtube_with_sentiment.csv')
 
-# Add platform identifier
-reddit_df['Platform'] = 'Reddit'
+reddit_df['Platform']  = 'Reddit'
 youtube_df['Platform'] = 'YouTube'
-
-# Combine datasets
 combined_df = pd.concat([reddit_df, youtube_df], ignore_index=True)
 
-print(f"âœ“ Reddit: {len(reddit_df)} rows")
-print(f"âœ“ YouTube: {len(youtube_df)} rows")
-print(f"âœ“ Combined: {len(combined_df)} rows")
-print()
-
-# ============================================================================
-# 2. CHI-SQUARE TEST: STANCE Ã— SENTIMENT INDEPENDENCE
-# ============================================================================
-print("="*70)
-print("TEST 1: CHI-SQUARE - STANCE Ã— SENTIMENT INDEPENDENCE")
-print("="*70)
-print()
+print(f"✔ Reddit: {len(reddit_df):,}")
+print(f"✔ YouTube: {len(youtube_df):,}")
+print(f"✔ Combined: {len(combined_df):,}")
 
 results_file = open(OUTPUT_DIR / 'statistical_test_results.txt', 'w', encoding='utf-8')
-results_file.write("="*70 + "\n")
+results_file.write("=" * 70 + "\n")
 results_file.write("STATISTICAL SIGNIFICANCE TEST RESULTS\n")
-results_file.write("Phase 3: Sentiment Analysis Validation\n")
-results_file.write("="*70 + "\n\n")
+results_file.write("RQ1: Sentiment Analysis Validation\n")
+results_file.write("=" * 70 + "\n\n")
 
-# Reddit Chi-Square
-print("ðŸ“Š Reddit: Stance Ã— Sentiment")
-reddit_contingency = pd.crosstab(reddit_df['Label'], reddit_df['vader_label'])
-chi2_reddit, p_reddit, dof_reddit, expected_reddit = chi2_contingency(reddit_contingency)
+# ============================================================================
+# HELPER: Cramér's V
+# ============================================================================
+def cramers_v(contingency_table):
+    chi2, _, dof, _ = chi2_contingency(contingency_table)
+    n = contingency_table.values.sum()
+    phi2 = chi2 / n
+    r, k = contingency_table.shape
+    phi2corr = max(0, phi2 - ((k-1)*(r-1))/(n-1))
+    rcorr = r - ((r-1)**2) / (n-1)
+    kcorr = k - ((k-1)**2) / (n-1)
+    return np.sqrt(phi2corr / min(kcorr-1, rcorr-1)) if min(kcorr-1, rcorr-1) > 0 else 0
 
-print(f"   Chi-square statistic: {chi2_reddit:.4f}")
-print(f"   P-value: {p_reddit:.6f}")
-print(f"   Degrees of freedom: {dof_reddit}")
-print(f"   Result: {'SIGNIFICANT' if p_reddit < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
+def cohens_d(g1, g2):
+    n1, n2 = len(g1), len(g2)
+    pooled = np.sqrt(((n1-1)*g1.var() + (n2-1)*g2.var()) / (n1+n2-2))
+    return (g1.mean() - g2.mean()) / pooled if pooled != 0 else 0
 
-results_file.write("TEST 1: CHI-SQUARE TEST\n")
-results_file.write("Hypothesis: Stance and Sentiment are independent\n")
-results_file.write("-"*70 + "\n\n")
-results_file.write("REDDIT:\n")
-results_file.write(f"  Chi-square statistic: {chi2_reddit:.4f}\n")
-results_file.write(f"  P-value: {p_reddit:.6f}\n")
-results_file.write(f"  Degrees of freedom: {dof_reddit}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Stance and Sentiment are DEPENDENT' if p_reddit < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
+def interp_d(d):
+    d = abs(d)
+    return 'Large' if d >= 0.8 else 'Medium' if d >= 0.5 else 'Small'
 
-# YouTube Chi-Square
-print("ðŸ“Š YouTube: Stance Ã— Sentiment")
-label_col_youtube = 'label' if 'label' in youtube_df.columns else 'Label'
-youtube_contingency = pd.crosstab(youtube_df[label_col_youtube], youtube_df['vader_label'])
-chi2_youtube, p_youtube, dof_youtube, expected_youtube = chi2_contingency(youtube_contingency)
+def interp_v(v):
+    return 'Strong' if v >= 0.5 else 'Moderate' if v >= 0.3 else 'Weak'
 
-print(f"   Chi-square statistic: {chi2_youtube:.4f}")
-print(f"   P-value: {p_youtube:.6f}")
-print(f"   Degrees of freedom: {dof_youtube}")
-print(f"   Result: {'SIGNIFICANT' if p_youtube < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
+# ============================================================================
+# TEST 1: CHI-SQUARE + CRAMÉR'S V — Stance × Sentiment
+# ============================================================================
+print("\n" + "=" * 70)
+print("TEST 1: CHI-SQUARE + CRAMÉR'S V — STANCE × SENTIMENT")
+print("=" * 70)
 
-results_file.write("YOUTUBE:\n")
-results_file.write(f"  Chi-square statistic: {chi2_youtube:.4f}\n")
-results_file.write(f"  P-value: {p_youtube:.6f}\n")
-results_file.write(f"  Degrees of freedom: {dof_youtube}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Stance and Sentiment are DEPENDENT' if p_youtube < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
+results_file.write("TEST 1: CHI-SQUARE (Stance × Sentiment)\n" + "-" * 70 + "\n\n")
 
-# Visualize contingency tables
+for name, df, lcol in [("Reddit", reddit_df, REDDIT_LABEL_COL),
+                        ("YouTube", youtube_df, YOUTUBE_LABEL_COL)]:
+    ct = pd.crosstab(df[lcol], df['vader_label'])
+    chi2, p, dof, _ = chi2_contingency(ct)
+    v = cramers_v(ct)
+    print(f"\n📊 {name}:")
+    print(f"   Chi-square: {chi2:.4f}, df={dof}, p={p:.6f}, Cramér's V={v:.4f} ({interp_v(v)})")
+    sig = p < 0.05
+    results_file.write(f"{name}:\n")
+    results_file.write(f"  Chi-square statistic: {chi2:.4f}\n")
+    results_file.write(f"  P-value: {p:.6f}\n")
+    results_file.write(f"  Degrees of freedom: {dof}\n")
+    results_file.write(f"  Cramér's V: {v:.4f} ({interp_v(v)} association)\n")
+    results_file.write(f"  Conclusion: {'REJECT H0 — stance and sentiment are DEPENDENT' if sig else 'FAIL TO REJECT H0'}\n\n")
+
+# ============================================================================
+# TEST 2: ONE-WAY ANOVA + KRUSKAL-WALLIS — Compound × Stance
+# ============================================================================
+print("\n" + "=" * 70)
+print("TEST 2: ANOVA + KRUSKAL-WALLIS — COMPOUND SCORE × STANCE")
+print("=" * 70)
+
+results_file.write("=" * 70 + "\nTEST 2: ANOVA + KRUSKAL-WALLIS (Compound × Stance)\n" + "-" * 70 + "\n\n")
+
+for name, df, lcol in [("Reddit", reddit_df, REDDIT_LABEL_COL),
+                        ("YouTube", youtube_df, YOUTUBE_LABEL_COL)]:
+    groups = [df[df[lcol] == s]['vader_compound'].dropna() for s in ['P', 'I', 'N']]
+    groups = [g for g in groups if len(g) > 0]
+    if len(groups) >= 2:
+        f_stat, p_anova = f_oneway(*groups)
+        h_stat, p_kw    = kruskal(*groups)
+        print(f"\n📊 {name}:")
+        print(f"   ANOVA:          F={f_stat:.4f}, p={p_anova:.6f}")
+        print(f"   Kruskal-Wallis: H={h_stat:.4f}, p={p_kw:.6f}")
+        results_file.write(f"{name}:\n")
+        results_file.write(f"  ANOVA F: {f_stat:.4f}, p={p_anova:.6f}\n")
+        results_file.write(f"  Kruskal-Wallis H: {h_stat:.4f}, p={p_kw:.6f}\n")
+        results_file.write(f"  Conclusion (ANOVA): {'REJECT H0' if p_anova < 0.05 else 'FAIL TO REJECT H0'}\n")
+        results_file.write(f"  Conclusion (K-W):   {'REJECT H0' if p_kw < 0.05 else 'FAIL TO REJECT H0'}\n\n")
+
+# ============================================================================
+# TEST 3: INDEPENDENT T-TESTS — Platform Differences
+# ============================================================================
+print("\n" + "=" * 70)
+print("TEST 3: T-TESTS + MANN-WHITNEY U — PLATFORM DIFFERENCES")
+print("=" * 70)
+
+results_file.write("=" * 70 + "\nTEST 3: T-TESTS + MANN-WHITNEY U (Platform Differences)\n" + "-" * 70 + "\n\n")
+
+comparisons = [
+    ('Overall', reddit_df['vader_compound'].dropna(),
+     youtube_df['vader_compound'].dropna()),
+    ('Pro-Palestine',
+     reddit_df[reddit_df[REDDIT_LABEL_COL]  == 'P']['vader_compound'].dropna(),
+     youtube_df[youtube_df[YOUTUBE_LABEL_COL] == 'P']['vader_compound'].dropna()),
+    ('Pro-Israel',
+     reddit_df[reddit_df[REDDIT_LABEL_COL]  == 'I']['vader_compound'].dropna(),
+     youtube_df[youtube_df[YOUTUBE_LABEL_COL] == 'I']['vader_compound'].dropna()),
+    ('Neutral',
+     reddit_df[reddit_df[REDDIT_LABEL_COL]  == 'N']['vader_compound'].dropna(),
+     youtube_df[youtube_df[YOUTUBE_LABEL_COL] == 'N']['vader_compound'].dropna()),
+]
+
+t_results = []
+for label, g1, g2 in comparisons:
+    if len(g1) > 1 and len(g2) > 1:
+        t_stat, p_t  = ttest_ind(g1, g2)
+        u_stat, p_mw = mannwhitneyu(g1, g2, alternative='two-sided')
+        d = cohens_d(g1, g2)
+        print(f"\n📊 {label}: Reddit μ={g1.mean():.4f}, YouTube μ={g2.mean():.4f}")
+        print(f"   t={t_stat:.4f}, p={p_t:.6f} | MWU p={p_mw:.6f} | d={d:.4f} ({interp_d(d)})")
+        t_results.append({'Comparison': label,
+                          'Reddit_mean': g1.mean(), 'YouTube_mean': g2.mean(),
+                          't_stat': t_stat, 'p_ttest': p_t,
+                          'u_stat': u_stat, 'p_mwu': p_mw,
+                          'cohens_d': d, 'effect_size': interp_d(d),
+                          'significant': p_t < 0.05})
+        results_file.write(f"{label}:\n")
+        results_file.write(f"  Reddit mean={g1.mean():.4f}, YouTube mean={g2.mean():.4f}\n")
+        results_file.write(f"  t={t_stat:.4f}, p={p_t:.6f}\n")
+        results_file.write(f"  Mann-Whitney U={u_stat:.0f}, p={p_mw:.6f}\n")
+        results_file.write(f"  Cohen's d={d:.4f} ({interp_d(d)} effect)\n")
+        results_file.write(f"  Conclusion: {'REJECT H0' if p_t < 0.05 else 'FAIL TO REJECT H0'}\n\n")
+
+# ============================================================================
+# TEST 4: CORRELATION — Sentiment × Engagement
+# ============================================================================
+print("\n" + "=" * 70)
+print("TEST 4: CORRELATION — SENTIMENT × ENGAGEMENT")
+print("=" * 70)
+
+results_file.write("=" * 70 + "\nTEST 4: CORRELATION (Sentiment × Engagement)\n" + "-" * 70 + "\n\n")
+
+# Reddit: vader_compound × score
+reddit_df['score'] = pd.to_numeric(reddit_df['score'], errors='coerce')
+valid_r = reddit_df[['vader_compound', 'score']].dropna()
+if len(valid_r) > 1:
+    rp, pp = pearsonr(valid_r['vader_compound'], valid_r['score'])
+    rs, ps = spearmanr(valid_r['vader_compound'], valid_r['score'])
+    print(f"\n📊 Reddit — Compound × Score: Pearson r={rp:.4f}(p={pp:.6f}), Spearman ρ={rs:.4f}(p={ps:.6f})")
+    results_file.write(f"Reddit (Compound × Score):\n  Pearson r={rp:.4f}, p={pp:.6f}\n  Spearman ρ={rs:.4f}, p={ps:.6f}\n\n")
+else:
+    rp, pp, rs, ps = 0, 1, 0, 1; valid_r = pd.DataFrame()
+
+# YouTube: vader_compound × likeCount
+if 'likeCount' in youtube_df.columns:
+    youtube_df['likeCount'] = pd.to_numeric(youtube_df['likeCount'], errors='coerce')
+    valid_y = youtube_df[['vader_compound', 'likeCount']].dropna()
+    if len(valid_y) > 1:
+        ryp, pyp = pearsonr(valid_y['vader_compound'], valid_y['likeCount'])
+        rys, pys = spearmanr(valid_y['vader_compound'], valid_y['likeCount'])
+        print(f"📊 YouTube — Compound × Likes: Pearson r={ryp:.4f}(p={pyp:.6f}), Spearman ρ={rys:.4f}(p={pys:.6f})")
+        results_file.write(f"YouTube (Compound × likeCount):\n  Pearson r={ryp:.4f}, p={pyp:.6f}\n  Spearman ρ={rys:.4f}, p={pys:.6f}\n\n")
+    else:
+        valid_y = pd.DataFrame()
+else:
+    valid_y = pd.DataFrame()
+
+# ============================================================================
+# TEST 5: SUBJECTIVITY ACROSS STANCES — ANOVA + K-W
+# ============================================================================
+print("\n" + "=" * 70)
+print("TEST 5: SUBJECTIVITY × STANCE (ANOVA + KRUSKAL-WALLIS)")
+print("=" * 70)
+
+results_file.write("=" * 70 + "\nTEST 5: SUBJECTIVITY × STANCE\n" + "-" * 70 + "\n\n")
+
+for name, df, lcol in [("Reddit", reddit_df, REDDIT_LABEL_COL),
+                        ("YouTube", youtube_df, YOUTUBE_LABEL_COL)]:
+    groups = [df[df[lcol] == s]['textblob_subjectivity'].dropna() for s in ['P', 'I', 'N']]
+    groups = [g for g in groups if len(g) > 0]
+    if len(groups) >= 2:
+        f_stat, p_anova = f_oneway(*groups)
+        h_stat, p_kw    = kruskal(*groups)
+        print(f"\n📊 {name} Subjectivity: F={f_stat:.4f}(p={p_anova:.6f}), H={h_stat:.4f}(p={p_kw:.6f})")
+        results_file.write(f"{name}:\n  F={f_stat:.4f}, p={p_anova:.6f}\n  H={h_stat:.4f}, p_kw={p_kw:.6f}\n")
+        for s, n_ in [('P', 'Pro-Palestine'), ('I', 'Pro-Israel'), ('N', 'Neutral')]:
+            m = df[df[lcol] == s]['textblob_subjectivity'].mean()
+            results_file.write(f"    {n_}: {m:.4f}\n")
+        results_file.write("\n")
+
+# ============================================================================
+# TEST 6: EFFECT SIZES SUMMARY
+# ============================================================================
+results_file.write("=" * 70 + "\nTEST 6: EFFECT SIZES (COHEN'S D)\n" + "-" * 70 + "\n\n")
+for row in t_results:
+    results_file.write(f"  {row['Comparison']}: d={row['cohens_d']:.4f} ({row['effect_size']})\n")
+results_file.write("\n")
+
+# ============================================================================
+# VISUALIZATIONS
+# ============================================================================
+
+# --- V1: Chi-square contingency heatmaps ---
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-fig.suptitle('Stance Ã— Sentiment Contingency Tables', fontsize=14, fontweight='bold')
-
-sns.heatmap(reddit_contingency, annot=True, fmt='d', cmap='Blues', ax=axes[0], cbar_kws={'label': 'Count'})
-axes[0].set_title(f'Reddit (Ï‡Â² = {chi2_reddit:.2f}, p = {p_reddit:.4f})', fontweight='bold')
-axes[0].set_xlabel('Sentiment (VADER)')
-axes[0].set_ylabel('Stance')
-
-sns.heatmap(youtube_contingency, annot=True, fmt='d', cmap='Reds', ax=axes[1], cbar_kws={'label': 'Count'})
-axes[1].set_title(f'YouTube (Ï‡Â² = {chi2_youtube:.2f}, p = {p_youtube:.4f})', fontweight='bold')
-axes[1].set_xlabel('Sentiment (VADER)')
-axes[1].set_ylabel('Stance')
+fig.suptitle('Stance × Sentiment Contingency Tables', fontsize=14, fontweight='bold')
+for ax, df, lcol, title, cmap in [
+        (axes[0], reddit_df, REDDIT_LABEL_COL,  'Reddit', 'Blues'),
+        (axes[1], youtube_df, YOUTUBE_LABEL_COL, 'YouTube', 'Reds')]:
+    ct = pd.crosstab(df[lcol], df['vader_label'])
+    chi2, p, dof, _ = chi2_contingency(ct)
+    v = cramers_v(ct)
+    sns.heatmap(ct, annot=True, fmt='d', cmap=cmap, ax=ax)
+    ax.set_title(f'{title}\nχ²={chi2:.2f}, p={p:.4f}, V={v:.3f}', fontweight='bold')
+    ax.set_xlabel('Sentiment (VADER)'); ax.set_ylabel('Stance')
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '01_chi_square_contingency_tables.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 01_chi_square_contingency_tables.png")
-print()
+print("\n✔ Saved: 01_chi_square_contingency_tables.png")
+plt.close()
 
-# ============================================================================
-# 3. ANOVA: SENTIMENT SCORES ACROSS STANCES
-# ============================================================================
-print("="*70)
-print("TEST 2: ONE-WAY ANOVA - SENTIMENT SCORES ACROSS STANCES")
-print("="*70)
-print()
+# --- V2: Sentiment × Engagement scatter ---
+n_plots = (1 if len(valid_r) == 0 or len(valid_y) == 0 else 2)
+fig, axes = plt.subplots(1, n_plots, figsize=(8 * n_plots, 6))
+if n_plots == 1:
+    axes = [axes]
 
-results_file.write("="*70 + "\n")
-results_file.write("TEST 2: ONE-WAY ANOVA\n")
-results_file.write("Hypothesis: Mean sentiment scores are equal across all stances\n")
-results_file.write("-"*70 + "\n\n")
-
-# Reddit ANOVA
-print("ðŸ“Š Reddit: Compound Score Ã— Stance")
-reddit_groups = [reddit_df[reddit_df['Label'] == stance]['vader_compound'].dropna() 
-                 for stance in ['P', 'I', 'N']]
-f_stat_reddit, p_anova_reddit = f_oneway(*reddit_groups)
-
-print(f"   F-statistic: {f_stat_reddit:.4f}")
-print(f"   P-value: {p_anova_reddit:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_anova_reddit < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("REDDIT (VADER Compound Score by Stance):\n")
-results_file.write(f"  F-statistic: {f_stat_reddit:.4f}\n")
-results_file.write(f"  P-value: {p_anova_reddit:.6f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Mean sentiment scores DIFFER significantly across stances' if p_anova_reddit < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# YouTube ANOVA
-print("ðŸ“Š YouTube: Compound Score Ã— Stance")
-label_col_youtube = 'label' if 'label' in youtube_df.columns else 'Label'
-youtube_groups = [youtube_df[youtube_df[label_col_youtube] == stance]['vader_compound'].dropna() 
-                  for stance in ['P', 'I', 'N']]
-f_stat_youtube, p_anova_youtube = f_oneway(*youtube_groups)
-
-print(f"   F-statistic: {f_stat_youtube:.4f}")
-print(f"   P-value: {p_anova_youtube:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_anova_youtube < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("YOUTUBE (VADER Compound Score by Stance):\n")
-results_file.write(f"  F-statistic: {f_stat_youtube:.4f}\n")
-results_file.write(f"  P-value: {p_anova_youtube:.6f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Mean sentiment scores DIFFER significantly across stances' if p_anova_youtube < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# ============================================================================
-# 4. T-TESTS: PLATFORM DIFFERENCES
-# ============================================================================
-print("="*70)
-print("TEST 3: INDEPENDENT T-TESTS - PLATFORM DIFFERENCES")
-print("="*70)
-print()
-
-results_file.write("="*70 + "\n")
-results_file.write("TEST 3: INDEPENDENT T-TESTS\n")
-results_file.write("Hypothesis: Mean sentiment scores are equal between Reddit and YouTube\n")
-results_file.write("-"*70 + "\n\n")
-
-# Overall sentiment comparison
-print("ðŸ“Š Overall Sentiment: Reddit vs YouTube")
-t_stat_overall, p_ttest_overall = ttest_ind(
-    reddit_df['vader_compound'].dropna(),
-    youtube_df['vader_compound'].dropna()
-)
-
-reddit_mean = reddit_df['vader_compound'].mean()
-youtube_mean = youtube_df['vader_compound'].mean()
-
-print(f"   Reddit mean: {reddit_mean:.4f}")
-print(f"   YouTube mean: {youtube_mean:.4f}")
-print(f"   T-statistic: {t_stat_overall:.4f}")
-print(f"   P-value: {p_ttest_overall:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_ttest_overall < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("OVERALL SENTIMENT (Reddit vs YouTube):\n")
-results_file.write(f"  Reddit mean compound score: {reddit_mean:.4f}\n")
-results_file.write(f"  YouTube mean compound score: {youtube_mean:.4f}\n")
-results_file.write(f"  T-statistic: {t_stat_overall:.4f}\n")
-results_file.write(f"  P-value: {p_ttest_overall:.6f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Platforms have DIFFERENT mean sentiments' if p_ttest_overall < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# Pro-Palestine stance comparison
-print("ðŸ“Š Pro-Palestine Stance: Reddit vs YouTube")
-label_col_youtube = 'label' if 'label' in youtube_df.columns else 'Label'
-reddit_p = reddit_df[reddit_df['Label'] == 'P']['vader_compound'].dropna()
-youtube_p = youtube_df[youtube_df[label_col_youtube] == 'P']['vader_compound'].dropna()
-t_stat_p, p_ttest_p = ttest_ind(reddit_p, youtube_p)
-
-print(f"   Reddit mean: {reddit_p.mean():.4f}")
-print(f"   YouTube mean: {youtube_p.mean():.4f}")
-print(f"   T-statistic: {t_stat_p:.4f}")
-print(f"   P-value: {p_ttest_p:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_ttest_p < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("PRO-PALESTINE STANCE (Reddit vs YouTube):\n")
-results_file.write(f"  Reddit mean: {reddit_p.mean():.4f}\n")
-results_file.write(f"  YouTube mean: {youtube_p.mean():.4f}\n")
-results_file.write(f"  T-statistic: {t_stat_p:.4f}\n")
-results_file.write(f"  P-value: {p_ttest_p:.6f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Platform difference is SIGNIFICANT' if p_ttest_p < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# Pro-Israel stance comparison
-print("ðŸ“Š Pro-Israel Stance: Reddit vs YouTube")
-label_col_youtube = 'label' if 'label' in youtube_df.columns else 'Label'
-reddit_i = reddit_df[reddit_df['Label'] == 'I']['vader_compound'].dropna()
-youtube_i = youtube_df[youtube_df[label_col_youtube] == 'I']['vader_compound'].dropna()
-t_stat_i, p_ttest_i = ttest_ind(reddit_i, youtube_i)
-
-print(f"   Reddit mean: {reddit_i.mean():.4f}")
-print(f"   YouTube mean: {youtube_i.mean():.4f}")
-print(f"   T-statistic: {t_stat_i:.4f}")
-print(f"   P-value: {p_ttest_i:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_ttest_i < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("PRO-ISRAEL STANCE (Reddit vs YouTube):\n")
-results_file.write(f"  Reddit mean: {reddit_i.mean():.4f}\n")
-results_file.write(f"  YouTube mean: {youtube_i.mean():.4f}\n")
-results_file.write(f"  T-statistic: {t_stat_i:.4f}\n")
-results_file.write(f"  P-value: {p_ttest_i:.6f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Platform difference is SIGNIFICANT' if p_ttest_i < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# ============================================================================
-# 5. CORRELATION ANALYSIS: SENTIMENT Ã— ENGAGEMENT
-# ============================================================================
-print("="*70)
-print("TEST 4: CORRELATION - SENTIMENT Ã— ENGAGEMENT METRICS")
-print("="*70)
-print()
-
-results_file.write("="*70 + "\n")
-results_file.write("TEST 4: CORRELATION ANALYSIS\n")
-results_file.write("Hypothesis: Sentiment correlates with engagement metrics\n")
-results_file.write("-"*70 + "\n\n")
-
-# Reddit: Sentiment Ã— Score
-reddit_df['score'] = pd.to_numeric(reddit_df['score'], errors='coerce')
-valid_reddit = reddit_df[['vader_compound', 'score']].dropna()
-
-if len(valid_reddit) > 0:
-    corr_reddit_pearson, p_corr_reddit_pearson = pearsonr(valid_reddit['vader_compound'], valid_reddit['score'])
-    corr_reddit_spearman, p_corr_reddit_spearman = spearmanr(valid_reddit['vader_compound'], valid_reddit['score'])
-    
-    print("ðŸ“Š Reddit: Sentiment Ã— Score (Upvotes)")
-    print(f"   Pearson correlation: {corr_reddit_pearson:.4f} (p = {p_corr_reddit_pearson:.6f})")
-    print(f"   Spearman correlation: {corr_reddit_spearman:.4f} (p = {p_corr_reddit_spearman:.6f})")
-    print(f"   Result: {'SIGNIFICANT' if p_corr_reddit_pearson < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-    print()
-    
-    results_file.write("REDDIT (Sentiment Ã— Score):\n")
-    results_file.write(f"  Pearson r: {corr_reddit_pearson:.4f} (p = {p_corr_reddit_pearson:.6f})\n")
-    results_file.write(f"  Spearman Ï: {corr_reddit_spearman:.4f} (p = {p_corr_reddit_spearman:.6f})\n")
-    results_file.write(f"  Conclusion: {'SIGNIFICANT correlation - Sentiment affects engagement' if p_corr_reddit_pearson < 0.05 else 'NO significant correlation'}\n\n")
-
-# YouTube: Sentiment Ã— Engagement (if available)
-engagement_col = None
-for col in ['likeCount', 'likes', 'like_count']:
-    if col in youtube_df.columns:
-        engagement_col = col
-        break
-
-if engagement_col:
-    youtube_df[engagement_col] = pd.to_numeric(youtube_df[engagement_col], errors='coerce')
-    valid_youtube = youtube_df[['vader_compound', engagement_col]].dropna()
-
-    if len(valid_youtube) > 0:
-        corr_youtube_pearson, p_corr_youtube_pearson = pearsonr(valid_youtube['vader_compound'], valid_youtube[engagement_col])
-        corr_youtube_spearman, p_corr_youtube_spearman = spearmanr(valid_youtube['vader_compound'], valid_youtube[engagement_col])
-        
-        print(f"ðŸ“Š YouTube: Sentiment Ã— {engagement_col}")
-        print(f"   Pearson correlation: {corr_youtube_pearson:.4f} (p = {p_corr_youtube_pearson:.6f})")
-        print(f"   Spearman correlation: {corr_youtube_spearman:.4f} (p = {p_corr_youtube_spearman:.6f})")
-        print(f"   Result: {'SIGNIFICANT' if p_corr_youtube_pearson < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-        print()
-        
-        results_file.write(f"YOUTUBE (Sentiment Ã— {engagement_col}):\n")
-        results_file.write(f"  Pearson r: {corr_youtube_pearson:.4f} (p = {p_corr_youtube_pearson:.6f})\n")
-        results_file.write(f"  Spearman Ï: {corr_youtube_spearman:.4f} (p = {p_corr_youtube_spearman:.6f})\n")
-        results_file.write(f"  Conclusion: {'SIGNIFICANT correlation - Sentiment affects engagement' if p_corr_youtube_pearson < 0.05 else 'NO significant correlation'}\n\n")
-else:
-    print("ðŸ“Š YouTube: No engagement metrics available")
-    print()
-    results_file.write("YOUTUBE: No engagement metrics available in dataset\n\n")
-    corr_youtube_pearson, p_corr_youtube_pearson = 0, 1  # Default values for summary
-    valid_youtube = pd.DataFrame()  # Empty for visualization
-
-# Visualize correlations
-if len(valid_youtube) > 0:
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-    fig.suptitle('Sentiment Ã— Engagement Correlations', fontsize=14, fontweight='bold')
-
-    # Reddit scatter
-    axes[0].scatter(valid_reddit['vader_compound'], valid_reddit['score'], alpha=0.3, s=20, color='#3498db')
-    axes[0].set_xlabel('VADER Compound Score')
-    axes[0].set_ylabel('Reddit Score (Upvotes)')
-    axes[0].set_title(f'Reddit: r = {corr_reddit_pearson:.3f}, p = {p_corr_reddit_pearson:.4f}', fontweight='bold')
+if len(valid_r) > 0:
+    axes[0].scatter(valid_r['vader_compound'], valid_r['score'],
+                    alpha=0.15, s=10, color='#3498db')
+    axes[0].set_xlabel('VADER Compound'); axes[0].set_ylabel('Reddit Score')
+    axes[0].set_title(f'Reddit: r={rp:.3f}, p={pp:.4f}', fontweight='bold')
     axes[0].grid(alpha=0.3)
 
-    # YouTube scatter
-    axes[1].scatter(valid_youtube['vader_compound'], valid_youtube[engagement_col], alpha=0.3, s=20, color='#e74c3c')
-    axes[1].set_xlabel('VADER Compound Score')
-    axes[1].set_ylabel(f'YouTube {engagement_col}')
-    axes[1].set_title(f'YouTube: r = {corr_youtube_pearson:.3f}, p = {p_corr_youtube_pearson:.4f}', fontweight='bold')
+if len(valid_y) > 0 and n_plots == 2:
+    axes[1].scatter(valid_y['vader_compound'], valid_y['likeCount'],
+                    alpha=0.15, s=10, color='#e74c3c')
+    axes[1].set_xlabel('VADER Compound'); axes[1].set_ylabel('YouTube Likes')
+    axes[1].set_title(f'YouTube: r={ryp:.3f}, p={pyp:.4f}', fontweight='bold')
     axes[1].grid(alpha=0.3)
 
-    plt.tight_layout()
-else:
-    # Only Reddit plot
-    fig, ax = plt.subplots(figsize=(8, 6))
-    ax.scatter(valid_reddit['vader_compound'], valid_reddit['score'], alpha=0.3, s=20, color='#3498db')
-    ax.set_xlabel('VADER Compound Score')
-    ax.set_ylabel('Reddit Score (Upvotes)')
-    ax.set_title(f'Reddit: Sentiment Ã— Engagement\nr = {corr_reddit_pearson:.3f}, p = {p_corr_reddit_pearson:.4f}', fontweight='bold')
-    ax.grid(alpha=0.3)
-    plt.tight_layout()
-    
+plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '02_sentiment_engagement_correlation.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 02_sentiment_engagement_correlation.png")
-print()
+print("✔ Saved: 02_sentiment_engagement_correlation.png")
+plt.close()
 
-# ============================================================================
-# 6. SUBJECTIVITY COMPARISON ACROSS STANCES
-# ============================================================================
-print("="*70)
-print("TEST 5: ANOVA - SUBJECTIVITY ACROSS STANCES")
-print("="*70)
-print()
-
-results_file.write("="*70 + "\n")
-results_file.write("TEST 5: SUBJECTIVITY ANALYSIS (ANOVA)\n")
-results_file.write("Hypothesis: Mean subjectivity is equal across stances\n")
-results_file.write("-"*70 + "\n\n")
-
-# Reddit subjectivity ANOVA
-reddit_subj_groups = [reddit_df[reddit_df['Label'] == stance]['textblob_subjectivity'].dropna() 
-                      for stance in ['P', 'I', 'N']]
-f_stat_subj_reddit, p_subj_reddit = f_oneway(*reddit_subj_groups)
-
-print("ðŸ“Š Reddit: Subjectivity Ã— Stance")
-print(f"   F-statistic: {f_stat_subj_reddit:.4f}")
-print(f"   P-value: {p_subj_reddit:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_subj_reddit < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("REDDIT (Subjectivity by Stance):\n")
-results_file.write(f"  F-statistic: {f_stat_subj_reddit:.4f}\n")
-results_file.write(f"  P-value: {p_subj_reddit:.6f}\n")
-for stance, name in [('P', 'Pro-Palestine'), ('I', 'Pro-Israel'), ('N', 'Neutral')]:
-    mean_subj = reddit_df[reddit_df['Label'] == stance]['textblob_subjectivity'].mean()
-    results_file.write(f"    {name}: {mean_subj:.4f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Subjectivity DIFFERS across stances' if p_subj_reddit < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# YouTube subjectivity ANOVA
-label_col_youtube = 'label' if 'label' in youtube_df.columns else 'Label'
-youtube_subj_groups = [youtube_df[youtube_df[label_col_youtube] == stance]['textblob_subjectivity'].dropna() 
-                       for stance in ['P', 'I', 'N']]
-f_stat_subj_youtube, p_subj_youtube = f_oneway(*youtube_subj_groups)
-
-print("ðŸ“Š YouTube: Subjectivity Ã— Stance")
-print(f"   F-statistic: {f_stat_subj_youtube:.4f}")
-print(f"   P-value: {p_subj_youtube:.6f}")
-print(f"   Result: {'SIGNIFICANT' if p_subj_youtube < 0.05 else 'NOT SIGNIFICANT'} (Î± = 0.05)")
-print()
-
-results_file.write("YOUTUBE (Subjectivity by Stance):\n")
-results_file.write(f"  F-statistic: {f_stat_subj_youtube:.4f}\n")
-results_file.write(f"  P-value: {p_subj_youtube:.6f}\n")
-label_col_youtube = 'label' if 'label' in youtube_df.columns else 'Label'
-for stance, name in [('P', 'Pro-Palestine'), ('I', 'Pro-Israel'), ('N', 'Neutral')]:
-    mean_subj = youtube_df[youtube_df[label_col_youtube] == stance]['textblob_subjectivity'].mean()
-    results_file.write(f"    {name}: {mean_subj:.4f}\n")
-results_file.write(f"  Conclusion: {'REJECT null hypothesis - Subjectivity DIFFERS across stances' if p_subj_youtube < 0.05 else 'FAIL TO REJECT null hypothesis'}\n\n")
-
-# ============================================================================
-# 7. EFFECT SIZE CALCULATIONS (COHEN'S D)
-# ============================================================================
-print("="*70)
-print("TEST 6: EFFECT SIZE - COHEN'S D")
-print("="*70)
-print()
-
-results_file.write("="*70 + "\n")
-results_file.write("TEST 6: EFFECT SIZE (COHEN'S D)\n")
-results_file.write("Measures practical significance of platform differences\n")
-results_file.write("-"*70 + "\n\n")
-
-def cohens_d(group1, group2):
-    """Calculate Cohen's d for effect size"""
-    n1, n2 = len(group1), len(group2)
-    var1, var2 = group1.var(), group2.var()
-    pooled_std = np.sqrt(((n1-1)*var1 + (n2-1)*var2) / (n1+n2-2))
-    return (group1.mean() - group2.mean()) / pooled_std
-
-# Overall platform difference
-d_overall = cohens_d(reddit_df['vader_compound'].dropna(), youtube_df['vader_compound'].dropna())
-print(f"ðŸ“Š Overall Platform Difference (Cohen's d): {d_overall:.4f}")
-print(f"   Interpretation: {'Small' if abs(d_overall) < 0.5 else 'Medium' if abs(d_overall) < 0.8 else 'Large'} effect size")
-print()
-
-results_file.write("COHEN'S D (Effect Sizes):\n")
-results_file.write(f"  Overall platform difference: {d_overall:.4f} ({'Small' if abs(d_overall) < 0.5 else 'Medium' if abs(d_overall) < 0.8 else 'Large'})\n")
-
-# Pro-Palestine
-d_p = cohens_d(reddit_p, youtube_p)
-results_file.write(f"  Pro-Palestine stance: {d_p:.4f} ({'Small' if abs(d_p) < 0.5 else 'Medium' if abs(d_p) < 0.8 else 'Large'})\n")
-
-# Pro-Israel
-d_i = cohens_d(reddit_i, youtube_i)
-results_file.write(f"  Pro-Israel stance: {d_i:.4f} ({'Small' if abs(d_i) < 0.5 else 'Medium' if abs(d_i) < 0.8 else 'Large'})\n\n")
-
-# ============================================================================
-# SUMMARY STATISTICS TABLE
-# ============================================================================
-results_file.write("="*70 + "\n")
-results_file.write("SUMMARY OF ALL STATISTICAL TESTS\n")
-results_file.write("="*70 + "\n\n")
-
-summary_data = {
-    'Test': [
-        'Chi-Square (Reddit)', 'Chi-Square (YouTube)',
-        'ANOVA (Reddit)', 'ANOVA (YouTube)',
-        'T-test (Overall)', 'T-test (Pro-P)', 'T-test (Pro-I)',
-        'Correlation (Reddit)', 'Correlation (YouTube)',
-        'ANOVA Subjectivity (Reddit)', 'ANOVA Subjectivity (YouTube)'
-    ],
-    'Statistic': [
-        f'{chi2_reddit:.4f}', f'{chi2_youtube:.4f}',
-        f'{f_stat_reddit:.4f}', f'{f_stat_youtube:.4f}',
-        f'{t_stat_overall:.4f}', f'{t_stat_p:.4f}', f'{t_stat_i:.4f}',
-        f'{corr_reddit_pearson:.4f}', f'{corr_youtube_pearson:.4f}',
-        f'{f_stat_subj_reddit:.4f}', f'{f_stat_subj_youtube:.4f}'
-    ],
-    'P-value': [
-        f'{p_reddit:.6f}', f'{p_youtube:.6f}',
-        f'{p_anova_reddit:.6f}', f'{p_anova_youtube:.6f}',
-        f'{p_ttest_overall:.6f}', f'{p_ttest_p:.6f}', f'{p_ttest_i:.6f}',
-        f'{p_corr_reddit_pearson:.6f}', f'{p_corr_youtube_pearson:.6f}',
-        f'{p_subj_reddit:.6f}', f'{p_subj_youtube:.6f}'
-    ],
-    'Significant': [
-        'âœ“' if p_reddit < 0.05 else 'âœ—',
-        'âœ“' if p_youtube < 0.05 else 'âœ—',
-        'âœ“' if p_anova_reddit < 0.05 else 'âœ—',
-        'âœ“' if p_anova_youtube < 0.05 else 'âœ—',
-        'âœ“' if p_ttest_overall < 0.05 else 'âœ—',
-        'âœ“' if p_ttest_p < 0.05 else 'âœ—',
-        'âœ“' if p_ttest_i < 0.05 else 'âœ—',
-        'âœ“' if p_corr_reddit_pearson < 0.05 else 'âœ—',
-        'âœ“' if p_corr_youtube_pearson < 0.05 else 'âœ—',
-        'âœ“' if p_subj_reddit < 0.05 else 'âœ—',
-        'âœ“' if p_subj_youtube < 0.05 else 'âœ—'
-    ]
-}
-
-summary_df = pd.DataFrame(summary_data)
-results_file.write(summary_df.to_string(index=False))
-results_file.write("\n\n")
-
-results_file.write("="*70 + "\n")
-results_file.write("INTERPRETATION GUIDE\n")
-results_file.write("="*70 + "\n")
-results_file.write("âœ“ = Statistically significant (p < 0.05)\n")
-results_file.write("âœ— = Not statistically significant (p â‰¥ 0.05)\n\n")
-results_file.write("Cohen's d interpretation:\n")
-results_file.write("  |d| < 0.5 = Small effect\n")
-results_file.write("  0.5 â‰¤ |d| < 0.8 = Medium effect\n")
-results_file.write("  |d| â‰¥ 0.8 = Large effect\n")
+# --- V3: Summary table visualization ---
+if t_results:
+    summary_df = pd.DataFrame(t_results)
+    fig, ax = plt.subplots(figsize=(12, 6))
+    colors_bar = ['#27ae60' if s else '#e74c3c' for s in summary_df['significant']]
+    y_pos = np.arange(len(summary_df))
+    ax.barh(y_pos, [1] * len(summary_df), color=colors_bar, alpha=0.35)
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(summary_df['Comparison'])
+    for i, row in summary_df.iterrows():
+        mark = '✔ Sig.' if row['significant'] else '✗ N.S.'
+        ax.text(0.5, i, f"{mark}  d={row['cohens_d']:.3f} ({row['effect_size']})",
+                ha='center', va='center', fontsize=11, fontweight='bold')
+    ax.set_xlim(0, 1); ax.set_xticks([])
+    ax.set_title('Platform Sentiment Differences — T-test Results (α = 0.05)',
+                 fontsize=13, fontweight='bold')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
+    plt.tight_layout()
+    plt.savefig(OUTPUT_DIR / '03_statistical_tests_summary.png', dpi=300, bbox_inches='tight')
+    print("✔ Saved: 03_statistical_tests_summary.png")
+    plt.close()
 
 results_file.close()
-print("âœ“ Saved: statistical_test_results.txt")
-print()
+print("✔ Saved: statistical_test_results.txt")
 
-# ============================================================================
-# CREATE SUMMARY VISUALIZATION
-# ============================================================================
-fig, ax = plt.subplots(figsize=(12, 6))
-
-# Create a color-coded summary table
-colors = ['#27ae60' if sig == 'âœ“' else '#e74c3c' for sig in summary_df['Significant']]
-y_pos = np.arange(len(summary_df))
-
-ax.barh(y_pos, [1]*len(summary_df), color=colors, alpha=0.3)
-ax.set_yticks(y_pos)
-ax.set_yticklabels(summary_df['Test'])
-ax.set_xlim(0, 1)
-ax.set_xticks([])
-ax.set_title('Statistical Tests Summary: Significance at Î± = 0.05', fontsize=14, fontweight='bold')
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-ax.spines['bottom'].set_visible(False)
-
-# Add significance markers
-for i, (test, sig) in enumerate(zip(summary_df['Test'], summary_df['Significant'])):
-    ax.text(0.5, i, sig, ha='center', va='center', fontsize=16, fontweight='bold')
-
-plt.tight_layout()
-plt.savefig(OUTPUT_DIR / '03_statistical_tests_summary.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 03_statistical_tests_summary.png")
-print()
-
-# ============================================================================
-# SUMMARY
-# ============================================================================
-print("="*70)
-print("âœ… STATISTICAL TESTING COMPLETE")
-print("="*70)
-print()
-print("ðŸ“ Generated Files:")
-print("  - statistical_test_results.txt (Comprehensive test results)")
-print("  - 01_chi_square_contingency_tables.png (Stance Ã— Sentiment)")
-print("  - 02_sentiment_engagement_correlation.png (Engagement analysis)")
-print("  - 03_statistical_tests_summary.png (All tests overview)")
-print()
-print("ðŸ“Š Tests Conducted: 11")
-print(f"   Significant results (p < 0.05): {summary_df['Significant'].value_counts().get('âœ“', 0)}")
-print(f"   Non-significant results: {summary_df['Significant'].value_counts().get('âœ—', 0)}")
-print()
-
+print("\n" + "=" * 70)
+print("✅ STATISTICAL TESTING COMPLETE")
+print("=" * 70)

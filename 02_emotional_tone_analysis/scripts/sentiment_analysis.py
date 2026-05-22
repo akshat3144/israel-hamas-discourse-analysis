@@ -1,7 +1,9 @@
 """
 Sentiment Analysis for Israel-Hamas War Discourse
-Analyzes sentiment patterns across Reddit and YouTube data
-Uses multiple approaches: VADER, TextBlob, and Transformers
+RQ1: How does emotional tone differ between platforms?
+Column schema:
+  Reddit:  self_text, Label, author_name, score, subreddit, created_time (Unix)
+  YouTube: text, Label, likeCount, created_time, video_date
 """
 
 import pandas as pd
@@ -17,16 +19,13 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parents[2]
 EDA_OUTPUT_DIR = ROOT_DIR / '01_data_preparation' / 'outputs'
 OUTPUT_DIR = ROOT_DIR / '02_emotional_tone_analysis' / 'outputs'
-
-# Optional: Transformers for more advanced sentiment analysis
-try:
-    from transformers import pipeline
-    TRANSFORMERS_AVAILABLE = True
-except ImportError:
-    TRANSFORMERS_AVAILABLE = False
-    print("âš ï¸  Transformers not available. Install with: pip install transformers torch")
-
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Column constants
+REDDIT_TEXT_COL   = 'self_text'
+YOUTUBE_TEXT_COL  = 'text'
+REDDIT_LABEL_COL  = 'Label'
+YOUTUBE_LABEL_COL = 'Label'
 
 print("=" * 80)
 print("SENTIMENT ANALYSIS - ISRAEL-HAMAS WAR DISCOURSE")
@@ -35,201 +34,175 @@ print("=" * 80)
 # ============================================================================
 # LOAD DATA
 # ============================================================================
-print("\nðŸ“Š Loading processed data...")
-reddit_df = pd.read_csv(EDA_OUTPUT_DIR / 'reddit_processed.csv')
+print("\n📊 Loading processed data...")
+reddit_df  = pd.read_csv(EDA_OUTPUT_DIR / 'reddit_processed.csv')
 youtube_df = pd.read_csv(EDA_OUTPUT_DIR / 'youtube_processed.csv')
 
-print(f"âœ“ Reddit: {len(reddit_df):,} rows")
-print(f"âœ“ YouTube: {len(youtube_df):,} rows")
+# Restore datetime columns (Unix timestamp for Reddit)
+if 'created_time' in reddit_df.columns:
+    reddit_df['created_time'] = pd.to_numeric(reddit_df['created_time'], errors='coerce')
+    reddit_df['created_time_dt'] = pd.to_datetime(
+        reddit_df['created_time'], unit='s', errors='coerce', utc=True)
+    reddit_df['year_month'] = reddit_df['created_time_dt'].dt.to_period('M')
+
+if 'created_time' in youtube_df.columns:
+    youtube_df['created_time_dt'] = pd.to_datetime(
+        youtube_df['created_time'], errors='coerce')
+    youtube_df['year_month'] = youtube_df['created_time_dt'].dt.to_period('M')
+
+print(f"✔ Reddit: {len(reddit_df):,} rows")
+print(f"✔ YouTube: {len(youtube_df):,} rows")
 
 # ============================================================================
-# INITIALIZE SENTIMENT ANALYZERS
+# SENTIMENT ANALYZERS
 # ============================================================================
-print("\nðŸ”§ Initializing sentiment analyzers...")
+print("\n🔧 Initializing sentiment analyzers...")
 vader = SentimentIntensityAnalyzer()
-print("âœ“ VADER Sentiment Analyzer loaded")
-print("âœ“ TextBlob Sentiment Analyzer loaded")
+print("✔ VADER Sentiment Analyzer loaded")
+print("✔ TextBlob Sentiment Analyzer loaded")
 
 # ============================================================================
-# SENTIMENT ANALYSIS FUNCTIONS
+# SENTIMENT FUNCTIONS
 # ============================================================================
 
 def get_vader_sentiment(text):
-    """Get VADER sentiment scores"""
-    if pd.isna(text) or text == '':
-        return {'compound': 0, 'pos': 0, 'neu': 0, 'neg': 0, 'label': 'neutral'}
-    
+    """Return VADER scores + label for a single text."""
+    if pd.isna(text) or str(text).strip() == '':
+        return {'compound': 0.0, 'pos': 0.0, 'neu': 1.0, 'neg': 0.0, 'label': 'neutral'}
     scores = vader.polarity_scores(str(text))
-    
-    # Classify based on compound score
     if scores['compound'] >= 0.05:
-        label = 'positive'
+        scores['label'] = 'positive'
     elif scores['compound'] <= -0.05:
-        label = 'negative'
+        scores['label'] = 'negative'
     else:
-        label = 'neutral'
-    
-    scores['label'] = label
+        scores['label'] = 'neutral'
     return scores
 
 
 def get_textblob_sentiment(text):
-    """Get TextBlob sentiment scores"""
-    if pd.isna(text) or text == '':
-        return {'polarity': 0, 'subjectivity': 0, 'label': 'neutral'}
-    
+    """Return TextBlob polarity, subjectivity + label."""
+    if pd.isna(text) or str(text).strip() == '':
+        return {'polarity': 0.0, 'subjectivity': 0.0, 'label': 'neutral'}
     blob = TextBlob(str(text))
-    polarity = blob.sentiment.polarity
+    polarity    = blob.sentiment.polarity
     subjectivity = blob.sentiment.subjectivity
-    
-    # Classify based on polarity
     if polarity > 0.1:
         label = 'positive'
     elif polarity < -0.1:
         label = 'negative'
     else:
         label = 'neutral'
-    
-    return {
-        'polarity': polarity,
-        'subjectivity': subjectivity,
-        'label': label
-    }
-
-
-def classify_sentiment(compound_score):
-    """Classify sentiment based on compound score"""
-    if compound_score >= 0.05:
-        return 'positive'
-    elif compound_score <= -0.05:
-        return 'negative'
-    else:
-        return 'neutral'
-
+    return {'polarity': polarity, 'subjectivity': subjectivity, 'label': label}
 
 # ============================================================================
-# ANALYZE REDDIT DATA
+# ANALYZE REDDIT
 # ============================================================================
 print("\n" + "=" * 80)
 print("ANALYZING REDDIT SENTIMENT")
 print("=" * 80)
 
-# Determine text column
-reddit_text_col = 'self_text' if 'self_text' in reddit_df.columns else 'clean_text_comments'
-reddit_label_col = 'Label' if 'Label' in reddit_df.columns else 'label'
-
-print(f"\nAnalyzing sentiment for Reddit comments using '{reddit_text_col}' column...")
-
-# VADER Sentiment
-print("\nðŸ” Running VADER sentiment analysis...")
-reddit_vader = reddit_df[reddit_text_col].fillna('').astype(str).apply(get_vader_sentiment)
+print(f"\n🔍 Running VADER on Reddit [{REDDIT_TEXT_COL}]...")
+reddit_vader = reddit_df[REDDIT_TEXT_COL].fillna('').astype(str).apply(get_vader_sentiment)
 reddit_df['vader_compound'] = reddit_vader.apply(lambda x: x['compound'])
-reddit_df['vader_pos'] = reddit_vader.apply(lambda x: x['pos'])
-reddit_df['vader_neu'] = reddit_vader.apply(lambda x: x['neu'])
-reddit_df['vader_neg'] = reddit_vader.apply(lambda x: x['neg'])
-reddit_df['vader_label'] = reddit_vader.apply(lambda x: x['label'])
-print("âœ“ VADER analysis complete")
+reddit_df['vader_pos']      = reddit_vader.apply(lambda x: x['pos'])
+reddit_df['vader_neu']      = reddit_vader.apply(lambda x: x['neu'])
+reddit_df['vader_neg']      = reddit_vader.apply(lambda x: x['neg'])
+reddit_df['vader_label']    = reddit_vader.apply(lambda x: x['label'])
+print("✔ VADER complete")
 
-# TextBlob Sentiment
-print("\nðŸ” Running TextBlob sentiment analysis...")
-reddit_textblob = reddit_df[reddit_text_col].fillna('').astype(str).apply(get_textblob_sentiment)
-reddit_df['textblob_polarity'] = reddit_textblob.apply(lambda x: x['polarity'])
-reddit_df['textblob_subjectivity'] = reddit_textblob.apply(lambda x: x['subjectivity'])
-reddit_df['textblob_label'] = reddit_textblob.apply(lambda x: x['label'])
-print("âœ“ TextBlob analysis complete")
+print("\n🔍 Running TextBlob on Reddit...")
+reddit_tb = reddit_df[REDDIT_TEXT_COL].fillna('').astype(str).apply(get_textblob_sentiment)
+reddit_df['textblob_polarity']     = reddit_tb.apply(lambda x: x['polarity'])
+reddit_df['textblob_subjectivity'] = reddit_tb.apply(lambda x: x['subjectivity'])
+reddit_df['textblob_label']        = reddit_tb.apply(lambda x: x['label'])
+print("✔ TextBlob complete")
 
-# Display results
-print("\nðŸ“Š REDDIT SENTIMENT DISTRIBUTION (VADER):")
+print("\n📊 REDDIT SENTIMENT DISTRIBUTION (VADER):")
 print(reddit_df['vader_label'].value_counts())
 print("\nPercentages:")
-print(reddit_df['vader_label'].value_counts(normalize=True) * 100)
-
-print("\nðŸ“Š REDDIT SENTIMENT DISTRIBUTION (TextBlob):")
-print(reddit_df['textblob_label'].value_counts())
-print("\nPercentages:")
-print(reddit_df['textblob_label'].value_counts(normalize=True) * 100)
+print((reddit_df['vader_label'].value_counts(normalize=True) * 100).round(2))
 
 # ============================================================================
-# ANALYZE YOUTUBE DATA
+# ANALYZE YOUTUBE
 # ============================================================================
 print("\n" + "=" * 80)
 print("ANALYZING YOUTUBE SENTIMENT")
 print("=" * 80)
 
-youtube_text_col = 'text'
-youtube_label_col = 'label' if 'label' in youtube_df.columns else 'Label'
-
-print(f"\nAnalyzing sentiment for YouTube comments using '{youtube_text_col}' column...")
-
-# VADER Sentiment
-print("\nðŸ” Running VADER sentiment analysis...")
-youtube_vader = youtube_df[youtube_text_col].fillna('').astype(str).apply(get_vader_sentiment)
+print(f"\n🔍 Running VADER on YouTube [{YOUTUBE_TEXT_COL}]...")
+youtube_vader = youtube_df[YOUTUBE_TEXT_COL].fillna('').astype(str).apply(get_vader_sentiment)
 youtube_df['vader_compound'] = youtube_vader.apply(lambda x: x['compound'])
-youtube_df['vader_pos'] = youtube_vader.apply(lambda x: x['pos'])
-youtube_df['vader_neu'] = youtube_vader.apply(lambda x: x['neu'])
-youtube_df['vader_neg'] = youtube_vader.apply(lambda x: x['neg'])
-youtube_df['vader_label'] = youtube_vader.apply(lambda x: x['label'])
-print("âœ“ VADER analysis complete")
+youtube_df['vader_pos']      = youtube_vader.apply(lambda x: x['pos'])
+youtube_df['vader_neu']      = youtube_vader.apply(lambda x: x['neu'])
+youtube_df['vader_neg']      = youtube_vader.apply(lambda x: x['neg'])
+youtube_df['vader_label']    = youtube_vader.apply(lambda x: x['label'])
+print("✔ VADER complete")
 
-# TextBlob Sentiment
-print("\nðŸ” Running TextBlob sentiment analysis...")
-youtube_textblob = youtube_df[youtube_text_col].fillna('').astype(str).apply(get_textblob_sentiment)
-youtube_df['textblob_polarity'] = youtube_textblob.apply(lambda x: x['polarity'])
-youtube_df['textblob_subjectivity'] = youtube_textblob.apply(lambda x: x['subjectivity'])
-youtube_df['textblob_label'] = youtube_textblob.apply(lambda x: x['label'])
-print("âœ“ TextBlob analysis complete")
+print("\n🔍 Running TextBlob on YouTube...")
+youtube_tb = youtube_df[YOUTUBE_TEXT_COL].fillna('').astype(str).apply(get_textblob_sentiment)
+youtube_df['textblob_polarity']     = youtube_tb.apply(lambda x: x['polarity'])
+youtube_df['textblob_subjectivity'] = youtube_tb.apply(lambda x: x['subjectivity'])
+youtube_df['textblob_label']        = youtube_tb.apply(lambda x: x['label'])
+print("✔ TextBlob complete")
 
-# Display results
-print("\nðŸ“Š YOUTUBE SENTIMENT DISTRIBUTION (VADER):")
+print("\n📊 YOUTUBE SENTIMENT DISTRIBUTION (VADER):")
 print(youtube_df['vader_label'].value_counts())
 print("\nPercentages:")
-print(youtube_df['vader_label'].value_counts(normalize=True) * 100)
-
-print("\nðŸ“Š YOUTUBE SENTIMENT DISTRIBUTION (TextBlob):")
-print(youtube_df['textblob_label'].value_counts())
-print("\nPercentages:")
-print(youtube_df['textblob_label'].value_counts(normalize=True) * 100)
+print((youtube_df['vader_label'].value_counts(normalize=True) * 100).round(2))
 
 # ============================================================================
-# SENTIMENT BY STANCE ANALYSIS
+# SENTIMENT BY STANCE
 # ============================================================================
 print("\n" + "=" * 80)
 print("SENTIMENT BY STANCE ANALYSIS")
 print("=" * 80)
 
-# Reddit sentiment by stance
-print("\nðŸ“Š REDDIT - Average Sentiment by Stance (VADER):")
-reddit_sentiment_by_stance = reddit_df.groupby(reddit_label_col).agg({
-    'vader_compound': ['mean', 'median', 'std'],
-    'vader_pos': 'mean',
-    'vader_neg': 'mean',
-    'vader_neu': 'mean'
-}).round(3)
-print(reddit_sentiment_by_stance)
+for name, df, lcol in [("Reddit", reddit_df, REDDIT_LABEL_COL),
+                        ("YouTube", youtube_df, YOUTUBE_LABEL_COL)]:
+    print(f"\n📊 {name} – Mean VADER by Stance:")
+    grp = df.groupby(lcol).agg(
+        compound_mean=('vader_compound', 'mean'),
+        compound_median=('vader_compound', 'median'),
+        compound_std=('vader_compound', 'std'),
+        pos_mean=('vader_pos', 'mean'),
+        neg_mean=('vader_neg', 'mean'),
+        neu_mean=('vader_neu', 'mean'),
+        subjectivity_mean=('textblob_subjectivity', 'mean'),
+        polarity_mean=('textblob_polarity', 'mean'),
+    ).round(4)
+    print(grp)
 
-print("\nðŸ“Š REDDIT - Average Sentiment by Stance (TextBlob):")
-reddit_textblob_by_stance = reddit_df.groupby(reddit_label_col).agg({
-    'textblob_polarity': ['mean', 'median', 'std'],
-    'textblob_subjectivity': ['mean', 'std']
-}).round(3)
-print(reddit_textblob_by_stance)
+# ============================================================================
+# SENTIMENT BY SUBREDDIT (NEW)
+# ============================================================================
+if 'subreddit' in reddit_df.columns:
+    print("\n" + "=" * 80)
+    print("SENTIMENT BY SUBREDDIT (Reddit)")
+    print("=" * 80)
+    sub_sentiment = (reddit_df.groupby('subreddit')['vader_compound']
+                     .agg(['mean', 'median', 'count'])
+                     .rename(columns={'mean': 'mean_compound',
+                                      'median': 'median_compound',
+                                      'count': 'n_comments'})
+                     .sort_values('n_comments', ascending=False)
+                     .head(20)
+                     .round(4))
+    print(sub_sentiment)
 
-# YouTube sentiment by stance
-print("\nðŸ“Š YOUTUBE - Average Sentiment by Stance (VADER):")
-youtube_sentiment_by_stance = youtube_df.groupby(youtube_label_col).agg({
-    'vader_compound': ['mean', 'median', 'std'],
-    'vader_pos': 'mean',
-    'vader_neg': 'mean',
-    'vader_neu': 'mean'
-}).round(3)
-print(youtube_sentiment_by_stance)
+# ============================================================================
+# TEMPORAL SENTIMENT TRENDS (NEW)
+# ============================================================================
+print("\n" + "=" * 80)
+print("TEMPORAL SENTIMENT TRENDS (NEW)")
+print("=" * 80)
 
-print("\nðŸ“Š YOUTUBE - Average Sentiment by Stance (TextBlob):")
-youtube_textblob_by_stance = youtube_df.groupby(youtube_label_col).agg({
-    'textblob_polarity': ['mean', 'median', 'std'],
-    'textblob_subjectivity': ['mean', 'std']
-}).round(3)
-print(youtube_textblob_by_stance)
+for name, df in [("Reddit", reddit_df), ("YouTube", youtube_df)]:
+    if 'year_month' in df.columns:
+        t_sent = (df.groupby('year_month')['vader_compound']
+                  .agg(['mean', 'count'])
+                  .rename(columns={'mean': 'mean_compound', 'count': 'n'}))
+        t_sent.index = t_sent.index.astype(str)
+        print(f"\n{name} – Monthly Mean Sentiment:\n{t_sent.round(4)}")
 
 # ============================================================================
 # VISUALIZATIONS
@@ -238,183 +211,177 @@ print("\n" + "=" * 80)
 print("GENERATING VISUALIZATIONS")
 print("=" * 80)
 
-plt.rcParams['figure.figsize'] = (12, 8)
-plt.rcParams['font.size'] = 10
+palette = {'P': '#2ecc71', 'I': '#3498db', 'N': '#95a5a6'}
+sent_colors = {'positive': '#27ae60', 'neutral': '#95a5a6', 'negative': '#e74c3c'}
 
-# 1. Sentiment Distribution by Platform
+# --- 01: Sentiment distribution 2×2 ---
 fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+fig.suptitle('Sentiment Distribution by Platform & Method', fontsize=15, fontweight='bold')
 
-# Reddit VADER
-reddit_vader_counts = reddit_df['vader_label'].value_counts()
-colors_sent = ['#2ecc71', '#95a5a6', '#e74c3c']
-axes[0, 0].bar(reddit_vader_counts.index, reddit_vader_counts.values, color=colors_sent, alpha=0.8, edgecolor='black')
-axes[0, 0].set_title('Reddit Sentiment Distribution (VADER)', fontsize=12, fontweight='bold')
-axes[0, 0].set_xlabel('Sentiment')
-axes[0, 0].set_ylabel('Count')
-axes[0, 0].grid(axis='y', alpha=0.3)
-for i, v in enumerate(reddit_vader_counts.values):
-    axes[0, 0].text(i, v + max(reddit_vader_counts.values)*0.02, f'{v}\n({v/reddit_vader_counts.sum()*100:.1f}%)', 
-                    ha='center', fontweight='bold')
-
-# YouTube VADER
-youtube_vader_counts = youtube_df['vader_label'].value_counts()
-axes[0, 1].bar(youtube_vader_counts.index, youtube_vader_counts.values, color=colors_sent, alpha=0.8, edgecolor='black')
-axes[0, 1].set_title('YouTube Sentiment Distribution (VADER)', fontsize=12, fontweight='bold')
-axes[0, 1].set_xlabel('Sentiment')
-axes[0, 1].set_ylabel('Count')
-axes[0, 1].grid(axis='y', alpha=0.3)
-for i, v in enumerate(youtube_vader_counts.values):
-    axes[0, 1].text(i, v + max(youtube_vader_counts.values)*0.02, f'{v}\n({v/youtube_vader_counts.sum()*100:.1f}%)', 
-                    ha='center', fontweight='bold')
-
-# Reddit TextBlob
-reddit_tb_counts = reddit_df['textblob_label'].value_counts()
-axes[1, 0].bar(reddit_tb_counts.index, reddit_tb_counts.values, color=colors_sent, alpha=0.8, edgecolor='black')
-axes[1, 0].set_title('Reddit Sentiment Distribution (TextBlob)', fontsize=12, fontweight='bold')
-axes[1, 0].set_xlabel('Sentiment')
-axes[1, 0].set_ylabel('Count')
-axes[1, 0].grid(axis='y', alpha=0.3)
-for i, v in enumerate(reddit_tb_counts.values):
-    axes[1, 0].text(i, v + max(reddit_tb_counts.values)*0.02, f'{v}\n({v/reddit_tb_counts.sum()*100:.1f}%)', 
-                    ha='center', fontweight='bold')
-
-# YouTube TextBlob
-youtube_tb_counts = youtube_df['textblob_label'].value_counts()
-axes[1, 1].bar(youtube_tb_counts.index, youtube_tb_counts.values, color=colors_sent, alpha=0.8, edgecolor='black')
-axes[1, 1].set_title('YouTube Sentiment Distribution (TextBlob)', fontsize=12, fontweight='bold')
-axes[1, 1].set_xlabel('Sentiment')
-axes[1, 1].set_ylabel('Count')
-axes[1, 1].grid(axis='y', alpha=0.3)
-for i, v in enumerate(youtube_tb_counts.values):
-    axes[1, 1].text(i, v + max(youtube_tb_counts.values)*0.02, f'{v}\n({v/youtube_tb_counts.sum()*100:.1f}%)', 
-                    ha='center', fontweight='bold')
+for ax, df, col, title, c in [
+        (axes[0, 0], reddit_df,  'vader_label',    'Reddit – VADER',    '#3498db'),
+        (axes[0, 1], youtube_df, 'vader_label',    'YouTube – VADER',   '#e74c3c'),
+        (axes[1, 0], reddit_df,  'textblob_label', 'Reddit – TextBlob', '#3498db'),
+        (axes[1, 1], youtube_df, 'textblob_label', 'YouTube – TextBlob','#e74c3c')]:
+    counts = df[col].value_counts()
+    bar_c  = [sent_colors.get(s, '#95a5a6') for s in counts.index]
+    ax.bar(counts.index, counts.values, color=bar_c, alpha=0.85, edgecolor='black')
+    ax.set_title(title, fontsize=12, fontweight='bold')
+    ax.set_xlabel('Sentiment'); ax.set_ylabel('Count')
+    ax.grid(axis='y', alpha=0.3)
+    for i, v in enumerate(counts.values):
+        ax.text(i, v + max(counts.values)*0.02,
+                f'{v}\n({v/counts.sum()*100:.1f}%)', ha='center', fontsize=8, fontweight='bold')
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '01_sentiment_distribution.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 01_sentiment_distribution.png")
+print("✔ Saved: 01_sentiment_distribution.png")
 plt.close()
 
-# 2. Sentiment by Stance - Heatmap
+# --- 02: Sentiment × Stance heatmaps ---
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-# Reddit
-reddit_stance_sent = pd.crosstab(reddit_df[reddit_label_col], reddit_df['vader_label'], normalize='index') * 100
-sns.heatmap(reddit_stance_sent, annot=True, fmt='.1f', cmap='RdYlGn', ax=axes[0], cbar_kws={'label': 'Percentage (%)'})
-axes[0].set_title('Reddit: Sentiment Distribution by Stance (%)', fontsize=12, fontweight='bold')
-axes[0].set_xlabel('Sentiment')
-axes[0].set_ylabel('Stance')
-
-# YouTube
-youtube_stance_sent = pd.crosstab(youtube_df[youtube_label_col], youtube_df['vader_label'], normalize='index') * 100
-sns.heatmap(youtube_stance_sent, annot=True, fmt='.1f', cmap='RdYlGn', ax=axes[1], cbar_kws={'label': 'Percentage (%)'})
-axes[1].set_title('YouTube: Sentiment Distribution by Stance (%)', fontsize=12, fontweight='bold')
-axes[1].set_xlabel('Sentiment')
-axes[1].set_ylabel('Stance')
+for ax, df, lcol, title, cmap in [
+        (axes[0], reddit_df,  REDDIT_LABEL_COL,  'Reddit: Sentiment × Stance (%)',  'RdYlGn'),
+        (axes[1], youtube_df, YOUTUBE_LABEL_COL, 'YouTube: Sentiment × Stance (%)', 'RdYlGn')]:
+    if lcol in df.columns:
+        ct = pd.crosstab(df[lcol], df['vader_label'], normalize='index') * 100
+        # Reorder rows/cols for consistency
+        ct = ct.reindex(index=[c for c in ['P', 'I', 'N'] if c in ct.index],
+                        columns=[c for c in ['positive', 'neutral', 'negative'] if c in ct.columns])
+        sns.heatmap(ct, annot=True, fmt='.1f', cmap=cmap, ax=ax,
+                    cbar_kws={'label': 'Percentage (%)'}, vmin=0, vmax=70)
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.set_xlabel('Sentiment (VADER)'); ax.set_ylabel('Stance')
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '02_sentiment_by_stance_heatmap.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 02_sentiment_by_stance_heatmap.png")
+print("✔ Saved: 02_sentiment_by_stance_heatmap.png")
 plt.close()
 
-# 3. Compound Score Distribution by Stance
+# --- 03: VADER compound score by stance (box) ---
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-# Reddit
-sns.boxplot(data=reddit_df, x=reddit_label_col, y='vader_compound', ax=axes[0])
-axes[0].set_title('Reddit: VADER Compound Score by Stance', fontsize=12, fontweight='bold')
-axes[0].set_xlabel('Stance')
-axes[0].set_ylabel('VADER Compound Score')
-axes[0].axhline(y=0, color='red', linestyle='--', alpha=0.5)
-axes[0].grid(axis='y', alpha=0.3)
-
-# YouTube
-sns.boxplot(data=youtube_df, x=youtube_label_col, y='vader_compound', ax=axes[1])
-axes[1].set_title('YouTube: VADER Compound Score by Stance', fontsize=12, fontweight='bold')
-axes[1].set_xlabel('Stance')
-axes[1].set_ylabel('VADER Compound Score')
-axes[1].axhline(y=0, color='red', linestyle='--', alpha=0.5)
-axes[1].grid(axis='y', alpha=0.3)
+for ax, df, lcol, title in [
+        (axes[0], reddit_df,  REDDIT_LABEL_COL,  'Reddit: VADER Compound × Stance'),
+        (axes[1], youtube_df, YOUTUBE_LABEL_COL, 'YouTube: VADER Compound × Stance')]:
+    if lcol in df.columns:
+        valid = df[df[lcol].isin(['P', 'I', 'N'])]
+        sns.boxplot(data=valid, x=lcol, y='vader_compound', palette=palette,
+                    ax=ax, showfliers=False, order=['P', 'I', 'N'])
+        ax.axhline(0, color='red', linestyle='--', alpha=0.5)
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.set_xlabel('Stance'); ax.set_ylabel('VADER Compound Score')
+        ax.grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '03_compound_score_by_stance.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 03_compound_score_by_stance.png")
+print("✔ Saved: 03_compound_score_by_stance.png")
 plt.close()
 
-# 4. Polarity vs Subjectivity Scatter Plot
+# --- 04: Polarity vs Subjectivity scatter ---
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-# Reddit
-stance_colors = {'P': '#2ecc71', 'I': '#3498db', 'N': '#95a5a6'}
-for stance in reddit_df[reddit_label_col].unique():
-    if pd.notna(stance):
-        subset = reddit_df[reddit_df[reddit_label_col] == stance]
-        axes[0].scatter(subset['textblob_subjectivity'], subset['textblob_polarity'], 
-                       alpha=0.5, label=stance, c=stance_colors.get(stance, '#95a5a6'), s=30)
-axes[0].set_title('Reddit: Polarity vs Subjectivity by Stance', fontsize=12, fontweight='bold')
-axes[0].set_xlabel('Subjectivity')
-axes[0].set_ylabel('Polarity')
-axes[0].axhline(y=0, color='black', linestyle='--', alpha=0.3)
-axes[0].axvline(x=0.5, color='black', linestyle='--', alpha=0.3)
-axes[0].legend()
-axes[0].grid(alpha=0.3)
-
-# YouTube
-for stance in youtube_df[youtube_label_col].unique():
-    if pd.notna(stance):
-        subset = youtube_df[youtube_df[youtube_label_col] == stance]
-        axes[1].scatter(subset['textblob_subjectivity'], subset['textblob_polarity'], 
-                       alpha=0.5, label=stance, c=stance_colors.get(stance, '#95a5a6'), s=30)
-axes[1].set_title('YouTube: Polarity vs Subjectivity by Stance', fontsize=12, fontweight='bold')
-axes[1].set_xlabel('Subjectivity')
-axes[1].set_ylabel('Polarity')
-axes[1].axhline(y=0, color='black', linestyle='--', alpha=0.3)
-axes[1].axvline(x=0.5, color='black', linestyle='--', alpha=0.3)
-axes[1].legend()
-axes[1].grid(alpha=0.3)
+for ax, df, lcol, title in [
+        (axes[0], reddit_df,  REDDIT_LABEL_COL,  'Reddit: Polarity vs Subjectivity'),
+        (axes[1], youtube_df, YOUTUBE_LABEL_COL, 'YouTube: Polarity vs Subjectivity')]:
+    if lcol in df.columns:
+        for stance in ['P', 'I', 'N']:
+            sub = df[df[lcol] == stance]
+            ax.scatter(sub['textblob_subjectivity'], sub['textblob_polarity'],
+                       alpha=0.25, s=15, c=palette.get(stance, '#95a5a6'), label=stance)
+        ax.axhline(0, color='black', linestyle='--', alpha=0.3)
+        ax.axvline(0.5, color='black', linestyle='--', alpha=0.3)
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.set_xlabel('Subjectivity'); ax.set_ylabel('Polarity')
+        ax.legend(title='Stance'); ax.grid(alpha=0.3)
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '04_polarity_subjectivity_scatter.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 04_polarity_subjectivity_scatter.png")
+print("✔ Saved: 04_polarity_subjectivity_scatter.png")
 plt.close()
 
-# 5. Platform Comparison
+# --- 05: Platform comparison bar ---
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-# VADER comparison
-vader_comparison = pd.DataFrame({
-    'Reddit': reddit_df['vader_label'].value_counts(normalize=True) * 100,
-    'YouTube': youtube_df['vader_label'].value_counts(normalize=True) * 100
-}).fillna(0)
-
-vader_comparison.plot(kind='bar', ax=axes[0], width=0.8, alpha=0.8, edgecolor='black')
-axes[0].set_title('Sentiment Comparison: Reddit vs YouTube (VADER)', fontsize=12, fontweight='bold')
-axes[0].set_xlabel('Sentiment')
-axes[0].set_ylabel('Percentage (%)')
-axes[0].legend(title='Platform')
-axes[0].grid(axis='y', alpha=0.3)
-plt.setp(axes[0].xaxis.get_majorticklabels(), rotation=0)
-for container in axes[0].containers:
-    axes[0].bar_label(container, fmt='%.1f%%', padding=3)
-
-# TextBlob comparison
-textblob_comparison = pd.DataFrame({
-    'Reddit': reddit_df['textblob_label'].value_counts(normalize=True) * 100,
-    'YouTube': youtube_df['textblob_label'].value_counts(normalize=True) * 100
-}).fillna(0)
-
-textblob_comparison.plot(kind='bar', ax=axes[1], width=0.8, alpha=0.8, edgecolor='black')
-axes[1].set_title('Sentiment Comparison: Reddit vs YouTube (TextBlob)', fontsize=12, fontweight='bold')
-axes[1].set_xlabel('Sentiment')
-axes[1].set_ylabel('Percentage (%)')
-axes[1].legend(title='Platform')
-axes[1].grid(axis='y', alpha=0.3)
-plt.setp(axes[1].xaxis.get_majorticklabels(), rotation=0)
-for container in axes[1].containers:
-    axes[1].bar_label(container, fmt='%.1f%%', padding=3)
+for ax, method, col, title in [
+        (axes[0], 'VADER',    'vader_label',    'Sentiment Comparison – VADER'),
+        (axes[1], 'TextBlob', 'textblob_label', 'Sentiment Comparison – TextBlob')]:
+    cmp = pd.DataFrame({
+        'Reddit':  reddit_df[col].value_counts(normalize=True) * 100,
+        'YouTube': youtube_df[col].value_counts(normalize=True) * 100
+    }).fillna(0)
+    cmp.plot(kind='bar', ax=ax, width=0.75, alpha=0.85, edgecolor='black',
+             color=['#3498db', '#e74c3c'])
+    ax.set_title(title, fontsize=12, fontweight='bold')
+    ax.set_xlabel('Sentiment'); ax.set_ylabel('Percentage (%)')
+    ax.legend(title='Platform'); ax.grid(axis='y', alpha=0.3)
+    plt.setp(ax.xaxis.get_majorticklabels(), rotation=0)
+    for container in ax.containers:
+        ax.bar_label(container, fmt='%.1f%%', padding=3)
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR / '05_platform_sentiment_comparison.png', dpi=300, bbox_inches='tight')
-print("âœ“ Saved: 05_platform_sentiment_comparison.png")
+print("✔ Saved: 05_platform_sentiment_comparison.png")
+plt.close()
+
+# --- 06: Temporal sentiment trend (NEW) ---
+fig, axes = plt.subplots(2, 1, figsize=(14, 10))
+fig.suptitle('Monthly Mean Sentiment Trend by Stance', fontsize=15, fontweight='bold')
+
+for ax, df, lcol, title in [
+        (axes[0], reddit_df,  REDDIT_LABEL_COL,  'Reddit – Monthly VADER Compound'),
+        (axes[1], youtube_df, YOUTUBE_LABEL_COL, 'YouTube – Monthly VADER Compound')]:
+    if 'year_month' in df.columns and lcol in df.columns:
+        t_data = (df[df[lcol].isin(['P', 'I', 'N'])]
+                  .groupby(['year_month', lcol])['vader_compound']
+                  .mean().unstack())
+        t_data.index = t_data.index.astype(str)
+        for stance in [c for c in ['P', 'I', 'N'] if c in t_data.columns]:
+            ax.plot(t_data.index, t_data[stance], marker='o',
+                    label=stance, color=palette.get(stance), linewidth=2)
+        ax.axhline(0, color='gray', linestyle='--', alpha=0.5)
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.set_xlabel('Month'); ax.set_ylabel('Mean VADER Compound')
+        ax.legend(title='Stance'); ax.grid(alpha=0.3)
+        plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
+
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR / '06_temporal_sentiment_trend.png', dpi=300, bbox_inches='tight')
+print("✔ Saved: 06_temporal_sentiment_trend.png")
+plt.close()
+
+# --- 07: Sentiment by subreddit (NEW) ---
+if 'subreddit' in reddit_df.columns:
+    top_subs = reddit_df['subreddit'].value_counts().head(15).index
+    sub_sent = (reddit_df[reddit_df['subreddit'].isin(top_subs)]
+                .groupby('subreddit')['vader_compound'].mean()
+                .sort_values())
+
+    fig, ax = plt.subplots(figsize=(12, 7))
+    bar_colors = ['#e74c3c' if v < 0 else '#27ae60' for v in sub_sent.values]
+    ax.barh(sub_sent.index, sub_sent.values, color=bar_colors, alpha=0.85, edgecolor='black')
+    ax.axvline(0, color='black', linewidth=1.5)
+    ax.set_title('Reddit – Mean VADER Sentiment by Subreddit (Top 15)',
+                 fontsize=13, fontweight='bold')
+    ax.set_xlabel('Mean Compound Score'); ax.grid(axis='x', alpha=0.3)
+    plt.tight_layout()
+    plt.savefig(OUTPUT_DIR / '07_sentiment_by_subreddit.png', dpi=300, bbox_inches='tight')
+    print("✔ Saved: 07_sentiment_by_subreddit.png")
+    plt.close()
+
+# --- 08: Subjectivity by stance (violin) ---
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+for ax, df, lcol, title in [
+        (axes[0], reddit_df,  REDDIT_LABEL_COL,  'Reddit – Subjectivity by Stance'),
+        (axes[1], youtube_df, YOUTUBE_LABEL_COL, 'YouTube – Subjectivity by Stance')]:
+    if lcol in df.columns:
+        valid = df[df[lcol].isin(['P', 'I', 'N'])]
+        sns.violinplot(data=valid, x=lcol, y='textblob_subjectivity',
+                       palette=palette, ax=ax, order=['P', 'I', 'N'], inner='box')
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.set_xlabel('Stance'); ax.set_ylabel('TextBlob Subjectivity')
+        ax.grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR / '08_subjectivity_by_stance.png', dpi=300, bbox_inches='tight')
+print("✔ Saved: 08_subjectivity_by_stance.png")
 plt.close()
 
 # ============================================================================
@@ -424,56 +391,31 @@ print("\n" + "=" * 80)
 print("SAVING RESULTS")
 print("=" * 80)
 
-# Save enhanced datasets
 reddit_df.to_csv(OUTPUT_DIR / 'reddit_with_sentiment.csv', index=False, encoding='utf-8')
 youtube_df.to_csv(OUTPUT_DIR / 'youtube_with_sentiment.csv', index=False, encoding='utf-8')
-print("âœ“ Saved: reddit_with_sentiment.csv")
-print("âœ“ Saved: youtube_with_sentiment.csv")
+print("✔ Saved: reddit_with_sentiment.csv")
+print("✔ Saved: youtube_with_sentiment.csv")
 
-# Create summary report
 with open(OUTPUT_DIR / 'sentiment_summary_report.txt', 'w', encoding='utf-8') as f:
-    f.write("=" * 80 + "\n")
-    f.write("SENTIMENT ANALYSIS SUMMARY REPORT\n")
-    f.write("Israel-Hamas War Discourse Analysis\n")
+    f.write("=" * 80 + "\nSENTIMENT ANALYSIS SUMMARY REPORT\n")
     f.write(f"Generated: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
     f.write("=" * 80 + "\n\n")
-    
-    f.write("1. REDDIT SENTIMENT DISTRIBUTION (VADER)\n")
-    f.write("-" * 80 + "\n")
-    f.write(str(reddit_df['vader_label'].value_counts()) + "\n\n")
-    f.write("Percentages:\n")
-    f.write(str(reddit_df['vader_label'].value_counts(normalize=True) * 100) + "\n\n")
-    
-    f.write("2. YOUTUBE SENTIMENT DISTRIBUTION (VADER)\n")
-    f.write("-" * 80 + "\n")
-    f.write(str(youtube_df['vader_label'].value_counts()) + "\n\n")
-    f.write("Percentages:\n")
-    f.write(str(youtube_df['vader_label'].value_counts(normalize=True) * 100) + "\n\n")
-    
-    f.write("3. SENTIMENT BY STANCE - REDDIT (VADER)\n")
-    f.write("-" * 80 + "\n")
-    f.write(str(reddit_sentiment_by_stance) + "\n\n")
-    
-    f.write("4. SENTIMENT BY STANCE - YOUTUBE (VADER)\n")
-    f.write("-" * 80 + "\n")
-    f.write(str(youtube_sentiment_by_stance) + "\n\n")
-    
+    for name, df, lcol in [("Reddit", reddit_df, REDDIT_LABEL_COL),
+                             ("YouTube", youtube_df, YOUTUBE_LABEL_COL)]:
+        f.write(f"{name.upper()} VADER DISTRIBUTION:\n")
+        f.write(str(df['vader_label'].value_counts()) + "\n\n")
+        f.write(f"{name.upper()} VADER BY STANCE:\n")
+        if lcol in df.columns:
+            f.write(str(df.groupby(lcol)['vader_compound']
+                        .agg(['mean', 'median', 'std']).round(4)) + "\n\n")
+        f.write(f"{name.upper()} TEXTBLOB SUBJECTIVITY BY STANCE:\n")
+        if lcol in df.columns:
+            f.write(str(df.groupby(lcol)['textblob_subjectivity']
+                        .agg(['mean', 'std']).round(4)) + "\n\n")
     f.write("=" * 80 + "\n")
 
-print("âœ“ Saved: sentiment_summary_report.txt")
+print("✔ Saved: sentiment_summary_report.txt")
 
 print("\n" + "=" * 80)
-print("âœ… SENTIMENT ANALYSIS COMPLETE!")
+print("✅ SENTIMENT ANALYSIS COMPLETE!")
 print("=" * 80)
-print(f"\nAll outputs saved to: {OUTPUT_DIR}")
-print("\nGenerated files:")
-print("  - 01_sentiment_distribution.png")
-print("  - 02_sentiment_by_stance_heatmap.png")
-print("  - 03_compound_score_by_stance.png")
-print("  - 04_polarity_subjectivity_scatter.png")
-print("  - 05_platform_sentiment_comparison.png")
-print("  - reddit_with_sentiment.csv")
-print("  - youtube_with_sentiment.csv")
-print("  - sentiment_summary_report.txt")
-print("\n" + "=" * 80)
-
