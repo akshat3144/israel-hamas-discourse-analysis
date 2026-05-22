@@ -1,189 +1,92 @@
 # Israel-Hamas Discourse Analysis
 
-A comprehensive computational social science study analyzing **19,362 comments** from Reddit and YouTube to understand how platform architecture shapes political discourse on the Israel-Hamas conflict.
+A computational social science project comparing Reddit and YouTube discourse around the Israel-Hamas conflict.
 
-## 📖 Research Overview
+The repository is organized directly by analysis stage and research question. Each folder has its own scripts, notebook, and clean `outputs/` directory.
 
-This project examines how social media platforms influence political discourse through:
+## Research Questions
 
-- **Sentiment Analysis** - Emotional tone differences between platforms
-- **Topic Modeling** - Distinct narratives and framing on each platform
-- **Echo Chamber Detection** - Network analysis of user interactions
-- **Toxicity Analysis** - Harmful speech patterns using Google's Perspective API
-- **Machine Learning** - Stance classification and cross-platform prediction
+| Folder | Purpose | Main analyses |
+| --- | --- | --- |
+| `00_data_preparation_eda` | Shared preparation step | Cleaning, descriptive statistics, processed CSVs |
+| `01_rq1_emotional_tone` | RQ1: How does emotional tone differ between Reddit and YouTube? | Sentiment analysis and statistical validation |
+| `02_rq2_topics_narratives` | RQ2: What distinct topics and narratives emerge on each platform? | Topic modeling and word clouds |
+| `03_rq3_echo_chambers` | RQ3: To what extent do echo chambers exist, and are users consistent in stance? | Network analysis, temporal/structural analysis, ML stance classification |
+| `04_rq4_toxicity` | RQ4: Which platform and political stance harbor the most toxic speech? | Perspective API toxicity analysis |
 
-### Research Questions
+## Repository Layout
 
-| RQ      | Question                                                                                    |
-| :------ | :------------------------------------------------------------------------------------------ |
-| **RQ1** | How does the emotional tone differ between debate-centric Reddit and media-centric YouTube? |
-| **RQ2** | What distinct topics and narratives emerge on each platform?                                |
-| **RQ3** | To what extent do echo chambers exist, and are users consistent in their stance?            |
-| **RQ4** | Which platform—and which political stance—harbors the most toxic speech?                    |
-
-## 🔑 Key Findings
-
-- **Reddit** skews negative (45%) with complex, argumentative discourse
-- **YouTube** skews positive (45%) with emotional, supportive comments
-- **Pro-Israel** comments exhibit the highest toxicity levels on both platforms
-- **Pro-Palestine** users show stronger echo chamber behavior
-- Cross-platform ML models struggle due to distinct linguistic norms
-
-## 📁 Project Structure
-
-```
-├── data/                          # Raw and labeled datasets
-│   ├── reddit.xlsx
+```text
+.
+├── 00_data_preparation_eda/
+│   ├── eda.ipynb
+│   ├── scripts/
+│   └── outputs/
+├── 01_rq1_emotional_tone/
+│   ├── sentiment_topic_modeling.ipynb
+│   ├── scripts/
+│   └── outputs/
+├── 02_rq2_topics_narratives/
+│   ├── topic_modeling.ipynb
+│   ├── scripts/
+│   └── outputs/
+├── 03_rq3_echo_chambers/
+│   ├── echo_chambers_and_ml.ipynb
+│   ├── scripts/
+│   └── outputs/
+├── 04_rq4_toxicity/
+│   ├── toxicity_analysis.ipynb
+│   ├── scripts/
+│   └── outputs/
+├── data/
 │   ├── reddit_labeled.xlsx
-│   ├── youtube.xlsx
 │   └── youtube_labeled.xlsx
-├── data_collector/                # Data collection scripts
-│   ├── reddit_collector.py
-│   └── youtube_collector.py
-├── eda_output/                    # Exploratory data analysis results
-├── sentiment_output/              # Sentiment analysis results
-├── topic_modeling_output/         # LDA/NMF topic modeling results
-├── ml_output/                     # Machine learning model outputs
-├── network_output/                # Echo chamber network visualizations
-├── perspective_output/            # Toxicity analysis results
-├── advanced_analysis_output/      # Statistical regression results
-├── statistical_tests_output/      # Hypothesis testing results
-├── word_cloud/                    # Word cloud visualizations
-├── docs/                          # Documentation and reports
-│
-├── eda_analysis.py                # Exploratory data analysis
-├── sentiment_analysis.py          # VADER & TextBlob sentiment analysis
-├── topic_modeling.py              # LDA & NMF topic modeling
-├── ml_stance_classification.py    # Ensemble ML stance classifier
-├── network_echo_chambers.py       # User interaction network analysis
-├── perspective_analysis.py        # Google Perspective API toxicity
-├── advanced_analysis.py           # Regression & complexity analysis
-├── statistical_tests.py           # Statistical hypothesis testing
-├── structural_temporal_analysis.py # Structural & temporal analysis
-├── label_reddit_data.py           # Data labeling utilities
-├── label_youtube_data.py          # Data labeling utilities
-├── generate_wordclouds.py         # Word cloud generation
-│
-├── eda.ipynb                      # Interactive EDA notebook
-├── sentiment_topic_modeling.ipynb # Sentiment & topic notebook
-│
-└── requirements.txt               # Python dependencies
+├── docs/
+├── requirements.txt
+└── README.md
 ```
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Python 3.8+
-- pip package manager
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/akshat3144/israel-hamas-discourse-analysis.git
-   cd israel-hamas-discourse-analysis
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up environment variables** (for Perspective API)
-
-   ```bash
-   # Create a .env file with your API keys
-   GOOGLE_API_KEY=your_google_api_key
-   ```
-
-### Running the Analysis Pipeline
-
-Execute the scripts in order:
+## Setup
 
 ```bash
-# Phase 1: Exploratory Data Analysis
-python eda_analysis.py
-
-# Phase 2: Sentiment Analysis
-python sentiment_analysis.py
-
-# Phase 3: Topic Modeling
-python topic_modeling.py
-
-# Phase 4: Advanced Statistical Analysis
-python advanced_analysis.py
-python statistical_tests.py
-
-# Phase 5: Machine Learning Classification
-python ml_stance_classification.py
-
-# Phase 6: Network & Echo Chamber Analysis
-python network_echo_chambers.py
-
-# Phase 7: Toxicity Analysis (requires API key)
-python perspective_analysis.py
-
-# Generate Word Clouds
-python generate_wordclouds.py
+pip install -r requirements.txt
 ```
 
-## 📊 Methods & Tools
+For RQ4, create a `.env` file with:
 
-### Data Collection
+```text
+PERSPECTIVE_API_KEY=your_key_here
+```
 
-- **Reddit**: 9,973 comments from relevant subreddits
-- **YouTube**: 9,389 comments from news/political videos
+## Run Order
 
-### Analysis Techniques
+To fill each folder's `outputs/` directory, run the folder-level runners from the repository root:
 
-| Phase     | Technique                             | Tools                       |
-| :-------- | :------------------------------------ | :-------------------------- |
-| EDA       | Descriptive statistics, distributions | Pandas, Matplotlib, Seaborn |
-| Sentiment | VADER, TextBlob polarity/subjectivity | vaderSentiment, TextBlob    |
-| Topics    | LDA, NMF topic modeling               | scikit-learn                |
-| ML        | Ensemble (LR + SVM + RF + GB)         | scikit-learn                |
-| Network   | Homophily index, graph analysis       | NetworkX                    |
-| Toxicity  | Perspective API attributes            | Google Perspective API      |
+```bash
+python 00_data_preparation_eda/run_all.py
+python 01_rq1_emotional_tone/run_all.py
+python 02_rq2_topics_narratives/run_all.py
+python 03_rq3_echo_chambers/run_all.py
+python 04_rq4_toxicity/run_all.py
+```
 
-### Machine Learning Performance
+Outputs are generated only inside each folder's `outputs/` directory. The `scripts/` files can still be run individually when needed.
 
-| Train Set         | Test Set | Accuracy                      |
-| :---------------- | :------- | :---------------------------- |
-| YouTube → YouTube | 75.1%    | High (repetitive slogans)     |
-| Reddit → Reddit   | 62.5%    | Moderate (nuanced discourse)  |
-| Reddit → YouTube  | 61.9%    | Cross-platform struggle       |
-| YouTube → Reddit  | 57.2%    | Lowest (oversimplified model) |
+## Notebooks
 
-## 📈 Visualizations
+The notebooks sit directly inside each analysis folder:
 
-The analysis generates comprehensive visualizations including:
+- `00_data_preparation_eda/eda.ipynb`
+- `01_rq1_emotional_tone/sentiment_topic_modeling.ipynb`
+- `02_rq2_topics_narratives/topic_modeling.ipynb`
+- `03_rq3_echo_chambers/echo_chambers_and_ml.ipynb`
+- `04_rq4_toxicity/toxicity_analysis.ipynb`
 
-- Sentiment distribution comparisons
-- Polarity vs. Subjectivity scatter plots
-- Topic word clouds and frequency charts
-- Echo chamber network graphs
-- Toxicity heatmaps by stance
-- Confusion matrices for ML models
-- Feature importance plots
+The original complete EDA and sentiment/topic notebooks have been restored, with paths updated for this layout.
+Notebooks are display-only: they show tables/plots inline and do not save files or populate output folders. Use `run_all.py` for reproducible saved artifacts.
 
-## 👥 Authors
+## Notes
 
-- **Akshat Gupta**
-- **Raghav Sarna**
-- **Arsh Arora**
-- **Mudasir Rasheed**
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-Google Perspective API for toxicity analysis
-
-Reddit and YouTube for data access
-
-The computational social science research community
+- Generated outputs were intentionally removed. Re-run the pipeline to regenerate them in the new locations.
+- `data/` is expected to contain the labeled Reddit and YouTube Excel files, but it is ignored by git.
+- Machine learning stance classification is under RQ3 because the report uses it in the polarization and echo-chamber section.
