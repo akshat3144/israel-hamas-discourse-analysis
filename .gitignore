@@ -1,8 +1,49 @@
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+ENV/
+env/
+
+# === JUPYTER ===
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# === IDE & EDITORS ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# === ENVIRONMENT & SECRETS ===
 *.env
+.env.local
+.env.*.local
+
+# === DATA & OUTPUTS ===
+data/
+reddit_raw_data/
+*/outputs/
+*.csv
+*.json
+!config.json
+
+# === GENERATED DOCS ===
 *.html
 *.pdf
+docs/
 *.md
 !README.md
-docs/
-data/
-__pycache__/
+!ANNOTATION_GUIDELINES.md
+!collection.md
