@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-EDA_OUTPUT_DIR = ROOT_DIR / '01_data_preparation' / 'outputs'
+DATA_DIR = ROOT_DIR / 'data'
 OUTPUT_DIR = ROOT_DIR / '02_emotional_tone_analysis' / 'outputs'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -34,9 +34,9 @@ print("=" * 80)
 # ============================================================================
 # LOAD DATA
 # ============================================================================
-print("\n📊 Loading processed data...")
-reddit_df  = pd.read_csv(EDA_OUTPUT_DIR / 'reddit_processed.csv')
-youtube_df = pd.read_csv(EDA_OUTPUT_DIR / 'youtube_processed.csv')
+print("\n📊 Loading cleaned data...")
+reddit_df  = pd.read_csv(DATA_DIR / 'reddit_labeled_cleaned.csv')
+youtube_df = pd.read_csv(DATA_DIR / 'youtube_labeled_cleaned.csv')
 
 # Restore datetime columns (Unix timestamp for Reddit)
 if 'created_time' in reddit_df.columns:
