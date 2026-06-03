@@ -322,8 +322,15 @@ filtered first; the analysis datasets contain only `P`, `I`, `N`.
 | `author`       | Comment author handle             |
 | `text`         | Comment body (primary text field) |
 | `likeCount`    | Like count                        |
-| `created_time` | Comment date (approximate)        |
-| `video_date`   | Publish date of the video         |
+| `created_time` | **Scrape/fetch date** — a relative-date ("x months ago") artifact that runs into 2025-2026; **not** the true comment time and **not** used as a timeline |
+| `video_date`   | Video publish date (Oct 2023 - May 2024) — the **reliable temporal anchor** for YouTube |
+
+> **Temporal note.** The study window is **Oct 2023 – May 2024**. Reddit timelines
+> use the real comment timestamp (`created_time`, which also includes a small Aug–Sep
+> 2023 pre-war baseline). YouTube comment timestamps were reconstructed from relative
+> "x ago" strings at scrape time, so YouTube `created_time` reflects the *scrape* date
+> (2024–2026) and is unreliable — all YouTube timelines therefore use `video_date`
+> (the video's publish date), which falls cleanly within the study window.
 
 ---
 
