@@ -509,6 +509,13 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
   complete census of the discourse.
 - **Platform asymmetry.** Reddit (threaded) and YouTube (flat) differ structurally;
   cross-platform comparisons control for this where possible but are not perfectly matched.
+- **Identifiers & bots.** YouTube `created_time` is a scrape-date artifact, so YouTube
+  timelines use `video_date` (see the temporal note above). On Reddit, automated accounts
+  (`AutoModerator`, `*-ModTeam`) and the `[deleted]` author (which collapses many distinct
+  removed accounts into one) are **excluded from user-level analysis** (profiling, homophily,
+  network) so they don't dominate the echo-chamber results. About 0.9% of Reddit comment
+  bodies are `[removed]`/`[deleted]` placeholders; topic modeling already drops them (length
+  filter) and they are a negligible share of the sentiment/toxicity aggregates.
 - **Sensitive topic.** This studies real discourse about an active conflict. Findings
   describe *online text patterns*, not ground truth about the conflict, and should not be
   read as endorsement of any stance.
