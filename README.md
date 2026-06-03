@@ -346,19 +346,19 @@ in-notebook) so each notebook finishes in a reasonable time.
 
 ### `02_emotional_tone_analysis/` - RQ1
 
-- **`sentiment_analysis.ipynb`** - scores every comment with **VADER** (compound, social-media tuned) and **TextBlob** (polarity + subjectivity); compares sentiment by platform and stance (tables, heatmaps, box plots, polarity-vs-subjectivity); runs **statistical tests** - chi-square + **Cramér's V** (stance × sentiment), **Kruskal-Wallis** (compound across stances), **Mann-Whitney U** (platform contrast); plots monthly sentiment trends. **Exports** `reddit_with_sentiment.csv` / `youtube_with_sentiment.csv` for downstream modules.
+- **`sentiment_analysis.ipynb`** - scores every comment with **VADER** (compound, social-media tuned) and **TextBlob** (polarity + subjectivity); compares sentiment by platform and stance (tables, heatmaps, box plots, polarity-vs-subjectivity); runs **statistical tests** - chi-square + **Cramér's V** (stance × sentiment), **Kruskal-Wallis** (compound across stances), **Mann-Whitney U** (platform contrast); reports **effect sizes** (rank-biserial, epsilon-squared); adds a **transformer model** (`cardiffnlp/twitter-roberta-base-sentiment-latest`) on a stratified sample and measures **inter-method agreement with Cohen's kappa** (VADER / TextBlob / RoBERTa); plots monthly sentiment trends. **Exports** `reddit_with_sentiment.csv` / `youtube_with_sentiment.csv` for downstream modules.
 
 ### `03_topics_and_narratives/` - RQ2
 
-- **`topic_analysis.ipynb`** - domain-stopword-aware **word frequency** (overall + by stance), **LDA** and **NMF** topic models (5 topics/platform), **TF-IDF** distinctive terms per stance, and **word clouds** by stance and by sentiment. Loads module-02 sentiment output (fallback: recompute VADER from `data/`).
+- **`topic_analysis.ipynb`** - domain-stopword-aware **word frequency** (overall + by stance), **LDA** and **NMF** topic models, **TF-IDF** distinctive terms per stance, and **word clouds** by stance and by sentiment. Topic quality is quantified with **c_v coherence** (gensim) — including a **coherence-vs-K sweep to justify the number of topics** — and an embedding-based **BERTopic** model (sentence-transformers + UMAP + HDBSCAN) is run on a sample as a modern alternative. Loads module-02 sentiment output (fallback: recompute VADER from `data/`).
 
 ### `04_echo_chambers/` - RQ3
 
-- **`network_analysis.ipynb`** - engagement **OLS** (`score ~ sentiment + stance`, with from-scratch coef/SE/p-value inference), controversiality amplification, **Flesch readability** (dependency-free) by platform/stance, **vectorized user stance profiling** (dominant stance + consistency over ~100k authors via group-bys), **homophily-based echo-chamber detection**, a **user-interaction network** (bipartite projection of top users), and a **scalable stance-classification ensemble** (Logistic Regression + calibrated LinearSVC + Random Forest, soft voting) tested within- and cross-platform with per-stance predictive keywords.
+- **`network_analysis.ipynb`** - engagement **OLS** (`score ~ sentiment + stance`, with from-scratch coef/SE/p-value inference), controversiality amplification, **Flesch readability** (dependency-free) by platform/stance, **vectorized user stance profiling** (dominant stance + consistency over ~100k authors via group-bys), **homophily-based echo-chamber detection**, a **user-interaction network** (bipartite projection of top users), and a **scalable stance-classification ensemble** (Logistic Regression + calibrated LinearSVC + Random Forest, soft voting) tested within- and cross-platform with per-stance predictive keywords and **Stratified 5-fold cross-validated macro-F1 (mean ± 95% CI)**. Kruskal-Wallis tests report **epsilon-squared** effect sizes.
 
 ### `05_toxicity_analysis/` - RQ4
 
-- **`toxicity_assessment.ipynb`** - scores a stratified sample with **Google Perspective API** across TOXICITY, SEVERE_TOXICITY, IDENTITY_ATTACK, INSULT, THREAT, PROFANITY; compares by platform and stance; **Mann-Whitney U** (platform) + **Kruskal-Wallis** (stance) tests. Requires a Perspective API key (see [Configuration](#configuration-env)); without one the notebook stops gracefully with setup instructions.
+- **`toxicity_assessment.ipynb`** - scores a stratified sample with **Google Perspective API** across TOXICITY, SEVERE_TOXICITY, IDENTITY_ATTACK, INSULT, THREAT, PROFANITY; compares by platform and stance; **Mann-Whitney U** (platform) + **Kruskal-Wallis** (stance) tests with **rank-biserial / epsilon-squared** effect sizes. Requires a Perspective API key (see [Configuration](#configuration-env)); without one the notebook stops gracefully with setup instructions.
 
 ---
 
@@ -405,21 +405,26 @@ equivalents kept for reference.
 
 ## Methodology Details
 
-- **Sentiment** - VADER (primary, intensity-aware) + TextBlob (polarity/subjectivity).
-  Standard VADER thresholds (compound ≥ 0.05 positive, ≤ −0.05 negative). With ~1.5M
-  observations, effect sizes (Cramér's V) accompany chi-square so significance isn't
-  mistaken for importance.
-- **Topics** - LDA (online, batched) and NMF (TF-IDF, `nndsvda` init), 5 topics/platform;
-  shared domain terms (israel, gaza, hamas, …) are added to the stopword list so
-  *differentiating* vocabulary surfaces. Two models are compared to avoid single-algorithm artefacts.
+- **Sentiment** - VADER (primary, intensity-aware) + TextBlob (polarity/subjectivity) +
+  a **transformer** (`twitter-roberta-base-sentiment`) on a stratified sample. Standard
+  VADER thresholds (compound ≥ 0.05 positive, ≤ −0.05 negative). With ~1.5M observations,
+  **effect sizes** (Cramér's V for chi-square, rank-biserial for Mann-Whitney, epsilon-squared
+  for Kruskal-Wallis) accompany every p-value so significance isn't mistaken for importance.
+  Inter-method **agreement is reported with Cohen's kappa**.
+- **Topics** - LDA (online, batched) and NMF (TF-IDF, `nndsvda` init); shared domain terms
+  (israel, gaza, hamas, …) are added to the stopword list so *differentiating* vocabulary
+  surfaces. Topic quality is measured with **c_v coherence**, the **number of topics is chosen
+  by a coherence-vs-K sweep** rather than fixed, and **BERTopic** (embeddings + UMAP + HDBSCAN)
+  is compared as a neural alternative. Multiple models guard against single-algorithm artefacts.
 - **Polarization** - user dominant-stance + consistency; a **homophily index** (share of a
   user's distinct threads whose majority stance matches their own); a bipartite
   user–thread network projected to user–user; OLS with proper inference; Flesch readability.
 - **Stance ML** - TF-IDF (1–2 grams, 5k features) → soft-voting ensemble (LR + calibrated
   LinearSVC + RandomForest). Trained on a **capped stratified 60k sample** (so the SVM is
-  tractable), evaluated within-platform and cross-platform with macro-F1 and confusion matrices.
+  tractable), evaluated within-platform and cross-platform with macro-F1, confusion matrices,
+  and **Stratified 5-fold cross-validated macro-F1 (mean ± 95% CI)**.
 - **Toxicity** - Google Perspective API on a stratified per-stance sample (rate-limit aware);
-  scored samples are persisted so the API work is reusable.
+  scored samples are persisted so the API work is reusable; effect sizes accompany the tests.
 
 ---
 
@@ -472,9 +477,10 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
 ## Tech Stack
 
 - **Data:** pandas, numpy
-- **NLP / sentiment:** vaderSentiment, TextBlob, scikit-learn (CountVectorizer/TfidfVectorizer, LDA, NMF), wordcloud
-- **Stats:** scipy (chi-square, Kruskal-Wallis, Mann-Whitney), numpy OLS
-- **ML:** scikit-learn (LogisticRegression, LinearSVC + CalibratedClassifierCV, RandomForest, VotingClassifier)
+- **NLP / sentiment:** vaderSentiment, TextBlob, **transformers** (`twitter-roberta` sentiment), scikit-learn (CountVectorizer/TfidfVectorizer, LDA, NMF), wordcloud
+- **Topics:** scikit-learn (LDA/NMF), **gensim** (c_v coherence), **BERTopic** (sentence-transformers + UMAP + HDBSCAN)
+- **Stats:** scipy (chi-square, Kruskal-Wallis, Mann-Whitney), numpy OLS, effect sizes (Cramér's V, rank-biserial, epsilon-squared), Cohen's kappa
+- **ML:** scikit-learn (LogisticRegression, LinearSVC + CalibratedClassifierCV, RandomForest, VotingClassifier, Stratified K-fold CV)
 - **Networks:** networkx
 - **Toxicity:** google-api-python-client (Perspective API)
 - **Collection / labeling:** requests, google-api-python-client (YouTube Data API v3), youtube-transcript-api, openai (AsyncOpenAI → dcompute), Arctic Shift (Reddit, web)

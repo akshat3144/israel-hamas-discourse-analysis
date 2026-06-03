@@ -17,3 +17,8 @@ networkx
 tqdm
 google-api-python-client
 langdetect
+transformers
+torch
+sentence-transformers
+bertopic
+gensim
