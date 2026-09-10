@@ -63,11 +63,12 @@ than as separate questions, giving three:
 \subsection{Contributions}
 This work contributes (1)~large-scale evidence that the \emph{coupling} between
 stance and emotional tone is platform-dependent - strong on Reddit, near-zero on
-YouTube; (2)~a demonstration that toxicity is a distinct and much rarer phenomenon
-than negativity, and that the apparent partisan toxicity asymmetry is absorbed by
-sentiment; (3)~a network-level correction to the echo-chamber account, showing that
-thread co-membership and actual reply behaviour give opposite answers, with the
-reply graph disassortative by stance; and (4)~a reproducible LLM-assisted labelling
+YouTube; (2)~a quantification of how far toxicity and negativity
+diverge in this corpus - the distinction is recognised in principle, but we measure
+the overlap directly and show that the apparent partisan toxicity asymmetry is
+absorbed once sentiment is controlled; (3)~evidence that thread co-membership and actual reply
+behaviour give \emph{opposite} answers on the same users, which reframes the
+long-running echo-chamber disagreement as substantially a question of measurement; and (4)~a reproducible LLM-assisted labelling
 pipeline with retained per-label justifications and an accompanying human-validation
 protocol.
 
@@ -120,7 +121,14 @@ research. Sunstein~\cite{sunstein2017} argued that filtering and self-selection
 narrow exposure, while Bail et al.~\cite{bail2018} showed experimentally that
 exposure to opposing views can \emph{increase} polarization. Cinelli
 et al.~\cite{cinelli2021} demonstrated that echo-chamber strength is itself
-platform-dependent, motivating our comparative design. Crucially, homophily is a
+platform-dependent, motivating our comparative design. Most directly relevant to
+our RQ3, De Francisci Morales et al.~\cite{defrancisci2021} reconstructed the
+political interaction network of Trump and Clinton supporters on Reddit and found a
+\emph{preference} for cross-cutting replies over within-group ones - asymmetrically
+so - against a degree-preserving rewiring null. We therefore do not claim
+cross-cutting interaction on Reddit as a new result. We ask instead whether it holds
+in a geopolitical-conflict setting rather than domestic party politics, and why it
+coexists with strong echo-chamber readings of the same platform. Crucially, homophily is a
 property of a \emph{network}, so we measure it on an explicit user--user reply graph
 and report Newman's assortativity coefficient for categorical
 attributes~\cite{newman2003} alongside a chance-corrected homophily index; raw
@@ -183,7 +191,8 @@ Because sentiment, toxicity and polarization can all drift over time, comparing
 platforms across different periods would confound platform with period. We therefore
 restrict \emph{both} platforms to the common window
 \textbf{7~October~2023--7~May~2024}, removing a Reddit-only pre-war baseline of
-\textbf{42{,}249} comments (3.81\%) and leaving YouTube unchanged.
+\textbf{42{,}249} comments (3.81\%) and leaving YouTube unchanged. Figure~\ref{fig:temporal} shows
+the resulting monthly volume on both platforms over that window.
 
 \begin{figure}[H]
   \centering
@@ -380,9 +389,12 @@ YouTube identity attack ($\varepsilon^2=0.103$).
 \end{table}
 
 \subsubsection*{Are negativity and toxicity the same thing?}
-They are related but far from interchangeable (Figure~\ref{fig:jointtox}). Sentiment
-and toxicity correlate moderately (Spearman $\rho=-0.435$ on Reddit, $-0.240$ on
-YouTube). Almost all toxic comments are negative - 88.5\% on Reddit, 66.7\% on
+That toxicity and negative sentiment are distinct constructs is well recognised -
+Perspective targets rudeness and disrespect rather than valence - but the two are
+often used interchangeably in practice, and the size of the gap is rarely
+quantified. In this corpus they are related but far from interchangeable
+(Figure~\ref{fig:jointtox}). Sentiment and toxicity correlate moderately
+(Spearman $\rho=-0.435$ on Reddit, $-0.240$ on YouTube). Almost all toxic comments are negative - 88.5\% on Reddit, 66.7\% on
 YouTube - but the converse fails badly: only \textbf{15.5\%} of negative Reddit
 comments and \textbf{8.7\%} of negative YouTube comments are toxic. Toxicity is
 therefore a small, distinct subset of negative discourse, and treating negativity as
@@ -455,7 +467,18 @@ The reply network tells a different story (Figure~\ref{fig:homcmp}). Across
 52.0\% of reply targets are Pro-Palestine, a Pro-Palestine user replying at random
 would already match 52\% of the time. Both partisan groups fall \emph{below} their
 random-mixing baseline (Table~\ref{tab:mixing}), and the graph as a whole is
-disassortative, with Newman $r=\mathbf{-0.184}$. Pro-Israel users direct 64.4\% of
+disassortative, with Newman $r=\mathbf{-0.184}$.
+
+A marginal baseline alone would not settle this, because activity and popularity are
+unevenly distributed across stances: if Pro-Palestine users are both more numerous
+and more replied-to, some apparent cross-cutting would be mechanical. We therefore
+repeat the test against a \emph{degree-preserving} null that permutes reply targets,
+holding every user's out-degree and in-degree exactly fixed. Across 500 permutations
+the null assortativity is centred on zero ($\bar{r}=+0.00004$, $\mathrm{sd}=0.0014$),
+placing the observed $-0.184$ some $z=-128$ from the null; the per-stance excesses
+survive the same test (Pro-Palestine $z=-126$, Pro-Israel $z=-118$, Neutral
+$z=+51$). The cross-cutting pattern is therefore not an artifact of the degree
+sequence. Pro-Israel users direct 64.4\% of
 their replies at Pro-Palestine users; Pro-Palestine users direct 54.4\% of theirs at
 Pro-Israel users (Figure~\ref{fig:mixing}). Among partisan reply pairs,
 \textbf{62.4\%} cross the divide. Only Neutral users are mildly assortative
@@ -499,7 +522,11 @@ The two measures are not contradictory; they measure different things. Users do
 concentrate in threads dominated by their own side, but \emph{within} those threads
 the replies they write disproportionately target the other side. Echo-chamber claims
 resting on co-presence alone can therefore invert the conclusion drawn from
-interaction.
+interaction. The cross-cutting direction itself agrees with De Francisci Morales
+et al.~\cite{defrancisci2021}, who report the same preference - and a similar
+asymmetry, with one camp more eager to reply across the divide - for US party
+politics; recovering it in a conflict corpus indicates the pattern is not confined
+to domestic partisanship.
 
 \subsubsection*{Stance classification as a lexical diagnostic}
 We treat stance classification not as a performance claim but as a diagnostic of how
@@ -585,7 +612,13 @@ supports an echo-chamber reading; the reply network yields $0.406$, below chance
 a disassortative graph ($r=-0.184$) in which most partisan replies cross the divide.
 Since homophily is defined on networks~\cite{mcpherson2001,newman2003}, the
 reply-graph measure is the appropriate one, and it indicates that Reddit in this
-corpus functions as a contested arena rather than a set of sealed chambers. This does
+corpus functions as a contested arena rather than a set of sealed chambers. That
+conclusion is not itself new - De Francisci Morales et al.~\cite{defrancisci2021}
+reached it for US party politics using a comparable degree-preserving null. What our
+data add is the direct contrast, on identical users, with a co-presence measure that
+points the other way, which suggests the persistent disagreement between
+echo-chamber and no-echo findings is substantially a disagreement about what is
+being measured. This does
 not contradict high individual stance consistency ($0.803$): users are consistent in
 \emph{what they argue} while still arguing largely with the other side. It aligns
 with Shugars and Ha~\cite{shugars2025}, who found that Reddit's conversational
