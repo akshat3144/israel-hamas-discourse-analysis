@@ -174,7 +174,8 @@ Factorization~\cite{leeseung1999} represent documents as mixtures over latent
 topics; LDA assumes a Bayesian generative process while NMF performs a matrix
 decomposition that tends to produce sparser topics. BERTopic~\cite{grootendorst2022}
 instead clusters sentence-embedding representations. We apply LDA and NMF in
-parallel so that no single algorithm drives the reported structure. We emphasise
+parallel so that no single algorithm drives the reported structure, and quantify
+topic quality with $c_v$ coherence. We emphasise
 that topic models recover \emph{co-occurring vocabulary}, not narratives: in conflict
 research a narrative is a causally linked account assigning agency, responsibility
 and moral valence, and recovering that requires statement-level analysis we do not
