@@ -18,14 +18,24 @@ materially - Reddit's Pro-Israel share rises from 34.0\% to 36.1\%. All results 
 this paper use the cleaned corpus.
 
 \subsubsection*{Frequent and distinctive vocabulary}
-After removing shared conflict terms, Reddit's most frequent words are
-\textit{palestinians, jews, land, right, state, jewish, civilians, world, genocide},
-and \textit{idf}. YouTube foregrounds \textit{god, allah, free, peace, bless, love,
-children}, and \textit{support}. TF--IDF sharpens the stance contrast within each
+After removing shared conflict terms (including their plural forms), contraction
+fragments and discourse filler, Reddit's most frequent terms are \textit{jews, land,
+right, state, jewish, civilians, world}, and \textit{genocide}, while YouTube
+foregrounds \textit{god, free, allah, world, land, bless, idf, peace, children}, and
+\textit{love} (Figure~\ref{fig:topwords}). TF--IDF sharpens the stance contrast within each
 platform: on Reddit, Pro-Palestine comments are distinguished by
 \textit{genocide, land, right}, Pro-Israel comments by \textit{jews, jewish,
 civilians}; on YouTube, Pro-Palestine by \textit{free, allah, land} and Pro-Israel
 by \textit{god, bless, idf, stand}.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{f09_top_words.png}
+  \caption{Most frequent terms per platform after removing shared conflict terms, contraction fragments and discourse filler.}
+  \label{fig:topwords}
+\end{figure*}
+
+
 
 \subsubsection*{Topic structure}
 LDA and NMF recover consistent structure on Reddit, which we label only by the
@@ -52,6 +62,13 @@ YouTube. Second, YouTube's discourse is visibly multilingual and includes a larg
 South Asian participation stream that has no counterpart in our Reddit sample - a
 composition difference that any cross-platform comparison of this conflict should
 report, and which we return to when interpreting the stance-transfer results.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{f10_wordclouds.png}
+  \caption{Stance vocabularies by platform. Reddit divides along legal and territorial terms; YouTube along devotional and solidaristic ones.}
+  \label{fig:wordclouds}
+\end{figure*}
 
 \subsubsection*{Topic-model quality}
 We quantify topic quality with $c_v$ coherence rather than asserting it. NMF is
