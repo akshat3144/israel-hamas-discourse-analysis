@@ -1,0 +1,72 @@
+\documentclass[10pt,twocolumn]{article}
+
+% ---------- packages ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in,columnsep=0.28in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage[expansion=false]{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{stfloats}   % allow figure* / table* at bottom
+\usepackage{enumitem}
+\usepackage{authblk}
+
+% ---------- styling ----------
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{1pt}
+\graphicspath{{paperfigs/}}
+
+% ---------- IEEE-style headings ----------
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\titleformat{\section}[block]{\centering\normalsize\scshape\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}[block]{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}[block]{\normalsize\bfseries\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titlespacing*{\subsection}{0pt}{7pt}{2pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{1pt}
+
+\renewcommand{\arraystretch}{1.15}
+
+% ---------- float placement (avoid sparse/empty pages) ----------
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.78}
+\renewcommand{\dbltopfraction}{0.92}
+\renewcommand{\dblfloatpagefraction}{0.78}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setcounter{dbltopnumber}{2}
+
+% tighten the vertical space floats consume
+\setlength{\textfloatsep}{9pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\dblfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{9pt plus 2pt minus 2pt}
+
+% ---------- title ----------
+\title{\vspace{-1.2em}\textbf{The Digital Frontline: A Comprehensive Analysis of\\
+Israel--Hamas Discourse}\\[0.25em]
+\large A Comparative Study of Reddit and YouTube}
+
+\author[1]{Akshat Gupta}
+\author[1]{Raghav Sarna}
+\author[1]{Arsh Arora}
+\affil[1]{\normalsize Department of Computer Science \& Artificial Intelligence,
+Plaksha University, Mohali, Punjab 140306, India}
+\date{June 7, 2026}
+
+% avoid vertical stretching that leaves large gaps between blocks
+
+\raggedbottom
+

@@ -229,11 +229,11 @@ intervals span roughly $\pm0.1$ percentage points, so sampling error is negligib
 and the operative uncertainty is annotation error, which
 Section~\ref{sec:validation} addresses.
 
-\begin{table}[H]
+\begin{table*}[t]
   \centering
   \small
   \caption{Corpus construction and final stance composition (matched window,
-  automated accounts removed), with bootstrapped 95\% CIs.}
+  automated accounts removed). Stance shares carry bootstrapped 95\% CIs.}
   \label{tab:data}
   \begin{tabular}{lrr}
     \toprule
@@ -244,15 +244,12 @@ Section~\ref{sec:validation} addresses.
     After matched window              & 1{,}067{,}904 & 378{,}267 \\
     After removing automated accounts & \textbf{1{,}004{,}629} & \textbf{378{,}267} \\
     \midrule
-    \quad Pro-Palestine (P) & 455{,}709 & 212{,}217 \\
-    \quad \emph{share}      & 45.36\% [45.26, 45.46] & 56.10\% [55.94, 56.26] \\
-    \quad Pro-Israel (I)    & 362{,}340 & 131{,}357 \\
-    \quad \emph{share}      & 36.07\% [35.97, 36.16] & 34.73\% [34.57, 34.88] \\
-    \quad Neutral (N)       & 186{,}580 & 34{,}693 \\
-    \quad \emph{share}      & 18.57\% [18.50, 18.65] & 9.17\% [9.08, 9.27] \\
+    Pro-Palestine (P) & 455{,}709 \quad 45.36\% [45.26, 45.46] & 212{,}217 \quad 56.10\% [55.94, 56.26] \\
+    Pro-Israel (I)    & 362{,}340 \quad 36.07\% [35.97, 36.16] & 131{,}357 \quad 34.73\% [34.57, 34.88] \\
+    Neutral (N)       & 186{,}580 \quad 18.57\% [18.50, 18.65] & \phantom{0}34{,}693 \quad \phantom{0}9.17\% [\phantom{0}9.08, \phantom{0}9.27] \\
     \bottomrule
   \end{tabular}
-\end{table}
+\end{table*}
 
 \begin{figure}[H]
   \centering

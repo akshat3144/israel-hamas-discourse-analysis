@@ -67,6 +67,7 @@ save(fig, "f01_stance_ci.png")
 
 # ---------------------------------------------------------------- 2. sentiment (R1/R11)
 fig, axes = plt.subplots(1, 2, figsize=(FULL, 2.4))
+fig.subplots_adjust(wspace=0.30)
 d = bf["sentiment"]["by_stance"]
 for ax, plat in zip(axes, ["reddit", "youtube"]):
     m = d[plat]["means"]
@@ -138,8 +139,9 @@ ax.bar(xx + 0.19, [rp[s] for s in STANCES], 0.38, label="reply network",
        color="#e67e22", edgecolor="black", linewidth=0.4)
 ax.set_xticks(xx); ax.set_xticklabels([SHORT[s] for s in STANCES])
 ax.set_ylabel("homophily index")
+ax.set_ylim(0, max(max(th.values()), max(rp.values())) * 1.45)
 ax.set_title("Co-presence vs interaction give\ndifferent answers")
-ax.legend(frameon=False)
+ax.legend(frameon=False, loc="upper right")
 save(fig, "f05_homophily_compare.png")
 
 # ---------------------------------------------------------------- 6. joint sentiment x toxicity (R2)
