@@ -1,0 +1,66 @@
+The two platforms differ in vocabulary as well as tone. We report topic structure
+descriptively: the labels below name the \emph{term families} a model groups
+together and make no claim about who acted, who was responsible, or what any act
+licenses. Recovering that would require statement-level narrative analysis, which we
+do not perform.
+
+\subsubsection*{A data-quality correction}
+Our first pass produced a prominent Reddit ``community governance'' topic
+(\textit{bot, rules, moderators, action, automatically}) and a Neutral class whose
+most distinctive terms were almost entirely automated moderation text. Inspection
+showed that automated accounts and the collapsed \texttt{[deleted]} placeholder
+supply 5.93\% of the Reddit corpus, and that this contamination is strongly
+asymmetric across stances: 14.2\% of Neutral and 6.5\% of Pro-Palestine comments,
+but only 0.3\% of Pro-Israel comments, because subreddit rule text is itself
+stance-inflected. Removing these accounts corpus-wide (not merely from user-level
+analysis) both eliminates the spurious topic and shifts the stance composition
+materially - Reddit's Pro-Israel share rises from 34.0\% to 36.1\%. All results in
+this paper use the cleaned corpus.
+
+\subsubsection*{Frequent and distinctive vocabulary}
+After removing shared conflict terms, Reddit's most frequent words are
+\textit{palestinians, jews, land, right, state, jewish, civilians, world, genocide},
+and \textit{idf}. YouTube foregrounds \textit{god, allah, free, peace, bless, love,
+children}, and \textit{support}. TF--IDF sharpens the stance contrast within each
+platform: on Reddit, Pro-Palestine comments are distinguished by
+\textit{genocide, land, right}, Pro-Israel comments by \textit{jews, jewish,
+civilians}; on YouTube, Pro-Palestine by \textit{free, allah, land} and Pro-Israel
+by \textit{god, bless, idf, stand}.
+
+\subsubsection*{Topic structure}
+LDA and NMF recover consistent structure on Reddit, which we label only by the
+terms present:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+  \item \textbf{territory and statehood terms:} israel, palestinians, gaza, state, west, bank, peace;
+  \item \textbf{identity and land terms:} jews, jewish, land, arabs, arab, palestine;
+  \item \textbf{conflict-actor and casualty terms:} hamas, civilians, idf, hostages, killed, children;
+  \item \textbf{contested-framing terms:} genocide, propaganda, media, zionist, support;
+  \item \textbf{conversational markers:} dont, think, know, youre, thats.
+\end{itemize}
+On YouTube the recovered families are markedly different:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+  \item \textbf{Pro-Palestine slogan terms:} free, palestine, allah, river, sea, freedom;
+  \item \textbf{Pro-Israel solidarity terms:} israel, stand, support, love, praying, india;
+  \item \textbf{devotional terms:} god, bless, protect, jesus, amen, lord;
+  \item \textbf{conflict-actor terms:} hamas, civilians, idf, hostages, blame, attack;
+  \item \textbf{non-English tokens:} hai, ke, ko, ki, ya, indicating substantial
+  Hindi/Urdu and Arabic-script participation.
+\end{itemize}
+Two observations follow. First, the same conflict is lexicalised through political
+and legal vocabulary on Reddit and through devotional and slogan vocabulary on
+YouTube. Second, YouTube's discourse is visibly multilingual and includes a large
+South Asian participation stream that has no counterpart in our Reddit sample - a
+composition difference that any cross-platform comparison of this conflict should
+report, and which we return to when interpreting the stance-transfer results.
+
+\subsubsection*{Comment length and readability}
+Reddit comments average \textbf{49.3} words (median 27); YouTube comments average
+\textbf{18.5} words (median 10). Flesch Reading Ease is correspondingly lower for
+Reddit (\textbf{63.7}) than YouTube (\textbf{67.1}), i.e.\ Reddit comments are
+slightly harder to read. We describe this strictly as \emph{readability}: Flesch is
+a surface measure of syllable and sentence length and is not evidence of narrative
+complexity or argumentative depth. Stance-level differences in readability are
+negligible ($\varepsilon^2=0.008$ on Reddit, $0.012$ on YouTube). As noted in
+Section~\ref{sec:data}, the length contrast is a property of the platforms' designs
+rather than a finding about this conflict, and we use it below as a control rather
+than as a result.

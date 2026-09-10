@@ -1,0 +1,641 @@
+\begin{document}
+\twocolumn[
+  \begin{@twocolumnfalse}
+  \maketitle
+  \begin{abstract}
+  \noindent
+  The Israel--Hamas conflict has unfolded not only through military and diplomatic
+  events but also through continuous public argument online. We analyse
+  \textbf{1{,}382{,}896} stance-labelled comments - \textbf{1{,}004{,}629} from Reddit
+  and \textbf{378{,}267} from YouTube - over a \emph{matched}
+  7~October~2023--7~May~2024 window, to ask how platform architecture shapes
+  political discourse. Three findings are not predictable from platform design
+  alone. First, emotional tone is \emph{politicised} on Reddit, where both partisan
+  camps are negative and only neutral comments are positive, but largely
+  \emph{decoupled} from stance on YouTube; the contrast strengthens when restricted
+  to comments on which three independent sentiment methods agree. Second, negativity
+  and toxicity are related but not interchangeable: 88.5\% of toxic Reddit comments
+  are negative, yet only 15.5\% of negative comments are toxic, and once sentiment is
+  controlled the apparent toxicity gap between the two partisan camps disappears.
+  Third, and contrary to the echo-chamber account, Reddit's \emph{reply} network is
+  \emph{disassortative} by stance (Newman $r=-0.184$): 62.4\% of partisan replies
+  cross the divide, even though the same users appear strongly clustered when
+  measured by thread co-membership. Stance classifiers transfer poorly across
+  platforms, and we show this survives length matching, so it reflects vocabulary
+  rather than comment length. We release a reproducible LLM-assisted labelling
+  pipeline together with a human-validation protocol.
+  \vspace{0.6em}
+  \end{abstract}
+  \end{@twocolumnfalse}
+]
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+\subsection{Research Motivation}
+The Israel--Hamas conflict has played out as much in comment threads as on the
+ground. Because platforms differ in architecture, they may shape that argument in
+systematically different ways. We compare two with sharply contrasting designs:
+\textbf{Reddit}, a threaded forum with voting and unlimited comment length, and
+\textbf{YouTube}, a media-centric platform where flat, length-limited comments react
+to video content.
+
+We treat the structural contrast between these designs as a \emph{premise and a
+control}, not as a result. That Reddit hosts longer threaded exchanges while YouTube
+hosts shorter reactions is a well-documented property of the two platforms and is
+not a finding about this conflict. Our question is what remains once that difference
+is held in view: whether the \emph{relationships} among stance, emotion, toxicity and
+interaction differ across platforms in ways architecture alone does not predict.
+
+\subsection{Research Questions}
+Because sentiment and toxicity are likely to overlap, we study them jointly rather
+than as separate questions, giving three:
+
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+  \item \textbf{RQ1 (Affective tone and toxicity).} How do emotional tone and
+  toxicity differ between platforms and stances, and are they the same phenomenon?
+  \item \textbf{RQ2 (Topics and vocabulary).} What distinct topics and lexical
+  choices characterise each platform and stance?
+  \item \textbf{RQ3 (Polarization and interaction structure).} Do users cluster into
+  same-stance interaction, and is stance encoded in platform-specific language?
+\end{itemize}
+
+\subsection{Contributions}
+This work contributes (1)~large-scale evidence that the \emph{coupling} between
+stance and emotional tone is platform-dependent - strong on Reddit, near-zero on
+YouTube; (2)~a demonstration that toxicity is a distinct and much rarer phenomenon
+than negativity, and that the apparent partisan toxicity asymmetry is absorbed by
+sentiment; (3)~a network-level correction to the echo-chamber account, showing that
+thread co-membership and actual reply behaviour give opposite answers, with the
+reply graph disassortative by stance; and (4)~a reproducible LLM-assisted labelling
+pipeline with retained per-label justifications and an accompanying human-validation
+protocol.
+
+Cross-platform stance-transfer failure is \emph{not} claimed as novel - it is
+established for stance datasets generally by Ng and Carley~\cite{ng2022}. Our
+contribution there is narrower: the gap persists after controlling comment length,
+and we identify which lexical families fail to carry across.
+
+% ============================================================
+\section{Related Work}
+% ============================================================
+\subsection{Platform Architecture and Political Discourse}
+\input{rw_platform}
+
+\subsection{Online Discourse on the Israel--Hamas Conflict}
+\input{rw_conflict}
+
+\subsection{Sentiment Analysis of Political Text}
+Lexicon-based sentiment methods remain standard for large-scale political corpora.
+VADER~\cite{hutto2014}, designed for microblog contexts, captures punctuation
+intensity, slang, and negation. TextBlob's default analyser is also lexicon-based:
+it matches tokens against a hand-curated dictionary assigning each entry a polarity
+in $[-1,1]$, a subjectivity in $[0,1]$ and an intensity weight, then averages the
+matched polarities across a sentence while applying negation and intensifier
+modifiers. Polarity is therefore a signed average of word-level priors, while
+subjectivity measures how opinion-laden (not how positive) the wording is; we
+classify a comment positive above $+0.1$ and negative below $-0.1$. Because both
+tools are lexicon-based and neither is trained on this domain, we additionally apply
+a RoBERTa model fine-tuned on Twitter data - building on the BERT architecture of
+Devlin et al.~\cite{devlin2019} - and treat agreement among the three as a
+measurement question in its own right rather than an assumption.
+
+\subsection{Topic Modeling}
+Latent Dirichlet Allocation~\cite{blei2003} and Non-negative Matrix
+Factorization~\cite{leeseung1999} represent documents as mixtures over latent
+topics; LDA assumes a Bayesian generative process while NMF performs a matrix
+decomposition that tends to produce sparser topics. BERTopic~\cite{grootendorst2022}
+instead clusters sentence-embedding representations. We apply LDA and NMF in
+parallel so that no single algorithm drives the reported structure. We emphasise
+that topic models recover \emph{co-occurring vocabulary}, not narratives: in conflict
+research a narrative is a causally linked account assigning agency, responsibility
+and moral valence, and recovering that requires statement-level analysis we do not
+attempt here.
+
+\subsection{Echo Chambers and Partisan Polarization}
+The homophily principle - that similar people interact at higher rates than
+dissimilar ones~\cite{mcpherson2001} - underpins computational echo-chamber
+research. Sunstein~\cite{sunstein2017} argued that filtering and self-selection
+narrow exposure, while Bail et al.~\cite{bail2018} showed experimentally that
+exposure to opposing views can \emph{increase} polarization. Cinelli
+et al.~\cite{cinelli2021} demonstrated that echo-chamber strength is itself
+platform-dependent, motivating our comparative design. Crucially, homophily is a
+property of a \emph{network}, so we measure it on an explicit user--user reply graph
+and report Newman's assortativity coefficient for categorical
+attributes~\cite{newman2003} alongside a chance-corrected homophily index; raw
+same-stance rates are uninterpretable without the baseline expected under random
+mixing.
+
+\subsection{Toxicity and Harmful Speech}
+The Perspective API operationalizes online harm through the framework of Wulczyn,
+Thain and Dixon~\cite{wulczyn2017}, scoring the probability that a rater would find a
+comment rude or disrespectful across six attributes. We use Perspective in
+preference to zero-shot toxicity prompting of a general-purpose LLM for three
+reasons: its scores are calibrated against human rater distributions, they are
+directly comparable to a large existing literature, and they are stable across runs,
+whereas LLM zero-shot toxicity is prompt-sensitive, uncalibrated and not comparable
+across studies. Its known demographic biases mean we report effect sizes rather than
+thresholded counts wherever possible. Throughout we say ``toxicity'' and name the
+specific Perspective attribute; we avoid the vaguer term ``harm'', which we never
+define independently of these scores.
+
+\subsection{LLM-Assisted Annotation}
+Manually labeling millions of comments is impractical at this scale. Gilardi,
+Alizadeh and Kubli~\cite{gilardi2023} showed that LLMs can outperform crowd workers
+on stance and frame detection. We use Llama-3.3-70B-Instruct, retaining per-label
+confidence tiers and free-text justifications. Because automated annotation without
+human verification is not sufficient evidence of label quality, we specify a
+human-validation protocol (Section~\ref{sec:validation}) measuring both
+model--human agreement and whether the confidence filter is justified.
+Classification uses scikit-learn~\cite{pedregosa2011} and readability the Flesch
+formula~\cite{flesch1948}; agreement statistics follow
+Krippendorff~\cite{krippendorff2004}.
+
+% ============================================================
+\section{Data and Methodology}
+\label{sec:data}
+% ============================================================
+\subsection{Data Collection}
+Reddit comments were collected with the \textit{Arctic Shift} historical-dump tool
+from five conflict-relevant subreddits - \texttt{r/AskMiddleEast},
+\texttt{r/IsraelPalestine}, \texttt{r/Israel}, \texttt{r/IsraelPalestineWar\_23},
+and \texttt{r/Palestine} - yielding about \textbf{3.08 million} raw comments, each
+joined to its parent post so thread context is available.
+
+YouTube candidate videos were discovered through the \textit{YouTube Data API v3}
+using roughly two dozen conflict-related queries restricted to the
+7~October~2023--7~May~2024 window, returning about 2{,}600 unique videos. Comments
+were then scraped from YouTube's HTML and AJAX continuation endpoints, producing
+approximately \textbf{966{,}000} raw comments.
+
+\subsection{Temporal Anchoring and the Matched Window}
+Two timestamp issues govern every temporal comparison. Reddit comments carry true
+posting timestamps. YouTube comment times, however, were reconstructed from relative
+``x ago'' strings at scrape time; because those strings are coarse at the top of
+their range (any comment 24--35 months old renders as ``2 years ago'') and no exact
+per-comment scrape time was persisted, the reconstructed field spans 2024--2026 and
+is not a usable comment timeline. We therefore anchor YouTube on the \emph{video
+publish date}, and note that recovering exact \texttt{publishedAt} values through the
+Data API is the appropriate long-term fix.
+
+Because sentiment, toxicity and polarization can all drift over time, comparing
+platforms across different periods would confound platform with period. We therefore
+restrict \emph{both} platforms to the common window
+\textbf{7~October~2023--7~May~2024}, removing a Reddit-only pre-war baseline of
+\textbf{42{,}249} comments (3.81\%) and leaving YouTube unchanged.
+
+\subsection{Stance Labeling}
+Both platforms were annotated by the \emph{same} automated annotator, so the stance
+scheme is consistent across them. We used \texttt{Llama-3.3-70B-Instruct} with an
+expert-annotator system prompt embedding the full guidelines. Each item was presented
+with its context, and the model returned a stance label, a confidence level
+(High/Medium/Low) and a justification retained for auditability, on a four-class
+scheme: Pro-Palestine~(P), Pro-Israel~(I), Neutral~(N) and Irrelevant~(R). Labelling
+ran asynchronously in 50-comment batches at temperature $0.1$ with per-batch
+checkpointing.
+
+\subsection{Human Validation Protocol}
+\label{sec:validation}
+To measure rather than assume label quality we drew a stratified sample of
+\textbf{270} comments, balanced across platform $\times$ stance $\times$ confidence
+tier (30 High and 15 Medium/Low per stance per platform), from the \emph{pre-filter}
+labelled data. Annotators label each item blind against the published guidelines.
+The protocol reports (i)~inter-annotator agreement (Krippendorff's~$\alpha$ and
+pairwise~$\kappa$), (ii)~model-versus-human accuracy, macro-F1 and per-class
+confusion against a majority-vote gold standard, and (iii)~accuracy in the retained
+High tier against the discarded Medium/Low tier. Point~(iii) is what converts the
+confidence filter from an assumption into an empirically justified choice. Sampling
+code, blind sheets and the scoring script are released with the corpus. We flag
+explicitly that the annotation itself is outstanding, so all label-dependent results
+are provisional pending that measurement.
+
+\subsection{Corpus Cleaning and Final Datasets}
+Two filtering decisions shape the analytic corpus. First, Irrelevant~(R) comments
+and non-high-confidence labels are discarded. Second - and unlike our earlier
+analysis - automated accounts (\texttt{AutoModerator}, \texttt{*-ModTeam}) and the
+collapsed \texttt{[deleted]} placeholder are removed \emph{corpus-wide} rather than
+only from user-level analyses. These supply 5.93\% of the windowed Reddit corpus, and
+their contamination is strongly asymmetric: 14.2\% of Neutral and 6.5\% of
+Pro-Palestine comments but only 0.3\% of Pro-Israel comments, because subreddit rule
+text is itself stance-inflected. Leaving them in inflated two stance classes and
+produced a spurious ``community governance'' topic. YouTube shows no comparable
+automated-account concentration.
+
+The resulting corpus is \textbf{1{,}004{,}629} Reddit and \textbf{378{,}267} YouTube
+comments (Table~\ref{tab:data}, Figure~\ref{fig:stance}). Stance shares carry
+bootstrapped 95\% confidence intervals (4{,}000 resamples); at this scale the
+intervals span roughly $\pm0.1$ percentage points, so sampling error is negligible
+and the operative uncertainty is annotation error, which
+Section~\ref{sec:validation} addresses.
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Corpus construction and final stance composition (matched window,
+  automated accounts removed), with bootstrapped 95\% CIs.}
+  \label{tab:data}
+  \begin{tabular}{lrr}
+    \toprule
+    Stage & Reddit & YouTube \\
+    \midrule
+    Raw comments collected            & $\sim$3{,}083{,}006 & 966{,}027 \\
+    Non-R, high-confidence            & 1{,}110{,}153 & 378{,}267 \\
+    After matched window              & 1{,}067{,}904 & 378{,}267 \\
+    After removing automated accounts & \textbf{1{,}004{,}629} & \textbf{378{,}267} \\
+    \midrule
+    \quad Pro-Palestine (P) & 455{,}709 & 212{,}217 \\
+    \quad \emph{share}      & 45.36\% [45.26, 45.46] & 56.10\% [55.94, 56.26] \\
+    \quad Pro-Israel (I)    & 362{,}340 & 131{,}357 \\
+    \quad \emph{share}      & 36.07\% [35.97, 36.16] & 34.73\% [34.57, 34.88] \\
+    \quad Neutral (N)       & 186{,}580 & 34{,}693 \\
+    \quad \emph{share}      & 18.57\% [18.50, 18.65] & 9.17\% [9.08, 9.27] \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{f01_stance_ci.png}
+  \caption{Stance distribution by platform with bootstrapped 95\% CIs.}
+  \label{fig:stance}
+\end{figure}
+
+\subsection{Measures}
+\label{sec:measures}
+Three quantities recur and are defined explicitly.
+
+\textbf{Stance consistency.} For a user $u$ with $n_u$ comments and $n_{u,s}$
+comments of stance $s$, consistency is $\max_s n_{u,s}/n_u$ - the share of the user's
+comments in their most frequent stance, where $1.0$ means the user never varies.
+Computed over users with $\ge 3$ comments.
+
+\textbf{Thread homophily.} With $T_u$ the set of distinct threads $u$ participates in
+and $\mathrm{dom}(u)$ their dominant stance,
+$H^{\text{thread}}_u = |\{t \in T_u : \text{majority}(t) = \mathrm{dom}(u)\}| / |T_u|$.
+This measures co-presence, not interaction.
+
+\textbf{Reply homophily and assortativity.} We build a directed user--user graph in
+which an edge $u \rightarrow v$ exists whenever $u$ replies to a comment authored by
+$v$, recovered from Reddit's \texttt{parent\_id} field (\texttt{t1\_} prefixes denote
+replies to comments; self-replies are dropped). Reply homophily is the share of a
+user's outgoing edges landing on same-stance users. Because that share depends on how
+common each stance is among reply targets, we report it against the value expected
+under random mixing and summarise the whole graph with Newman's assortativity
+coefficient~\cite{newman2003}, where $0$ is random mixing and negative values indicate
+cross-stance interaction.
+
+\subsection{Analytical Methods}
+Emotional tone is scored with VADER, TextBlob and
+\texttt{twitter-roberta-base-sentiment}; we report pairwise Cohen's $\kappa$ and
+analyse the subset on which all three agree. Topics combine word frequency and
+TF--IDF with LDA and NMF. Toxicity uses Google's Perspective API on a balanced
+stratified sample. Stance classification uses a soft-voting ensemble (Logistic
+Regression, calibrated Linear SVM, Random Forest) over TF--IDF features, evaluated
+within and across platforms, with and without length matching, and explained by
+\emph{permutation importance computed on the ensemble itself}. Because the corpus is
+large, every significance test is paired with an effect size (Cram\'er's $V$,
+rank-biserial $r$, or $\varepsilon^2$).
+
+% ============================================================
+\section{Results}
+% ============================================================
+\subsection{RQ1: Affective Tone and Toxicity}
+
+\subsubsection*{Platform tone}
+Reddit has a mean VADER compound score of \textbf{$-0.164$}; YouTube
+\textbf{$+0.068$}. A Mann--Whitney test confirms the contrast ($p<0.001$;
+rank-biserial $r=+0.234$).
+
+\subsubsection*{Tone is bound to stance on Reddit, not on YouTube}
+On Reddit both partisan stances are negative - Pro-Palestine ($-0.198$) and
+Pro-Israel ($-0.219$) - while Neutral comments are mildly positive ($+0.027$). On
+YouTube every stance sits near neutral-to-positive: Pro-Palestine ($+0.038$),
+Pro-Israel ($+0.107$), Neutral ($+0.105$). The stance--sentiment association is
+correspondingly far stronger on Reddit (Cram\'er's $V=0.149$) than on YouTube
+($V=0.039$), as Figure~\ref{fig:sentstance} shows. Negativity is thus the signature
+of partisanship on Reddit, whereas on YouTube affect is largely detached from
+political position.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{f02_sentiment_by_stance.png}
+  \caption{Mean sentiment by stance. Tone is politicised on Reddit and decoupled
+  from stance on YouTube.}
+  \label{fig:sentstance}
+\end{figure*}
+
+\subsubsection*{How much should we trust the sentiment tools?}
+Agreement among the three methods is modest, and we report it rather than assume it
+(Figure~\ref{fig:consensus}): on Reddit $\kappa=0.271$ (VADER--RoBERTa), $0.231$
+(VADER--TextBlob) and only $0.085$ (TextBlob--RoBERTa); on YouTube the corresponding
+values are $0.412$, $0.284$ and $0.171$. TextBlob is clearly the weakest instrument.
+Rather than average over disagreement, we isolate comments on which \emph{all three}
+methods agree - 23.6\% of the Reddit sample and 31.4\% of the YouTube sample. On this
+high-confidence subset the platform contrast does not weaken but \emph{strengthens}:
+55.5\% of Reddit comments are negative against 25.7\% on YouTube (mean compound
+$-0.279$ vs $+0.049$; $r=+0.347$), and the Reddit stance--sentiment association rises
+to $V=0.264$ while YouTube stays low at $V=0.063$. The substantive conclusion
+therefore survives the measurement concern.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{f03_consensus.png}
+  \caption{Left: pairwise inter-method agreement is modest, especially for TextBlob.
+  Right: on the unanimously-scored subset the platform gap widens.}
+  \label{fig:consensus}
+\end{figure*}
+
+\subsubsection*{Toxicity by platform and stance}
+Perspective scoring on a balanced stratified sample of \textbf{300 Reddit} and
+\textbf{300 YouTube} comments (100 per stance) shows Reddit higher on every
+attribute (Table~\ref{tab:tox}), the largest platform effect being identity attack
+($r=-0.300$). Within platforms, both partisan camps score above Neutral, with the
+strongest stance-linked effects for Reddit threat ($\varepsilon^2=0.151$) and
+YouTube identity attack ($\varepsilon^2=0.103$).
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Mean Perspective toxicity scores by platform ($n=300$ per platform).}
+  \label{tab:tox}
+  \begin{tabular}{lccc}
+    \toprule
+    Attribute & Reddit & YouTube & rank-biserial $r$ \\
+    \midrule
+    Toxicity        & \textbf{0.237} & 0.159 & $-0.231$ \\
+    Severe toxicity & \textbf{0.034} & 0.016 & $-0.203$ \\
+    Identity attack & \textbf{0.168} & 0.082 & $-0.300$ \\
+    Insult          & \textbf{0.131} & 0.097 & $-0.202$ \\
+    Threat          & \textbf{0.082} & 0.044 & $-0.204$ \\
+    Profanity       & \textbf{0.112} & 0.056 & $-0.195$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection*{Are negativity and toxicity the same thing?}
+They are related but far from interchangeable (Figure~\ref{fig:jointtox}). Sentiment
+and toxicity correlate moderately (Spearman $\rho=-0.435$ on Reddit, $-0.240$ on
+YouTube). Almost all toxic comments are negative - 88.5\% on Reddit, 66.7\% on
+YouTube - but the converse fails badly: only \textbf{15.5\%} of negative Reddit
+comments and \textbf{8.7\%} of negative YouTube comments are toxic. Toxicity is
+therefore a small, distinct subset of negative discourse, and treating negativity as
+a proxy for harm would overcount it roughly sixfold.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{f06_joint_toxicity.png}
+  \caption{Negativity and toxicity overlap asymmetrically: most toxic comments are
+  negative, but few negative comments are toxic.}
+  \label{fig:jointtox}
+\end{figure*}
+
+This distinction changes the stance story. Regressing toxicity jointly on sentiment
+and stance, sentiment is a strong predictor (Reddit $b=-0.137$, $p<0.001$) while the
+Pro-Israel--Pro-Palestine contrast is \emph{not} significant on either platform
+(Reddit $p=0.909$; YouTube $p=0.246$). Only the partisan--neutral gap survives
+(Reddit $b=-0.075$, $p=0.006$). The apparent asymmetry between the two partisan camps
+in Table~\ref{tab:tox} is thus absorbed by how negative their comments are; what is
+robust is that partisan comments of \emph{either} side are more toxic than neutral
+ones. Because the sample contains only 26 Reddit and 12 YouTube comments above the
+conventional toxicity threshold, these joint results are indicative and warrant a
+larger scored sample.
+
+\subsection{RQ2: Topics and Vocabulary}
+\input{rq2_body}
+
+\subsection{RQ3: Polarization and Interaction Structure}
+
+\subsubsection*{Engagement: a circular metric, and a non-circular replacement}
+An OLS model predicting Reddit score from sentiment and stance has almost no
+explanatory power ($R^2=0.009$). Controversial comments average a near-zero score
+($0.17$) against $9.48$ for non-controversial ones. We stress that this is
+\emph{definitional rather than behavioural}: Reddit sets the controversiality flag
+precisely when a comment attracts substantial voting in both directions, and score is
+upvotes minus downvotes, so a near-zero score follows arithmetically. We report it
+only as a sanity check that the flag behaves as documented.
+
+To ask whether controversy actually suppresses engagement we use a signal that is not
+vote-derived: the number of direct replies a comment receives, recovered from the
+reply graph. The answer reverses (Figure~\ref{fig:contro}). Controversial comments
+attract \textbf{0.747} replies on average versus \textbf{0.335} for
+non-controversial ones - more than twice as many ($p<0.001$, $r=-0.257$). Controversy
+is penalised by the scoring mechanism while simultaneously generating more
+conversation, a divergence invisible to vote-based measures alone.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{f08_controversy.png}
+  \caption{Controversial comments score near zero by construction, yet receive more
+  than twice as many replies.}
+  \label{fig:contro}
+\end{figure}
+
+\subsubsection*{User consistency}
+Among \textbf{44{,}593} active Reddit users ($\ge3$ comments) the dominant-stance
+split is 23{,}978 Pro-Palestine, 15{,}670 Pro-Israel and 4{,}945 Neutral. Mean stance
+consistency (Section~\ref{sec:measures}) is \textbf{0.803}: active users
+overwhelmingly repeat the same stance. Individual-level consistency is therefore high
+and is not in dispute.
+
+\subsubsection*{Co-presence and interaction give opposite answers}
+Measured by thread co-membership, the corpus looks like a textbook echo chamber: mean
+thread homophily is \textbf{0.643} and 43.4\% of active users exceed $0.8$, with
+Pro-Israel ($0.702$) and Pro-Palestine ($0.670$) far above Neutral ($0.329$).
+
+The reply network tells a different story (Figure~\ref{fig:homcmp}). Across
+\textbf{321{,}112} user--user reply edges, mean reply homophily is only
+\textbf{0.406}. More importantly, that figure must be read against chance: because
+52.0\% of reply targets are Pro-Palestine, a Pro-Palestine user replying at random
+would already match 52\% of the time. Both partisan groups fall \emph{below} their
+random-mixing baseline (Table~\ref{tab:mixing}), and the graph as a whole is
+disassortative, with Newman $r=\mathbf{-0.184}$. Pro-Israel users direct 64.4\% of
+their replies at Pro-Palestine users; Pro-Palestine users direct 54.4\% of theirs at
+Pro-Israel users (Figure~\ref{fig:mixing}). Among partisan reply pairs,
+\textbf{62.4\%} cross the divide. Only Neutral users are mildly assortative
+($+0.09$ above chance), and they are a small pool.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{f05_homophily_compare.png}
+  \caption{Thread co-membership suggests clustering; the reply network does not.}
+  \label{fig:homcmp}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Reply homophily against the random-mixing baseline. Negative excess
+  indicates cross-stance interaction.}
+  \label{tab:mixing}
+  \begin{tabular}{lccc}
+    \toprule
+    Replier stance & Observed & Expected & Excess \\
+    \midrule
+    Pro-Palestine & 0.406 & 0.520 & $-0.113$ \\
+    Pro-Israel    & 0.307 & 0.425 & $-0.118$ \\
+    Neutral       & 0.140 & 0.055 & $+0.085$ \\
+    \midrule
+    Overall       & 0.343 & 0.445 & $-0.102$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{f04_reply_mixing.png}
+  \caption{Who replies to whom. Partisan users reply across the divide more often
+  than chance would predict; the stance reply graph is disassortative.}
+  \label{fig:mixing}
+\end{figure*}
+
+The two measures are not contradictory; they measure different things. Users do
+concentrate in threads dominated by their own side, but \emph{within} those threads
+the replies they write disproportionately target the other side. Echo-chamber claims
+resting on co-presence alone can therefore invert the conclusion drawn from
+interaction.
+
+\subsubsection*{Stance classification as a lexical diagnostic}
+We treat stance classification not as a performance claim but as a diagnostic of how
+differently the two platforms encode stance. A soft-voting ensemble reaches macro-F1
+$0.640$ within Reddit and $0.470$ within YouTube (5-fold CV: $0.624\pm0.004$ and
+$0.461\pm0.003$), and transfers poorly in both directions (Table~\ref{tab:ml}).
+
+The obvious objection is that Reddit and YouTube comments differ sharply in length
+(49.3 vs 18.5 words), so transfer failure might be a length artifact rather than a
+vocabulary one. We tested this by matching the two length distributions bin-by-bin,
+producing corpora with near-identical means (18.5 vs 18.4 words). The mean
+within-minus-cross macro-F1 gap falls only from $0.140$ to $0.129$
+(Figure~\ref{fig:transfer}). Length matching therefore does not explain the transfer
+failure; the divergence is lexical.
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Stance-classification macro-F1, raw and length-matched.}
+  \label{tab:ml}
+  \begin{tabular}{llcc}
+    \toprule
+    Train & Test & Raw & Length-matched \\
+    \midrule
+    Reddit  & Reddit  & 0.640 & 0.617 \\
+    YouTube & YouTube & 0.470 & 0.475 \\
+    Reddit  & YouTube & 0.403 & 0.420 \\
+    YouTube & Reddit  & 0.427 & 0.414 \\
+    \midrule
+    \multicolumn{2}{l}{mean within$-$cross gap} & 0.140 & 0.129 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{f07_transfer.png}
+  \caption{Cross-platform transfer remains far below within-platform performance
+  after length matching.}
+  \label{fig:transfer}
+\end{figure}
+
+Permutation importance computed on the ensemble itself - so the explanation matches
+the model actually evaluated - confirms the lexical account. Reddit's most
+load-bearing terms are contested political nouns (\textit{hamas, israel, jews,
+palestinians, zionists, terrorists, genocide}), while YouTube's mix slogan
+vocabulary with channel-specific artifacts (\textit{free, palestina}, and
+video-specific tokens such as \textit{podcast}). The presence of channel artifacts is
+itself informative: part of what a YouTube stance classifier learns is which video a
+comment sits under, which cannot transfer by construction.
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+\subsection{Emotion Is Politicised on Reddit, Decoupled on YouTube}
+The platform-level tone gap is less interesting than \emph{where} emotion attaches to
+politics. On Reddit stance and sentiment are appreciably associated ($V=0.149$,
+rising to $0.264$ among unanimously-scored comments), with both partisan camps
+negative and only neutrals positive. On YouTube the association is near zero
+($V=0.039$). This is not predicted by the observation that YouTube comments are short
+reactions: short reactions could equally have been uniformly hostile. What the data
+show is that YouTube's affective register - devotional, solidaristic and largely
+positive - is applied across political positions, whereas on Reddit negativity is the
+marker of taking a side. Bail et al.~\cite{bail2018} found that cross-cutting exposure
+can intensify rather than soften partisan feeling, which is consistent with the
+pattern we observe in Reddit's argumentative, high-exposure environment.
+
+\subsection{Toxicity Is Not Simply Strong Negativity}
+Treating negative sentiment as a proxy for harmful speech would be a substantial
+error: only about one negative Reddit comment in six is toxic. The practical
+implication for moderation research is that sentiment filters are poor triage tools
+for harm. The finding also disciplines the partisan comparison. Raw scores suggest
+Pro-Israel comments are somewhat more toxic on some attributes, but once sentiment is
+controlled that contrast is statistically indistinguishable from zero, while the
+partisan-versus-neutral gap remains. We therefore make no claim that either side is
+the more toxic party; the defensible claim is that taking a side at all is associated
+with more toxic language than remaining neutral.
+
+\subsection{Co-Presence Is Not Interaction}
+Our clearest methodological result is that the two standard operationalisations of
+echo chambers disagree in sign. Thread co-membership yields homophily of $0.643$ and
+supports an echo-chamber reading; the reply network yields $0.406$, below chance, and
+a disassortative graph ($r=-0.184$) in which most partisan replies cross the divide.
+Since homophily is defined on networks~\cite{mcpherson2001,newman2003}, the
+reply-graph measure is the appropriate one, and it indicates that Reddit in this
+corpus functions as a contested arena rather than a set of sealed chambers. This does
+not contradict high individual stance consistency ($0.803$): users are consistent in
+\emph{what they argue} while still arguing largely with the other side. It aligns
+with Shugars and Ha~\cite{shugars2025}, who found that Reddit's conversational
+visibility supports more cross-cutting exchange than broadcast-oriented designs - our
+reply graph is the network-level signature of exactly that affordance. Because
+Cinelli et al.~\cite{cinelli2021} show echo-chamber strength varies by platform, we
+caution that this result is specific to Reddit's threaded reply structure and should
+not be generalised to feed-based platforms.
+
+\subsection{Stance Language Is Platform-Specific}
+That stance models transfer poorly across corpora is already established by Ng and
+Carley~\cite{ng2022}, so we claim no novelty for the effect itself. What our design
+adds is a control: the gap is essentially unchanged after matching comment-length
+distributions, so it is not an artifact of Reddit's longer comments. The residual gap
+is lexical - statehood, legal and atrocity vocabulary on Reddit against devotional
+and slogan vocabulary on YouTube - and is partly driven by video-specific tokens that
+cannot transfer even in principle. A further compositional difference matters here:
+YouTube's comment stream is visibly multilingual, with substantial Hindi/Urdu and
+Arabic-script participation absent from our Reddit sample, so the two corpora differ
+in speaker population as well as vocabulary. The implication is for study design
+rather than modelling: conclusions about stance drawn from a single platform should
+not be assumed to describe the discourse elsewhere.
+
+\subsection{Limitations}
+Several limitations qualify these results. First, stance labels were assigned by a
+large language model; we specify and release a human-validation protocol
+(Section~\ref{sec:validation}), but the annotation is not yet complete, so all
+label-dependent findings remain provisional in that respect. Second, the toxicity
+analysis rests on 600 scored comments - adequate for platform-level means but thin
+for the joint sentiment--toxicity analysis, where only 38 comments exceed the
+toxicity threshold; the Perspective API is also being retired, so replication will
+require a substitute instrument. Third, YouTube lacks usable comment timestamps, so
+its temporal anchor is the video publish date and no within-video temporal dynamics
+can be recovered. Fourth, the reply-network analysis is Reddit-only: YouTube's flat
+comment structure provides no comparable reply graph, so the central RQ3 result is
+single-platform. Fifth, coverage is partial - five subreddits and a fixed YouTube
+query set - and the two platforms differ in language composition, so neither corpus is
+a census nor are their speaker populations matched. Finally, sentiment instruments
+agree only modestly ($\kappa$ as low as $0.085$); we mitigate this with the
+unanimous-subset analysis but cannot fully resolve it without domain-specific human
+sentiment annotation.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+Across 1.38M stance-labelled comments in a matched window, the same conflict is
+organised differently by two platforms - but the differences that matter are not the
+ones visible from platform design. Emotional tone is politicised on Reddit and
+decoupled from stance on YouTube. Toxicity is a distinct and much rarer phenomenon
+than negativity, and the apparent asymmetry between partisan camps disappears once
+sentiment is controlled. Most consequentially, Reddit's users cluster by thread but
+argue across stance lines: the reply network is disassortative, and 62.4\% of
+partisan replies cross the divide, so echo-chamber conclusions drawn from co-presence
+invert when interaction is measured directly. Stance remains encoded in
+platform-specific vocabulary, and we show this is not an artifact of comment length.
+
+\bibliographystyle{ieeetr}
+\bibliography{refs}
+
+\end{document}
