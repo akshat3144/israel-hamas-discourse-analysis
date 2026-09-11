@@ -56,7 +56,7 @@
 
 % ---------- title ----------
 \title{\vspace{-1.2em}\textbf{The Digital Frontline: A Comprehensive Analysis of\\
-Israel--Hamas Discourse}\\[0.25em]
+Israel-Hamas Discourse}\\[0.25em]
 \large A Comparative Study of Reddit and YouTube}
 
 \author[1]{Akshat Gupta}
@@ -76,11 +76,11 @@ Plaksha University, Mohali, Punjab 140306, India}
   \maketitle
   \begin{abstract}
   \noindent
-  The Israel--Hamas conflict has unfolded not only through military and diplomatic
+  The Israel-Hamas conflict has unfolded not only through military and diplomatic
   events but also through continuous public argument online. We analyse
   \textbf{1{,}382{,}896} stance-labelled comments - \textbf{1{,}004{,}629} from Reddit
   and \textbf{378{,}267} from YouTube - over a \emph{matched}
-  7~October~2023--7~May~2024 window, to ask how platform architecture shapes
+  7~October~2023 to 7~May~2024 window, to ask how platform architecture shapes
   political discourse. Three findings are not predictable from platform design
   alone. First, emotional tone is \emph{politicised} on Reddit, where both partisan
   camps are negative and only neutral comments are positive, but largely
@@ -108,7 +108,7 @@ Plaksha University, Mohali, Punjab 140306, India}
 \section{Introduction}
 % ============================================================
 \subsection{Research Motivation}
-The Israel--Hamas conflict has played out as much in comment threads as on the
+The Israel-Hamas conflict has played out as much in comment threads as on the
 ground. Because platforms differ in architecture, they may shape that argument in
 systematically different ways. We compare two with sharply contrasting designs:
 \textbf{Reddit}, a threaded forum with voting and unlimited comment length, and
@@ -158,7 +158,7 @@ and we identify which lexical families fail to carry across.
 \subsection{Platform Architecture and Political Discourse}
 \input{rw_platform}
 
-\subsection{Online Discourse on the Israel--Hamas Conflict}
+\subsection{Online Discourse on the Israel-Hamas Conflict}
 \input{rw_conflict}
 
 \subsection{Sentiment Analysis of Political Text}
@@ -204,7 +204,7 @@ so - against a degree-preserving rewiring null. We therefore do not claim
 cross-cutting interaction on Reddit as a new result. We ask instead whether it holds
 in a geopolitical-conflict setting rather than domestic party politics, and why it
 coexists with strong echo-chamber readings of the same platform. Crucially, homophily is a
-property of a \emph{network}, so we measure it on an explicit user--user reply graph
+property of a \emph{network}, so we measure it on an explicit user-user reply graph
 and report Newman's assortativity coefficient for categorical
 attributes~\cite{newman2003} alongside a chance-corrected homophily index; raw
 same-stance rates are uninterpretable without the baseline expected under random
@@ -230,7 +230,7 @@ on stance and frame detection. We use Llama-3.3-70B-Instruct, retaining per-labe
 confidence tiers and free-text justifications. Because automated annotation without
 human verification is not sufficient evidence of label quality, we specify a
 human-validation protocol (Section~\ref{sec:validation}) measuring both
-model--human agreement and whether the confidence filter is justified.
+model-human agreement and whether the confidence filter is justified.
 Classification uses scikit-learn~\cite{pedregosa2011} and readability the Flesch
 formula~\cite{flesch1948}; agreement statistics follow
 Krippendorff~\cite{krippendorff2004}.
@@ -248,7 +248,7 @@ joined to its parent post so thread context is available.
 
 YouTube candidate videos were discovered through the \textit{YouTube Data API v3}
 using roughly two dozen conflict-related queries restricted to the
-7~October~2023--7~May~2024 window, returning about 2{,}600 unique videos. Comments
+7~October~2023 to 7~May~2024 window, returning about 2{,}600 unique videos. Comments
 were then scraped from YouTube's HTML and AJAX continuation endpoints, producing
 approximately \textbf{966{,}000} raw comments.
 
@@ -256,8 +256,8 @@ approximately \textbf{966{,}000} raw comments.
 Two timestamp issues govern every temporal comparison. Reddit comments carry true
 posting timestamps. YouTube comment times, however, were reconstructed from relative
 ``x ago'' strings at scrape time; because those strings are coarse at the top of
-their range (any comment 24--35 months old renders as ``2 years ago'') and no exact
-per-comment scrape time was persisted, the reconstructed field spans 2024--2026 and
+their range (any comment 24 to 35 months old renders as ``2 years ago'') and no exact
+per-comment scrape time was persisted, the reconstructed field spans 2024 to 2026 and
 is not a usable comment timeline. We therefore anchor YouTube on the \emph{video
 publish date}, and note that recovering exact \texttt{publishedAt} values through the
 Data API is the appropriate long-term fix.
@@ -265,7 +265,7 @@ Data API is the appropriate long-term fix.
 Because sentiment, toxicity and polarization can all drift over time, comparing
 platforms across different periods would confound platform with period. We therefore
 restrict \emph{both} platforms to the common window
-\textbf{7~October~2023--7~May~2024}, removing a Reddit-only pre-war baseline of
+\textbf{7~October~2023 to 7~May~2024}, removing a Reddit-only pre-war baseline of
 \textbf{42{,}249} comments (3.81\%) and leaving YouTube unchanged. Figure~\ref{fig:temporal} shows
 the resulting monthly volume on both platforms over that window.
 
@@ -365,7 +365,7 @@ and $\mathrm{dom}(u)$ their dominant stance,
 $H^{\text{thread}}_u = |\{t \in T_u : \text{majority}(t) = \mathrm{dom}(u)\}| / |T_u|$.
 This measures co-presence, not interaction.
 
-\textbf{Reply homophily and assortativity.} We build a directed user--user graph in
+\textbf{Reply homophily and assortativity.} We build a directed user-user graph in
 which an edge $u \rightarrow v$ exists whenever $u$ replies to a comment authored by
 $v$, recovered from Reddit's \texttt{parent\_id} field (\texttt{t1\_} prefixes denote
 replies to comments; self-replies are dropped). Reply homophily is the share of a
@@ -379,9 +379,9 @@ cross-stance interaction.
 Emotional tone is scored with VADER, TextBlob and
 \texttt{twitter-roberta-base-sentiment}; we report pairwise Cohen's $\kappa$ and
 analyse the subset on which all three agree. Topics combine word frequency and
-TF--IDF with LDA and NMF. Toxicity uses Google's Perspective API on a balanced
+TF-IDF with LDA and NMF. Toxicity uses Google's Perspective API on a balanced
 stratified sample. Stance classification uses a soft-voting ensemble (Logistic
-Regression, calibrated Linear SVM, Random Forest) over TF--IDF features, evaluated
+Regression, calibrated Linear SVM, Random Forest) over TF-IDF features, evaluated
 within and across platforms, with and without length matching, and explained by
 \emph{permutation importance computed on the ensemble itself}. Because the corpus is
 large, every significance test is paired with an effect size (Cram\'er's $V$,
@@ -394,14 +394,14 @@ rank-biserial $r$, or $\varepsilon^2$).
 
 \subsubsection*{Platform tone}
 Reddit has a mean VADER compound score of \textbf{$-0.164$}; YouTube
-\textbf{$+0.068$}. A Mann--Whitney test confirms the contrast ($p<0.001$;
+\textbf{$+0.068$}. A Mann-Whitney test confirms the contrast ($p<0.001$;
 rank-biserial $r=+0.234$).
 
 \subsubsection*{Tone is bound to stance on Reddit, not on YouTube}
 On Reddit both partisan stances are negative - Pro-Palestine ($-0.198$) and
 Pro-Israel ($-0.219$) - while Neutral comments are mildly positive ($+0.027$). On
 YouTube every stance sits near neutral-to-positive: Pro-Palestine ($+0.038$),
-Pro-Israel ($+0.107$), Neutral ($+0.105$). The stance--sentiment association is
+Pro-Israel ($+0.107$), Neutral ($+0.105$). The stance-sentiment association is
 correspondingly far stronger on Reddit (Cram\'er's $V=0.149$) than on YouTube
 ($V=0.039$), as Figure~\ref{fig:sentstance} shows. Negativity is thus the signature
 of partisanship on Reddit, whereas on YouTube affect is largely detached from
@@ -417,14 +417,14 @@ political position.
 
 \subsubsection*{How much should we trust the sentiment tools?}
 Agreement among the three methods is modest, and we report it rather than assume it
-(Figure~\ref{fig:consensus}): on Reddit $\kappa=0.271$ (VADER--RoBERTa), $0.231$
-(VADER--TextBlob) and only $0.085$ (TextBlob--RoBERTa); on YouTube the corresponding
+(Figure~\ref{fig:consensus}): on Reddit $\kappa=0.271$ (VADER-RoBERTa), $0.231$
+(VADER-TextBlob) and only $0.085$ (TextBlob-RoBERTa); on YouTube the corresponding
 values are $0.412$, $0.284$ and $0.171$. TextBlob is clearly the weakest instrument.
 Rather than average over disagreement, we isolate comments on which \emph{all three}
 methods agree - 23.6\% of the Reddit sample and 31.4\% of the YouTube sample. On this
 high-confidence subset the platform contrast does not weaken but \emph{strengthens}:
 55.5\% of Reddit comments are negative against 25.7\% on YouTube (mean compound
-$-0.279$ vs $+0.049$; $r=+0.347$), and the Reddit stance--sentiment association rises
+$-0.279$ vs $+0.049$; $r=+0.347$), and the Reddit stance-sentiment association rises
 to $V=0.264$ while YouTube stays low at $V=0.063$. The substantive conclusion
 therefore survives the measurement concern.
 
@@ -485,8 +485,8 @@ a proxy for harm would overcount it roughly sixfold.
 
 This distinction changes the stance story. Regressing toxicity jointly on sentiment
 and stance, sentiment is a strong predictor (Reddit $b=-0.137$, $p<0.001$) while the
-Pro-Israel--Pro-Palestine contrast is \emph{not} significant on either platform
-(Reddit $p=0.909$; YouTube $p=0.246$). Only the partisan--neutral gap survives
+Pro-Israel versus Pro-Palestine contrast is \emph{not} significant on either platform
+(Reddit $p=0.909$; YouTube $p=0.246$). Only the partisan-neutral gap survives
 (Reddit $b=-0.075$, $p=0.006$). The apparent asymmetry between the two partisan camps
 in Table~\ref{tab:tox} is thus absorbed by how negative their comments are; what is
 robust is that partisan comments of \emph{either} side are more toxic than neutral
@@ -537,7 +537,7 @@ thread homophily is \textbf{0.643} and 43.4\% of active users exceed $0.8$, with
 Pro-Israel ($0.702$) and Pro-Palestine ($0.670$) far above Neutral ($0.329$).
 
 The reply network tells a different story (Figure~\ref{fig:homcmp}). Across
-\textbf{321{,}112} user--user reply edges, mean reply homophily is only
+\textbf{321{,}112} user-user reply edges, mean reply homophily is only
 \textbf{0.406}. More importantly, that figure must be read against chance: because
 52.0\% of reply targets are Pro-Palestine, a Pro-Palestine user replying at random
 would already match 52\% of the time. Both partisan groups fall \emph{below} their
@@ -723,7 +723,7 @@ large language model; we specify and release a human-validation protocol
 (Section~\ref{sec:validation}), but the annotation is not yet complete, so all
 label-dependent findings remain provisional in that respect. Second, the toxicity
 analysis rests on 600 scored comments - adequate for platform-level means but thin
-for the joint sentiment--toxicity analysis, where only 38 comments exceed the
+for the joint sentiment-toxicity analysis, where only 38 comments exceed the
 toxicity threshold; the Perspective API is also being retired, so replication will
 require a substitute instrument. Third, YouTube lacks usable comment timestamps, so
 its temporal anchor is the video publish date and no within-video temporal dynamics
