@@ -47,3 +47,17 @@ docs/
 !README.md
 !ANNOTATION_GUIDELINES.md
 !collection.md
+# === LATEX BUILD ARTIFACTS ===
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bak
+
+# === PACKAGED BUNDLE (regenerate with latex_script/make_overleaf_zip.py) ===
+overleaf_paper.zip
