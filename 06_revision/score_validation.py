@@ -3,7 +3,7 @@
 Stage 6b: score the human validation (reviewer R7).
 
 Run AFTER at least two annotators have filled the `human_label` column in their
-`06_revision/validation/annotator_*.csv`.
+`06_revision/validation/annotator_*.xlsx` (a filled-in `.csv` is also accepted).
 
 Reports:
   * inter-annotator agreement (pairwise Cohen's kappa, Fleiss' kappa,
@@ -68,10 +68,17 @@ def krippendorff_alpha_nominal(matrix):
 
 def main():
     key = pd.read_csv(VAL / "validation_key.csv")
-    files = sorted(VAL.glob("annotator_*.csv"))
+    xl = sorted(VAL.glob("annotator_*.xlsx"))
+    csv = [f for f in sorted(VAL.glob("annotator_*.csv"))
+           if not any(x.stem == f.stem for x in xl)]
+    files = [f for f in xl + csv if not f.name.startswith("~$")]
     ann = {}
     for f in files:
-        d = pd.read_csv(f)
+        if f.suffix.lower() == ".xlsx":
+            # the Annotate sheet carries its header on row 4
+            d = pd.read_excel(f, sheet_name="Annotate", header=3)
+        else:
+            d = pd.read_csv(f)
         if "human_label" not in d.columns:
             continue
         d["human_label"] = d["human_label"].astype(str).str.strip().str.upper()
@@ -142,6 +149,32 @@ def main():
     print("Confusion (rows=human gold, cols=model):")
     print(pd.DataFrame(cm, index=labs, columns=labs).to_string())
     res["confusion"] = {"labels": labs, "matrix": cm.tolist()}
+
+    # ---- P/I/N only.
+    # The sample was drawn from items the model labelled P, I or N, so the model
+    # can never predict R here. Scoring R as a fifth of a 4-class macro-F1 would
+    # penalise it for a class it was never given the chance to emit. We therefore
+    # report the three analytic classes separately, and treat human-R items as
+    # what they actually are: comments the filter should have discarded.
+    print("\n=== Restricted to the three analytic classes ===")
+    pin = merged[merged["human_gold"].isin(["P", "I", "N"])]
+    if len(pin):
+        a = accuracy_score(pin["human_gold"], pin["model_label"])
+        f = f1_score(pin["human_gold"], pin["model_label"], average="macro")
+        res["pin_only"] = {"accuracy": round(float(a), 4),
+                           "macro_f1": round(float(f), 4), "n": int(len(pin))}
+        print(f"  accuracy={a:.4f}  macro-F1={f:.4f}  (n={len(pin)})")
+
+    print("\n=== Irrelevant content retained by the filter ===")
+    n_r = int((merged["human_gold"] == "R").sum())
+    res["human_irrelevant"] = {
+        "n": n_r, "pct": round(100.0 * n_r / len(merged), 2)}
+    print(f"  humans call {n_r}/{len(merged)} sampled items irrelevant "
+          f"({100.0 * n_r / len(merged):.1f}%) though the model gave them a stance")
+    for c, sub in merged.groupby("confidence"):
+        pr = 100.0 * (sub["human_gold"] == "R").mean()
+        res["human_irrelevant"][f"pct_{c}"] = round(float(pr), 2)
+        print(f"    {c}: {pr:.1f}%")
 
     # ---- per platform
     res["by_platform"] = {}
