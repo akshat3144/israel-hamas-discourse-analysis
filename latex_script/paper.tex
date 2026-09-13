@@ -98,7 +98,7 @@ Plaksha University, Mohali, Punjab 140306, India}
   the choice of measure rather than in the platform. Stance classifiers transfer poorly across
   platforms, and we show this survives length matching, so it reflects vocabulary
   rather than comment length. We release a reproducible LLM-assisted labelling
-  pipeline together with a human-validation protocol.
+  pipeline, measure its test-retest reliability on repeated comments ($\kappa=0.54$ on Reddit, $0.41$ on YouTube) and show that its confidence filter separates lexically coherent labels from discarded ones, and release a human-validation protocol for the accuracy question that self-consistency cannot settle.
   \vspace{0.6em}
   \end{abstract}
   \end{@twocolumnfalse}
@@ -108,8 +108,28 @@ Plaksha University, Mohali, Punjab 140306, India}
 \section{Introduction}
 % ============================================================
 \subsection{Research Motivation}
-The Israel-Hamas conflict has played out as much in comment threads as on the
-ground. Because platforms differ in architecture, they may shape that argument in
+The Hamas-led attack on southern Israel of 7~October~2023 and the Israeli military
+campaign in Gaza that followed became one of the most heavily discussed
+geopolitical events of the social-media era. Ng and Chow~\cite{ngchow2025} index
+roughly 1.08~billion English-language posts across Twitter/X, Reddit and TikTok in
+the first four months alone, 59\% of them negative in sentiment, and identify eight
+distinct volume peaks driven both by battlefield events and by offline protest and
+boycott movements. Public argument about the conflict was therefore not a marginal
+accompaniment to it; for most audiences outside the region it was the primary
+channel through which the conflict was encountered.
+
+That argument also changed the character of the forums carrying it. Comparing the
+three days either side of 7~October, the Institute for Strategic Dialogue recorded
+a more than fiftyfold rise in the absolute volume of antisemitic comments, and a
+comparable rise in anti-Muslim comments, beneath YouTube videos about the
+conflict~\cite{isd2023}; the same period saw sustained pressure on platform
+moderation systems and a marked hardening of tone in general-audience comment
+sections. Comment threads that ordinarily host reaction became a venue for
+sustained partisan dispute, which is precisely the material this paper analyses:
+not what participants believe, but how the argument is organised once a platform's
+design decides who can reply to whom, at what length, and with what visibility.
+
+Because platforms differ in architecture, they may shape that argument in
 systematically different ways. We compare two with sharply contrasting designs:
 \textbf{Reddit}, a threaded forum with voting and unlimited comment length, and
 \textbf{YouTube}, a media-centric platform where flat, length-limited comments react
@@ -144,7 +164,7 @@ the overlap directly and show that the apparent partisan toxicity asymmetry is
 absorbed once sentiment is controlled; (3)~evidence that thread co-membership and actual reply
 behaviour give \emph{opposite} answers on the same users, which reframes the
 long-running echo-chamber disagreement as substantially a question of measurement; and (4)~a reproducible LLM-assisted labelling
-pipeline with retained per-label justifications and an accompanying human-validation
+pipeline with retained per-label justifications, a measured test-retest reliability for that pipeline, and an accompanying human-validation
 protocol.
 
 Cross-platform stance-transfer failure is \emph{not} claimed as novel - it is
@@ -229,8 +249,8 @@ Alizadeh and Kubli~\cite{gilardi2023} showed that LLMs can outperform crowd work
 on stance and frame detection. We use Llama-3.3-70B-Instruct, retaining per-label
 confidence tiers and free-text justifications. Because automated annotation without
 human verification is not sufficient evidence of label quality, we specify a
-human-validation protocol (Section~\ref{sec:validation}) measuring both
-model-human agreement and whether the confidence filter is justified.
+protocol (Section~\ref{sec:validation}) that reports the annotator's test-retest reliability and the empirical value of the confidence filter now, and specifies the human study needed to measure
+model-human agreement.
 Classification uses scikit-learn~\cite{pedregosa2011} and readability the Flesch
 formula~\cite{flesch1948}; agreement statistics follow
 Krippendorff~\cite{krippendorff2004}.
@@ -284,24 +304,92 @@ scheme is consistent across them. We used \texttt{Llama-3.3-70B-Instruct} with a
 expert-annotator system prompt embedding the full guidelines. Each item was presented
 with its context, and the model returned a stance label, a confidence level
 (High/Medium/Low) and a justification retained for auditability, on a four-class
-scheme: Pro-Palestine~(P), Pro-Israel~(I), Neutral~(N) and Irrelevant~(R). Labelling
+scheme: Pro-Palestine~(P), Pro-Israel~(I), Neutral~(N) and Irrelevant~(R). Figures abbreviate the two partisan classes as \emph{Pro-Pal} (Pro-Palestine) and \emph{Pro-Isr} (Pro-Israel). Labelling
 ran asynchronously in 50-comment batches at temperature $0.1$ with per-batch
 checkpointing.
 
-\subsection{Human Validation Protocol}
+\subsection{Label Validation}
 \label{sec:validation}
-To measure rather than assume label quality we drew a stratified sample of
-\textbf{270} comments, balanced across platform $\times$ stance $\times$ confidence
-tier (30 High and 15 Medium/Low per stance per platform), from the \emph{pre-filter}
-labelled data. Annotators label each item blind against the published guidelines.
-The protocol reports (i)~inter-annotator agreement (Krippendorff's~$\alpha$ and
-pairwise~$\kappa$), (ii)~model-versus-human accuracy, macro-F1 and per-class
-confusion against a majority-vote gold standard, and (iii)~accuracy in the retained
-High tier against the discarded Medium/Low tier. Point~(iii) is what converts the
-confidence filter from an assumption into an empirically justified choice. Sampling
-code, blind sheets and the scoring script are released with the corpus. We flag
-explicitly that the annotation itself is outstanding, so all label-dependent results
-are provisional pending that measurement.
+Label quality has two separable components. \emph{Reliability} asks whether the
+annotator gives the same answer twice; \emph{accuracy} asks whether that answer is
+right. Reliability can be measured on the labelled corpus itself and we report it
+here (Table~\ref{tab:annrel}); accuracy requires human judgement, and the protocol
+for obtaining it is specified below but not yet executed.
+
+\subsubsection*{Test-retest reliability}
+Comments were submitted in 50-item batches in file order, so two occurrences of an
+identical comment text more than 50 rows apart were annotated in separate batches
+and are independent re-annotations of the same item. Restricting further to repeats
+within the \emph{same} post or video holds the surrounding context fixed, so the
+model saw identical input both times. On the High-confidence labels that survive
+into the analytic corpus, the annotator reproduces its own label on \textbf{70.4\%}
+of 1{,}981 repeated Reddit items ($\kappa = 0.537$) and \textbf{60.9\%} of 1{,}295
+repeated YouTube items ($\kappa = 0.410$). Pooling all confidence tiers lowers this
+to $\kappa = 0.522$ on Reddit and $0.254$ on YouTube, so the stated confidence does
+track label stability.
+
+These are moderate coefficients. They sit below Krippendorff's $0.667$ threshold
+for tentative reliability~\cite{krippendorff2004}, which is why we do not treat the
+labels as settled, and they are lower on YouTube, whose short multilingual comments
+are the harder annotation problem. That asymmetry is a caveat rather than a
+reassurance, and we state it plainly: label noise attenuates any stance-conditional
+association, so lower YouTube reliability depresses YouTube's measured
+stance-sentiment coupling in the same direction as our reported finding. The
+reliability gap is nonetheless modest ($\kappa$ $0.54$ versus $0.41$) beside the
+association gap it would have to explain (Cram\'er's $V$ of $0.149$ versus $0.039$,
+and $0.264$ versus $0.063$ on the three-method consensus subset reported under
+RQ1), so attenuation of that size is unlikely to account for the whole
+contrast. It cannot be ruled out without human labels, which is what the
+protocol below is for.
+
+\subsubsection*{Is the confidence filter doing any work?}
+The corpus keeps only High-confidence labels, which discards 49.0\% of annotated
+Reddit comments and 33.4\% of YouTube ones. To test whether that filter separates
+anything real, we fit a TF-IDF logistic classifier on High-tier labels only and
+compare how well it recovers held-out High-tier labels against the discarded
+Medium/Low-tier ones. Recovery falls from macro-F1 $0.659$ to $0.514$ on Reddit and
+from $0.474$ to $0.309$ on YouTube. Medium/Low items are thus substantially less
+lexically coherent as a class, which makes the filter an empirical choice rather
+than an assumption.
+
+\begin{table}[t]
+  \centering
+  \small
+  \caption{Annotation reliability, measured on the labelled corpus. Test-retest
+  compares independent re-annotations of the same comment text within the same
+  thread or video; tier validity is the macro-F1 of a classifier trained on
+  High-tier labels, evaluated on held-out High-tier items versus the discarded
+  Medium/Low-tier ones.}
+  \label{tab:annrel}
+  \begin{tabular}{lrr}
+    \toprule
+     & Reddit & YouTube \\
+    \midrule
+    Labels at High confidence          & 51.0\%  & 66.6\%  \\
+    Repeated items compared            & 1{,}981 & 1{,}295 \\
+    Test-retest agreement (High tier)  & 70.4\%  & 60.9\%  \\
+    Test-retest $\kappa$ (High tier)   & 0.537   & 0.410   \\
+    Test-retest $\kappa$ (all tiers)   & 0.522   & 0.254   \\
+    \midrule
+    Tier validity, macro-F1 High       & 0.659   & 0.474   \\
+    Tier validity, macro-F1 Medium/Low & 0.514   & 0.309   \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection*{What only human annotation can settle}
+Consistency is not correctness: an annotator with a systematic bias can be perfectly
+consistent. To measure accuracy we drew a stratified sample of \textbf{270} comments,
+balanced across platform $\times$ stance $\times$ confidence tier (30 High and 15
+Medium/Low per stance per platform) from the \emph{pre-filter} labelled data.
+Annotators label each item blind against the published guidelines, and the scoring
+script reports inter-annotator agreement (Krippendorff's~$\alpha$ and pairwise
+$\kappa$), model-versus-human accuracy, macro-F1 and per-class confusion against a
+majority-vote gold standard, and the High versus Medium/Low accuracy comparison.
+Sampling code, blind sheets and the scoring script are released with the corpus. We
+flag explicitly that this annotation is outstanding, so the accuracy of the labels,
+as distinct from their reliability, remains unmeasured and all label-dependent
+results are provisional in that respect.
 
 \subsection{Corpus Cleaning and Final Datasets}
 Two filtering decisions shape the analytic corpus. First, Irrelevant~(R) comments
@@ -326,7 +414,7 @@ Section~\ref{sec:validation} addresses.
   \centering
   \small
   \caption{Corpus construction and final stance composition (matched window,
-  automated accounts removed). Stance shares carry bootstrapped 95\% CIs.}
+  automated accounts removed). Stance shares are given as the point estimate $\pm$ the half-width of a bootstrapped 95\% confidence interval (4{,}000 resamples).}
   \label{tab:data}
   \begin{tabular}{lrr}
     \toprule
@@ -337,9 +425,9 @@ Section~\ref{sec:validation} addresses.
     After matched window              & 1{,}067{,}904 & 378{,}267 \\
     After removing automated accounts & \textbf{1{,}004{,}629} & \textbf{378{,}267} \\
     \midrule
-    Pro-Palestine (P) & 455{,}709 \quad 45.36\% [45.26, 45.46] & 212{,}217 \quad 56.10\% [55.94, 56.26] \\
-    Pro-Israel (I)    & 362{,}340 \quad 36.07\% [35.97, 36.16] & 131{,}357 \quad 34.73\% [34.57, 34.88] \\
-    Neutral (N)       & 186{,}580 \quad 18.57\% [18.50, 18.65] & \phantom{0}34{,}693 \quad \phantom{0}9.17\% [\phantom{0}9.08, \phantom{0}9.27] \\
+    Pro-Palestine (P) & 455{,}709 \quad 45.36\% $\pm$0.10\% & 212{,}217 \quad 56.10\% $\pm$0.16\% \\
+    Pro-Israel (I)    & 362{,}340 \quad 36.07\% $\pm$0.10\% & 131{,}357 \quad 34.73\% $\pm$0.16\% \\
+    Neutral (N)       & 186{,}580 \quad 18.57\% $\pm$0.08\% & \phantom{0}34{,}693 \quad \phantom{0}9.17\% $\pm$0.10\% \\
     \bottomrule
   \end{tabular}
 \end{table*}
@@ -639,8 +727,8 @@ failure; the divergence is lexical.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{f07_transfer.png}
-  \caption{Cross-platform transfer remains far below within-platform performance
-  after length matching.}
+  \caption{Cross-platform transfer remains far below within-platform performance after length matching. Axis labels give train$\rightarrow$test, with \textbf{R} = Reddit and \textbf{Y} = YouTube: R$\rightarrow$R and Y$\rightarrow$Y are within-platform, R$\rightarrow$Y and Y$\rightarrow$R cross-platform.}%
+  
   \label{fig:transfer}
 \end{figure}
 
@@ -719,8 +807,8 @@ not be assumed to describe the discourse elsewhere.
 
 \subsection{Limitations}
 Several limitations qualify these results. First, stance labels were assigned by a
-large language model; we specify and release a human-validation protocol
-(Section~\ref{sec:validation}), but the annotation is not yet complete, so all
+large language model. Its test-retest reliability is moderate ($\kappa = 0.54$ on Reddit, $0.41$ on YouTube; Table~\ref{tab:annrel}) and lower on YouTube, so cross-platform comparisons of stance-conditional effects carry unequal attenuation. We specify and release a human-validation protocol
+(Section~\ref{sec:validation}), but the human annotation is not yet complete, so label \emph{accuracy}, as distinct from reliability, is unmeasured and all
 label-dependent findings remain provisional in that respect. Second, the toxicity
 analysis rests on 600 scored comments - adequate for platform-level means but thin
 for the joint sentiment-toxicity analysis, where only 38 comments exceed the
