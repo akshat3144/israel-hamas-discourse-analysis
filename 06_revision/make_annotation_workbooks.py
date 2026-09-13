@@ -6,10 +6,11 @@ Each workbook has a Guidelines sheet (the rulebook plus a worked example) and an
 Annotate sheet holding the blind items, with a P/I/N/R dropdown on the label
 column and a live progress counter. Nothing reveals the model's label.
 
-Run:  python 06_revision/make_annotation_workbooks.py
-Out:  06_revision/validation/annotator_A.xlsx, annotator_B.xlsx, annotator_C.xlsx
+Run:  python 06_revision/make_annotation_workbooks.py [name ...]
+Out:  06_revision/validation/annotator_<name>.xlsx, one per annotator
 """
 import math
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -22,7 +23,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 HERE = Path(__file__).resolve().parent
 VAL = HERE / "validation"
 BLIND = VAL / "validation_blind.csv"
-ANNOTATORS = ("A", "B", "C")
+ANNOTATORS = ("Raghav", "Arsh", "Akshat")
 
 FONT = "Arial"
 HDR_ROW = 4
@@ -247,10 +248,11 @@ def annotate_sheet(wb, who, df):
 
 
 def main():
+    names = sys.argv[1:] or list(ANNOTATORS)
     df = pd.read_csv(BLIND).fillna("")
     print(f"{len(df)} items from {BLIND.name}")
 
-    for who in ANNOTATORS:
+    for who in names:
         wb = Workbook()
         wb.remove(wb.active)
         guidelines_sheet(wb, who)

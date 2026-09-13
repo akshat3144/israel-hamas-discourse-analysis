@@ -14,7 +14,7 @@ things at once:
 
 | File | What it is |
 |---|---|
-| `annotator_A.xlsx`, `_B`, `_C` | one workbook per annotator - **this is what you fill in** |
+| `annotator_Raghav.xlsx`, `_Arsh`, `_Akshat` | one workbook per annotator - **this is what you fill in** |
 | `validation_blind.csv` | the same 270 items, no model labels (source for the workbooks) |
 | `validation_key.csv` | **do not open until everyone has finished** - holds the model's labels |
 

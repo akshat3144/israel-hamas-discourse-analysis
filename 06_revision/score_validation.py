@@ -84,7 +84,8 @@ def main():
         d["human_label"] = d["human_label"].astype(str).str.strip().str.upper()
         d = d[d["human_label"].isin(LABELS)]
         if len(d) > 0:
-            ann[f.stem[-1]] = d.set_index("item_id")["human_label"]
+            who = f.stem.split("annotator_", 1)[-1] or f.stem
+            ann[who] = d.set_index("item_id")["human_label"]
             print(f"  {f.name}: {len(d)} labelled")
     if len(ann) < 2:
         print("\nNeed at least TWO annotators with a filled `human_label` column.")
