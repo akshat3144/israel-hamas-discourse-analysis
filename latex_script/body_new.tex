@@ -26,7 +26,7 @@
   the choice of measure rather than in the platform. Stance classifiers transfer poorly across
   platforms, and we show this survives length matching, so it reflects vocabulary
   rather than comment length. We release a reproducible LLM-assisted labelling
-  pipeline together with a three-annotator human validation (Krippendorff's $\alpha=0.796$), which finds stance accuracy of $0.836$ on Reddit but $0.618$ on YouTube. We subject the platform contrast to two adversarial checks built from that validation - degrading Reddit's labels to YouTube's measured quality, and removing off-topic comments with a validated relevance classifier - and it survives both.
+  pipeline together with a three-annotator human validation (Krippendorff's $\alpha=0.796$), which finds stance accuracy of $0.836$ on Reddit but $0.618$ on YouTube. We subject the platform contrast to three adversarial checks built from that validation - degrading Reddit's labels to YouTube's measured quality, removing off-topic comments with a validated relevance classifier, and correcting both platforms for their measured misclassification - and it survives all three.
   \vspace{0.6em}
   \end{abstract}
   \end{@twocolumnfalse}
@@ -85,14 +85,14 @@ than as separate questions, giving three:
 
 \subsection{Contributions}
 This work contributes (1)~large-scale evidence that the \emph{coupling} between
-stance and emotional tone is platform-dependent - strong on Reddit, near-zero on
+stance and emotional tone is platform-dependent - strong on Reddit, weak on
 YouTube; (2)~a quantification of how far toxicity and negativity
 diverge in this corpus - the distinction is recognised in principle, but we measure
 the overlap directly and show that the apparent partisan toxicity asymmetry is
 absorbed once sentiment is controlled; (3)~evidence that thread co-membership and actual reply
 behaviour give \emph{opposite} answers on the same users, which reframes the
 long-running echo-chamber disagreement as substantially a question of measurement; and (4)~a reproducible LLM-assisted labelling
-pipeline with retained per-label justifications, a completed three-annotator human validation of it, and two reusable procedures for bounding a cross-platform finding by the annotation quality behind it, together with the released validation
+pipeline with retained per-label justifications, a completed three-annotator human validation of it, and three reusable procedures for bounding a cross-platform finding by the annotation quality behind it, together with the released validation
 protocol.
 
 Cross-platform stance-transfer failure is \emph{not} claimed as novel - it is
@@ -285,8 +285,22 @@ Medium/Low, a gap of $+16.7$ points that justifies keeping the filter.
 judge to carry a stance at all, the model matches the human gold standard on
 \textbf{83.6\%} of Reddit comments but only \textbf{61.8\%} of YouTube ones. The
 YouTube errors are concentrated in the Neutral class, which the model frequently
-reads as Pro-Israel. Short, multilingual, formulaic comments are simply a harder
-annotation problem, for the model as for anyone.
+reads as Pro-Israel.
+
+This gap has an identifiable cause in our own pipeline rather than in the
+platforms. The Reddit prompt supplied the subreddit, the parent post's title and
+its body alongside each comment; the YouTube prompt supplied only an opaque video
+identifier, the author handle and a like count. YouTube comments were therefore
+annotated without the discursive context that Reddit comments had, and the
+instruction to weigh ``video context'' was issued without that context being
+present, which plausibly encouraged the model to supply one: a recurring pattern
+in the YouTube errors is a justification describing material absent from the
+comment. We therefore attribute much of the $0.836$ versus $0.618$ gap to this
+asymmetry rather than to an intrinsic difficulty of YouTube text, and note that
+our human annotators worked under the same handicap, seeing only a video
+identifier themselves, and still agreed among themselves at $\alpha = 0.796$. Short,
+multilingual and formulaic comments remain the harder annotation problem, but they
+are not the whole of it.
 
 \begin{table}[t]
   \centering
@@ -312,12 +326,12 @@ annotation problem, for the model as for anyone.
   78.1\% of items unanimous; stance-class macro-F1 $0.656$.
 \end{table}
 
-\subsubsection*{Two adversarial checks on the headline result}
+\subsubsection*{Three adversarial checks on the headline result}
 Both validation findings threaten the same claim: that stance and sentiment are
 coupled on Reddit (Cram\'er's $V = 0.149$) and not on YouTube ($V = 0.039$). Label
 noise attenuates association, and Reddit's labels are the better ones, so the
 contrast could restate the difference in label quality; off-topic comments add
-noise of their own. We test both objections directly rather than discussing them
+noise of their own. We test these objections directly rather than discussing them
 (Table~\ref{tab:robust}).
 
 \textbf{Degrading Reddit to YouTube's label quality.} Using the error structure
@@ -341,10 +355,21 @@ after, the RQ3 reply graph becomes \emph{more} disassortative once off-topic
 comments are removed, and the share of cross-partisan replies rises from 61.6\% to
 65.2\%, so that finding is not a product of the contamination either.
 
+\textbf{Correcting both platforms for their measured error.} The complementary
+analysis disattenuates rather than degrades. Treating each platform's measured
+confusion matrix as a misclassification process and solving for the underlying
+table raises Reddit to $V=0.207$ $[0.169, 0.318]$ and YouTube to $0.072$
+$[0.046, 0.171]$, a ratio of $2.9$. Both platforms rise, the contrast persists, and
+the corrected YouTube value is small rather than nil, which is how we describe it.
+These intervals are wide because the confusion matrices rest on 73 and 76 items
+respectively, and at their extremes they touch; we therefore read this as
+corroboration of the contrast's direction rather than a precise estimate of its
+size.
+
 \begin{table}[t]
   \centering
   \small
-  \caption{Stance-sentiment association (Cram\'er's $V$) under two adversarial
+  \caption{Stance-sentiment association (Cram\'er's $V$) under three adversarial
   checks. Neither differential label quality nor off-topic content accounts for the
   Reddit/YouTube contrast.}
   \label{tab:robust}
@@ -356,6 +381,7 @@ comments are removed, and the share of cross-partisan replies rises from 61.6\% 
     As reported            & 0.149 & 0.039 & 3.8$\times$ \\
     Labels degraded        & 0.082 & 0.039 & 2.1$\times$ \\
     Off-topic removed      & 0.118 & 0.039 & 3.0$\times$ \\
+    Corrected for error    & 0.207 & 0.072 & 2.9$\times$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -742,7 +768,7 @@ comment sits under, which cannot transfer by construction.
 The platform-level tone gap is less interesting than \emph{where} emotion attaches to
 politics. On Reddit stance and sentiment are appreciably associated ($V=0.149$,
 rising to $0.264$ among unanimously-scored comments), with both partisan camps
-negative and only neutrals positive. On YouTube the association is near zero
+negative and only neutrals positive. On YouTube the association is small
 ($V=0.039$). This is not predicted by the observation that YouTube comments are short
 reactions: short reactions could equally have been uniformly hostile. What the data
 show is that YouTube's affective register - devotional, solidaristic and largely
@@ -816,7 +842,7 @@ three-annotator gold standard, with roughly one comment in six carrying a stance
 that humans judge irrelevant. Cross-platform comparisons therefore carry unequal
 attenuation; our simulation shows the headline contrast survives it at about half its
 raw size, but YouTube stance-conditional effects should be read as directional.
-We release a relevance classifier that removes most of this content, and show the reported comparisons survive it, but do not adopt it as the primary corpus because it also discards genuine Neutral comments. Relabelling with a stronger annotator, and a relevance step ahead of
+We release a relevance classifier that removes most of this content, and show the reported comparisons survive it, but do not adopt it as the primary corpus because it also discards genuine Neutral comments. The clearest routes to tightening these estimates are specific rather than general: supplying video-level context to the YouTube annotator, which our Reddit prompt had and our YouTube prompt lacked, and inserting an explicit relevance decision ahead of
 stance assignment, are the clearest routes to tightening these
 label-dependent estimates. Second, the toxicity
 analysis rests on 600 scored comments - adequate for platform-level means but thin
