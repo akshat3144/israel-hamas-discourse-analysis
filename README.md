@@ -334,6 +334,25 @@ filtered first; the analysis datasets contain only `P`, `I`, `N`.
 
 ---
 
+## Which pipeline produces the paper's numbers
+
+The repository holds two analysis layers, and they answer slightly different
+questions.
+
+| Layer | Corpus | Purpose |
+|---|---|---|
+| `01_`-`05_` notebooks | full labelled corpus (1,110,153 Reddit + 378,267 YouTube) | exploratory analysis, visualisation, method development |
+| **`06_revision/`** | matched window, automated accounts removed (1,004,629 Reddit + 378,267 YouTube) | **every figure and statistic reported in the paper** |
+
+`06_revision/` applies two filters the notebooks do not: it restricts both
+platforms to the common 7 October 2023 to 7 May 2024 window, and it removes
+automated accounts corpus-wide. Counts therefore differ between the two layers by
+design. **Where they differ, `06_revision/` is authoritative.**
+
+It also contains the validation and robustness work: the human annotation package
+and scoring, the annotation reliability measures, the relevance filter, the
+label-noise sensitivity simulation, and the controlled video-context experiment.
+
 ## Analysis Modules (01–05)
 
 All analysis notebooks are **self-contained, run top-to-bottom, resolve paths relative
