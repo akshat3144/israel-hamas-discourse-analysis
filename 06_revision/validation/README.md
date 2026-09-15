@@ -18,7 +18,16 @@ things at once:
 | `validation_blind.csv` | the same 270 items, no model labels (source for the workbooks) |
 | `validation_key.csv` | **do not open until everyone has finished** - holds the model's labels |
 
-## How to annotate
+## Status: complete
+
+All three annotators finished all 270 items. Results are in
+`06_revision/outputs/human_validation.json`, `validation_breakdown.json` and
+`label_noise_sensitivity.json`, and are reported in the paper's Label Validation
+section. Headline: Krippendorff's alpha 0.796 between annotators; model stance
+accuracy 0.836 on Reddit and 0.618 on YouTube; 17% of stance-labelled items judged
+irrelevant by humans.
+
+## How to annotate (for re-running or extending the sample)
 
 Open your workbook. It has two sheets:
 
