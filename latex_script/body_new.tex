@@ -302,6 +302,52 @@ identifier themselves, and still agreed among themselves at $\alpha = 0.796$. Sh
 multilingual and formulaic comments remain the harder annotation problem, but they
 are not the whole of it.
 
+\subsubsection*{What video context is worth: a controlled test}
+We test that attribution rather than assert it. Taking the 131 YouTube validation
+items on which a human majority exists, we re-annotate them twice under identical
+conditions, using the same model, provider, guidelines, temperature and batch size,
+and varying only whether each item carries its video title and description. Both
+arms use a different open-weight model from the deployed annotator, so what the
+comparison isolates is the effect of context rather than of model choice.
+
+The no-context arm reproduces the corpus result exactly: $0.618$ against the human
+gold standard on High-confidence stance items, the same figure the deployed
+pipeline achieves. The shortfall is therefore a property of the prompt rather than
+of the annotator model.
+
+Adding video context raises stance accuracy from $0.651$ to $\textbf{0.734}$ on
+items humans judged to carry a stance, improving every class (Pro-Palestine $+12.5$
+points, Pro-Israel $+8.0$, Neutral $+5.8$). It simultaneously degrades relevance
+judgement: the share of human-irrelevant comments wrongly assigned a stance rises
+from \textbf{18\%} to \textbf{73\%} (Table~\ref{tab:context}). Told that the video
+concerns the conflict, the model infers that the comment must concern it too.
+
+\begin{table}[t]
+  \centering
+  \small
+  \caption{What video context is worth. Both arms use the same model, prompt and
+  settings on the same 131 items; only the video title and description differ.}
+  \label{tab:context}
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    & Stance accuracy & Irrelevant given \\
+    & ($n=109$) & a stance ($n=22$) \\
+    \midrule
+    No video context   & 0.651 & 18\% \\
+    With video context & 0.734 & 73\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+This carries a design implication, and it is why we recommend separating the two
+decisions rather than merely supplying more context. Relevance and stance want
+video context in opposite directions: relevance is better judged on the comment
+alone, stance with the video in view. A single four-way prompt cannot optimise
+both, which also explains the retained irrelevance reported above. These figures
+rest on 131 items, 22 of them irrelevant, and a single run; we report them as a
+diagnosis of our own pipeline rather than as a general benchmark.
+
 \begin{table}[t]
   \centering
   \small
@@ -406,7 +452,7 @@ Third, the Reddit results, including the reply-network analysis carrying RQ3, re
 on labels that are $83.6\%$ accurate against a gold standard with $\alpha = 0.796$,
 which is adequate for the population-level comparisons made here. Sampling code,
 blind sheets, the three completed annotation sets, the relevance classifier and the
-scoring scripts are released with the corpus.
+scoring scripts are released with the corpus, as is the video-level metadata (title, description and channel for all 2{,}637 videos) used in the context experiment above.
 
 \subsection{Corpus Cleaning and Final Datasets}
 Two filtering decisions shape the analytic corpus. First, Irrelevant~(R) comments
@@ -842,7 +888,7 @@ three-annotator gold standard, with roughly one comment in six carrying a stance
 that humans judge irrelevant. Cross-platform comparisons therefore carry unequal
 attenuation; our simulation shows the headline contrast survives it at about half its
 raw size, but YouTube stance-conditional effects should be read as directional.
-We release a relevance classifier that removes most of this content, and show the reported comparisons survive it, but do not adopt it as the primary corpus because it also discards genuine Neutral comments. The clearest routes to tightening these estimates are specific rather than general: supplying video-level context to the YouTube annotator, which our Reddit prompt had and our YouTube prompt lacked, and inserting an explicit relevance decision ahead of
+We release a relevance classifier that removes most of this content, and show the reported comparisons survive it, but do not adopt it as the primary corpus because it also discards genuine Neutral comments. The clearest routes to tightening these estimates are specific rather than general, and we measure both: supplying video-level context to the YouTube annotator raises stance accuracy by roughly eight points but degrades relevance judgement, so it must be paired with an explicit relevance decision ahead of
 stance assignment, are the clearest routes to tightening these
 label-dependent estimates. Second, the toxicity
 analysis rests on 600 scored comments - adequate for platform-level means but thin
