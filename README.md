@@ -5,19 +5,22 @@ Israel–Hamas conflict, comparing how two platforms with very different
 architectures - **Reddit** (threaded, debate-centric) and **YouTube**
 (media-centric, reply-light) - shape public conversation. The project covers the
 **entire pipeline**: large-scale data collection, LLM-assisted stance labeling,
-cleaning, and five analysis modules answering four research questions about
-emotional tone, narratives, polarization/echo chambers, and toxic speech.
+cleaning, five analysis modules, and a revision pipeline answering three research
+questions about emotional tone and toxicity, topics and vocabulary, and
+polarization and interaction structure.
 
-> **Scale:** ~1.11M labeled Reddit comments + ~0.38M labeled YouTube comments
-> (≈ **1.49M** stance-labeled data points) drawn from a much larger raw crawl
-> (~3.08M Reddit + ~0.97M YouTube comments before labeling/filtering).
+> **Scale:** ~1.11M labeled Reddit + ~0.38M labeled YouTube comments (≈ **1.49M**
+> stance-labeled points) from a raw crawl of ~3.08M Reddit + ~0.97M YouTube
+> comments. The manuscript analyses **1,382,896** of these: 1,004,629 Reddit and
+> 378,267 YouTube, after restricting both platforms to a matched window and
+> removing automated accounts.
 
 ---
 
 ## Table of Contents
 
 1. [Research Questions](#research-questions)
-2. [Key Findings (preliminary)](#key-findings-preliminary)
+2. [Key Findings](#key-findings)
 3. [Repository Layout](#repository-layout)
 4. [The Full Data Pipeline](#the-full-data-pipeline)
    - [Stage 0 · Overview diagram](#stage-0--overview)
@@ -44,27 +47,52 @@ emotional tone, narratives, polarization/echo chambers, and toxic speech.
 
 | RQ            | Question                                                      | Module                         |
 | ------------- | ------------------------------------------------------------- | ------------------------------ |
-| **RQ1** | How does emotional tone differ between platforms and stances? | `02_emotional_tone_analysis` |
-| **RQ2** | What distinct topics and narratives emerge?                   | `03_topics_and_narratives`   |
-| **RQ3** | Do echo chambers exist and are users polarized?               | `04_echo_chambers`           |
-| **RQ4** | Which platform / stance harbors the most toxic speech?        | `05_toxicity_analysis`       |
+| **RQ1** | How do emotional tone and toxicity differ between platforms and stances, and are they the same phenomenon? | `02_emotional_tone_analysis`, `05_toxicity_analysis` |
+| **RQ2** | What distinct topics and lexical choices characterise each platform and stance? | `03_topics_and_narratives`   |
+| **RQ3** | Do users cluster into same-stance interaction, and is stance encoded in platform-specific language? | `04_echo_chambers`           |
+
+Sentiment and toxicity were separate questions in an earlier draft; because they
+overlap, the manuscript studies them jointly as RQ1. Module `05_toxicity_analysis`
+therefore feeds RQ1 rather than a question of its own.
 
 **Stance labels (used throughout):** `P` = Pro-Palestine · `I` = Pro-Israel · `N` = Neutral.
 (`R` = Irrelevant is used during labeling and then filtered out - see [Stage 5](#stage-5--llm-stance-labeling).)
 
 ---
 
-## Key Findings (preliminary)
+## Key Findings
 
-> ⚠️ **These are preliminary, from an earlier, smaller dataset and have not yet been
-> regenerated on the current extensive data.** Treat them as hypotheses to confirm
-> or revise. Re-run notebooks 01–05 on the full `data/` and read conclusions off the
-> fresh output; the notebooks deliberately avoid hard-coding any result.
+From the manuscript, computed by `06_revision/` over the matched, bot-filtered
+corpus. The `01_`-`05_` notebooks explore the full labelled corpus and may differ
+in scope; see [Which pipeline produces the paper's numbers](#which-pipeline-produces-the-papers-numbers).
 
-- **RQ1 (Tone):** Reddit skewed more negative; YouTube more positive. Sentiment varied by stance within each platform.
-- **RQ2 (Topics):** Reddit framing leaned political/territorial; YouTube leaned emotional/religious/solidarity. Pro-Palestine emphasized "genocide"; Pro-Israel emphasized "civilians/terrorists".
-- **RQ3 (Echo chambers):** Active users showed a clear dominant stance with high consistency; a measurable share interacted almost exclusively in same-stance threads. Stance was predictable from text within a platform but generalized poorly across platforms.
-- **RQ4 (Toxicity):** Toxicity and identity-attack levels differed by platform and stance.
+- **Affective tone is politicised on Reddit, weak on YouTube.** Reddit averages a
+  VADER compound of -0.164 against YouTube's +0.068, but the informative contrast
+  is *where* emotion attaches to politics: on Reddit both partisan camps are
+  negative and only neutrals positive (Cramer's V = 0.149), while on YouTube tone
+  is nearly independent of stance (V = 0.039).
+- **Toxicity is not strong negativity.** 88.5% of toxic Reddit comments are
+  negative, yet only 15.5% of negative comments are toxic. The apparent gap
+  between the partisan camps disappears once sentiment is controlled.
+- **Vocabulary splits by platform, not just by stance.** Reddit argues in political
+  and legal terms, YouTube in devotional and slogan terms, with a large
+  Hindi/Urdu and Arabic-script stream absent from the Reddit sample.
+- **Co-presence and interaction give opposite answers.** Thread co-membership puts
+  homophily at 0.643, a textbook echo chamber. The user-user reply graph for the
+  *same users* gives 0.406, below chance and disassortative (Newman r = -0.184
+  against a degree-preserving null centred on zero), with 62.4% of partisan
+  replies crossing the divide.
+- **Stance classifiers transfer poorly across platforms** (macro-F1 0.640 within
+  Reddit, 0.470 within YouTube, lower across), and this survives length matching,
+  so it reflects vocabulary rather than comment length.
+
+### Label quality
+
+Three annotators independently labelled a stratified 270-comment sample blind
+(Krippendorff's alpha = 0.796). Against that gold standard the automated labels are
+**0.836** accurate on Reddit but **0.618** on YouTube, and roughly one comment in
+six carries a stance label humans judge irrelevant. The manuscript reports this in
+full and shows the platform contrast survives three separate robustness checks.
 
 ---
 
@@ -122,7 +150,7 @@ israel_hamas_discourse_analysis/
 │   ├── scripts/{advanced_analysis,structural_temporal_analysis,network_analysis,ml_stance_classification}.py
 │   └── outputs/
 │
-├── 05_toxicity_analysis/                    RQ4 - Toxicity
+├── 05_toxicity_analysis/                    RQ1 - Toxicity
 │   ├── toxicity_assessment.ipynb           Google Perspective API toxicity scoring
 │   ├── scripts/toxicity_assessment.py
 │   └── outputs/
@@ -382,7 +410,7 @@ in-notebook) so each notebook finishes in a reasonable time.
 
 - **`network_analysis.ipynb`** - engagement **OLS** (`score ~ sentiment + stance`, with from-scratch coef/SE/p-value inference), controversiality amplification, **Flesch readability** (dependency-free) by platform/stance, **vectorized user stance profiling** (dominant stance + consistency over ~100k authors via group-bys), **homophily-based echo-chamber detection**, a **user-interaction network** (bipartite projection of top users), and a **scalable stance-classification ensemble** (Logistic Regression + calibrated LinearSVC + Random Forest, soft voting) tested within- and cross-platform with per-stance predictive keywords and **Stratified 5-fold cross-validated macro-F1 (mean ± 95% CI)**. Kruskal-Wallis tests report **epsilon-squared** effect sizes.
 
-### `05_toxicity_analysis/` - RQ4
+### `05_toxicity_analysis/` - RQ1 (toxicity component)
 
 - **`toxicity_assessment.ipynb`** - scores a stratified sample with **Google Perspective API** across TOXICITY, SEVERE_TOXICITY, IDENTITY_ATTACK, INSULT, THREAT, PROFANITY; compares by platform and stance; **Mann-Whitney U** (platform) + **Kruskal-Wallis** (stance) tests with **rank-biserial / epsilon-squared** effect sizes. Requires a Perspective API key (see [Configuration](#configuration-env)); without one the notebook stops gracefully with setup instructions.
 
@@ -398,7 +426,7 @@ pip install -r requirements.txt
 #    data/reddit_labeled.csv
 #    data/youtube_labeled.csv
 
-# 3. (only for RQ4) add a Perspective API key - see Configuration below
+# 3. (only for module 05) add a Perspective API key - see Configuration below
 ```
 
 The repo was validated with **Python 3.12** and current scientific-Python
@@ -475,7 +503,7 @@ LABEL_BATCH_SIZE=50
 REDDIT_INPUT_FILE=...   REDDIT_OUTPUT_FILE=...   REDDIT_PROGRESS_FILE=...   REDDIT_BATCHES_DIR=...
 YOUTUBE_INPUT_FILE=...  YOUTUBE_OUTPUT_FILE=...  YOUTUBE_PROGRESS_FILE=...
 
-# RQ4 toxicity (add this to run module 05)
+# toxicity (add this to run module 05)
 PERSPECTIVE_API_KEY=your_key_here
 ```
 
@@ -548,5 +576,7 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
 
 License: see [`LICENSE`](LICENSE).
 
-> If you use this work, please cite the report in `docs/` and credit the data sources
-> (Reddit via Arctic Shift; YouTube Data API v3).
+> If you use this work, please cite the manuscript *Clustered by Thread, Arguing
+> Across the Divide: Echo Chambers and the Choice of Measure in Israel-Hamas
+> Discourse on Reddit and YouTube* and credit the data sources (Reddit via Arctic
+> Shift; YouTube Data API v3).
