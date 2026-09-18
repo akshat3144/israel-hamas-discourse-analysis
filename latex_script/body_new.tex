@@ -127,7 +127,7 @@ measurement question in its own right rather than an assumption.
 
 \subsection{Topic Modeling}
 Latent Dirichlet Allocation~\cite{blei2003} and Non-negative Matrix
-Factorization~\cite{leeseung1999} represent documents as mixtures over latent
+Factorization~\cite{leeseung2000} represent documents as mixtures over latent
 topics; LDA assumes a Bayesian generative process while NMF performs a matrix
 decomposition that tends to produce sparser topics. BERTopic~\cite{grootendorst2022}
 instead clusters sentence-embedding representations. We apply LDA and NMF in
@@ -141,8 +141,8 @@ attempt here.
 \subsection{Echo Chambers and Partisan Polarization}
 The homophily principle - that similar people interact at higher rates than
 dissimilar ones~\cite{mcpherson2001} - underpins computational echo-chamber
-research. Sunstein~\cite{sunstein2017} argued that filtering and self-selection
-narrow exposure, while Bail et al.~\cite{bail2018} showed experimentally that
+research. Where filtering and self-selection are expected to narrow exposure,
+Bail et al.~\cite{bail2018} showed experimentally that
 exposure to opposing views can \emph{increase} polarization. Cinelli
 et al.~\cite{cinelli2021} demonstrated that echo-chamber strength is itself
 platform-dependent, motivating our comparative design. Most directly relevant to
@@ -182,7 +182,7 @@ protocol (Section~\ref{sec:validation}) reporting the annotator's test-retest re
 model-human agreement.
 Classification uses scikit-learn~\cite{pedregosa2011} and readability the Flesch
 formula~\cite{flesch1948}; agreement statistics follow
-Krippendorff~\cite{krippendorff2004}.
+Krippendorff~\cite{hayes2007}.
 
 % ============================================================
 \section{Data and Methodology}

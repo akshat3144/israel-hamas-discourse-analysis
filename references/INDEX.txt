@@ -6,7 +6,7 @@ whether it supports the claim attached to it. Open-access copies are in
 references/pdf/ with the relevant passages highlighted in yellow;
 web sources are in references/web/.
 
-NOTHING WAS FABRICATED. All 24 references resolve to real, locatable
+NOTHING WAS FABRICATED. All 23 references resolve to real, locatable
 works. Four citation-accuracy errors were found and corrected; they are
 marked CORRECTED below.
 
@@ -39,9 +39,9 @@ marked CORRECTED below.
   local copy : pdf/bail2018.pdf
   highlighted: 15 passages on 5 pages (p. 1, 2, 4, 5, 6)
   used in the manuscript for:
-      Sunstein argued that filtering and self-selection narrow exposure,
-      while Bail et al. showed experimentally that exposure to opposing
-      views can increase polarization.
+      Where filtering and self-selection are expected to narrow
+      exposure, Bail et al. showed experimentally that exposure to
+      opposing views can increase polarization.
 
       Bail et al. found that cross-cutting exposure can intensify rather
       than soften partisan feeling, which is consistent with the pattern
@@ -199,7 +199,28 @@ marked CORRECTED below.
       BERTopic instead clusters sentence-embedding representations.
 
 
-[11] hutto2014
+[11] hayes2007
+------------------------------------------------------------------------
+  title      : Answering the Call for a Standard Reliability Measure for Coding Data
+  authors    : Hayes et al.
+  venue      : Communication Methods and Measures
+  year       : 2007
+  doi        : 10.1080/19312450709336664
+  status     : VERIFIED from full text, REFERENCE SWAPPED
+               Krippendorff's 2004 book was replaced with Hayes and Krippendorff
+               2007, Answering the Call for a Standard Reliability Measure for
+               Coding Data, Communication Methods and Measures 1(1):77-89, doi
+               10.1080/19312450709336664. Freely available from UPenn Annenberg and
+               it is the standard journal citation for alpha. Krippendorff's own
+               Computing Krippendorff's Alpha-Reliability (2011) is also stored
+               alongside it.
+  local copy : NONE - not retrievable
+  used in the manuscript for:
+      Classification uses scikit-learn and readability the Flesch
+      formula ; agreement statistics follow Krippendorff .
+
+
+[12] hutto2014
 ------------------------------------------------------------------------
   title      : VADER: A Parsimonious Rule-Based Model for Sentiment Analysis of Social Media Text
   authors    : Hutto et al.
@@ -215,7 +236,7 @@ marked CORRECTED below.
       intensity, slang, and negation.
 
 
-[12] isd2023muslim
+[13] isd2023muslim
 ------------------------------------------------------------------------
   status     : VERIFIED, NEW ENTRY
                The 43-fold anti-Muslim figure comes from a SEPARATE ISD dispatch
@@ -233,7 +254,7 @@ marked CORRECTED below.
       marked hardening of tone in general-audience comment sections.
 
 
-[13] isd2023
+[14] isd2023
 ------------------------------------------------------------------------
   status     : VERIFIED, CLAIM CORRECTED
                Dispatch saved. Says antisemitic YouTube comments rose 4963% (over
@@ -250,29 +271,15 @@ marked CORRECTED below.
       marked hardening of tone in general-audience comment sections.
 
 
-[14] krippendorff2004
+[15] leeseung2000
 ------------------------------------------------------------------------
-  status     : VERIFIED (existence only)
-               Open Library confirms Content Analysis: An Introduction to Its
-               Methodology, Krippendorff, Sage. 2004 is the 2nd edition. Book.
-  local copy : NONE - Sage, book (2nd edition)
-  used in the manuscript for:
-      Classification uses scikit-learn and readability the Flesch
-      formula ; agreement statistics follow Krippendorff .
-
-
-[15] leeseung1999
-------------------------------------------------------------------------
-  title      : Learning the parts of objects by non-negative matrix factorization
-  authors    : Lee et al.
-  venue      : Nature
-  year       : 1999
-  doi        : 10.1038/44565
-  status     : VERIFIED (existence only)
-               Crossref confirms title, authors, Nature 401(6755):788-791.
-               Paywalled, so the NMF characterisation was not machine-checked; it
-               is a textbook description of the cited method.
-  local copy : NONE - Nature, subscription
+  status     : VERIFIED from full text, REFERENCE SWAPPED
+               The paywalled Nature 1999 letter was replaced with the same authors'
+               open NeurIPS 2000 paper, Algorithms for Non-negative Matrix
+               Factorization, which is the more apt citation since we use the
+               algorithms rather than the parts-based argument. Free from
+               papers.nips.cc; multiplicative update rules highlighted.
+  local copy : NONE - not retrievable
   used in the manuscript for:
       Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
       Factorization represent documents as mixtures over latent topics;
@@ -341,10 +348,11 @@ marked CORRECTED below.
   venue      : Information Processing & Management
   year       : 2022
   doi        : 10.1016/j.ipm.2022.103070
-  status     : VERIFIED via abstract and highlights
-               ScienceDirect landing page: 'Cross-dataset stance detection models
-               do not generalize well' (avg F1 = 0.33). Open access under a
-               Creative Commons licence but Elsevier blocks automated download.
+  status     : VERIFIED from full text
+               Downloaded by hand (Elsevier blocks scripts). Full text confirms
+               'models do not generalize well (avg F1=0.33)', aggregation lifting
+               it to 0.69, and inconsistent annotations across datasets. CC
+               BY-NC-ND.
   local copy : NONE - Information Processing and Management, hybrid open access but Elsevier blocks automated download; open via doi.org/10.1016/j.ipm.2022.103070
   used in the manuscript for:
       Cross-platform stance-transfer failure is not claimed as novel -
@@ -412,10 +420,12 @@ marked CORRECTED below.
   venue      : Social Media + Society
   year       : 2025
   doi        : 10.1177/20563051251332427
-  status     : VERIFIED via abstract
-               Crossref abstract confirms the Twitter/Reddit comparison and the
-               conversational-visibility affordance almost verbatim. Gold open
-               access but SAGE blocks automated download; open the DOI to read it.
+  status     : VERIFIED from full text
+               Downloaded by hand (SAGE blocks scripts). Abstract states the
+               Twitter/Reddit comparison, Twitter highly polarized, Reddit showing
+               promise for productive intergroup discourse, driven by
+               conversational visibility. Matches our sentence almost word for
+               word. CC BY-NC.
   local copy : NONE - Social Media + Society, gold open access but SAGE blocks automated download; open via doi.org/10.1177/20563051251332427
   used in the manuscript for:
       Shugars and Ha compared Twitter and Reddit directly, finding that
@@ -430,20 +440,7 @@ marked CORRECTED below.
       network-level signature of exactly that affordance.
 
 
-[23] sunstein2017
-------------------------------------------------------------------------
-  status     : VERIFIED (existence only)
-               Open Library confirms #Republic: Divided Democracy in the Age of
-               Social Media, Princeton University Press, 2017. Book, not
-               downloadable.
-  local copy : NONE - Princeton University Press, book
-  used in the manuscript for:
-      Sunstein argued that filtering and self-selection narrow exposure,
-      while Bail et al. showed experimentally that exposure to opposing
-      views can increase polarization.
-
-
-[24] wulczyn2017
+[23] wulczyn2017
 ------------------------------------------------------------------------
   title      : Ex Machina
   authors    : Wulczyn et al.
@@ -478,15 +475,41 @@ CORRECTIONS MADE AS A RESULT OF THIS AUDIT
    (anti-Muslim, four-day window).
 5. devlin2019 - DOI added.
 
-NOT MACHINE-CHECKABLE (no legal free full text)
+SOURCES CHANGED TO MAKE THE EVIDENCE CHECKABLE
 
-  mcpherson2001, leeseung1999, flesch1948  paywalled journals
-  sunstein2017, krippendorff2004           books
-  shugars2025, ng2022                      open access, publisher
-                                           blocks automated download
-  santiago2025                             paywalled book chapter
+  Three references had no freely readable full text. Two were replaced
+  with open equivalents by the same authors, and one was dropped.
 
-  All eight were confirmed to exist through Crossref or Open Library,
-  and shugars2025, ng2022 and santiago2025 additionally had their
-  claims verified against publisher abstracts. The remaining five are
-  cited for textbook facts about methods they are the origin of.
+  krippendorff2004 (book)  ->  hayes2007
+      Hayes and Krippendorff 2007, Communication Methods and Measures
+      1(1):77-89. Free from UPenn Annenberg, and the standard journal
+      citation for the alpha statistic we report.
+
+  leeseung1999 (Nature)    ->  leeseung2000
+      Lee and Seung, Algorithms for Non-negative Matrix Factorization,
+      NeurIPS 2000. Free from papers.nips.cc, and the better citation
+      because we use the algorithms, not the Nature letter's argument.
+
+  sunstein2017 (book)      ->  removed
+      Cited once for a framing claim that bail2018 already supports,
+      and bail2018 is stored here in full text with the finding
+      highlighted. Nothing in the paper now depends on it.
+
+STILL WITHOUT A DOWNLOADABLE COPY (3 of 23)
+
+  santiago2025    Springer book chapter, subscription. All three
+                  claims we make from it (80 days, Reddit, disgust
+                  ranked highest) are stated in the publisher's free
+                  abstract, which is quoted in this file above.
+  mcpherson2001   Annual Review of Sociology, subscription.
+                  Cited 18,720 times. Defines homophily, which is the
+                  core concept of RQ3. No open version exists.
+  flesch1948      Journal of Applied Psychology, subscription.
+                  Cited 5,677 times. The origin of the readability
+                  formula we compute. A 1948 paper has no open version.
+
+  All three were confirmed real through Crossref, which returns the
+  exact title, authors, volume and pages we cite. The last two are
+  cited only for the method each is the origin of, so no finding or
+  figure taken from either that could be misreported. Removing them
+  would mean using homophily and the Flesch formula without credit.

@@ -57,7 +57,7 @@ SOURCES = {
         pdf="https://arxiv.org/pdf/1610.08914",
         terms=["personal attack", "crowd", "annotat", "Wikipedia"]),
     "shugars2025": dict(
-        pdf=None, why="Social Media + Society, gold open access but SAGE blocks automated download; open via doi.org/10.1177/20563051251332427",
+        pdf=None, why="downloaded by hand: gold open access (CC BY-NC), SAGE blocks scripts",
         terms=["Reddit", "Twitter", "affordance", "visibility",
                "cross-cutting", "conversation"]),
     "boulianne2025": dict(
@@ -68,19 +68,18 @@ SOURCES = {
     # ---- no legal free full text ---------------------------------------
     "mcpherson2001": dict(pdf=None, why="Annual Review of Sociology, subscription",
                           terms=["homophily", "birds of a feather", "similarity"]),
-    "leeseung1999": dict(pdf=None, why="Nature, subscription",
-                         terms=["non-negative matrix factorization", "parts-based"]),
+    "leeseung2000": dict(pdf=None, why="downloaded from NeurIPS proceedings (open)",
+                         terms=["non-negative matrix factorization", "multiplicative",
+                                "update rule"]),
     "flesch1948": dict(pdf=None, why="APA PsycNet, subscription",
                        terms=["reading ease", "readability"]),
-    "ng2022": dict(pdf=None, why="Information Processing and Management, hybrid open access but Elsevier blocks automated download; open via doi.org/10.1016/j.ipm.2022.103070",
+    "ng2022": dict(pdf=None, why="downloaded by hand: open access (CC BY-NC-ND), Elsevier blocks scripts",
                    terms=["stance detection", "cross validation", "datasets",
                           "transfer"]),
     "santiago2025": dict(pdf=None, why="Springer book chapter, subscription",
                          terms=["Reddit", "emotion", "disgust", "sentiment"]),
-    "sunstein2017": dict(pdf=None, why="Princeton University Press, book",
-                         terms=["filtering", "self-selection", "echo chamber"]),
-    "krippendorff2004": dict(pdf=None, why="Sage, book (2nd edition)",
-                             terms=["alpha", "reliability", "agreement"]),
+    "hayes2007": dict(pdf=None, why="downloaded from UPenn Annenberg (open)",
+                      terms=["alpha", "reliability", "agreement", "coding data"]),
 
     # ---- web report -----------------------------------------------------
     "isd2023": dict(

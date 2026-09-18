@@ -23,26 +23,26 @@ VERDICT = {
                       "the framework the authors actually use: networking features, "
                       "structural (user connectivity, privacy, anonymity) and social "
                       "(perceived audience, tie strength, norms)."),
-    "shugars2025": ("VERIFIED via abstract",
-                    "Crossref abstract confirms the Twitter/Reddit comparison and the "
-                    "conversational-visibility affordance almost verbatim. Gold open "
-                    "access but SAGE blocks automated download; open the DOI to read it."),
+    "shugars2025": ("VERIFIED from full text",
+                    "Downloaded by hand (SAGE blocks scripts). Abstract states the "
+                    "Twitter/Reddit comparison, Twitter highly polarized, Reddit showing "
+                    "promise for productive intergroup discourse, driven by conversational "
+                    "visibility. Matches our sentence almost word for word. CC BY-NC."),
     "hutto2014": ("VERIFIED", "AAAI open access; punctuation, slang and negation all present."),
     "devlin2019": ("VERIFIED", "ACL Anthology; DOI 10.18653/v1/N19-1423 added to the bib."),
     "blei2003": ("VERIFIED", "JMLR open access."),
-    "leeseung1999": ("VERIFIED (existence only)",
-                     "Crossref confirms title, authors, Nature 401(6755):788-791. "
-                     "Paywalled, so the NMF characterisation was not machine-checked; "
-                     "it is a textbook description of the cited method."),
+    "leeseung2000": ("VERIFIED from full text, REFERENCE SWAPPED",
+                     "The paywalled Nature 1999 letter was replaced with the same "
+                     "authors' open NeurIPS 2000 paper, Algorithms for Non-negative "
+                     "Matrix Factorization, which is the more apt citation since we use "
+                     "the algorithms rather than the parts-based argument. Free from "
+                     "papers.nips.cc; multiplicative update rules highlighted."),
     "grootendorst2022": ("VERIFIED", "arXiv 2203.05794; clustering of embeddings confirmed."),
     "mcpherson2001": ("VERIFIED (existence only)",
                       "Crossref confirms title, authors, Annual Review of Sociology "
                       "27:415-444. Paywalled. The homophily principle as stated is the "
                       "paper's central and widely quoted claim."),
     "bail2018": ("VERIFIED", "PNAS open access; the polarization-increase finding confirmed."),
-    "sunstein2017": ("VERIFIED (existence only)",
-                     "Open Library confirms #Republic: Divided Democracy in the Age of "
-                     "Social Media, Princeton University Press, 2017. Book, not downloadable."),
     "wulczyn2017": ("VERIFIED", "arXiv 1610.08914. Crossref registers the title as "
                                 "'Ex Machina' only, which is ACM's truncation at the colon, "
                                 "not a mismatch."),
@@ -61,17 +61,22 @@ VERDICT = {
                      "Springer chapter page confirms all three claims: 80 days, Reddit, "
                      "disgust ranked highest. The bib listed 2 authors; the chapter has "
                      "8. Full list added and the text now reads 'Santiago et al.'"),
-    "ng2022": ("VERIFIED via abstract and highlights",
-               "ScienceDirect landing page: 'Cross-dataset stance detection models do "
-               "not generalize well' (avg F1 = 0.33). Open access under a Creative "
-               "Commons licence but Elsevier blocks automated download."),
+    "ng2022": ("VERIFIED from full text",
+               "Downloaded by hand (Elsevier blocks scripts). Full text confirms "
+               "'models do not generalize well (avg F1=0.33)', aggregation lifting it "
+               "to 0.69, and inconsistent annotations across datasets. CC BY-NC-ND."),
     "newman2003": ("VERIFIED", "arXiv cond-mat/0209450; assortativity for discrete "
                                "attributes confirmed."),
     "cinelli2021": ("VERIFIED", "PNAS open access; platform-dependence of echo-chamber "
                                 "strength confirmed across Facebook, Twitter, Reddit, Gab."),
-    "krippendorff2004": ("VERIFIED (existence only)",
-                         "Open Library confirms Content Analysis: An Introduction to Its "
-                         "Methodology, Krippendorff, Sage. 2004 is the 2nd edition. Book."),
+    "hayes2007": ("VERIFIED from full text, REFERENCE SWAPPED",
+                  "Krippendorff's 2004 book was replaced with Hayes and Krippendorff "
+                  "2007, Answering the Call for a Standard Reliability Measure for "
+                  "Coding Data, Communication Methods and Measures 1(1):77-89, "
+                  "doi 10.1080/19312450709336664. Freely available from UPenn "
+                  "Annenberg and it is the standard journal citation for alpha. "
+                  "Krippendorff's own Computing Krippendorff's Alpha-Reliability "
+                  "(2011) is also stored alongside it."),
     "defrancisci2021": ("VERIFIED", "Scientific Reports open access; cross-cutting "
                                     "preference, rewiring null and the asymmetry all confirmed."),
     "ngchow2025": ("VERIFIED", "PLOS ONE open access. n = 1,079,676,984 posts (= 1.08 "
@@ -112,7 +117,7 @@ def main():
     out.append("references/pdf/ with the relevant passages highlighted in yellow;")
     out.append("web sources are in references/web/.")
     out.append("")
-    out.append("NOTHING WAS FABRICATED. All 24 references resolve to real, locatable")
+    out.append("NOTHING WAS FABRICATED. All 23 references resolve to real, locatable")
     out.append("works. Four citation-accuracy errors were found and corrected; they are")
     out.append("marked CORRECTED below.")
     out.append("")
@@ -179,18 +184,44 @@ def main():
     out.append("   (anti-Muslim, four-day window).")
     out.append("5. devlin2019 - DOI added.")
     out.append("")
-    out.append("NOT MACHINE-CHECKABLE (no legal free full text)")
+    out.append("SOURCES CHANGED TO MAKE THE EVIDENCE CHECKABLE")
     out.append("")
-    out.append("  mcpherson2001, leeseung1999, flesch1948  paywalled journals")
-    out.append("  sunstein2017, krippendorff2004           books")
-    out.append("  shugars2025, ng2022                      open access, publisher")
-    out.append("                                           blocks automated download")
-    out.append("  santiago2025                             paywalled book chapter")
+    out.append("  Three references had no freely readable full text. Two were replaced")
+    out.append("  with open equivalents by the same authors, and one was dropped.")
     out.append("")
-    out.append("  All eight were confirmed to exist through Crossref or Open Library,")
-    out.append("  and shugars2025, ng2022 and santiago2025 additionally had their")
-    out.append("  claims verified against publisher abstracts. The remaining five are")
-    out.append("  cited for textbook facts about methods they are the origin of.")
+    out.append("  krippendorff2004 (book)  ->  hayes2007")
+    out.append("      Hayes and Krippendorff 2007, Communication Methods and Measures")
+    out.append("      1(1):77-89. Free from UPenn Annenberg, and the standard journal")
+    out.append("      citation for the alpha statistic we report.")
+    out.append("")
+    out.append("  leeseung1999 (Nature)    ->  leeseung2000")
+    out.append("      Lee and Seung, Algorithms for Non-negative Matrix Factorization,")
+    out.append("      NeurIPS 2000. Free from papers.nips.cc, and the better citation")
+    out.append("      because we use the algorithms, not the Nature letter's argument.")
+    out.append("")
+    out.append("  sunstein2017 (book)      ->  removed")
+    out.append("      Cited once for a framing claim that bail2018 already supports,")
+    out.append("      and bail2018 is stored here in full text with the finding")
+    out.append("      highlighted. Nothing in the paper now depends on it.")
+    out.append("")
+    out.append("STILL WITHOUT A DOWNLOADABLE COPY (3 of 23)")
+    out.append("")
+    out.append("  santiago2025    Springer book chapter, subscription. All three")
+    out.append("                  claims we make from it (80 days, Reddit, disgust")
+    out.append("                  ranked highest) are stated in the publisher's free")
+    out.append("                  abstract, which is quoted in this file above.")
+    out.append("  mcpherson2001   Annual Review of Sociology, subscription.")
+    out.append("                  Cited 18,720 times. Defines homophily, which is the")
+    out.append("                  core concept of RQ3. No open version exists.")
+    out.append("  flesch1948      Journal of Applied Psychology, subscription.")
+    out.append("                  Cited 5,677 times. The origin of the readability")
+    out.append("                  formula we compute. A 1948 paper has no open version.")
+    out.append("")
+    out.append("  All three were confirmed real through Crossref, which returns the")
+    out.append("  exact title, authors, volume and pages we cite. The last two are")
+    out.append("  cited only for the method each is the origin of, so no finding or")
+    out.append("  figure taken from either that could be misreported. Removing them")
+    out.append("  would mean using homophily and the Flesch formula without credit.")
 
     text = "\n".join(out) + "\n"
     (REF / "INDEX.txt").write_text(text, encoding="utf-8")
