@@ -21,25 +21,18 @@
 Arguing Across the Divide: Echo Chambers and the Choice of Measure in
 Israel-Hamas Discourse on Reddit and YouTube}
 
-%% TODO(authors): add each author's ORCID with \orcid{...} and confirm emails.
-\author*[1]{\fnm{Akshat} \sur{Gupta}}\email{akshat.gupta@plaksha.edu.in}
-\author[1]{\fnm{Raghav} \sur{Sarna}}\email{raghav.sarna@plaksha.edu.in}
-\author[1]{\fnm{Arsh} \sur{Arora}}\email{arsh.arora@plaksha.edu.in}
+%% TODO(authors): add each author's ORCID with \orcid{...}.
+\author*[1]{\fnm{Akshat} \sur{Gupta}}\email{akshat.gupta.ug23@plaksha.edu.in}
+\author[1]{\fnm{Raghav} \sur{Sarna}}\email{raghav.sarna.ug23@plaksha.edu.in}
+\author[1]{\fnm{Arsh} \sur{Arora}}\email{arsh.arora.ug23@plaksha.edu.in}
 \author[2]{\fnm{Uku} \sur{Kangur}}\email{uku.kangur@ut.ee}
-\author[3]{\fnm{Rajesh} \sur{Sharma}}\email{rajesh.sharma@plaksha.edu.in}
+\author[1]{\fnm{Rajesh} \sur{Sharma}}\email{rajesh.sharma@plaksha.edu.in}
 
-\affil*[1]{\orgdiv{Department of Computer Science and Artificial Intelligence},
-\orgname{Plaksha University}, \orgaddress{\city{Mohali}, \postcode{140306},
-\state{Punjab}, \country{India}}}
+\affil*[1]{\orgdiv{School of AI and Computer Science}, \orgname{Plaksha University},
+\orgaddress{\city{Mohali}, \postcode{140306}, \state{Punjab}, \country{India}}}
 
 \affil[2]{\orgdiv{Institute of Computer Science}, \orgname{University of Tartu},
 \orgaddress{\city{Tartu}, \country{Estonia}}}
-
-%% TODO(authors): affiliations 1 and 3 are both Plaksha University but carry
-%% different unit names, as supplied. Merge them into one \affil if they are the
-%% same unit.
-\affil[3]{\orgdiv{School of AI and Computer Science}, \orgname{Plaksha University},
-\orgaddress{\city{Mohali}, \postcode{140306}, \state{Punjab}, \country{India}}}
 
 \abstract{The Israel-Hamas conflict has unfolded not only through military and diplomatic events but also through continuous public argument online. We analyse 1{,}382{,}896 stance-labelled comments, 1{,}004{,}629 from Reddit and 378{,}267 from YouTube, over a matched 7~October~2023 to 7~May~2024 window, to ask how platform architecture shapes political discourse. Three findings are not predictable from platform design alone. First, emotional tone is politicised on Reddit, where both partisan camps are negative and only neutral comments are positive, but largely decoupled from stance on YouTube. Second, negativity and toxicity are related but not interchangeable: 88.5\% of toxic Reddit comments are negative, yet only 15.5\% of negative comments are toxic, and once sentiment is controlled the apparent toxicity gap between the two partisan camps disappears. Third, Reddit's reply network is disassortative by stance (Newman $r=-0.184$ against a degree-preserving null centred on zero), with 62.4\% of partisan replies crossing the divide, yet the same users appear strongly clustered when measured by thread co-membership. This locates the long-running echo-chamber disagreement in the choice of measure rather than in the platform. Stance classifiers transfer poorly across platforms, and this survives length matching, so it reflects vocabulary rather than comment length. We release a reproducible LLM-assisted labelling pipeline together with a three-annotator human validation (Krippendorff's $\alpha=0.796$), which finds stance accuracy of $0.836$ on Reddit but $0.618$ on YouTube, and we subject the platform contrast to three adversarial checks built from that validation, all of which it survives.}
 
@@ -1063,16 +1056,16 @@ this corpus but a better-annotated one.
 \backmatter
 
 \bmhead{Acknowledgements}
-%% TODO(authors): name the funding project and grant number. Springer requires
-%% funding organisations to be written out in full.
-This work was supported by [FUNDING BODY, PROJECT NAME AND GRANT NUMBER].
+The authors thank the School of AI and Computer Science, Plaksha University, for
+supporting this work.
 
 \section*{Statements and Declarations}
 
 \bmhead{Funding}
-%% TODO(authors): must match the Acknowledgements above and the funding entered
-%% in the submission system, which feeds the CrossMark record.
-This work was supported by [FUNDING BODY, PROJECT NAME AND GRANT NUMBER].
+%% TODO(authors): enter the same funder in the submission system, which feeds the
+%% CrossMark record. Add a grant number here if one applies.
+This work was supported by the School of AI and Computer Science, Plaksha
+University.
 
 \bmhead{Competing interests}
 The authors have no competing interests to declare that are relevant to the

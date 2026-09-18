@@ -48,25 +48,18 @@ PREAMBLE = r"""%% Journal of Computational Social Science
 Arguing Across the Divide: Echo Chambers and the Choice of Measure in
 Israel-Hamas Discourse on Reddit and YouTube}
 
-%% TODO(authors): add each author's ORCID with \orcid{...} and confirm emails.
-\author*[1]{\fnm{Akshat} \sur{Gupta}}\email{akshat.gupta@plaksha.edu.in}
-\author[1]{\fnm{Raghav} \sur{Sarna}}\email{raghav.sarna@plaksha.edu.in}
-\author[1]{\fnm{Arsh} \sur{Arora}}\email{arsh.arora@plaksha.edu.in}
+%% TODO(authors): add each author's ORCID with \orcid{...}.
+\author*[1]{\fnm{Akshat} \sur{Gupta}}\email{akshat.gupta.ug23@plaksha.edu.in}
+\author[1]{\fnm{Raghav} \sur{Sarna}}\email{raghav.sarna.ug23@plaksha.edu.in}
+\author[1]{\fnm{Arsh} \sur{Arora}}\email{arsh.arora.ug23@plaksha.edu.in}
 \author[2]{\fnm{Uku} \sur{Kangur}}\email{uku.kangur@ut.ee}
-\author[3]{\fnm{Rajesh} \sur{Sharma}}\email{rajesh.sharma@plaksha.edu.in}
+\author[1]{\fnm{Rajesh} \sur{Sharma}}\email{rajesh.sharma@plaksha.edu.in}
 
-\affil*[1]{\orgdiv{Department of Computer Science and Artificial Intelligence},
-\orgname{Plaksha University}, \orgaddress{\city{Mohali}, \postcode{140306},
-\state{Punjab}, \country{India}}}
+\affil*[1]{\orgdiv{School of AI and Computer Science}, \orgname{Plaksha University},
+\orgaddress{\city{Mohali}, \postcode{140306}, \state{Punjab}, \country{India}}}
 
 \affil[2]{\orgdiv{Institute of Computer Science}, \orgname{University of Tartu},
 \orgaddress{\city{Tartu}, \country{Estonia}}}
-
-%% TODO(authors): affiliations 1 and 3 are both Plaksha University but carry
-%% different unit names, as supplied. Merge them into one \affil if they are the
-%% same unit.
-\affil[3]{\orgdiv{School of AI and Computer Science}, \orgname{Plaksha University},
-\orgaddress{\city{Mohali}, \postcode{140306}, \state{Punjab}, \country{India}}}
 
 \abstract{ABSTRACT_HERE}
 
@@ -111,16 +104,16 @@ BACKMATTER = r"""
 \backmatter
 
 \bmhead{Acknowledgements}
-%% TODO(authors): name the funding project and grant number. Springer requires
-%% funding organisations to be written out in full.
-This work was supported by [FUNDING BODY, PROJECT NAME AND GRANT NUMBER].
+The authors thank the School of AI and Computer Science, Plaksha University, for
+supporting this work.
 
 \section*{Statements and Declarations}
 
 \bmhead{Funding}
-%% TODO(authors): must match the Acknowledgements above and the funding entered
-%% in the submission system, which feeds the CrossMark record.
-This work was supported by [FUNDING BODY, PROJECT NAME AND GRANT NUMBER].
+%% TODO(authors): enter the same funder in the submission system, which feeds the
+%% CrossMark record. Add a grant number here if one applies.
+This work was supported by the School of AI and Computer Science, Plaksha
+University.
 
 \bmhead{Competing interests}
 The authors have no competing interests to declare that are relevant to the
