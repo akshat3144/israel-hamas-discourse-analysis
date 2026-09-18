@@ -3,7 +3,9 @@ Clustered by Thread, Arguing Across the Divide
 
 Every reference in the manuscript was checked for existence and for
 whether it supports the claim attached to it. A copy of every one is
-in references/pdf/, with the relevant passages highlighted in yellow.
+in references/pdf/. PROVENANCE.txt maps each claim we make to the
+passage in the source it came from; those passages are the yellow
+highlights in the PDFs.
 Every source is a peer-reviewed paper or the preprint of one.
 
 NOTHING WAS FABRICATED. All 21 references resolve to real, locatable
@@ -36,7 +38,7 @@ WHAT IS IN THIS FOLDER
                'Antonakaki and others'; the paper has exactly two authors
                (Antonakaki, Ioannidis), now both named.
   local copy : pdf/antonakaki2025.pdf
-  highlighted: 119 passages on 27 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ...)
+  marked     : 3 supporting passage(s) on p. 1, 4 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Antonakaki et al. analyzed Telegram, Twitter/X, and Reddit from
       October 2023 to mid-2025 using LDA, BERTopic, and
@@ -54,7 +56,7 @@ WHAT IS IN THIS FOLDER
   status     : VERIFIED
                PNAS open access; the polarization-increase finding confirmed.
   local copy : pdf/bail2018.pdf
-  highlighted: 15 passages on 5 pages (p. 1, 2, 4, 5, 6)
+  marked     : 4 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Where filtering and self-selection are expected to narrow
       exposure, Bail et al. showed experimentally that exposure to
@@ -70,7 +72,7 @@ WHAT IS IN THIS FOLDER
   status     : VERIFIED
                JMLR open access.
   local copy : pdf/blei2003.pdf
-  highlighted: 84 passages on 25 pages (p. 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15, 16 ...)
+  marked     : 1 supporting passage(s) on p. 4 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
       Factorization represent documents as mixtures over latent topics;
@@ -93,7 +95,7 @@ WHAT IS IN THIS FOLDER
                (user connectivity, privacy, anonymity) and social (perceived
                audience, tie strength, norms).
   local copy : pdf/boulianne2025.pdf
-  highlighted: 122 passages on 29 pages (p. 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16 ...)
+  marked     : 15 supporting passage(s) on p. 2, 4 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Boulianne et al. compare seven platforms, including Reddit and
       YouTube, using survey data from four countries, and distinguish
@@ -113,7 +115,7 @@ WHAT IS IN THIS FOLDER
                PNAS open access; platform-dependence of echo-chamber strength
                confirmed across Facebook, Twitter, Reddit, Gab.
   local copy : pdf/cinelli2021.pdf
-  highlighted: 111 passages on 8 pages (p. 1, 2, 3, 4, 5, 6, 7, 8)
+  marked     : 3 supporting passage(s) on p. 2, 6 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Cinelli et al. demonstrated that echo-chamber strength is itself
       platform-dependent, motivating our comparative design.
@@ -135,7 +137,7 @@ WHAT IS IN THIS FOLDER
                Scientific Reports open access; cross-cutting preference, rewiring
                null and the asymmetry all confirmed.
   local copy : pdf/defrancisci2021.pdf
-  highlighted: 108 passages on 11 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+  marked     : 4 supporting passage(s) on p. 1, 3 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Most directly relevant to our RQ3, De Francisci Morales et al.
       reconstructed the political interaction network of Trump and
@@ -164,7 +166,7 @@ WHAT IS IN THIS FOLDER
   status     : VERIFIED
                ACL Anthology; DOI 10.18653/v1/N19-1423 added to the bib.
   local copy : pdf/devlin2019.pdf
-  highlighted: 63 passages on 13 pages (p. 1, 2, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 16)
+  marked     : 1 supporting passage(s) on p. 3 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Because both tools are lexicon-based and neither is trained on
       this domain, we additionally apply a RoBERTa model fine-tuned on
@@ -183,7 +185,7 @@ WHAT IS IN THIS FOLDER
   status     : VERIFIED
                PNAS open access; outperforms-crowd-workers finding confirmed.
   local copy : pdf/gilardi2023.pdf
-  highlighted: 30 passages on 3 pages (p. 1, 2, 3)
+  marked     : 1 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Gilardi, Alizadeh and Kubli showed that LLMs can outperform crowd
       workers on stance and frame detection.
@@ -194,7 +196,7 @@ WHAT IS IN THIS FOLDER
   status     : VERIFIED
                arXiv 2203.05794; clustering of embeddings confirmed.
   local copy : pdf/grootendorst2022.pdf
-  highlighted: 43 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  marked     : 1 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       BERTopic instead clusters sentence-embedding representations.
 
@@ -277,7 +279,7 @@ WHAT IS IN THIS FOLDER
   status     : VERIFIED
                AAAI open access; punctuation, slang and negation all present.
   local copy : pdf/hutto2014.pdf
-  highlighted: 71 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  marked     : 5 supporting passage(s) on p. 1, 2, 6, 9 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       VADER , designed for microblog contexts, captures punctuation
       intensity, slang, and negation.
@@ -310,7 +312,7 @@ WHAT IS IN THIS FOLDER
                arXiv cond-mat/0209450; assortativity for discrete attributes
                confirmed.
   local copy : pdf/newman2003.pdf
-  highlighted: 55 passages on 14 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
+  marked     : 5 supporting passage(s) on p. 1, 5 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Echo Chambers and Partisan Polarization The homophily principle -
       that similar people interact at higher rates than dissimilar ones
@@ -347,7 +349,7 @@ WHAT IS IN THIS FOLDER
                it to 0.69, and inconsistent annotations across datasets. CC
                BY-NC-ND.
   local copy : pdf/ng2022.pdf
-  highlighted: 73 passages on 15 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ...)
+  marked     : 3 supporting passage(s) on p. 1, 2 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Cross-platform stance-transfer failure is not claimed as novel -
       it is established for stance datasets generally by Ng and Carley .
@@ -368,7 +370,7 @@ WHAT IS IN THIS FOLDER
                PLOS ONE open access. n = 1,079,676,984 posts (= 1.08 billion), 59%
                negative, October 2023 to January 2024. All three figures match.
   local copy : pdf/ngchow2025.pdf
-  highlighted: 36 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  marked     : 4 supporting passage(s) on p. 2, 3, 6 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Ng and Chow index roughly 1.08 billion English-language posts
       across Twitter/X, Reddit and TikTok in the first four months
@@ -382,7 +384,7 @@ WHAT IS IN THIS FOLDER
                because the PDF uses fi-ligatures; the terms are present once
                normalised.
   local copy : pdf/pedregosa2011.pdf
-  highlighted: 62 passages on 6 pages (p. 1, 2, 3, 4, 5, 6)
+  marked     : 1 supporting passage(s) on p. 2 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Classification uses scikit-learn ; agreement statistics follow
       Krippendorff .
@@ -423,7 +425,7 @@ WHAT IS IN THIS FOLDER
                conversational visibility. Matches our sentence almost word for
                word. CC BY-NC.
   local copy : pdf/shugars2025.pdf
-  highlighted: 132 passages on 11 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+  marked     : 4 supporting passage(s) on p. 3, 7 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Shugars and Ha compared Twitter and Reddit directly, finding that
       Reddit's conversational visibility - the ability for users to see
@@ -448,7 +450,7 @@ WHAT IS IN THIS FOLDER
                arXiv 1610.08914. Crossref registers the title as 'Ex Machina' only,
                which is ACM's truncation at the colon, not a mismatch.
   local copy : pdf/wulczyn2017.pdf
-  highlighted: 84 passages on 9 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9)
+  marked     : 3 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Toxicity and Harmful Speech The Perspective API operationalizes
       online harm through the framework of Wulczyn, Thain and Dixon ,

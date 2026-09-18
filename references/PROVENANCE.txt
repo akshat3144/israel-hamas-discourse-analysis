@@ -1,0 +1,507 @@
+CITATION PROVENANCE
+Clustered by Thread, Arguing Across the Divide
+
+For every claim the manuscript attributes to a source, this records the
+passage in that source the claim came from, and the page it is on. The
+same passages are highlighted in yellow in references/pdf/.
+
+==========================================================================
+
+antonakaki2025
+--------------------------------------------------------------------------
+  the manuscript says:
+      Antonakaki et al. analyzed Telegram, Twitter/X, and Reddit from
+      October 2023 to mid-2025 using LDA, BERTopic, and transformer-based
+      emotion models, identifying platform-specific narrative strategies
+      and propaganda amplification patterns.
+
+  CLAIM: analysed Telegram, Twitter/X and Reddit with LDA, BERTopic and transformer emotion models
+    SOURCE: p.1
+       We combine traditional LDA with a refined BERTopic workflow and
+       transformer-based sentiment and emotion models to examine
+       thematic structure and affective dynamics in more than 187,000
+       Telegram messages.
+
+  CLAIM: identified platform-specific narrative strategies and amplification
+    SOURCE: p.4
+       Cross-Platform Perspective: Captures narrative strategies,
+       amplification patterns, and temporal dynamics across Telegram,
+       Reddit, and Twitter/X, providing a unified view of
+       multi-platform discourse.
+
+
+bail2018
+--------------------------------------------------------------------------
+  the manuscript says:
+      Where filtering and self-selection are expected to narrow exposure,
+      Bail et al. showed experimentally that exposure to opposing views
+      can increase polarization.
+
+      Bail et al. found that cross-cutting exposure can intensify rather
+      than soften partisan feeling, which is consistent with the pattern
+      we observe in Reddit's argumentative, high-exposure environment.
+
+  CLAIM: exposure to opposing views can increase polarization
+    SOURCE: p.1
+       We ﬁnd that Republicans who followed a liberal Twitter bot
+       became substantially more conservative posttreatment.
+
+  CLAIM: cross-cutting exposure intensifies rather than softens partisan feeling
+    SOURCE: p.1
+       Democrats exhibited slight increases in liberal attitudes after
+       following a conservative Twitter bot, although these effects are
+       not statistically signiﬁcant.
+
+
+blei2003
+--------------------------------------------------------------------------
+  the manuscript says:
+      Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
+      Factorization represent documents as mixtures over latent topics;
+      LDA assumes a Bayesian generative process while NMF performs a
+      matrix decomposition that tends to produce sparser topics.
+
+  CLAIM: LDA represents documents as mixtures over latent topics
+    SOURCE: p.4
+       The basic idea is that documents are represented as random
+       mixtures over latent topics, where each topic is characterized
+       by a distribution over words.1 LDA assumes the following
+       generative process for each document w in a corpus D: 1.
+
+
+boulianne2025
+--------------------------------------------------------------------------
+  the manuscript says:
+      Boulianne et al. compare seven platforms, including Reddit and
+      YouTube, using survey data from four countries, and distinguish them
+      by their networking features: structural ones such as user
+      connectivity, privacy and anonymity, and social ones such as
+      perceived audience and the norms of interaction.
+
+  CLAIM: distinguishes platforms by structural and social networking features
+    SOURCE: p.2
+       Our conceptual framework highlights the importance of both
+       “structural” (user connectivity, anonymity, and privacy
+       settings) and “social” features (perceived audiences, temporary
+       vs strong ties, and social norms of interaction).
+    SOURCE: p.2
+       Our conceptual framework highlights the importance of both
+       “structural” (user connectivity, anonymity, and privacy
+       settings) and “social” features (perceived audiences, temporary
+       vs strong ties, and social norms of interaction).
+
+  CLAIM: compares seven platforms
+    SOURCE: p.4
+       What is the role of political ideology in (a) the adoption of
+       social media platforms and (b) exposure to and (c) posting of
+       political content? Platform differences We compare seven social
+       media platforms based on their networking features.
+
+
+cinelli2021
+--------------------------------------------------------------------------
+  the manuscript says:
+      Cinelli et al. demonstrated that echo-chamber strength is itself
+      platform-dependent, motivating our comparative design.
+
+      Because Cinelli et al. show echo-chamber strength varies by
+      platform, we caution that this result is specific to Reddit's
+      threaded reply structure and should not be generalised to feed-based
+      platforms.
+
+  CLAIM: echo-chamber strength is platform-dependent
+    SOURCE: p.2
+       Our analysis shows that platforms organized around social
+       networks and news feed algorithms, such as Facebook and Twitter,
+       favor the emergence of echo chambers.
+
+  CLAIM: feed-based platforms differ from Reddit, so results should not be generalised
+    SOURCE: p.6
+       A clearcut distinction emerges between social media having a
+       feed algorithm tweakable by the users (e.g., Reddit) and social
+       media that don’t provide such an option (e.g., Facebook and
+       Twitter).
+
+
+defrancisci2021
+--------------------------------------------------------------------------
+  the manuscript says:
+      Most directly relevant to our RQ3, De Francisci Morales et al.
+      reconstructed the political interaction network of Trump and Clinton
+      supporters on Reddit and found a preference for cross-cutting
+      replies over within-group ones - asymmetrically so - against a
+      degree-preserving rewiring null.
+
+      The cross-cutting direction itself agrees with De Francisci Morales
+      et al. , who report the same preference - and a similar asymmetry,
+      with one camp more eager to reply across the divide - for US party
+      politics; recovering it in a conflict corpus indicates the pattern
+      is not confined to domestic partisanship.
+
+      That conclusion is not itself new - De Francisci Morales et al.
+      reached it for US party politics using a comparable
+      degree-preserving null.
+
+  CLAIM: preference for cross-cutting replies over within-group ones
+    SOURCE: p.1
+       We observe a preference for cross-cutting political interactions
+       between the two communities rather than within-group
+       interactions, thus contradicting the echo chamber narrative.
+
+  CLAIM: the preference is asymmetric between the two camps
+    SOURCE: p.3
+       The same effect is visible for Trump supporters, who are more
+       likely to interact with Clinton ones (38% of interactions) than
+       the Clinton community within itself (28% of interactions).
+
+  CLAIM: tested against a degree-preserving rewiring null
+    SOURCE: p.1
+       Our findings are tested against a null model of random
+       interactions, by using two different approaches: a network
+       rewiring which preserves the activity of nodes, and a logit
+       regression which takes into account possible confounding
+       factors.
+
+
+devlin2019
+--------------------------------------------------------------------------
+  the manuscript says:
+      Because both tools are lexicon-based and neither is trained on this
+      domain, we additionally apply a RoBERTa model fine-tuned on Twitter
+      data - building on the BERT architecture of Devlin et al. - and
+      treat agreement among the three as a measurement question in its own
+      right rather than an assumption.
+
+  CLAIM: the BERT architecture our RoBERTa sentiment model builds on
+    SOURCE: p.3
+       Model Architecture BERT’s model architecture is a multi-layer
+       bidirectional Transformer encoder based on the original
+       implementation described in Vaswani et al.
+
+
+gilardi2023
+--------------------------------------------------------------------------
+  the manuscript says:
+      Gilardi, Alizadeh and Kubli showed that LLMs can outperform crowd
+      workers on stance and frame detection.
+
+  CLAIM: LLMs outperform crowd workers on stance and frame detection
+    SOURCE: p.1
+       Using four samples of tweets and news articles (n = 6,183), we
+       show that ChatGPT outperforms crowd workers for several
+       annotation tasks, including relevance, stance, topics, and frame
+       detection.
+
+
+grootendorst2022
+--------------------------------------------------------------------------
+  the manuscript says:
+      BERTopic instead clusters sentence-embedding representations.
+
+  CLAIM: BERTopic clusters sentence-embedding representations
+    SOURCE: p.1
+       More specifically, BERTopic generates document embedding with
+       pre-trained transformer-based language models, clusters these
+       embeddings, and ﬁnally, generates topic representations with the
+       class-based TF-IDF procedure.
+
+
+guerra2025
+--------------------------------------------------------------------------
+  the manuscript says:
+      Guerra et al. focused on Reddit, scoring over 450,000 posts from
+      four conflict-related subreddits on a lexicon-based index of anger,
+      polarity and subjectivity, and found peaks in that index aligning
+      with specific events on the ground.
+
+  CLAIM: scored Reddit posts on a lexicon index of anger, polarity and subjectivity
+    SOURCE: p.1
+       A lexicon-based, unsupervised methodology was developed to
+       measure ”extreme opinions” by considering factors such as anger,
+       polarity, and subjectivity.
+
+  CLAIM: found peaks aligning with specific events on the ground
+    SOURCE: p.1
+       The analysis identifies significant peaks in extremism scores
+       that correspond to pivotal real-life events, such as the IDF’s
+       bombings of Al Quds Hospital and the Jabalia Refugee Camp, and
+       the end of a ceasefire following a terrorist attack.
+
+
+hayes2007
+--------------------------------------------------------------------------
+  the manuscript says:
+      Classification uses scikit-learn ; agreement statistics follow
+      Krippendorff .
+
+  CLAIM: the agreement statistic we report (Krippendorff's alpha)
+    SOURCE: p.1
+       After describing the criteria for a good measure of reliability,
+       we propose Krippendorff’s alpha as the standard reliability
+       measure.
+
+
+hofmann2026
+--------------------------------------------------------------------------
+  the manuscript says:
+      Hofmann et al. annotated YouTube comments on the conflict and found
+      hate speech in 40.4\
+
+      Closest to our own design, Hofmann et al. hand-annotated 4,983
+      YouTube comments on the conflict for hate speech and for the same
+      three stances we use, trained classifiers reaching AUROC 0.83 to
+      0.90, and applied them to comment sections from public and private
+      news channels.
+
+  CLAIM: hate speech in 40.4 percent of public and 31.6 percent of private source comments
+    SOURCE: p.1
+       These models were applied to the extracted comment sections of
+       YouTube videos from public and private sources, uncovering a
+       higher incidence of HS in public sources (40.4%) compared to
+       private sources (31.6%).
+
+  CLAIM: 4,983 hand-annotated YouTube comments, classifiers at AUROC 0.83 to 0.90
+    SOURCE: p.2
+       First, we provide a carefully annotated dataset of 4983 YouTube
+       comments labeled for HS and sentiment.1 Second, we develop ML
+       models with promising predictive capabilities with AUROC scores
+       between 0.83 to 0.90 for tasks of hate speech detection and
+       sentiment analysis.
+    SOURCE: p.2
+       First, we provide a carefully annotated dataset of 4983 YouTube
+       comments labeled for HS and sentiment.1 Second, we develop ML
+       models with promising predictive capabilities with AUROC scores
+       between 0.83 to 0.90 for tasks of hate speech detection and
+       sentiment analysis.
+
+
+hutto2014
+--------------------------------------------------------------------------
+  the manuscript says:
+      VADER , designed for microblog contexts, captures punctuation
+      intensity, slang, and negation.
+
+  CLAIM: VADER is designed for microblog contexts
+    SOURCE: p.1
+       Using a combination of qualitative and quantitative methods, we
+       first construct and empirically validate a goldstandard list of
+       lexical features (along with their associated sentiment
+       intensity measures) which are specifically attuned to sentiment
+       in microblog-like contexts.
+
+  CLAIM: captures punctuation intensity
+    SOURCE: p.6
+       Punctuation, namely the exclamation point (!), increases the
+       magnitude of the intensity without modifying the semantic
+       orientation.
+
+  CLAIM: captures slang
+    SOURCE: p.2
+       However, as Hutto, Yardi, & Gilbert (2013) point out, despite
+       its widespread use for assessing sentiment in social media text,
+       LIWC does not include consideration for sentiment-bearing
+       lexical items such as acronyms, initialisms, emoticons, or
+       slang, which are known to be important for sentiment analysis of
+       social text (Davidov, Tsur, & Rappoport, 2010).
+
+  CLAIM: captures negation
+    SOURCE: p.9
+       Other syntactical considerations identified via qualitative
+       analysis (negation, degree modifiers, and contrastive
+       conjunctions) also help make VADER successful, and is consistent
+       with prior work (Agarwal et al., 2011; Ding, Liu, & Yu, 2008;
+       Lu, Castellanos, Dayal, & Zhai, 2011; Socher et al., 2013).
+
+
+leeseung2000
+--------------------------------------------------------------------------
+  the manuscript says:
+      Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
+      Factorization represent documents as mixtures over latent topics;
+      LDA assumes a Bayesian generative process while NMF performs a
+      matrix decomposition that tends to produce sparser topics.
+
+  CLAIM: NMF as a matrix decomposition
+    SOURCE: p.1
+       Massachusetts Institute of Technology Cambridge, MA 02138
+       Abstract Non-negative matrix factorization (NMF) has previously
+       been shown to be a useful decomposition for multivariate data.
+
+
+newman2003
+--------------------------------------------------------------------------
+  the manuscript says:
+      Echo Chambers and Partisan Polarization The homophily principle -
+      that similar people interact at higher rates than dissimilar ones -
+      underpins computational echo-chamber research.
+
+      Crucially, homophily is a property of a network, so we measure it on
+      an explicit user-user reply graph and report Newman's assortativity
+      coefficient for categorical attributes alongside a chance-corrected
+      homophily index; raw same-stance rates are uninterpretable without
+      the baseline expected under random mixing.
+
+      Because that share depends on how common each stance is among reply
+      targets, we report it against the value expected under random mixing
+      and summarise the whole graph with Newman's assortativity
+      coefficient , where 0 is random mixing and negative values indicate
+      cross-stance interaction.
+
+      Since homophily is defined on networks , the reply-graph measure is
+      the appropriate one, and it indicates that Reddit in this corpus
+      functions as a contested arena rather than a set of sealed chambers.
+
+  CLAIM: the homophily principle: similar people interact at higher rates
+    SOURCE: p.1
+       Newman Department of Physics, University of Michigan, Ann Arbor,
+       MI 48109–1120 and Santa Fe Institute, 1399 Hyde Park Road, Santa
+       Fe, NM 87501 We study assortative mixing in networks, the
+       tendency for vertices in networks to be connected to other
+       vertices that are like (or unlike) them in some way.
+
+  CLAIM: assortativity for categorical attributes
+    SOURCE: p.1
+       We consider mixing according to discrete characteristics such as
+       language or race in social networks and scalar characteristics
+       such as age.
+
+  CLAIM: zero is random mixing, negative values indicate cross-stance interaction
+    SOURCE: p.5
+       The value of r lies in the range −1 ≤r ≤1, with r = 1 indicating
+       perfect assortativity and r = −1 indicating perfect
+       disassortativity (i.e., perfect negative correlation between x
+       and y).
+
+
+ng2022
+--------------------------------------------------------------------------
+  the manuscript says:
+      Cross-platform stance-transfer failure is not claimed as novel - it
+      is established for stance datasets generally by Ng and Carley .
+
+      Stance Language Is Platform-Specific That stance models transfer
+      poorly across corpora is already established by Ng and Carley , so
+      we claim no novelty for the effect itself.
+
+  CLAIM: cross-dataset stance models do not transfer
+    SOURCE: p.1
+       (1) Are stance classification models generalizable across
+       datasets? We construct a single dataset model to train/test
+       dataset-against-dataset, finding models do not generalize well
+       (avg F1=0.33).
+
+  CLAIM: stance models transfer poorly across corpora generally
+    SOURCE: p.2
+       Unfortunately, models tend to perform poorly on unseen cases,
+       and there is inconsistent performance in adding out-of-domain
+       data to pre-built models.
+
+
+ngchow2025
+--------------------------------------------------------------------------
+  the manuscript says:
+      Ng and Chow index roughly 1.08 billion English-language posts across
+      Twitter/X, Reddit and TikTok in the first four months alone, 59\
+
+  CLAIM: roughly 1.08 billion English-language posts
+    SOURCE: p.3
+       We interrogate a corpus dataset of all English-language media
+       content, obtained using academic-level API access across social
+       media platforms (Twitter, Reddit, Tiktok), interrogating content
+       containing search term keywords associated with the con­ flict
+       (Palestine, Palestinian(s), Israel(i)(s), Gaza, Hamas) from
+       October 2023 to January 2024 (n = 1,079,676,984) to ask two main
+       research questions.
+
+  CLAIM: 59 percent negative
+    SOURCE: p.2
+       Valence scores were generally neg­ ative, following a general
+       monthly distribution of negative (59%), neutral (31%), and
+       positive (10%), with main keywords focused on terror, violence,
+       and calls for cease­ fire.
+
+  CLAIM: across Twitter/X, Reddit and TikTok in the first four months
+    SOURCE: p.6
+       Results Prominent peaks We present findings identifying 8
+       prominent peaks and emergent events garnering the most mentions
+       within the first four months of the conflict in Fig 2.
+
+
+pedregosa2011
+--------------------------------------------------------------------------
+  the manuscript says:
+      Classification uses scikit-learn ; agreement statistics follow
+      Krippendorff .
+
+  CLAIM: scikit-learn as the classification toolkit
+    SOURCE: p.2
+       Matthieu Brucher MATTHIEU.BRUCHER@GMAIL.COM Total SA, CSTJF
+       avenue Larribau 64000 Pau – France Matthieu Perrot
+       MATTHIEU.PERROT@CEA.FR ´Edouard Duchesnay
+       EDOUARD.DUCHESNAY@CEA.FR LNAO Neurospin, Bˆat 145, CEA Saclay
+       91191 Gif sur Yvette – France Editor: Mikio Braun Abstract
+       Scikit-learn is a Python module integrating a wide range of
+       state-of-the-art machine learning algorithms for medium-scale
+       supervised and unsupervised problems.
+
+
+rosen2025
+--------------------------------------------------------------------------
+  the manuscript says:
+      Rosen and Walther document a parallel escalation in anti-Jewish and
+      anti-Muslim posting in the month after 7 October, and show that the
+      replies such posts attract feed back into how hatefully their
+      authors post next.
+
+  CLAIM: escalation in anti-Jewish and anti-Muslim posting after 7 October
+    SOURCE: p.1
+       This study examined anti-Jewish and anti-Muslim hate posts on
+       X.com and the verbal replies, Likes, and reposts they acquired
+       over the following month.
+
+  CLAIM: replies feed back into how hatefully authors post next
+    SOURCE: p.1
+       Convergent replies to one’s hate posts led individuals to post
+       more hatefully in their next post, and more quickly.
+
+
+shugars2025
+--------------------------------------------------------------------------
+  the manuscript says:
+      Shugars and Ha compared Twitter and Reddit directly, finding that
+      Reddit's conversational visibility - the ability for users to see
+      and engage with exchanges as a whole - enabled more cross-cutting
+      and productive political discourse than Twitter's broadcast-oriented
+      design.
+
+      It aligns with Shugars and Ha , who found that Reddit's
+      conversational visibility supports more cross-cutting exchange than
+      broadcast-oriented designs - our reply graph is the network-level
+      signature of exactly that affordance.
+
+  CLAIM: Reddit's conversational visibility
+    SOURCE: p.3
+       We use the term conversational visibility to refer to the
+       ability of users to see and engage in full conversations.
+
+  CLAIM: supports more cross-cutting exchange than broadcast-oriented design
+    SOURCE: p.7
+       At the same time, Reddit not only benefited from conversational
+       visibility but from the affordance of community.
+
+
+wulczyn2017
+--------------------------------------------------------------------------
+  the manuscript says:
+      Toxicity and Harmful Speech The Perspective API operationalizes
+      online harm through the framework of Wulczyn, Thain and Dixon ,
+      scoring the probability that a rater would find a comment rude or
+      disrespectful across six attributes.
+
+  CLAIM: the personal-attacks framework Perspective operationalises
+    SOURCE: p.1
+       The contribution of this paper is to develop and illustrate a
+       method that combines crowdsourcing and machine learning to
+       analyze personal attacks at scale.
+
+==========================================================================

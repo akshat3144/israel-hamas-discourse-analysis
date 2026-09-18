@@ -113,7 +113,9 @@ def main():
     out.append("")
     out.append("Every reference in the manuscript was checked for existence and for")
     out.append("whether it supports the claim attached to it. A copy of every one is")
-    out.append("in references/pdf/, with the relevant passages highlighted in yellow.")
+    out.append("in references/pdf/. PROVENANCE.txt maps each claim we make to the")
+    out.append("passage in the source it came from; those passages are the yellow")
+    out.append("highlights in the PDFs.")
     out.append("Every source is a peer-reviewed paper or the preprint of one.")
     out.append("")
     out.append("NOTHING WAS FABRICATED. All 21 references resolve to real, locatable")
@@ -181,9 +183,9 @@ def main():
             n_hl = f.get("highlight_count", 0)
             if n_hl:
                 pages = sorted(set(sum(hits.values(), [])))
-                out.append(f"  highlighted: {n_hl} passages on {len(pages)} pages "
-                           f"(p. {', '.join(map(str, pages[:14]))}"
-                           f"{' ...' if len(pages) > 14 else ''})")
+                out.append(f"  marked     : {n_hl} supporting passage(s) on "
+                           f"p. {', '.join(map(str, pages))} "
+                           f"(quoted in PROVENANCE.txt)")
         elif web_for.get(key) in html:
             # the two ISD dispatches were saved under one fetch entry
             out.append(f"  local copy : web/{web_for[key]}")

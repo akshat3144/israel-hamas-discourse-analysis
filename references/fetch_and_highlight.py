@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Download each reference's open-access PDF and highlight the passages the
-manuscript relies on.
+"""Download each reference's open-access PDF.
+
+Highlighting is handled by mark_provenance.py.
 
 Only publicly available copies are fetched: publisher open-access PDFs, PubMed
 Central, arXiv, the ACL Anthology, JMLR and AAAI. Subscription-only items are
@@ -132,11 +133,9 @@ def main():
             report[key] = rec
             continue
 
-        try:
-            hits = highlight(dest, spec["terms"])
-        except Exception as ex:
-            hits = {}
-            rec["highlight_error"] = str(ex)
+        # highlighting is no longer done here: keyword marks prove nothing.
+        # mark_provenance.py marks the specific passage each claim came from.
+        hits = {}
 
         found = len(hits)
         total = len(spec["terms"])
