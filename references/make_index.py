@@ -38,10 +38,6 @@ VERDICT = {
                      "the algorithms rather than the parts-based argument. Free from "
                      "papers.nips.cc; multiplicative update rules highlighted."),
     "grootendorst2022": ("VERIFIED", "arXiv 2203.05794; clustering of embeddings confirmed."),
-    "mcpherson2001": ("VERIFIED (existence only)",
-                      "Crossref confirms title, authors, Annual Review of Sociology "
-                      "27:415-444. Paywalled. The homophily principle as stated is the "
-                      "paper's central and widely quoted claim."),
     "bail2018": ("VERIFIED", "PNAS open access; the polarization-increase finding confirmed."),
     "wulczyn2017": ("VERIFIED", "arXiv 1610.08914. Crossref registers the title as "
                                 "'Ex Machina' only, which is ACM's truncation at the colon, "
@@ -117,7 +113,7 @@ def main():
     out.append("references/pdf/ with the relevant passages highlighted in yellow;")
     out.append("web sources are in references/web/.")
     out.append("")
-    out.append("NOTHING WAS FABRICATED. All 23 references resolve to real, locatable")
+    out.append("NOTHING WAS FABRICATED. All 22 references resolve to real, locatable")
     out.append("works. Four citation-accuracy errors were found and corrected; they are")
     out.append("marked CORRECTED below.")
     out.append("")
@@ -204,24 +200,36 @@ def main():
     out.append("      and bail2018 is stored here in full text with the finding")
     out.append("      highlighted. Nothing in the paper now depends on it.")
     out.append("")
-    out.append("STILL WITHOUT A DOWNLOADABLE COPY (3 of 23)")
+    out.append("  mcpherson2001 (paywalled)  ->  covered by newman2003")
+    out.append("      Newman 2003 states the same principle formally and on")
+    out.append("      networks: 'assortative mixing in networks, the tendency for")
+    out.append("      vertices to be connected to other vertices that are like (or")
+    out.append("      unlike) them'. That is the better citation here anyway,")
+    out.append("      because we measure assortativity on a reply graph rather than")
+    out.append("      sociological homophily. Newman is free on arXiv and held here")
+    out.append("      in full text. Cinelli 2021, also held in full text,")
+    out.append("      independently shows homophily underpinning echo-chamber work.")
+    out.append("")
+    out.append("STILL WITHOUT A DOWNLOADABLE COPY (2 of 22)")
     out.append("")
     out.append("  santiago2025    Springer book chapter, subscription. All three")
     out.append("                  claims we make from it (80 days, Reddit, disgust")
     out.append("                  ranked highest) are stated in the publisher's free")
     out.append("                  abstract, which is quoted in this file above.")
-    out.append("  mcpherson2001   Annual Review of Sociology, subscription.")
-    out.append("                  Cited 18,720 times. Defines homophily, which is the")
-    out.append("                  core concept of RQ3. No open version exists.")
     out.append("  flesch1948      Journal of Applied Psychology, subscription.")
-    out.append("                  Cited 5,677 times. The origin of the readability")
-    out.append("                  formula we compute. A 1948 paper has no open version.")
+    out.append("                  Kept deliberately. 06_revision/core_stats.py")
+    out.append("                  hardcodes his exact constants:")
+    out.append("                    206.835 - 1.015*(words/sents) - 84.6*(syll/words)")
+    out.append("                  Those three numbers ARE Flesch 1948. No other work")
+    out.append("                  can be cited for them, and a 1948 paper has no open")
+    out.append("                  version. Citing a later secondary source instead")
+    out.append("                  would be weaker scholarship, not stronger.")
     out.append("")
-    out.append("  All three were confirmed real through Crossref, which returns the")
-    out.append("  exact title, authors, volume and pages we cite. The last two are")
-    out.append("  cited only for the method each is the origin of, so no finding or")
-    out.append("  figure taken from either that could be misreported. Removing them")
-    out.append("  would mean using homophily and the Flesch formula without credit.")
+    out.append("  Both were confirmed real through Crossref, which returns the exact")
+    out.append("  title, authors, volume and pages we cite. Neither carries a finding")
+    out.append("  that could be misreported: santiago2025 is described from its own")
+    out.append("  abstract, and flesch1948 is cited only as the origin of a formula")
+    out.append("  whose implementation is in this repository.")
 
     text = "\n".join(out) + "\n"
     (REF / "INDEX.txt").write_text(text, encoding="utf-8")

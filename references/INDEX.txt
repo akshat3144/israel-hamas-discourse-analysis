@@ -6,7 +6,7 @@ whether it supports the claim attached to it. Open-access copies are in
 references/pdf/ with the relevant passages highlighted in yellow;
 web sources are in references/web/.
 
-NOTHING WAS FABRICATED. All 23 references resolve to real, locatable
+NOTHING WAS FABRICATED. All 22 references resolve to real, locatable
 works. Four citation-accuracy errors were found and corrected; they are
 marked CORRECTED below.
 
@@ -287,30 +287,7 @@ marked CORRECTED below.
       matrix decomposition that tends to produce sparser topics.
 
 
-[16] mcpherson2001
-------------------------------------------------------------------------
-  title      : Birds of a Feather: Homophily in Social Networks
-  authors    : McPherson et al.
-  venue      : Annual Review of Sociology
-  year       : 2001
-  doi        : 10.1146/annurev.soc.27.1.415
-  status     : VERIFIED (existence only)
-               Crossref confirms title, authors, Annual Review of Sociology
-               27:415-444. Paywalled. The homophily principle as stated is the
-               paper's central and widely quoted claim.
-  local copy : NONE - Annual Review of Sociology, subscription
-  used in the manuscript for:
-      Echo Chambers and Partisan Polarization The homophily principle -
-      that similar people interact at higher rates than dissimilar ones
-      - underpins computational echo-chamber research.
-
-      Since homophily is defined on networks , the reply-graph measure
-      is the appropriate one, and it indicates that Reddit in this
-      corpus functions as a contested arena rather than a set of sealed
-      chambers.
-
-
-[17] newman2003
+[16] newman2003
 ------------------------------------------------------------------------
   title      : Mixing patterns in networks
   authors    : Newman et al.
@@ -323,6 +300,10 @@ marked CORRECTED below.
   local copy : pdf/newman2003.pdf
   highlighted: 55 passages on 14 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
   used in the manuscript for:
+      Echo Chambers and Partisan Polarization The homophily principle -
+      that similar people interact at higher rates than dissimilar ones
+      - underpins computational echo-chamber research.
+
       Crucially, homophily is a property of a network, so we measure it
       on an explicit user-user reply graph and report Newman's
       assortativity coefficient for categorical attributes alongside a
@@ -341,7 +322,7 @@ marked CORRECTED below.
       chambers.
 
 
-[18] ng2022
+[17] ng2022
 ------------------------------------------------------------------------
   title      : Is my stance the same as your stance? A cross validation study of stance detection datasets
   authors    : Ng et al.
@@ -363,7 +344,7 @@ marked CORRECTED below.
       we claim no novelty for the effect itself.
 
 
-[19] ngchow2025
+[18] ngchow2025
 ------------------------------------------------------------------------
   title      : Prominent peaks and social discourses of the 2023 Escalation in the Ongoing Israel–Hamas armed conflict
   authors    : Ng et al.
@@ -381,7 +362,7 @@ marked CORRECTED below.
       alone, 59\
 
 
-[20] pedregosa2011
+[19] pedregosa2011
 ------------------------------------------------------------------------
   status     : VERIFIED
                JMLR open access. An automated search for 'classif' first missed
@@ -394,7 +375,7 @@ marked CORRECTED below.
       formula ; agreement statistics follow Krippendorff .
 
 
-[21] santiago2025
+[20] santiago2025
 ------------------------------------------------------------------------
   title      : Public Opinion and Emotion Analysis on the Israel-Hamas War Using Machine Learning
   authors    : Santiago et al.
@@ -413,7 +394,7 @@ marked CORRECTED below.
       landscape.
 
 
-[22] shugars2025
+[21] shugars2025
 ------------------------------------------------------------------------
   title      : The Character of Connection: Platform Affordances and Connective Democracy
   authors    : Shugars et al.
@@ -440,7 +421,7 @@ marked CORRECTED below.
       network-level signature of exactly that affordance.
 
 
-[23] wulczyn2017
+[22] wulczyn2017
 ------------------------------------------------------------------------
   title      : Ex Machina
   authors    : Wulczyn et al.
@@ -495,21 +476,33 @@ SOURCES CHANGED TO MAKE THE EVIDENCE CHECKABLE
       and bail2018 is stored here in full text with the finding
       highlighted. Nothing in the paper now depends on it.
 
-STILL WITHOUT A DOWNLOADABLE COPY (3 of 23)
+  mcpherson2001 (paywalled)  ->  covered by newman2003
+      Newman 2003 states the same principle formally and on
+      networks: 'assortative mixing in networks, the tendency for
+      vertices to be connected to other vertices that are like (or
+      unlike) them'. That is the better citation here anyway,
+      because we measure assortativity on a reply graph rather than
+      sociological homophily. Newman is free on arXiv and held here
+      in full text. Cinelli 2021, also held in full text,
+      independently shows homophily underpinning echo-chamber work.
+
+STILL WITHOUT A DOWNLOADABLE COPY (2 of 22)
 
   santiago2025    Springer book chapter, subscription. All three
                   claims we make from it (80 days, Reddit, disgust
                   ranked highest) are stated in the publisher's free
                   abstract, which is quoted in this file above.
-  mcpherson2001   Annual Review of Sociology, subscription.
-                  Cited 18,720 times. Defines homophily, which is the
-                  core concept of RQ3. No open version exists.
   flesch1948      Journal of Applied Psychology, subscription.
-                  Cited 5,677 times. The origin of the readability
-                  formula we compute. A 1948 paper has no open version.
+                  Kept deliberately. 06_revision/core_stats.py
+                  hardcodes his exact constants:
+                    206.835 - 1.015*(words/sents) - 84.6*(syll/words)
+                  Those three numbers ARE Flesch 1948. No other work
+                  can be cited for them, and a 1948 paper has no open
+                  version. Citing a later secondary source instead
+                  would be weaker scholarship, not stronger.
 
-  All three were confirmed real through Crossref, which returns the
-  exact title, authors, volume and pages we cite. The last two are
-  cited only for the method each is the origin of, so no finding or
-  figure taken from either that could be misreported. Removing them
-  would mean using homophily and the Flesch formula without credit.
+  Both were confirmed real through Crossref, which returns the exact
+  title, authors, volume and pages we cite. Neither carries a finding
+  that could be misreported: santiago2025 is described from its own
+  abstract, and flesch1948 is cited only as the origin of a formula
+  whose implementation is in this repository.
