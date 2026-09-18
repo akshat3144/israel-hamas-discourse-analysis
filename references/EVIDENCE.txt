@@ -1,0 +1,81 @@
+EVIDENCE FOR REFERENCES WITH NO DOWNLOADABLE FULL TEXT
+
+Three of the 22 references could not be stored as a PDF. For each,
+this file records why, how to obtain it, and the verbatim publisher
+text that supports the claim the manuscript attaches to it.
+
+========================================================================
+
+rosen2025
+------------------------------------------------------------------------
+  why no PDF:
+        Gold open access (free to read) but SAGE serves 403 to every
+        automated client. Tried the PDF, EPUB, reader and download
+        endpoints, and the DOAJ record, which only links back to the DOI.
+  how to get it:
+        Open https://doi.org/10.1177/20563051251383635 and save the PDF.
+  the manuscript claims:
+        Rosen and Walther document a parallel escalation in anti-Jewish
+        and anti-Muslim posting in the month after 7 October, and show
+        that the replies such posts attract feed back into how hatefully
+        their authors post next.
+  evidence (publisher abstract, via Crossref):
+        Online hate messaging targeting Muslims and Jews increased
+        dramatically following Hamas's attack on Israelis on 7 October
+        2023 and Israel's military response in Gaza. This study examined
+        anti-Jewish and anti-Muslim hate posts on X.com and the verbal
+        replies, Likes, and reposts they acquired over the following
+        month. ... Convergent replies to one's hate posts led individuals
+        to post more hatefully in their next post, and more quickly.
+
+
+santiago2025
+------------------------------------------------------------------------
+  why no PDF:
+        Springer book chapter, subscription only. Unpaywall reports is_oa
+        false with zero open locations, so no free copy exists anywhere.
+  how to get it:
+        Plaksha or Tartu library access to Springer, or buy the chapter at
+        EUR 29.95. The abstract below is free on the chapter page.
+  the manuscript claims:
+        Santiago et al. focused on Reddit, examining 80 days of
+        conflict-related comments with ML-based sentiment and emotion
+        classifiers, and found that disgust dominated the emotional
+        landscape.
+  evidence (publisher abstract, link.springer.com/chapter/10.1007/978-981-96-2124-8_7):
+        The research used machine learning techniques, specifically
+        sentiment analysis and emotion analysis, to obtain insights into
+        the thoughts and sentiments in social media. The study covered 80
+        days and concentrated on Reddit discussions about the Israel-Hamas
+        conflict. ... Hugging Face's Transformers emotion analysis
+        revealed a majority of negative feelings, with disgust ranking
+        highest and being followed by sadness, happiness, fear, anger, and
+        surprise.
+
+
+flesch1948
+------------------------------------------------------------------------
+  why no PDF:
+        APA PsycNet, subscription only. Unpaywall reports is_oa false with
+        zero open locations. A 1948 paper has no preprint and no
+        repository copy.
+  how to get it:
+        Plaksha or Tartu library access to APA PsycNet. Not needed to
+        check the citation: see below.
+  the manuscript claims:
+        readability [uses] the Flesch formula
+  evidence (our own implementation, 06_revision/core_stats.py line 75):
+        return 206.835 - 1.015 * (len(words) / sents) - 84.6 *
+        (sum(_syll(w) for w in words) / len(words))
+
+        The constants 206.835, 1.015 and 84.6 are Flesch's Reading Ease
+        coefficients, published in that 1948 paper. They can be checked
+        against any free statement of the formula. Nothing is taken from
+        the paper except the formula itself, so there is no finding here
+        that could be misreported.
+
+========================================================================
+
+No paywall was circumvented to produce this audit. Where a paper
+could not be obtained legitimately, that is recorded as a gap
+rather than filled from an unauthorised source.
