@@ -41,6 +41,11 @@ PREAMBLE = r"""%% Journal of Computational Social Science
 \usepackage{enumitem}%
 \usepackage{xurl}%   long report URLs in the bibliography must be breakable
 
+%% sn-jnl places \bmhead several levels below \section, so the backmatter
+%% declarations make hyperref's bookmark depth jump and it warns. Limiting
+%% bookmarks to section level keeps both the navigation tree and the log clean.
+\hypersetup{bookmarksdepth=1}
+
 \raggedbottom
 
 \begin{document}
