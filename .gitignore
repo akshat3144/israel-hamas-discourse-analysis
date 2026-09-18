@@ -64,3 +64,4 @@ overleaf_paper.zip
 
 # === JCSS SUBMISSION BUNDLE (regenerate with springer_submission/make_submission_zip.py) ===
 springer_submission/jcss_submission.zip
+springer_submission/overleaf_project.zip
