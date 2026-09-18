@@ -1,0 +1,492 @@
+REFERENCE AUDIT
+Clustered by Thread, Arguing Across the Divide
+
+Every reference in the manuscript was checked for existence and for
+whether it supports the claim attached to it. Open-access copies are in
+references/pdf/ with the relevant passages highlighted in yellow;
+web sources are in references/web/.
+
+NOTHING WAS FABRICATED. All 24 references resolve to real, locatable
+works. Four citation-accuracy errors were found and corrected; they are
+marked CORRECTED below.
+
+========================================================================
+
+[1] antonakaki2025
+------------------------------------------------------------------------
+  status     : VERIFIED, CITATION CORRECTED
+               arXiv 2601.02367, real, title matches exactly. The bib said
+               'Antonakaki and others'; the paper has exactly two authors
+               (Antonakaki, Ioannidis), now both named.
+  local copy : pdf/antonakaki2025.pdf
+  highlighted: 119 passages on 27 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ...)
+  used in the manuscript for:
+      Antonakaki et al. analyzed Telegram, Twitter/X, and Reddit from
+      October 2023 to mid-2025 using LDA, BERTopic, and
+      transformer-based emotion models, identifying platform-specific
+      narrative strategies and propaganda amplification patterns.
+
+
+[2] bail2018
+------------------------------------------------------------------------
+  title      : Exposure to opposing views on social media can increase political polarization
+  authors    : Bail et al.
+  venue      : Proceedings of the National Academy of Sciences
+  year       : 2018
+  doi        : 10.1073/pnas.1804840115
+  status     : VERIFIED
+               PNAS open access; the polarization-increase finding confirmed.
+  local copy : pdf/bail2018.pdf
+  highlighted: 15 passages on 5 pages (p. 1, 2, 4, 5, 6)
+  used in the manuscript for:
+      Sunstein argued that filtering and self-selection narrow exposure,
+      while Bail et al. showed experimentally that exposure to opposing
+      views can increase polarization.
+
+      Bail et al. found that cross-cutting exposure can intensify rather
+      than soften partisan feeling, which is consistent with the pattern
+      we observe in Reddit's argumentative, high-exposure environment.
+
+
+[3] blei2003
+------------------------------------------------------------------------
+  status     : VERIFIED
+               JMLR open access.
+  local copy : pdf/blei2003.pdf
+  highlighted: 84 passages on 25 pages (p. 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15, 16 ...)
+  used in the manuscript for:
+      Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
+      Factorization represent documents as mixtures over latent topics;
+      LDA assumes a Bayesian generative process while NMF performs a
+      matrix decomposition that tends to produce sparser topics.
+
+
+[4] boulianne2025
+------------------------------------------------------------------------
+  title      : Social media platforms for politics: A comparison of Facebook, Instagram, Twitter, YouTube, Reddit, Snapchat, and WhatsApp
+  authors    : Boulianne et al.
+  venue      : New Media & Society
+  year       : 2025
+  doi        : 10.1177/14614448241262415
+  status     : VERIFIED, CITATION CORRECTED
+               Crossref + full text (Europe PMC, PMC12599886). The earlier
+               description (threading architecture, character limits, voting
+               mechanisms) does NOT appear anywhere in the paper. Corrected to the
+               framework the authors actually use: networking features, structural
+               (user connectivity, privacy, anonymity) and social (perceived
+               audience, tie strength, norms).
+  local copy : pdf/boulianne2025.pdf
+  highlighted: 122 passages on 29 pages (p. 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16 ...)
+  used in the manuscript for:
+      Boulianne et al. compare seven platforms, including Reddit and
+      YouTube, using survey data from four countries, and distinguish
+      them by their networking features: structural ones such as user
+      connectivity, privacy and anonymity, and social ones such as
+      perceived audience and the norms of interaction.
+
+
+[5] cinelli2021
+------------------------------------------------------------------------
+  title      : The echo chamber effect on social media
+  authors    : Cinelli et al.
+  venue      : Proceedings of the National Academy of Sciences
+  year       : 2021
+  doi        : 10.1073/pnas.2023301118
+  status     : VERIFIED
+               PNAS open access; platform-dependence of echo-chamber strength
+               confirmed across Facebook, Twitter, Reddit, Gab.
+  local copy : pdf/cinelli2021.pdf
+  highlighted: 111 passages on 8 pages (p. 1, 2, 3, 4, 5, 6, 7, 8)
+  used in the manuscript for:
+      Cinelli et al. demonstrated that echo-chamber strength is itself
+      platform-dependent, motivating our comparative design.
+
+      Because Cinelli et al. show echo-chamber strength varies by
+      platform, we caution that this result is specific to Reddit's
+      threaded reply structure and should not be generalised to
+      feed-based platforms.
+
+
+[6] defrancisci2021
+------------------------------------------------------------------------
+  title      : No echo in the chambers of political interactions on Reddit
+  authors    : De Francisci Morales et al.
+  venue      : Scientific Reports
+  year       : 2021
+  doi        : 10.1038/s41598-021-81531-x
+  status     : VERIFIED
+               Scientific Reports open access; cross-cutting preference, rewiring
+               null and the asymmetry all confirmed.
+  local copy : pdf/defrancisci2021.pdf
+  highlighted: 108 passages on 11 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+  used in the manuscript for:
+      Most directly relevant to our RQ3, De Francisci Morales et al.
+      reconstructed the political interaction network of Trump and
+      Clinton supporters on Reddit and found a preference for
+      cross-cutting replies over within-group ones - asymmetrically so -
+      against a degree-preserving rewiring null.
+
+      The cross-cutting direction itself agrees with De Francisci
+      Morales et al. , who report the same preference - and a similar
+      asymmetry, with one camp more eager to reply across the divide -
+      for US party politics; recovering it in a conflict corpus
+      indicates the pattern is not confined to domestic partisanship.
+
+      That conclusion is not itself new - De Francisci Morales et al.
+      reached it for US party politics using a comparable
+      degree-preserving null.
+
+
+[7] devlin2019
+------------------------------------------------------------------------
+  title      : BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+  authors    : Devlin et al.
+  venue      : Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)
+  year       : 2019
+  doi        : 10.18653/v1/N19-1423
+  status     : VERIFIED
+               ACL Anthology; DOI 10.18653/v1/N19-1423 added to the bib.
+  local copy : pdf/devlin2019.pdf
+  highlighted: 63 passages on 13 pages (p. 1, 2, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 16)
+  used in the manuscript for:
+      Because both tools are lexicon-based and neither is trained on
+      this domain, we additionally apply a RoBERTa model fine-tuned on
+      Twitter data - building on the BERT architecture of Devlin et al.
+      - and treat agreement among the three as a measurement question in
+      its own right rather than an assumption.
+
+
+[8] flesch1948
+------------------------------------------------------------------------
+  title      : A new readability yardstick.
+  authors    : Flesch et al.
+  venue      : Journal of Applied Psychology
+  year       : 1948
+  doi        : 10.1037/h0057532
+  status     : VERIFIED (existence only)
+               Crossref confirms title, author, J. Applied Psychology
+               32(3):221-233. Paywalled. Cited only as the source of the
+               readability formula.
+  local copy : NONE - APA PsycNet, subscription
+  used in the manuscript for:
+      Classification uses scikit-learn and readability the Flesch
+      formula ; agreement statistics follow Krippendorff .
+
+
+[9] gilardi2023
+------------------------------------------------------------------------
+  title      : ChatGPT outperforms crowd workers for text-annotation tasks
+  authors    : Gilardi et al.
+  venue      : Proceedings of the National Academy of Sciences
+  year       : 2023
+  doi        : 10.1073/pnas.2305016120
+  status     : VERIFIED
+               PNAS open access; outperforms-crowd-workers finding confirmed.
+  local copy : pdf/gilardi2023.pdf
+  highlighted: 30 passages on 3 pages (p. 1, 2, 3)
+  used in the manuscript for:
+      Gilardi, Alizadeh and Kubli showed that LLMs can outperform crowd
+      workers on stance and frame detection.
+
+
+[10] grootendorst2022
+------------------------------------------------------------------------
+  status     : VERIFIED
+               arXiv 2203.05794; clustering of embeddings confirmed.
+  local copy : pdf/grootendorst2022.pdf
+  highlighted: 43 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  used in the manuscript for:
+      BERTopic instead clusters sentence-embedding representations.
+
+
+[11] hutto2014
+------------------------------------------------------------------------
+  title      : VADER: A Parsimonious Rule-Based Model for Sentiment Analysis of Social Media Text
+  authors    : Hutto et al.
+  venue      : Proceedings of the International AAAI Conference on Web and Social Media
+  year       : 2014
+  doi        : 10.1609/icwsm.v8i1.14550
+  status     : VERIFIED
+               AAAI open access; punctuation, slang and negation all present.
+  local copy : pdf/hutto2014.pdf
+  highlighted: 71 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  used in the manuscript for:
+      VADER , designed for microblog contexts, captures punctuation
+      intensity, slang, and negation.
+
+
+[12] isd2023muslim
+------------------------------------------------------------------------
+  status     : VERIFIED, NEW ENTRY
+               The 43-fold anti-Muslim figure comes from a SEPARATE ISD dispatch
+               (19 December 2023) and uses a FOUR-day window, not three. The
+               manuscript previously folded it into the antisemitism citation and
+               the three-day window. Now cited separately with the correct window.
+  local copy : NONE - not retrievable
+  used in the manuscript for:
+      Comparing the three days either side of 7 October, the Institute
+      for Strategic Dialogue recorded a more than fiftyfold rise in the
+      absolute volume of antisemitic comments beneath YouTube videos
+      about the conflict , and, on a four-day window either side of the
+      same date, a 43-fold rise in anti-Muslim comments ; the same
+      period saw sustained pressure on platform moderation systems and a
+      marked hardening of tone in general-audience comment sections.
+
+
+[13] isd2023
+------------------------------------------------------------------------
+  status     : VERIFIED, CLAIM CORRECTED
+               Dispatch saved. Says antisemitic YouTube comments rose 4963% (over
+               50-fold) in the three days after 7 October vs the previous three
+               days. Our fiftyfold claim and three-day window are correct.
+  local copy : web/isd2023_1.html, web/isd2023_2.html
+  used in the manuscript for:
+      Comparing the three days either side of 7 October, the Institute
+      for Strategic Dialogue recorded a more than fiftyfold rise in the
+      absolute volume of antisemitic comments beneath YouTube videos
+      about the conflict , and, on a four-day window either side of the
+      same date, a 43-fold rise in anti-Muslim comments ; the same
+      period saw sustained pressure on platform moderation systems and a
+      marked hardening of tone in general-audience comment sections.
+
+
+[14] krippendorff2004
+------------------------------------------------------------------------
+  status     : VERIFIED (existence only)
+               Open Library confirms Content Analysis: An Introduction to Its
+               Methodology, Krippendorff, Sage. 2004 is the 2nd edition. Book.
+  local copy : NONE - Sage, book (2nd edition)
+  used in the manuscript for:
+      Classification uses scikit-learn and readability the Flesch
+      formula ; agreement statistics follow Krippendorff .
+
+
+[15] leeseung1999
+------------------------------------------------------------------------
+  title      : Learning the parts of objects by non-negative matrix factorization
+  authors    : Lee et al.
+  venue      : Nature
+  year       : 1999
+  doi        : 10.1038/44565
+  status     : VERIFIED (existence only)
+               Crossref confirms title, authors, Nature 401(6755):788-791.
+               Paywalled, so the NMF characterisation was not machine-checked; it
+               is a textbook description of the cited method.
+  local copy : NONE - Nature, subscription
+  used in the manuscript for:
+      Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
+      Factorization represent documents as mixtures over latent topics;
+      LDA assumes a Bayesian generative process while NMF performs a
+      matrix decomposition that tends to produce sparser topics.
+
+
+[16] mcpherson2001
+------------------------------------------------------------------------
+  title      : Birds of a Feather: Homophily in Social Networks
+  authors    : McPherson et al.
+  venue      : Annual Review of Sociology
+  year       : 2001
+  doi        : 10.1146/annurev.soc.27.1.415
+  status     : VERIFIED (existence only)
+               Crossref confirms title, authors, Annual Review of Sociology
+               27:415-444. Paywalled. The homophily principle as stated is the
+               paper's central and widely quoted claim.
+  local copy : NONE - Annual Review of Sociology, subscription
+  used in the manuscript for:
+      Echo Chambers and Partisan Polarization The homophily principle -
+      that similar people interact at higher rates than dissimilar ones
+      - underpins computational echo-chamber research.
+
+      Since homophily is defined on networks , the reply-graph measure
+      is the appropriate one, and it indicates that Reddit in this
+      corpus functions as a contested arena rather than a set of sealed
+      chambers.
+
+
+[17] newman2003
+------------------------------------------------------------------------
+  title      : Mixing patterns in networks
+  authors    : Newman et al.
+  venue      : Physical Review E
+  year       : 2003
+  doi        : 10.1103/PhysRevE.67.026126
+  status     : VERIFIED
+               arXiv cond-mat/0209450; assortativity for discrete attributes
+               confirmed.
+  local copy : pdf/newman2003.pdf
+  highlighted: 55 passages on 14 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
+  used in the manuscript for:
+      Crucially, homophily is a property of a network, so we measure it
+      on an explicit user-user reply graph and report Newman's
+      assortativity coefficient for categorical attributes alongside a
+      chance-corrected homophily index; raw same-stance rates are
+      uninterpretable without the baseline expected under random mixing.
+
+      Because that share depends on how common each stance is among
+      reply targets, we report it against the value expected under
+      random mixing and summarise the whole graph with Newman's
+      assortativity coefficient , where 0 is random mixing and negative
+      values indicate cross-stance interaction.
+
+      Since homophily is defined on networks , the reply-graph measure
+      is the appropriate one, and it indicates that Reddit in this
+      corpus functions as a contested arena rather than a set of sealed
+      chambers.
+
+
+[18] ng2022
+------------------------------------------------------------------------
+  title      : Is my stance the same as your stance? A cross validation study of stance detection datasets
+  authors    : Ng et al.
+  venue      : Information Processing & Management
+  year       : 2022
+  doi        : 10.1016/j.ipm.2022.103070
+  status     : VERIFIED via abstract and highlights
+               ScienceDirect landing page: 'Cross-dataset stance detection models
+               do not generalize well' (avg F1 = 0.33). Open access under a
+               Creative Commons licence but Elsevier blocks automated download.
+  local copy : NONE - Information Processing and Management, hybrid open access but Elsevier blocks automated download; open via doi.org/10.1016/j.ipm.2022.103070
+  used in the manuscript for:
+      Cross-platform stance-transfer failure is not claimed as novel -
+      it is established for stance datasets generally by Ng and Carley .
+
+      Stance Language Is Platform-Specific That stance models transfer
+      poorly across corpora is already established by Ng and Carley , so
+      we claim no novelty for the effect itself.
+
+
+[19] ngchow2025
+------------------------------------------------------------------------
+  title      : Prominent peaks and social discourses of the 2023 Escalation in the Ongoing Israel–Hamas armed conflict
+  authors    : Ng et al.
+  venue      : PLOS One
+  year       : 2025
+  doi        : 10.1371/journal.pone.0332746
+  status     : VERIFIED
+               PLOS ONE open access. n = 1,079,676,984 posts (= 1.08 billion), 59%
+               negative, October 2023 to January 2024. All three figures match.
+  local copy : pdf/ngchow2025.pdf
+  highlighted: 36 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  used in the manuscript for:
+      Ng and Chow index roughly 1.08 billion English-language posts
+      across Twitter/X, Reddit and TikTok in the first four months
+      alone, 59\
+
+
+[20] pedregosa2011
+------------------------------------------------------------------------
+  status     : VERIFIED
+               JMLR open access. An automated search for 'classif' first missed
+               because the PDF uses fi-ligatures; the terms are present once
+               normalised.
+  local copy : pdf/pedregosa2011.pdf
+  highlighted: 62 passages on 6 pages (p. 1, 2, 3, 4, 5, 6)
+  used in the manuscript for:
+      Classification uses scikit-learn and readability the Flesch
+      formula ; agreement statistics follow Krippendorff .
+
+
+[21] santiago2025
+------------------------------------------------------------------------
+  title      : Public Opinion and Emotion Analysis on the Israel-Hamas War Using Machine Learning
+  authors    : Santiago et al.
+  venue      : Smart Innovation, Systems and Technologies
+  year       : 2025
+  doi        : 10.1007/978-981-96-2124-8_7
+  status     : VERIFIED, CITATION CORRECTED
+               Springer chapter page confirms all three claims: 80 days, Reddit,
+               disgust ranked highest. The bib listed 2 authors; the chapter has 8.
+               Full list added and the text now reads 'Santiago et al.'
+  local copy : NONE - Springer book chapter, subscription
+  used in the manuscript for:
+      Santiago et al. focused on Reddit, examining 80 days of
+      conflict-related comments with ML-based sentiment and emotion
+      classifiers, and found that disgust dominated the emotional
+      landscape.
+
+
+[22] shugars2025
+------------------------------------------------------------------------
+  title      : The Character of Connection: Platform Affordances and Connective Democracy
+  authors    : Shugars et al.
+  venue      : Social Media + Society
+  year       : 2025
+  doi        : 10.1177/20563051251332427
+  status     : VERIFIED via abstract
+               Crossref abstract confirms the Twitter/Reddit comparison and the
+               conversational-visibility affordance almost verbatim. Gold open
+               access but SAGE blocks automated download; open the DOI to read it.
+  local copy : NONE - Social Media + Society, gold open access but SAGE blocks automated download; open via doi.org/10.1177/20563051251332427
+  used in the manuscript for:
+      Shugars and Ha compared Twitter and Reddit directly, finding that
+      Reddit's conversational visibility - the ability for users to see
+      and engage with exchanges as a whole - enabled more cross-cutting
+      and productive political discourse than Twitter's
+      broadcast-oriented design.
+
+      It aligns with Shugars and Ha , who found that Reddit's
+      conversational visibility supports more cross-cutting exchange
+      than broadcast-oriented designs - our reply graph is the
+      network-level signature of exactly that affordance.
+
+
+[23] sunstein2017
+------------------------------------------------------------------------
+  status     : VERIFIED (existence only)
+               Open Library confirms #Republic: Divided Democracy in the Age of
+               Social Media, Princeton University Press, 2017. Book, not
+               downloadable.
+  local copy : NONE - Princeton University Press, book
+  used in the manuscript for:
+      Sunstein argued that filtering and self-selection narrow exposure,
+      while Bail et al. showed experimentally that exposure to opposing
+      views can increase polarization.
+
+
+[24] wulczyn2017
+------------------------------------------------------------------------
+  title      : Ex Machina
+  authors    : Wulczyn et al.
+  venue      : Proceedings of the 26th International Conference on World Wide Web
+  year       : 2017
+  doi        : 10.1145/3038912.3052591
+  status     : VERIFIED
+               arXiv 1610.08914. Crossref registers the title as 'Ex Machina' only,
+               which is ACM's truncation at the colon, not a mismatch.
+  local copy : pdf/wulczyn2017.pdf
+  highlighted: 84 passages on 9 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9)
+  used in the manuscript for:
+      Toxicity and Harmful Speech The Perspective API operationalizes
+      online harm through the framework of Wulczyn, Thain and Dixon ,
+      scoring the probability that a rater would find a comment rude or
+      disrespectful across six attributes.
+
+========================================================================
+
+CORRECTIONS MADE AS A RESULT OF THIS AUDIT
+
+1. boulianne2025 - the manuscript described a four-part taxonomy
+   (threading, character limits, anonymity, voting) that does not
+   appear in the paper. Rewritten to the authors' actual framework.
+2. santiago2025 - bibliography listed 2 of 8 authors. Full list added;
+   in-text attribution changed to 'Santiago et al.'
+3. antonakaki2025 - bibliography said 'and others' for a two-author
+   paper. Both authors now named.
+4. isd2023 - one citation was carrying two figures from two different
+   ISD dispatches with two different comparison windows. Split into
+   isd2023 (antisemitic, three-day window) and isd2023muslim
+   (anti-Muslim, four-day window).
+5. devlin2019 - DOI added.
+
+NOT MACHINE-CHECKABLE (no legal free full text)
+
+  mcpherson2001, leeseung1999, flesch1948  paywalled journals
+  sunstein2017, krippendorff2004           books
+  shugars2025, ng2022                      open access, publisher
+                                           blocks automated download
+  santiago2025                             paywalled book chapter
+
+  All eight were confirmed to exist through Crossref or Open Library,
+  and shugars2025, ng2022 and santiago2025 additionally had their
+  claims verified against publisher abstracts. The remaining five are
+  cited for textbook facts about methods they are the origin of.

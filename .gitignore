@@ -65,3 +65,10 @@ overleaf_paper.zip
 # === JCSS SUBMISSION BUNDLE (regenerate with springer_submission/make_submission_zip.py) ===
 springer_submission/jcss_submission.zip
 springer_submission/overleaf_project.zip
+
+# === REFERENCE AUDIT ===
+# Downloaded copies of third-party papers stay local; they are not ours to
+# redistribute. INDEX.txt and the audit scripts are tracked so the check can
+# be re-run (references/verify_refs.py then fetch_and_highlight.py).
+references/pdf/
+references/web/

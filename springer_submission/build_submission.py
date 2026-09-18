@@ -39,6 +39,7 @@ PREAMBLE = r"""%% Journal of Computational Social Science
 \usepackage{textcomp}%
 \usepackage{manyfoot}%
 \usepackage{enumitem}%
+\usepackage{xurl}%   long report URLs in the bibliography must be breakable
 
 \raggedbottom
 

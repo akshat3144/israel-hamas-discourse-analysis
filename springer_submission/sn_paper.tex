@@ -12,6 +12,7 @@
 \usepackage{textcomp}%
 \usepackage{manyfoot}%
 \usepackage{enumitem}%
+\usepackage{xurl}%   long report URLs in the bibliography must be breakable
 
 \raggedbottom
 
@@ -61,9 +62,10 @@ channel through which the conflict was encountered.
 
 That argument also changed the character of the forums carrying it. Comparing the
 three days either side of 7~October, the Institute for Strategic Dialogue recorded
-a more than fiftyfold rise in the absolute volume of antisemitic comments, and a
-comparable rise in anti-Muslim comments, beneath YouTube videos about the
-conflict~\cite{isd2023}; the same period saw sustained pressure on platform
+a more than fiftyfold rise in the absolute volume of antisemitic comments beneath
+YouTube videos about the conflict~\cite{isd2023}, and, on a four-day window either
+side of the same date, a 43-fold rise in anti-Muslim comments~\cite{isd2023muslim};
+the same period saw sustained pressure on platform
 moderation systems and a marked hardening of tone in general-audience comment
 sections. Comment threads that ordinarily host reaction became a venue for
 sustained partisan dispute, which is precisely the material this paper analyses:
@@ -116,10 +118,12 @@ and we identify which lexical families fail to carry across.
 \section{Related Work}
 \subsection{Platform Architecture and Political Discourse}
 Social media platforms differ in structural affordances that systematically
-shape user behavior. Boulianne et al.~\cite{boulianne2025} distinguish platforms
-by their threading architecture, character limits, anonymity provisions, and
-voting mechanisms, and show that these structural features predict how and why
-people engage politically on different services. Shugars and Ha~\cite{shugars2025}
+shape user behavior. Boulianne et al.~\cite{boulianne2025} compare seven
+platforms, including Reddit and YouTube, using survey data from four countries,
+and distinguish them by their \emph{networking features}: structural ones such
+as user connectivity, privacy and anonymity, and social ones such as perceived
+audience and the norms of interaction. They report that political ideology
+predicts both adoption and political use across all seven. Shugars and Ha~\cite{shugars2025}
 compared Twitter and Reddit directly, finding that Reddit's \emph{conversational
 visibility} - the ability for users to see and engage with exchanges as a
 whole - enabled more cross-cutting and productive political discourse than
@@ -134,7 +138,7 @@ discourse that researchers have begun to quantify computationally. Antonakaki
 et al.~\cite{antonakaki2025} analyzed Telegram, Twitter/X, and Reddit from October
 2023 to mid-2025 using LDA, BERTopic, and transformer-based emotion models,
 identifying platform-specific narrative strategies and propaganda amplification
-patterns. Santiago and Cahapin~\cite{santiago2025} focused on Reddit, examining
+patterns. Santiago et al.~\cite{santiago2025} focused on Reddit, examining
 80 days of conflict-related comments with ML-based sentiment and emotion
 classifiers, and found that disgust dominated the emotional landscape. Notably, Antonakaki et al.\ already report that Reddit
 hosts the more reflective and deliberative discussion of the platforms they
