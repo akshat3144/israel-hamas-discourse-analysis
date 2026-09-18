@@ -45,18 +45,11 @@ VERDICT = {
     "pedregosa2011": ("VERIFIED", "JMLR open access. An automated search for 'classif' "
                                   "first missed because the PDF uses fi-ligatures; the "
                                   "terms are present once normalised."),
-    "flesch1948": ("VERIFIED (existence only)",
-                   "Crossref confirms title, author, J. Applied Psychology 32(3):221-233. "
-                   "Paywalled. Cited only as the source of the readability formula."),
     "gilardi2023": ("VERIFIED", "PNAS open access; outperforms-crowd-workers finding confirmed."),
     "antonakaki2025": ("VERIFIED, CITATION CORRECTED",
                        "arXiv 2601.02367, real, title matches exactly. The bib said "
                        "'Antonakaki and others'; the paper has exactly two authors "
                        "(Antonakaki, Ioannidis), now both named."),
-    "santiago2025": ("VERIFIED, CITATION CORRECTED",
-                     "Springer chapter page confirms all three claims: 80 days, Reddit, "
-                     "disgust ranked highest. The bib listed 2 authors; the chapter has "
-                     "8. Full list added and the text now reads 'Santiago et al.'"),
     "ng2022": ("VERIFIED from full text",
                "Downloaded by hand (Elsevier blocks scripts). Full text confirms "
                "'models do not generalize well (avg F1=0.33)', aggregation lifting it "
@@ -74,6 +67,12 @@ VERDICT = {
                   "hate messaging targeting Muslims and Jews increased dramatically "
                   "after 7 October 2023, and the reply-dynamics finding. SAGE blocks "
                   "automated download; open the DOI to read it."),
+    "guerra2025": ("VERIFIED from full text, REPLACES PAYWALLED SOURCE",
+                   "Peer-reviewed: Natural Language Processing Journal 11:100156, "
+                   "2025, doi 10.1016/j.nlp.2025.100156. Free preprint on arXiv "
+                   "2412.10913. Full text confirms 450,000+ Reddit posts across "
+                   "r/Palestine, r/Judaism, r/IsraelPalestine and r/worldnews, and "
+                   "the lexicon-based anger/polarity/subjectivity index."),
     "newman2003": ("VERIFIED", "arXiv cond-mat/0209450; assortativity for discrete "
                                "attributes confirmed."),
     "cinelli2021": ("VERIFIED", "PNAS open access; platform-dependence of echo-chamber "
@@ -113,11 +112,11 @@ def main():
     out.append("Clustered by Thread, Arguing Across the Divide")
     out.append("")
     out.append("Every reference in the manuscript was checked for existence and for")
-    out.append("whether it supports the claim attached to it. Open-access copies are in")
-    out.append("references/pdf/ with the relevant passages highlighted in yellow;")
-    out.append("web sources are in references/web/.")
+    out.append("whether it supports the claim attached to it. A copy of every one is")
+    out.append("in references/pdf/, with the relevant passages highlighted in yellow.")
+    out.append("Every source is a peer-reviewed paper or the preprint of one.")
     out.append("")
-    out.append("NOTHING WAS FABRICATED. All 22 references resolve to real, locatable")
+    out.append("NOTHING WAS FABRICATED. All 21 references resolve to real, locatable")
     out.append("works. Four citation-accuracy errors were found and corrected; they are")
     out.append("marked CORRECTED below.")
     out.append("")
@@ -135,7 +134,7 @@ def main():
     out.append(f"  references in the manuscript          {len(order):>3}")
     out.append(f"  with a local full text                {len(held):>3}")
     out.append(f"  without                               {len(absent):>3}"
-               f"   ({', '.join(absent)})")
+               + (f"   ({', '.join(absent)})" if absent else ""))
     out.append("")
     out.append(f"  PDF files in references/pdf           {len(pdfs):>3}")
     out.append("")
@@ -207,8 +206,8 @@ def main():
     out.append("1. boulianne2025 - the manuscript described a four-part taxonomy")
     out.append("   (threading, character limits, anonymity, voting) that does not")
     out.append("   appear in the paper. Rewritten to the authors' actual framework.")
-    out.append("2. santiago2025 - bibliography listed 2 of 8 authors. Full list added;")
-    out.append("   in-text attribution changed to 'Santiago et al.'")
+    out.append("2. santiago2025 - bibliography listed 2 of 8 authors; since replaced")
+    out.append("   by guerra2025, see below.")
     out.append("3. antonakaki2025 - bibliography said 'and others' for a two-author")
     out.append("   paper. Both authors now named.")
     out.append("4. isd2023 - one citation was carrying two figures from two different")
@@ -261,26 +260,27 @@ def main():
     out.append("      in full text. Cinelli 2021, also held in full text,")
     out.append("      independently shows homophily underpinning echo-chamber work.")
     out.append("")
-    out.append("STILL WITHOUT A DOWNLOADABLE COPY (2 of 22)")
+    out.append("  santiago2025 (paywalled)  ->  guerra2025")
+    out.append("      Santiago et al. was a subscription-only Springer chapter with")
+    out.append("      no open copy anywhere. Replaced by Guerra, Lepre and Karakus")
+    out.append("      2025, Natural Language Processing Journal 11:100156, free")
+    out.append("      preprint on arXiv 2412.10913. Also Reddit, also this conflict,")
+    out.append("      also affect-focused, and far larger: 450,000 posts across four")
+    out.append("      subreddits against Santiago's 80-day window.")
     out.append("")
-    out.append("  santiago2025    Springer book chapter, subscription. All three")
-    out.append("                  claims we make from it (80 days, Reddit, disgust")
-    out.append("                  ranked highest) are stated in the publisher's free")
-    out.append("                  abstract, which is quoted in this file above.")
-    out.append("  flesch1948      Journal of Applied Psychology, subscription.")
-    out.append("                  Kept deliberately. 06_revision/core_stats.py")
-    out.append("                  hardcodes his exact constants:")
-    out.append("                    206.835 - 1.015*(words/sents) - 84.6*(syll/words)")
-    out.append("                  Those three numbers ARE Flesch 1948. No other work")
-    out.append("                  can be cited for them, and a 1948 paper has no open")
-    out.append("                  version. Citing a later secondary source instead")
-    out.append("                  would be weaker scholarship, not stronger.")
+    out.append("  flesch1948 (paywalled)    ->  analysis dropped")
+    out.append("      Nothing could replace it: 06_revision/core_stats.py hardcodes")
+    out.append("      Flesch's own constants (206.835, 1.015, 84.6), so no other")
+    out.append("      work can be cited for that formula, and a 1948 paper has no")
+    out.append("      open version. The readability result it supported was one")
+    out.append("      descriptive line (Reddit 63.7 vs YouTube 67.1) that the")
+    out.append("      manuscript itself already discounted as 'not evidence of")
+    out.append("      narrative complexity or argumentative depth', with negligible")
+    out.append("      stance-level differences. That line was removed. The comment")
+    out.append("      length contrast it sat beside, which is the load-bearing part,")
+    out.append("      needs no citation and is unchanged.")
     out.append("")
-    out.append("  Both were confirmed real through Crossref, which returns the exact")
-    out.append("  title, authors, volume and pages we cite. Neither carries a finding")
-    out.append("  that could be misreported: santiago2025 is described from its own")
-    out.append("  abstract, and flesch1948 is cited only as the origin of a formula")
-    out.append("  whose implementation is in this repository.")
+    out.append("NO REFERENCE IS NOW WITHOUT A LOCAL FULL TEXT.")
 
     text = "\n".join(out) + "\n"
     (REF / "INDEX.txt").write_text(text, encoding="utf-8")

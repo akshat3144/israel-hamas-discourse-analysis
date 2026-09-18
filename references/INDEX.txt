@@ -2,27 +2,27 @@ REFERENCE AUDIT
 Clustered by Thread, Arguing Across the Divide
 
 Every reference in the manuscript was checked for existence and for
-whether it supports the claim attached to it. Open-access copies are in
-references/pdf/ with the relevant passages highlighted in yellow;
-web sources are in references/web/.
+whether it supports the claim attached to it. A copy of every one is
+in references/pdf/, with the relevant passages highlighted in yellow.
+Every source is a peer-reviewed paper or the preprint of one.
 
-NOTHING WAS FABRICATED. All 22 references resolve to real, locatable
+NOTHING WAS FABRICATED. All 21 references resolve to real, locatable
 works. Four citation-accuracy errors were found and corrected; they are
 marked CORRECTED below.
 
 WHAT IS IN THIS FOLDER
 
-  references in the manuscript           22
-  with a local full text                 19
-  without                                 3   (flesch1948, rosen2025, santiago2025)
+  references in the manuscript           21
+  with a local full text                 21
+  without                                 0
 
-  PDF files in references/pdf            20
+  PDF files in references/pdf            22
 
-  The PDF count is 20, not 19, because 1 file is a supporting
+  The PDF count is 22, not 21, because 1 file is a supporting
   document rather than a reference in its own right:
       krippendorff2011_alpha
 
-  So: 20 PDFs - 1 supporting = 19 of 22 references.
+  So: 22 PDFs - 1 supporting = 21 of 21 references.
 
   Every source is now a peer-reviewed paper or a preprint of one.
   No web pages, reports or books are cited.
@@ -173,24 +173,7 @@ WHAT IS IN THIS FOLDER
       its own right rather than an assumption.
 
 
-[8] flesch1948
-------------------------------------------------------------------------
-  title      : A new readability yardstick.
-  authors    : Flesch et al.
-  venue      : Journal of Applied Psychology
-  year       : 1948
-  doi        : 10.1037/h0057532
-  status     : VERIFIED (existence only)
-               Crossref confirms title, author, J. Applied Psychology
-               32(3):221-233. Paywalled. Cited only as the source of the
-               readability formula.
-  local copy : NONE - APA PsycNet, subscription
-  used in the manuscript for:
-      Classification uses scikit-learn and readability the Flesch
-      formula ; agreement statistics follow Krippendorff .
-
-
-[9] gilardi2023
+[8] gilardi2023
 ------------------------------------------------------------------------
   title      : ChatGPT outperforms crowd workers for text-annotation tasks
   authors    : Gilardi et al.
@@ -206,7 +189,7 @@ WHAT IS IN THIS FOLDER
       workers on stance and frame detection.
 
 
-[10] grootendorst2022
+[9] grootendorst2022
 ------------------------------------------------------------------------
   status     : VERIFIED
                arXiv 2203.05794; clustering of embeddings confirmed.
@@ -214,6 +197,27 @@ WHAT IS IN THIS FOLDER
   highlighted: 43 passages on 10 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
   used in the manuscript for:
       BERTopic instead clusters sentence-embedding representations.
+
+
+[10] guerra2025
+------------------------------------------------------------------------
+  title      : Quantifying extreme opinions on Reddit amidst the 2023 Israeli–Palestinian conflict
+  authors    : Guerra et al.
+  venue      : Natural Language Processing Journal
+  year       : 2025
+  doi        : 10.1016/j.nlp.2025.100156
+  status     : VERIFIED from full text, REPLACES PAYWALLED SOURCE
+               Peer-reviewed: Natural Language Processing Journal 11:100156, 2025,
+               doi 10.1016/j.nlp.2025.100156. Free preprint on arXiv 2412.10913.
+               Full text confirms 450,000+ Reddit posts across r/Palestine,
+               r/Judaism, r/IsraelPalestine and r/worldnews, and the lexicon-based
+               anger/polarity/subjectivity index.
+  local copy : pdf/guerra2025.pdf
+  used in the manuscript for:
+      Guerra et al. focused on Reddit, scoring over 450,000 posts from
+      four conflict-related subreddits on a lexicon-based index of
+      anger, polarity and subjectivity, and found peaks in that index
+      aligning with specific events on the ground.
 
 
 [11] hayes2007
@@ -233,8 +237,8 @@ WHAT IS IN THIS FOLDER
                alongside it.
   local copy : pdf/hayes2007.pdf
   used in the manuscript for:
-      Classification uses scikit-learn and readability the Flesch
-      formula ; agreement statistics follow Krippendorff .
+      Classification uses scikit-learn ; agreement statistics follow
+      Krippendorff .
 
 
 [12] hofmann2026
@@ -380,8 +384,8 @@ WHAT IS IN THIS FOLDER
   local copy : pdf/pedregosa2011.pdf
   highlighted: 62 passages on 6 pages (p. 1, 2, 3, 4, 5, 6)
   used in the manuscript for:
-      Classification uses scikit-learn and readability the Flesch
-      formula ; agreement statistics follow Krippendorff .
+      Classification uses scikit-learn ; agreement statistics follow
+      Krippendorff .
 
 
 [19] rosen2025
@@ -397,7 +401,7 @@ WHAT IS IN THIS FOLDER
                messaging targeting Muslims and Jews increased dramatically after 7
                October 2023, and the reply-dynamics finding. SAGE blocks automated
                download; open the DOI to read it.
-  local copy : NONE - not retrievable
+  local copy : pdf/rosen2025.pdf
   used in the manuscript for:
       Rosen and Walther document a parallel escalation in anti-Jewish
       and anti-Muslim posting in the month after 7 October, and show
@@ -405,26 +409,7 @@ WHAT IS IN THIS FOLDER
       their authors post next.
 
 
-[20] santiago2025
-------------------------------------------------------------------------
-  title      : Public Opinion and Emotion Analysis on the Israel-Hamas War Using Machine Learning
-  authors    : Santiago et al.
-  venue      : Smart Innovation, Systems and Technologies
-  year       : 2025
-  doi        : 10.1007/978-981-96-2124-8_7
-  status     : VERIFIED, CITATION CORRECTED
-               Springer chapter page confirms all three claims: 80 days, Reddit,
-               disgust ranked highest. The bib listed 2 authors; the chapter has 8.
-               Full list added and the text now reads 'Santiago et al.'
-  local copy : NONE - Springer book chapter, subscription
-  used in the manuscript for:
-      Santiago et al. focused on Reddit, examining 80 days of
-      conflict-related comments with ML-based sentiment and emotion
-      classifiers, and found that disgust dominated the emotional
-      landscape.
-
-
-[21] shugars2025
+[20] shugars2025
 ------------------------------------------------------------------------
   title      : The Character of Connection: Platform Affordances and Connective Democracy
   authors    : Shugars et al.
@@ -452,7 +437,7 @@ WHAT IS IN THIS FOLDER
       network-level signature of exactly that affordance.
 
 
-[22] wulczyn2017
+[21] wulczyn2017
 ------------------------------------------------------------------------
   title      : Ex Machina
   authors    : Wulczyn et al.
@@ -477,8 +462,8 @@ CORRECTIONS MADE AS A RESULT OF THIS AUDIT
 1. boulianne2025 - the manuscript described a four-part taxonomy
    (threading, character limits, anonymity, voting) that does not
    appear in the paper. Rewritten to the authors' actual framework.
-2. santiago2025 - bibliography listed 2 of 8 authors. Full list added;
-   in-text attribution changed to 'Santiago et al.'
+2. santiago2025 - bibliography listed 2 of 8 authors; since replaced
+   by guerra2025, see below.
 3. antonakaki2025 - bibliography said 'and others' for a two-author
    paper. Both authors now named.
 4. isd2023 - one citation was carrying two figures from two different
@@ -531,23 +516,24 @@ SOURCES CHANGED TO MAKE THE EVIDENCE CHECKABLE
       in full text. Cinelli 2021, also held in full text,
       independently shows homophily underpinning echo-chamber work.
 
-STILL WITHOUT A DOWNLOADABLE COPY (2 of 22)
+  santiago2025 (paywalled)  ->  guerra2025
+      Santiago et al. was a subscription-only Springer chapter with
+      no open copy anywhere. Replaced by Guerra, Lepre and Karakus
+      2025, Natural Language Processing Journal 11:100156, free
+      preprint on arXiv 2412.10913. Also Reddit, also this conflict,
+      also affect-focused, and far larger: 450,000 posts across four
+      subreddits against Santiago's 80-day window.
 
-  santiago2025    Springer book chapter, subscription. All three
-                  claims we make from it (80 days, Reddit, disgust
-                  ranked highest) are stated in the publisher's free
-                  abstract, which is quoted in this file above.
-  flesch1948      Journal of Applied Psychology, subscription.
-                  Kept deliberately. 06_revision/core_stats.py
-                  hardcodes his exact constants:
-                    206.835 - 1.015*(words/sents) - 84.6*(syll/words)
-                  Those three numbers ARE Flesch 1948. No other work
-                  can be cited for them, and a 1948 paper has no open
-                  version. Citing a later secondary source instead
-                  would be weaker scholarship, not stronger.
+  flesch1948 (paywalled)    ->  analysis dropped
+      Nothing could replace it: 06_revision/core_stats.py hardcodes
+      Flesch's own constants (206.835, 1.015, 84.6), so no other
+      work can be cited for that formula, and a 1948 paper has no
+      open version. The readability result it supported was one
+      descriptive line (Reddit 63.7 vs YouTube 67.1) that the
+      manuscript itself already discounted as 'not evidence of
+      narrative complexity or argumentative depth', with negligible
+      stance-level differences. That line was removed. The comment
+      length contrast it sat beside, which is the load-bearing part,
+      needs no citation and is unchanged.
 
-  Both were confirmed real through Crossref, which returns the exact
-  title, authors, volume and pages we cite. Neither carries a finding
-  that could be misreported: santiago2025 is described from its own
-  abstract, and flesch1948 is cited only as the origin of a formula
-  whose implementation is in this repository.
+NO REFERENCE IS NOW WITHOUT A LOCAL FULL TEXT.
