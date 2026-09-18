@@ -18,13 +18,10 @@ WHAT IS IN THIS FOLDER
   with a local full text                 21
   without                                 0
 
-  PDF files in references/pdf            22
+  PDF files in references/pdf            21
 
-  The PDF count is 22, not 21, because 1 file is a supporting
-  document rather than a reference in its own right:
-      krippendorff2011_alpha
-
-  So: 22 PDFs - 1 supporting = 21 of 21 references.
+  One PDF per reference, no extras. Run audit_folder.py to
+  re-check this after any change to the bibliography.
 
   Every source is now a peer-reviewed paper or a preprint of one.
   No web pages, reports or books are cited.
@@ -215,6 +212,7 @@ WHAT IS IN THIS FOLDER
                r/Judaism, r/IsraelPalestine and r/worldnews, and the lexicon-based
                anger/polarity/subjectivity index.
   local copy : pdf/guerra2025.pdf
+  marked     : 4 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Guerra et al. focused on Reddit, scoring over 450,000 posts from
       four conflict-related subreddits on a lexicon-based index of
@@ -234,10 +232,9 @@ WHAT IS IN THIS FOLDER
                2007, Answering the Call for a Standard Reliability Measure for
                Coding Data, Communication Methods and Measures 1(1):77-89, doi
                10.1080/19312450709336664. Freely available from UPenn Annenberg and
-               it is the standard journal citation for alpha. Krippendorff's own
-               Computing Krippendorff's Alpha-Reliability (2011) is also stored
-               alongside it.
+               it is the standard journal citation for alpha.
   local copy : pdf/hayes2007.pdf
+  marked     : 2 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Classification uses scikit-learn ; agreement statistics follow
       Krippendorff .
@@ -258,6 +255,7 @@ WHAT IS IN THIS FOLDER
                40.4 percent of public-source and 31.6 percent of private-source
                comments, and the same three stance labels we use.
   local copy : pdf/hofmann2026.pdf
+  marked     : 4 supporting passage(s) on p. 1, 2 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Hofmann et al. annotated YouTube comments on the conflict and
       found hate speech in 40.4\
@@ -294,6 +292,7 @@ WHAT IS IN THIS FOLDER
                algorithms rather than the parts-based argument. Free from
                papers.nips.cc; multiplicative update rules highlighted.
   local copy : pdf/leeseung2000.pdf
+  marked     : 2 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
       Factorization represent documents as mixtures over latent topics;
@@ -404,6 +403,7 @@ WHAT IS IN THIS FOLDER
                October 2023, and the reply-dynamics finding. SAGE blocks automated
                download; open the DOI to read it.
   local copy : pdf/rosen2025.pdf
+  marked     : 3 supporting passage(s) on p. 1 (quoted in PROVENANCE.txt)
   used in the manuscript for:
       Rosen and Walther document a parallel escalation in anti-Jewish
       and anti-Muslim posting in the month after 7 October, and show

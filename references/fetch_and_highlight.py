@@ -84,23 +84,6 @@ def main():
     for key, spec in SOURCES.items():
         rec = {"key": key}
 
-        if spec.get("save_html"):
-            saved = []
-            for i, url in enumerate(spec["save_html"], 1):
-                try:
-                    r = requests.get(url, headers=HEADERS, timeout=90)
-                    r.raise_for_status()
-                    p = HTML / f"{key}_{i}.html"
-                    p.write_bytes(r.content)
-                    saved.append(p.name)
-                    print(f"  [html] {key:18} saved {p.name}")
-                except Exception as ex:
-                    print(f"  [FAIL] {key:18} {url[:60]} -> {ex}")
-            rec.update(status="WEB_SAVED" if saved else "WEB_FAILED",
-                       files=saved, why=spec.get("why"))
-            report[key] = rec
-            continue
-
         if not spec.get("pdf"):
             rec.update(status="NOT_RETRIEVABLE", why=spec.get("why"))
             print(f"  [ -- ] {key:18} {spec.get('why')}")
@@ -135,14 +118,8 @@ def main():
 
         # highlighting is no longer done here: keyword marks prove nothing.
         # mark_provenance.py marks the specific passage each claim came from.
-        hits = {}
-
-        found = len(hits)
-        total = len(spec["terms"])
-        rec.update(status="OK", file=dest.name, bytes=size,
-                   terms_found=found, terms_total=total, hits=hits)
-        mark = "OK " if found else "!!!"
-        print(f"  [{mark}] {key:18} {size/1024:7.0f} KB  {found}/{total} terms highlighted")
+        rec.update(status="OK", file=dest.name, bytes=size)
+        print(f"  [OK ] {key:18} {size/1024:7.0f} KB")
         report[key] = rec
         time.sleep(1)
 

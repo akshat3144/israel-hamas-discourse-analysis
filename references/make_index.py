@@ -82,9 +82,7 @@ VERDICT = {
                   "2007, Answering the Call for a Standard Reliability Measure for "
                   "Coding Data, Communication Methods and Measures 1(1):77-89, "
                   "doi 10.1080/19312450709336664. Freely available from UPenn "
-                  "Annenberg and it is the standard journal citation for alpha. "
-                  "Krippendorff's own Computing Krippendorff's Alpha-Reliability "
-                  "(2011) is also stored alongside it."),
+                  "Annenberg and it is the standard journal citation for alpha."),
     "defrancisci2021": ("VERIFIED", "Scientific Reports open access; cross-cutting "
                                     "preference, rewiring null and the asymmetry all confirmed."),
     "ngchow2025": ("VERIFIED", "PLOS ONE open access. n = 1,079,676,984 posts (= 1.08 "
@@ -139,15 +137,15 @@ def main():
                + (f"   ({', '.join(absent)})" if absent else ""))
     out.append("")
     out.append(f"  PDF files in references/pdf           {len(pdfs):>3}")
-    out.append("")
-    out.append(f"  The PDF count is {len(pdfs)}, not {len(held)}, because "
-               f"{len(extra)} file is a supporting")
-    out.append("  document rather than a reference in its own right:")
-    for k in extra:
-        out.append(f"      {k}")
-    out.append("")
-    out.append(f"  So: {len(pdfs)} PDFs - {len(extra)} supporting = "
-               f"{len(held)} of {len(order)} references.")
+    if extra:
+        out.append("")
+        out.append("  Files present that are NOT a cited reference:")
+        for k in extra:
+            out.append(f"      {k}")
+    else:
+        out.append("")
+        out.append("  One PDF per reference, no extras. Run audit_folder.py to")
+        out.append("  re-check this after any change to the bibliography.")
     out.append("")
     out.append("  Every source is now a peer-reviewed paper or a preprint of one.")
     out.append("  No web pages, reports or books are cited.")
