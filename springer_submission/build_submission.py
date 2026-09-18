@@ -52,10 +52,21 @@ Israel-Hamas Discourse on Reddit and YouTube}
 \author*[1]{\fnm{Akshat} \sur{Gupta}}\email{akshat.gupta@plaksha.edu.in}
 \author[1]{\fnm{Raghav} \sur{Sarna}}\email{raghav.sarna@plaksha.edu.in}
 \author[1]{\fnm{Arsh} \sur{Arora}}\email{arsh.arora@plaksha.edu.in}
+\author[2]{\fnm{Uku} \sur{Kangur}}\email{uku.kangur@ut.ee}
+\author[3]{\fnm{Rajesh} \sur{Sharma}}\email{rajesh.sharma@plaksha.edu.in}
 
 \affil*[1]{\orgdiv{Department of Computer Science and Artificial Intelligence},
 \orgname{Plaksha University}, \orgaddress{\city{Mohali}, \postcode{140306},
 \state{Punjab}, \country{India}}}
+
+\affil[2]{\orgdiv{Institute of Computer Science}, \orgname{University of Tartu},
+\orgaddress{\city{Tartu}, \country{Estonia}}}
+
+%% TODO(authors): affiliations 1 and 3 are both Plaksha University but carry
+%% different unit names, as supplied. Merge them into one \affil if they are the
+%% same unit.
+\affil[3]{\orgdiv{School of AI and Computer Science}, \orgname{Plaksha University},
+\orgaddress{\city{Mohali}, \postcode{140306}, \state{Punjab}, \country{India}}}
 
 \abstract{ABSTRACT_HERE}
 
@@ -63,6 +74,11 @@ Israel-Hamas Discourse on Reddit and YouTube}
 Stance detection, Social media platforms, Annotation validation}
 
 \maketitle
+
+%% five authors across three affiliations leave too little room below the front
+%% matter for a balanced two-column start, so the body opens on the next page.
+%% \newpage would only move to the second column, hence \clearpage.
+\clearpage
 """
 
 ABSTRACT = r"""The Israel-Hamas conflict has unfolded not only through military
@@ -94,10 +110,17 @@ checks built from that validation, all of which it survives."""
 BACKMATTER = r"""
 \backmatter
 
+\bmhead{Acknowledgements}
+%% TODO(authors): name the funding project and grant number. Springer requires
+%% funding organisations to be written out in full.
+This work was supported by [FUNDING BODY, PROJECT NAME AND GRANT NUMBER].
+
 \section*{Statements and Declarations}
 
 \bmhead{Funding}
-No funding was received to assist with the preparation of this manuscript.
+%% TODO(authors): must match the Acknowledgements above and the funding entered
+%% in the submission system, which feeds the CrossMark record.
+This work was supported by [FUNDING BODY, PROJECT NAME AND GRANT NUMBER].
 
 \bmhead{Competing interests}
 The authors have no competing interests to declare that are relevant to the
@@ -130,10 +153,12 @@ All code is available at \url{GITHUB_HERE}.
 \bmhead{Author contributions}
 %% TODO(authors): correct this split before submitting. It is a placeholder.
 A.G. designed the study, implemented the data collection and stance labelling
-pipeline, and drafted the manuscript. R.S. implemented the topic and vocabulary
-analysis. A.A. implemented the toxicity analysis. All three authors independently
-annotated the 270-comment human validation sample, contributed to the
-interpretation of results, and read and approved the final manuscript.
+pipeline, and drafted the manuscript. R.Sa. implemented the topic and vocabulary
+analysis. A.A. implemented the toxicity analysis. A.G., R.Sa. and A.A.
+independently annotated the 270-comment human validation sample. U.K. and R.Sh.
+supervised the work, reviewed the methodology and revised the manuscript
+critically for important intellectual content. All authors read and approved the
+final manuscript.
 
 \bmhead{Use of AI-assisted technologies}
 A large language model (Claude, Anthropic) was used for language editing and for
