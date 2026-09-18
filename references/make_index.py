@@ -117,6 +117,35 @@ def main():
     out.append("works. Four citation-accuracy errors were found and corrected; they are")
     out.append("marked CORRECTED below.")
     out.append("")
+
+    # file inventory, so the counts here can be checked against the folder
+    pdfs = {p.stem for p in (REF / "pdf").glob("*.pdf")}
+    html = sorted(p.name for p in (REF / "web").glob("*.html"))
+    web_for = {"isd2023": "isd2023_1.html", "isd2023muslim": "isd2023_2.html"}
+    held = [k for k in order if k in pdfs or web_for.get(k) in html]
+    absent = [k for k in order if k not in held]
+    extra = sorted(pdfs - set(order))
+
+    out.append("WHAT IS IN THIS FOLDER")
+    out.append("")
+    out.append(f"  references in the manuscript          {len(order):>3}")
+    out.append(f"  with a local full text                {len(held):>3}")
+    out.append(f"  without                               {len(absent):>3}"
+               f"   ({', '.join(absent)})")
+    out.append("")
+    out.append(f"  PDF files in references/pdf           {len(pdfs):>3}")
+    out.append(f"  saved web pages in references/web     {len(html):>3}")
+    out.append("")
+    out.append(f"  The PDF count is {len(pdfs)}, not {len(held)}, because "
+               f"{len(extra)} file is a supporting")
+    out.append("  document rather than a reference in its own right:")
+    for k in extra:
+        out.append(f"      {k}")
+    out.append("  and the two ISD dispatches are saved as web pages, not PDFs.")
+    out.append("")
+    out.append(f"  So: {len(pdfs)} PDFs - {len(extra)} supporting + {len(html)} "
+               f"web pages = {len(held)} of {len(order)} references.")
+    out.append("")
     out.append("=" * 72)
 
     for n, key in enumerate(order, 1):
@@ -140,8 +169,10 @@ def main():
             if line.strip():
                 out.append(f"               {line.strip()}")
 
-        if f.get("file"):
-            out.append(f"  local copy : pdf/{f['file']}")
+        # the folder is the authority, not the fetch log: several PDFs arrived
+        # after that log was written, some of them by hand
+        if key in pdfs:
+            out.append(f"  local copy : pdf/{key}.pdf")
             hits = f.get("hits") or {}
             n_hl = f.get("highlight_count", 0)
             if n_hl:
@@ -149,8 +180,9 @@ def main():
                 out.append(f"  highlighted: {n_hl} passages on {len(pages)} pages "
                            f"(p. {', '.join(map(str, pages[:14]))}"
                            f"{' ...' if len(pages) > 14 else ''})")
-        elif f.get("files"):
-            out.append(f"  local copy : web/{', web/'.join(f['files'])}")
+        elif web_for.get(key) in html:
+            # the two ISD dispatches were saved under one fetch entry
+            out.append(f"  local copy : web/{web_for[key]}")
         else:
             out.append(f"  local copy : NONE - {f.get('why', 'not retrievable')}")
 

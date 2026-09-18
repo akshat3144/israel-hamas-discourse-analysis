@@ -10,6 +10,22 @@ NOTHING WAS FABRICATED. All 22 references resolve to real, locatable
 works. Four citation-accuracy errors were found and corrected; they are
 marked CORRECTED below.
 
+WHAT IS IN THIS FOLDER
+
+  references in the manuscript           22
+  with a local full text                 20
+  without                                 2   (flesch1948, santiago2025)
+
+  PDF files in references/pdf            19
+  saved web pages in references/web       2
+
+  The PDF count is 19, not 20, because 1 file is a supporting
+  document rather than a reference in its own right:
+      krippendorff2011_alpha
+  and the two ISD dispatches are saved as web pages, not PDFs.
+
+  So: 19 PDFs - 1 supporting + 2 web pages = 20 of 22 references.
+
 ========================================================================
 
 [1] antonakaki2025
@@ -214,7 +230,7 @@ marked CORRECTED below.
                it is the standard journal citation for alpha. Krippendorff's own
                Computing Krippendorff's Alpha-Reliability (2011) is also stored
                alongside it.
-  local copy : NONE - not retrievable
+  local copy : pdf/hayes2007.pdf
   used in the manuscript for:
       Classification uses scikit-learn and readability the Flesch
       formula ; agreement statistics follow Krippendorff .
@@ -243,7 +259,7 @@ marked CORRECTED below.
                (19 December 2023) and uses a FOUR-day window, not three. The
                manuscript previously folded it into the antisemitism citation and
                the three-day window. Now cited separately with the correct window.
-  local copy : NONE - not retrievable
+  local copy : web/isd2023_2.html
   used in the manuscript for:
       Comparing the three days either side of 7 October, the Institute
       for Strategic Dialogue recorded a more than fiftyfold rise in the
@@ -260,7 +276,7 @@ marked CORRECTED below.
                Dispatch saved. Says antisemitic YouTube comments rose 4963% (over
                50-fold) in the three days after 7 October vs the previous three
                days. Our fiftyfold claim and three-day window are correct.
-  local copy : web/isd2023_1.html, web/isd2023_2.html
+  local copy : web/isd2023_1.html
   used in the manuscript for:
       Comparing the three days either side of 7 October, the Institute
       for Strategic Dialogue recorded a more than fiftyfold rise in the
@@ -279,7 +295,7 @@ marked CORRECTED below.
                Factorization, which is the more apt citation since we use the
                algorithms rather than the parts-based argument. Free from
                papers.nips.cc; multiplicative update rules highlighted.
-  local copy : NONE - not retrievable
+  local copy : pdf/leeseung2000.pdf
   used in the manuscript for:
       Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix
       Factorization represent documents as mixtures over latent topics;
@@ -334,7 +350,8 @@ marked CORRECTED below.
                'models do not generalize well (avg F1=0.33)', aggregation lifting
                it to 0.69, and inconsistent annotations across datasets. CC
                BY-NC-ND.
-  local copy : NONE - Information Processing and Management, hybrid open access but Elsevier blocks automated download; open via doi.org/10.1016/j.ipm.2022.103070
+  local copy : pdf/ng2022.pdf
+  highlighted: 73 passages on 15 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ...)
   used in the manuscript for:
       Cross-platform stance-transfer failure is not claimed as novel -
       it is established for stance datasets generally by Ng and Carley .
@@ -407,7 +424,8 @@ marked CORRECTED below.
                promise for productive intergroup discourse, driven by
                conversational visibility. Matches our sentence almost word for
                word. CC BY-NC.
-  local copy : NONE - Social Media + Society, gold open access but SAGE blocks automated download; open via doi.org/10.1177/20563051251332427
+  local copy : pdf/shugars2025.pdf
+  highlighted: 132 passages on 11 pages (p. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
   used in the manuscript for:
       Shugars and Ha compared Twitter and Reddit directly, finding that
       Reddit's conversational visibility - the ability for users to see
