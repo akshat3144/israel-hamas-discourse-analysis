@@ -49,20 +49,24 @@
   pages   = {993--1022}
 }
 
+%% No DOI exists: NeurIPS proceedings of this era were never assigned one, and
+%% Crossref has no record. The conference, volume and pages identify it fully,
+%% so no URL is given rather than a long non-standard link.
 @inproceedings{leeseung2000,
   author    = {Lee, Daniel D. and Seung, H. Sebastian},
   title     = {Algorithms for Non-Negative Matrix Factorization},
   booktitle = {Advances in Neural Information Processing Systems 13 (NIPS 2000)},
   year      = {2000},
-  pages     = {556--562},
-  url       = {https://papers.nips.cc/paper_files/paper/2000/hash/f9d1152547c0bde01830b7e8bd60024c-Abstract.html}
+  pages     = {556--562}
 }
 
-@article{grootendorst2022,
-  author  = {Grootendorst, Maarten},
-  title   = {{BERTopic}: Neural Topic Modeling with a Class-Based {TF-IDF} Procedure},
-  journal = {arXiv preprint arXiv:2203.05794},
-  year    = {2022}
+%% @misc, not @article: the bst strips the period out of a journal field,
+%% which turned arXiv:2203.05794 into arXiv:220305794
+@misc{grootendorst2022,
+  author       = {Grootendorst, Maarten},
+  title        = {{BERTopic}: Neural Topic Modeling with a Class-Based {TF-IDF} Procedure},
+  howpublished = {arXiv preprint arXiv:2203.05794},
+  year         = {2022}
 }
 
 % ── Polarization and Echo Chambers ────────────────────────────────────────
