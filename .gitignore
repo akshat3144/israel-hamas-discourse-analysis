@@ -72,3 +72,6 @@ springer_submission/overleaf_project.zip
 # be re-run (references/verify_refs.py then fetch_and_highlight.py).
 references/pdf/
 references/web/
+
+# extracted copy of overleaf_project.zip, for uploading; regenerate by extracting the zip
+springer_submission/overleaf_project/
