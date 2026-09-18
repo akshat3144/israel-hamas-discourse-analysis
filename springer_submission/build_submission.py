@@ -144,7 +144,6 @@ rather than raw account handles are released.
 All code is available at \url{GITHUB_HERE}.
 
 \bmhead{Author contributions}
-%% TODO(authors): correct this split before submitting. It is a placeholder.
 A.G. designed the study, implemented the data collection and stance labelling
 pipeline, and drafted the manuscript. R.Sa. implemented the topic and vocabulary
 analysis. A.A. implemented the toxicity analysis. A.G., R.Sa. and A.A.
