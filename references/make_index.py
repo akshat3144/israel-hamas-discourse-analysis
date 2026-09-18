@@ -61,6 +61,19 @@ VERDICT = {
                "Downloaded by hand (Elsevier blocks scripts). Full text confirms "
                "'models do not generalize well (avg F1=0.33)', aggregation lifting it "
                "to 0.69, and inconsistent annotations across datasets. CC BY-NC-ND."),
+    "hofmann2026": ("VERIFIED from full text, REPLACES GREY LITERATURE",
+                    "Peer-reviewed: Springer, Lecture Notes in Information Systems "
+                    "and Organisation, 2026, pp. 257-272, doi 10.1007/978-3-032-08489-7_18. "
+                    "Free preprint on arXiv 2503.10648. Full text confirms 4,983 "
+                    "hand-annotated YouTube comments, AUROC 0.83 to 0.90, hate speech "
+                    "in 40.4 percent of public-source and 31.6 percent of private-source "
+                    "comments, and the same three stance labels we use."),
+    "rosen2025": ("VERIFIED via abstract, REPLACES GREY LITERATURE",
+                  "Peer-reviewed: Social Media + Society 2025, "
+                  "doi 10.1177/20563051251383635, gold open access. Abstract confirms "
+                  "hate messaging targeting Muslims and Jews increased dramatically "
+                  "after 7 October 2023, and the reply-dynamics finding. SAGE blocks "
+                  "automated download; open the DOI to read it."),
     "newman2003": ("VERIFIED", "arXiv cond-mat/0209450; assortativity for discrete "
                                "attributes confirmed."),
     "cinelli2021": ("VERIFIED", "PNAS open access; platform-dependence of echo-chamber "
@@ -78,15 +91,6 @@ VERDICT = {
     "ngchow2025": ("VERIFIED", "PLOS ONE open access. n = 1,079,676,984 posts (= 1.08 "
                                "billion), 59% negative, October 2023 to January 2024. "
                                "All three figures match."),
-    "isd2023": ("VERIFIED, CLAIM CORRECTED",
-                "Dispatch saved. Says antisemitic YouTube comments rose 4963% (over "
-                "50-fold) in the three days after 7 October vs the previous three days. "
-                "Our fiftyfold claim and three-day window are correct."),
-    "isd2023muslim": ("VERIFIED, NEW ENTRY",
-                      "The 43-fold anti-Muslim figure comes from a SEPARATE ISD dispatch "
-                      "(19 December 2023) and uses a FOUR-day window, not three. The "
-                      "manuscript previously folded it into the antisemitism citation and "
-                      "the three-day window. Now cited separately with the correct window."),
 }
 
 
@@ -134,17 +138,18 @@ def main():
                f"   ({', '.join(absent)})")
     out.append("")
     out.append(f"  PDF files in references/pdf           {len(pdfs):>3}")
-    out.append(f"  saved web pages in references/web     {len(html):>3}")
     out.append("")
     out.append(f"  The PDF count is {len(pdfs)}, not {len(held)}, because "
                f"{len(extra)} file is a supporting")
     out.append("  document rather than a reference in its own right:")
     for k in extra:
         out.append(f"      {k}")
-    out.append("  and the two ISD dispatches are saved as web pages, not PDFs.")
     out.append("")
-    out.append(f"  So: {len(pdfs)} PDFs - {len(extra)} supporting + {len(html)} "
-               f"web pages = {len(held)} of {len(order)} references.")
+    out.append(f"  So: {len(pdfs)} PDFs - {len(extra)} supporting = "
+               f"{len(held)} of {len(order)} references.")
+    out.append("")
+    out.append("  Every source is now a peer-reviewed paper or a preprint of one.")
+    out.append("  No web pages, reports or books are cited.")
     out.append("")
     out.append("=" * 72)
 
@@ -207,15 +212,29 @@ def main():
     out.append("3. antonakaki2025 - bibliography said 'and others' for a two-author")
     out.append("   paper. Both authors now named.")
     out.append("4. isd2023 - one citation was carrying two figures from two different")
-    out.append("   ISD dispatches with two different comparison windows. Split into")
-    out.append("   isd2023 (antisemitic, three-day window) and isd2023muslim")
-    out.append("   (anti-Muslim, four-day window).")
+    out.append("   ISD dispatches with two different comparison windows. Both have")
+    out.append("   since been replaced by peer-reviewed papers; see below.")
     out.append("5. devlin2019 - DOI added.")
     out.append("")
     out.append("SOURCES CHANGED TO MAKE THE EVIDENCE CHECKABLE")
     out.append("")
-    out.append("  Three references had no freely readable full text. Two were replaced")
-    out.append("  with open equivalents by the same authors, and one was dropped.")
+    out.append("  Five references were either unreadable without a subscription or")
+    out.append("  were grey literature. All five are gone.")
+    out.append("")
+    out.append("  isd2023 + isd2023muslim (web)  ->  hofmann2026 + rosen2025")
+    out.append("      The two Institute for Strategic Dialogue dispatches were the")
+    out.append("      only non-peer-reviewed sources in the paper. Replaced with")
+    out.append("      Hofmann et al. 2026 (Springer LNISO 257-272, free preprint on")
+    out.append("      arXiv), which annotates 4,983 YouTube comments on this exact")
+    out.append("      conflict using the same three stance labels we use, and Rosen")
+    out.append("      and Walther 2025 (Social Media + Society, gold open access) on")
+    out.append("      the post-7-October rise in anti-Jewish and anti-Muslim posting.")
+    out.append("      The 50-fold and 43-fold figures were dropped with them: those")
+    out.append("      were ISD's own measurements and no peer-reviewed study reports")
+    out.append("      them, so the claim now rests on what the new sources state.")
+    out.append("      Hofmann was also added to Related Work, where it belonged")
+    out.append("      anyway as the closest prior work to our design.")
+    out.append("")
     out.append("")
     out.append("  krippendorff2004 (book)  ->  hayes2007")
     out.append("      Hayes and Krippendorff 2007, Communication Methods and Measures")

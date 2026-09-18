@@ -13,18 +13,19 @@ marked CORRECTED below.
 WHAT IS IN THIS FOLDER
 
   references in the manuscript           22
-  with a local full text                 20
-  without                                 2   (flesch1948, santiago2025)
+  with a local full text                 19
+  without                                 3   (flesch1948, rosen2025, santiago2025)
 
-  PDF files in references/pdf            19
-  saved web pages in references/web       2
+  PDF files in references/pdf            20
 
-  The PDF count is 19, not 20, because 1 file is a supporting
+  The PDF count is 20, not 19, because 1 file is a supporting
   document rather than a reference in its own right:
       krippendorff2011_alpha
-  and the two ISD dispatches are saved as web pages, not PDFs.
 
-  So: 19 PDFs - 1 supporting + 2 web pages = 20 of 22 references.
+  So: 20 PDFs - 1 supporting = 19 of 22 references.
+
+  Every source is now a peer-reviewed paper or a preprint of one.
+  No web pages, reports or books are cited.
 
 ========================================================================
 
@@ -236,7 +237,33 @@ WHAT IS IN THIS FOLDER
       formula ; agreement statistics follow Krippendorff .
 
 
-[12] hutto2014
+[12] hofmann2026
+------------------------------------------------------------------------
+  title      : Hate Speech and Sentiment of YouTube Video Comments From Public and Private Sources Covering the Israel-Palestine Conflict
+  authors    : Hofmann et al.
+  venue      : Lecture Notes in Information Systems and Organisation
+  year       : 2026
+  doi        : 10.1007/978-3-032-08489-7_18
+  status     : VERIFIED from full text, REPLACES GREY LITERATURE
+               Peer-reviewed: Springer, Lecture Notes in Information Systems and
+               Organisation, 2026, pp. 257-272, doi 10.1007/978-3-032-08489-7_18.
+               Free preprint on arXiv 2503.10648. Full text confirms 4,983
+               hand-annotated YouTube comments, AUROC 0.83 to 0.90, hate speech in
+               40.4 percent of public-source and 31.6 percent of private-source
+               comments, and the same three stance labels we use.
+  local copy : pdf/hofmann2026.pdf
+  used in the manuscript for:
+      Hofmann et al. annotated YouTube comments on the conflict and
+      found hate speech in 40.4\
+
+      Closest to our own design, Hofmann et al. hand-annotated 4,983
+      YouTube comments on the conflict for hate speech and for the same
+      three stances we use, trained classifiers reaching AUROC 0.83 to
+      0.90, and applied them to comment sections from public and private
+      news channels.
+
+
+[13] hutto2014
 ------------------------------------------------------------------------
   title      : VADER: A Parsimonious Rule-Based Model for Sentiment Analysis of Social Media Text
   authors    : Hutto et al.
@@ -252,42 +279,7 @@ WHAT IS IN THIS FOLDER
       intensity, slang, and negation.
 
 
-[13] isd2023muslim
-------------------------------------------------------------------------
-  status     : VERIFIED, NEW ENTRY
-               The 43-fold anti-Muslim figure comes from a SEPARATE ISD dispatch
-               (19 December 2023) and uses a FOUR-day window, not three. The
-               manuscript previously folded it into the antisemitism citation and
-               the three-day window. Now cited separately with the correct window.
-  local copy : web/isd2023_2.html
-  used in the manuscript for:
-      Comparing the three days either side of 7 October, the Institute
-      for Strategic Dialogue recorded a more than fiftyfold rise in the
-      absolute volume of antisemitic comments beneath YouTube videos
-      about the conflict , and, on a four-day window either side of the
-      same date, a 43-fold rise in anti-Muslim comments ; the same
-      period saw sustained pressure on platform moderation systems and a
-      marked hardening of tone in general-audience comment sections.
-
-
-[14] isd2023
-------------------------------------------------------------------------
-  status     : VERIFIED, CLAIM CORRECTED
-               Dispatch saved. Says antisemitic YouTube comments rose 4963% (over
-               50-fold) in the three days after 7 October vs the previous three
-               days. Our fiftyfold claim and three-day window are correct.
-  local copy : web/isd2023_1.html
-  used in the manuscript for:
-      Comparing the three days either side of 7 October, the Institute
-      for Strategic Dialogue recorded a more than fiftyfold rise in the
-      absolute volume of antisemitic comments beneath YouTube videos
-      about the conflict , and, on a four-day window either side of the
-      same date, a 43-fold rise in anti-Muslim comments ; the same
-      period saw sustained pressure on platform moderation systems and a
-      marked hardening of tone in general-audience comment sections.
-
-
-[15] leeseung2000
+[14] leeseung2000
 ------------------------------------------------------------------------
   status     : VERIFIED from full text, REFERENCE SWAPPED
                The paywalled Nature 1999 letter was replaced with the same authors'
@@ -303,7 +295,7 @@ WHAT IS IN THIS FOLDER
       matrix decomposition that tends to produce sparser topics.
 
 
-[16] newman2003
+[15] newman2003
 ------------------------------------------------------------------------
   title      : Mixing patterns in networks
   authors    : Newman et al.
@@ -338,7 +330,7 @@ WHAT IS IN THIS FOLDER
       chambers.
 
 
-[17] ng2022
+[16] ng2022
 ------------------------------------------------------------------------
   title      : Is my stance the same as your stance? A cross validation study of stance detection datasets
   authors    : Ng et al.
@@ -361,7 +353,7 @@ WHAT IS IN THIS FOLDER
       we claim no novelty for the effect itself.
 
 
-[18] ngchow2025
+[17] ngchow2025
 ------------------------------------------------------------------------
   title      : Prominent peaks and social discourses of the 2023 Escalation in the Ongoing Israel–Hamas armed conflict
   authors    : Ng et al.
@@ -379,7 +371,7 @@ WHAT IS IN THIS FOLDER
       alone, 59\
 
 
-[19] pedregosa2011
+[18] pedregosa2011
 ------------------------------------------------------------------------
   status     : VERIFIED
                JMLR open access. An automated search for 'classif' first missed
@@ -390,6 +382,27 @@ WHAT IS IN THIS FOLDER
   used in the manuscript for:
       Classification uses scikit-learn and readability the Flesch
       formula ; agreement statistics follow Krippendorff .
+
+
+[19] rosen2025
+------------------------------------------------------------------------
+  title      : Social Processes in the Intensification of Online Hate: The Effects of Verbal Replies to Anti-Muslim and Anti-Jewish Posts Following 7 October 2023
+  authors    : Rosen et al.
+  venue      : Social Media + Society
+  year       : 2025
+  doi        : 10.1177/20563051251383635
+  status     : VERIFIED via abstract, REPLACES GREY LITERATURE
+               Peer-reviewed: Social Media + Society 2025, doi
+               10.1177/20563051251383635, gold open access. Abstract confirms hate
+               messaging targeting Muslims and Jews increased dramatically after 7
+               October 2023, and the reply-dynamics finding. SAGE blocks automated
+               download; open the DOI to read it.
+  local copy : NONE - not retrievable
+  used in the manuscript for:
+      Rosen and Walther document a parallel escalation in anti-Jewish
+      and anti-Muslim posting in the month after 7 October, and show
+      that the replies such posts attract feed back into how hatefully
+      their authors post next.
 
 
 [20] santiago2025
@@ -469,15 +482,29 @@ CORRECTIONS MADE AS A RESULT OF THIS AUDIT
 3. antonakaki2025 - bibliography said 'and others' for a two-author
    paper. Both authors now named.
 4. isd2023 - one citation was carrying two figures from two different
-   ISD dispatches with two different comparison windows. Split into
-   isd2023 (antisemitic, three-day window) and isd2023muslim
-   (anti-Muslim, four-day window).
+   ISD dispatches with two different comparison windows. Both have
+   since been replaced by peer-reviewed papers; see below.
 5. devlin2019 - DOI added.
 
 SOURCES CHANGED TO MAKE THE EVIDENCE CHECKABLE
 
-  Three references had no freely readable full text. Two were replaced
-  with open equivalents by the same authors, and one was dropped.
+  Five references were either unreadable without a subscription or
+  were grey literature. All five are gone.
+
+  isd2023 + isd2023muslim (web)  ->  hofmann2026 + rosen2025
+      The two Institute for Strategic Dialogue dispatches were the
+      only non-peer-reviewed sources in the paper. Replaced with
+      Hofmann et al. 2026 (Springer LNISO 257-272, free preprint on
+      arXiv), which annotates 4,983 YouTube comments on this exact
+      conflict using the same three stance labels we use, and Rosen
+      and Walther 2025 (Social Media + Society, gold open access) on
+      the post-7-October rise in anti-Jewish and anti-Muslim posting.
+      The 50-fold and 43-fold figures were dropped with them: those
+      were ISD's own measurements and no peer-reviewed study reports
+      them, so the claim now rests on what the new sources state.
+      Hofmann was also added to Related Work, where it belonged
+      anyway as the closest prior work to our design.
+
 
   krippendorff2004 (book)  ->  hayes2007
       Hayes and Krippendorff 2007, Communication Methods and Measures
