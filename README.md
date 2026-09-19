@@ -10,7 +10,7 @@ questions about emotional tone and toxicity, topics and vocabulary, and
 polarization and interaction structure.
 
 > **Scale:** ~1.11M labeled Reddit + ~0.38M labeled YouTube comments (≈ **1.49M**
-> stance-labeled points) from a raw crawl of ~3.08M Reddit + ~0.97M YouTube
+> stance-labeled points) from a raw crawl of ~3.08M Reddit + ~0.79M YouTube
 > comments. The manuscript analyses **1,382,896** of these: 1,004,629 Reddit and
 > 378,267 YouTube, after restricting both platforms to a matched window and
 > removing automated accounts.
@@ -187,7 +187,7 @@ flowchart TD
     end
     subgraph YOUTUBE
       B1[YouTube Data API v3 search<br/>Oct 2023–May 2024] --> B2[HTML/AJAX comment scrape<br/>requests + regex]
-      B2 --> B3[fix dates + merge video metadata<br/>~966k comments]
+      B2 --> B3[fix dates + merge video metadata<br/>~789k comments]
       B3 --> B4[NB04: rename cols → youtube.csv]
     end
     A5 --> L[prepare_*_batches.py → 50-row batches]
@@ -247,13 +247,13 @@ YouTube data was collected with a custom toolkit in
   (captions via `youtube-transcript-api`), `fix_comments_date_csv.py` (convert relative
   "x days ago" timestamps to ISO dates and attach `video_date`).
 
-Raw volume: **~966,027 comments**.
+Raw volume: **789,328 comments**.
 
 ### Stage 4 · YouTube preprocessing
 
 | Notebook                                | What it does                                                                                                                                                                                                                                           |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `04_youtube_data_preprocessing.ipynb` | Ingest the scraped/date-fixed comments; rename to analysis columns (`comment_text → text`, `votes → likeCount`, `comment_published_at_approx → created_time`, `comment_id → id`); export `youtube_cleaned.csv` (**966,027** rows). |
+| `04_youtube_data_preprocessing.ipynb` | Ingest the scraped/date-fixed comments; rename to analysis columns (`comment_text → text`, `votes → likeCount`, `comment_published_at_approx → created_time`, `comment_id → id`); export `youtube_cleaned.csv` (**789,328** rows). |
 | `06_youtube_json_preprocessing.ipynb` | Post-labeling: from `youtube_labeled_full.jsonl` (**741,078** labeled rows) drop `Label=="R"` and keep only **high-confidence** rows; drop helper columns → final YouTube dataset (**~378k**).                                  |
 
 ### Stage 5 · LLM stance labeling
@@ -285,7 +285,7 @@ The labeled JSONLs are filtered (Stage 2/4 notebooks) by **(1) dropping `Label =
 
 | Stage                                    | Reddit                | YouTube           |
 | ---------------------------------------- | --------------------- | ----------------- |
-| Raw comments collected                   | ~3,083,006            | 966,027           |
+| Raw comments collected                   | ~3,083,006            | 789,328           |
 | Labeled (full)                           | (all merged comments) | 741,078           |
 | **Final (non-R, high-confidence)** | **1,110,153**   | **378,267** |
 | - Pro-Palestine (P)                     | 494,608               | 212,217           |
