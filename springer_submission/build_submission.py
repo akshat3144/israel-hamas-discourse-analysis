@@ -48,6 +48,12 @@ PREAMBLE = r"""%% Journal of Computational Social Science
 
 \raggedbottom
 
+\AtBeginDocument{%
+  \renewcommand{\dbltopfraction}{0.95}%
+  \renewcommand{\textfraction}{0.02}%
+  \renewcommand{\dblfloatpagefraction}{0.9}%
+}
+
 \begin{document}
 
 \title[Clustered by Thread, Arguing Across the Divide]{Clustered by Thread,
@@ -56,16 +62,19 @@ Israel-Hamas Discourse on Reddit and YouTube}
 
 %% TODO(authors): add each author's ORCID with \orcid{...}.
 \author*[1]{\fnm{Akshat} \sur{Gupta}}\email{akshat.gupta.ug23@plaksha.edu.in}
-\author[1]{\fnm{Raghav} \sur{Sarna}}\email{raghav.sarna.ug23@plaksha.edu.in}
-\author[1]{\fnm{Arsh} \sur{Arora}}\email{arsh.arora.ug23@plaksha.edu.in}
-\author[2]{\fnm{Uku} \sur{Kangur}}\email{uku.kangur@ut.ee}
-\author[1]{\fnm{Rajesh} \sur{Sharma}}\email{rajesh.sharma@plaksha.edu.in}
+\author[1]{\fnm{Raghav} \sur{Sarna}}%\email{raghav.sarna.ug23@plaksha.edu.in}
+\author[1]{\fnm{Arsh} \sur{Arora}}%\email{arsh.arora.ug23@plaksha.edu.in}
+\author[2]{\fnm{Uku} \sur{Kangur}}%\email{uku.kangur@ut.ee}
+\author[3]{\fnm{Sakthi Balan} \sur{Muthiah}}%\email{sakthibalanm@snuchennai.edu.in}
+\author[1]{\fnm{Rajesh} \sur{Sharma}}%\email{rajesh.sharma@plaksha.edu.in}
 
 \affil*[1]{\orgdiv{School of AI and Computer Science}, \orgname{Plaksha University},
-\orgaddress{\city{Mohali}, \postcode{140306}, \state{Punjab}, \country{India}}}
+\orgaddress{\city{Mohali}, \country{India}}}
 
 \affil[2]{\orgdiv{Institute of Computer Science}, \orgname{University of Tartu},
 \orgaddress{\city{Tartu}, \country{Estonia}}}
+
+\affil[3]{\orgdiv{Department of Computer Science \& Engineering}, \orgname{Shiv Nadar University Chennai}, \orgaddress{\city{Chennai}, \country{India}}}
 
 \abstract{ABSTRACT_HERE}
 
@@ -82,8 +91,8 @@ Stance detection, Social media platforms, Annotation validation}
 
 ABSTRACT = r"""The Israel-Hamas conflict has unfolded not only through military
 and diplomatic events but also through continuous public argument online. We
-analyse 1{,}382{,}896 stance-labelled comments, 1{,}004{,}629 from Reddit and
-378{,}267 from YouTube, over a matched 7~October~2023 to 7~May~2024 window, to ask
+analyse 1.38 million stance-labelled comments (1.00M Reddit, 0.38M YouTube),
+over a matched 7~October~2023 to 7~May~2024 window, to ask
 how political discourse differs across two contrasting platform architectures.
 Three findings are not
 predictable from platform design alone. First, emotional tone is politicised on
@@ -154,8 +163,8 @@ All code is available at \url{GITHUB_HERE}.
 A.G. designed the study, implemented the data collection and stance labelling
 pipeline, and drafted the manuscript. R.Sa. implemented the topic and vocabulary
 analysis. A.A. implemented the toxicity analysis. A.G., R.Sa. and A.A.
-independently annotated the 270-comment human validation sample. U.K. and R.Sh.
-supervised the work, reviewed the methodology and revised the manuscript
+independently annotated the 270-comment human validation sample. U.K., S.B.M. and
+R.Sh. supervised the work, reviewed the methodology and revised the manuscript
 critically for important intellectual content. All authors read and approved the
 final manuscript.
 
