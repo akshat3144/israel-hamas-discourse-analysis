@@ -84,7 +84,8 @@ ABSTRACT = r"""The Israel-Hamas conflict has unfolded not only through military
 and diplomatic events but also through continuous public argument online. We
 analyse 1{,}382{,}896 stance-labelled comments, 1{,}004{,}629 from Reddit and
 378{,}267 from YouTube, over a matched 7~October~2023 to 7~May~2024 window, to ask
-how platform architecture shapes political discourse. Three findings are not
+how political discourse differs across two contrasting platform architectures.
+Three findings are not
 predictable from platform design alone. First, emotional tone is politicised on
 Reddit, where both partisan camps are negative and only neutral comments are
 positive, but largely decoupled from stance on YouTube. Second, negativity and

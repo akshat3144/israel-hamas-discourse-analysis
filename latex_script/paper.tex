@@ -777,10 +777,10 @@ and more replied-to, some apparent cross-cutting would be mechanical. We therefo
 repeat the test against a \emph{degree-preserving} null that permutes reply targets,
 holding every user's out-degree and in-degree exactly fixed. Across 500 permutations
 the null assortativity is centred on zero ($\bar{r}=+0.00004$, $\mathrm{sd}=0.0014$),
-placing the observed $-0.184$ some $z=-128$ from the null; the per-stance excesses
-survive the same test (Pro-Palestine $z=-126$, Pro-Israel $z=-118$, Neutral
-$z=+51$). The cross-cutting pattern is therefore not an artifact of the degree
-sequence. Pro-Israel users direct 64.4\% of
+placing the observed $-0.184$ far outside the null distribution ($z=-128$). The
+per-stance excesses survive the same test (Pro-Palestine $z=-126$, Pro-Israel
+$z=-118$, Neutral $z=+51$). The cross-cutting pattern is therefore not an artifact
+of the degree sequence. Pro-Israel users direct 64.4\% of
 their replies at Pro-Palestine users; Pro-Palestine users direct 54.4\% of theirs at
 Pro-Israel users (Figure~\ref{fig:mixing}). Among partisan reply pairs,
 \textbf{62.4\%} cross the divide. Only Neutral users are mildly assortative
@@ -962,8 +962,7 @@ that humans judge irrelevant. Cross-platform comparisons therefore carry unequal
 attenuation; our simulation shows the headline contrast survives it at about half its
 raw size, but YouTube stance-conditional effects should be read as directional.
 We release a relevance classifier that removes most of this content, and show the reported comparisons survive it, but do not adopt it as the primary corpus because it also discards genuine Neutral comments. The clearest routes to tightening these estimates are specific rather than general, and we measure both: supplying video-level context to the YouTube annotator raises stance accuracy by roughly eight points but degrades relevance judgement, so it must be paired with an explicit relevance decision ahead of
-stance assignment, are the clearest routes to tightening these
-label-dependent estimates. Second, the toxicity
+stance assignment. Second, the toxicity
 analysis rests on 600 scored comments - adequate for platform-level means but thin
 for the joint sentiment-toxicity analysis, where only 38 comments exceed the
 toxicity threshold; the Perspective API is also being retired, so replication will
