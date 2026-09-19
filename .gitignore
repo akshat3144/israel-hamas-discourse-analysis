@@ -96,7 +96,10 @@ springer_submission/overleaf_project/
 
 !00_data_collection_and_labeling/outputs/
 00_data_collection_and_labeling/outputs/*
-!00_data_collection_and_labeling/outputs/youtube_video_metadata.csv
+# titles and descriptions are withheld: YouTube Developer Policies III.E.3.b
+# and III.E.4.c restrict sharing and retention of API data, with no research
+# exception. The index carries the ids needed to re-fetch them.
+!00_data_collection_and_labeling/outputs/youtube_video_index.csv
 
 !references/
 !references/*.json

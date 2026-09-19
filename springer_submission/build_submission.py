@@ -148,13 +148,21 @@ does not require review by an institutional ethics committee.
 Not applicable.
 
 \bmhead{Data availability}
-The labelling pipeline, the analysis code, the revision scripts, the three
-completed human validation annotation sets, the scoring scripts and the
-video-level metadata (title, description and channel for all 2{,}637 videos) are
-available at \url{GITHUB_HERE}. Reddit comments were obtained from the
-Arctic Shift archive and YouTube comments through the YouTube Data API v3; both
-are subject to the respective platform terms of service, so derived identifiers
-rather than raw account handles are released.
+The collection and labelling pipeline, the analysis and revision code, the
+computed results underlying every figure and table reported here, the three
+completed human validation annotation sets with their blind sheets and scoring
+scripts, and an index of the 2{,}637 videos are available at \url{GITHUB_HERE}.
+
+The comment corpora themselves are not redistributed. Reddit comments were
+obtained from the Arctic Shift archive and YouTube comments by scraping the
+platform's continuation endpoints; the terms of service of both platforms
+restrict republishing user content, and the YouTube API Services Developer
+Policies restrict sharing and retention of video metadata, in neither case with
+an exception for research. We therefore release the code that reconstructs both
+corpora from their original sources, together with every intermediate result,
+rather than the content itself. The released video index carries the
+identifiers needed to re-fetch the titles and descriptions used in the
+video-context experiment.
 
 \bmhead{Code availability}
 All code is available at \url{GITHUB_HERE}.
