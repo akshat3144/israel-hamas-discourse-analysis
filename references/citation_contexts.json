@@ -1,0 +1,75 @@
+{
+  "ngchow2025": [
+    "Ng and Chow index roughly 1.08 billion English-language posts across Twitter/X, Reddit and TikTok in the first four months alone, 59\\"
+  ],
+  "hofmann2026": [
+    "Hofmann et al. annotated YouTube comments on the conflict and found hate speech in 40.4\\",
+    "Closest to our own design, Hofmann et al. hand-annotated 4,983 YouTube comments on the conflict for hate speech and for the same three stances we use, trained classifiers reaching AUROC 0.83 to 0.90, and applied them to comment sections from public and private news channels."
+  ],
+  "rosen2025": [
+    "Rosen and Walther document a parallel escalation in anti-Jewish and anti-Muslim posting in the month after 7 October, and show that the replies such posts attract feed back into how hatefully their authors post next."
+  ],
+  "ng2022": [
+    "Cross-platform stance-transfer failure is not claimed as novel - it is established for stance datasets generally by Ng and Carley .",
+    "Stance Language Is Platform-Specific That stance models transfer poorly across corpora is already established by Ng and Carley , so we claim no novelty for the effect itself."
+  ],
+  "boulianne2025": [
+    "Boulianne et al. compare seven platforms, including Reddit and YouTube, using survey data from four countries, and distinguish them by their networking features: structural ones such as user connectivity, privacy and anonymity, and social ones such as perceived audience and the norms of interaction."
+  ],
+  "shugars2025": [
+    "Shugars and Ha compared Twitter and Reddit directly, finding that Reddit's conversational visibility - the ability for users to see and engage with exchanges as a whole - enabled more cross-cutting and productive political discourse than Twitter's broadcast-oriented design.",
+    "It aligns with Shugars and Ha , who found that Reddit's conversational visibility supports more cross-cutting exchange than broadcast-oriented designs - our reply graph is the network-level signature of exactly that affordance."
+  ],
+  "antonakaki2025": [
+    "Antonakaki et al. analyzed Telegram, Twitter/X, and Reddit from October 2023 to mid-2025 using LDA, BERTopic, and transformer-based emotion models, identifying platform-specific narrative strategies and propaganda amplification patterns."
+  ],
+  "guerra2025": [
+    "Guerra et al. focused on Reddit, scoring over 450,000 posts from four conflict-related subreddits on a lexicon-based index of anger, polarity and subjectivity, and found peaks in that index aligning with specific events on the ground."
+  ],
+  "hutto2014": [
+    "VADER , designed for microblog contexts, captures punctuation intensity, slang, and negation."
+  ],
+  "devlin2019": [
+    "Because both tools are lexicon-based and neither is trained on this domain, we additionally apply a RoBERTa model fine-tuned on Twitter data - building on the BERT architecture of Devlin et al. - and treat agreement among the three as a measurement question in its own right rather than an assumption."
+  ],
+  "blei2003": [
+    "Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix Factorization represent documents as mixtures over latent topics; LDA assumes a Bayesian generative process while NMF performs a matrix decomposition that tends to produce sparser topics."
+  ],
+  "leeseung2000": [
+    "Topic Modeling Latent Dirichlet Allocation and Non-negative Matrix Factorization represent documents as mixtures over latent topics; LDA assumes a Bayesian generative process while NMF performs a matrix decomposition that tends to produce sparser topics."
+  ],
+  "grootendorst2022": [
+    "BERTopic instead clusters sentence-embedding representations."
+  ],
+  "newman2003": [
+    "Echo Chambers and Partisan Polarization The homophily principle - that similar people interact at higher rates than dissimilar ones - underpins computational echo-chamber research.",
+    "Crucially, homophily is a property of a network, so we measure it on an explicit user-user reply graph and report Newman's assortativity coefficient for categorical attributes alongside a chance-corrected homophily index; raw same-stance rates are uninterpretable without the baseline expected under random mixing.",
+    "Because that share depends on how common each stance is among reply targets, we report it against the value expected under random mixing and summarise the whole graph with Newman's assortativity coefficient , where 0 is random mixing and negative values indicate cross-stance interaction.",
+    "Since homophily is defined on networks , the reply-graph measure is the appropriate one, and it indicates that Reddit in this corpus functions as a contested arena rather than a set of sealed chambers."
+  ],
+  "bail2018": [
+    "Where filtering and self-selection are expected to narrow exposure, Bail et al. showed experimentally that exposure to opposing views can increase polarization.",
+    "Bail et al. found that cross-cutting exposure can intensify rather than soften partisan feeling, which is consistent with the pattern we observe in Reddit's argumentative, high-exposure environment."
+  ],
+  "cinelli2021": [
+    "Cinelli et al. demonstrated that echo-chamber strength is itself platform-dependent, motivating our comparative design.",
+    "Because Cinelli et al. show echo-chamber strength varies by platform, we caution that this result is specific to Reddit's threaded reply structure and should not be generalised to feed-based platforms."
+  ],
+  "defrancisci2021": [
+    "Most directly relevant to our RQ3, De Francisci Morales et al. reconstructed the political interaction network of Trump and Clinton supporters on Reddit and found a preference for cross-cutting replies over within-group ones - asymmetrically so - against a degree-preserving rewiring null.",
+    "The cross-cutting direction itself agrees with De Francisci Morales et al. , who report the same preference - and a similar asymmetry, with one camp more eager to reply across the divide - for US party politics; recovering it in a conflict corpus indicates the pattern is not confined to domestic partisanship.",
+    "That conclusion is not itself new - De Francisci Morales et al. reached it for US party politics using a comparable degree-preserving null."
+  ],
+  "wulczyn2017": [
+    "Toxicity and Harmful Speech The Perspective API operationalizes online harm through the framework of Wulczyn, Thain and Dixon , scoring the probability that a rater would find a comment rude or disrespectful across six attributes."
+  ],
+  "gilardi2023": [
+    "Gilardi, Alizadeh and Kubli showed that LLMs can outperform crowd workers on stance and frame detection."
+  ],
+  "pedregosa2011": [
+    "Classification uses scikit-learn ; agreement statistics follow Krippendorff ."
+  ],
+  "hayes2007": [
+    "Classification uses scikit-learn ; agreement statistics follow Krippendorff ."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "n_edges": 321112,
+  "observed_assortativity": -0.1844,
+  "null_mean": 4e-05,
+  "null_sd": 0.00144,
+  "z": -128.5,
+  "empirical_p": 0.0,
+  "n_permutations": 500,
+  "per_stance": {
+    "P": {
+      "observed": 0.4065,
+      "null_mean": 0.5196,
+      "excess": -0.1131,
+      "z": -126.1
+    },
+    "I": {
+      "observed": 0.3066,
+      "null_mean": 0.4249,
+      "excess": -0.1183,
+      "z": -117.6
+    },
+    "N": {
+      "observed": 0.1404,
+      "null_mean": 0.0557,
+      "excess": 0.0847,
+      "z": 51.3
+    }
+  }
+}

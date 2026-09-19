@@ -1,0 +1,256 @@
+{
+  "raw": {
+    "R->R": {
+      "tag": "Reddit -> Reddit",
+      "n_train": 39999,
+      "n_test": 20000,
+      "accuracy": 0.6538,
+      "macro_f1": 0.6401
+    },
+    "Y->Y": {
+      "tag": "YouTube -> YouTube",
+      "n_train": 40000,
+      "n_test": 20000,
+      "accuracy": 0.6137,
+      "macro_f1": 0.4701
+    },
+    "R->Y": {
+      "tag": "Reddit -> YouTube",
+      "n_train": 39999,
+      "n_test": 19999,
+      "accuracy": 0.4606,
+      "macro_f1": 0.4033
+    },
+    "Y->R": {
+      "tag": "YouTube -> Reddit",
+      "n_train": 40000,
+      "n_test": 20000,
+      "accuracy": 0.533,
+      "macro_f1": 0.4266
+    }
+  },
+  "length_matched_sizes": {
+    "reddit": 378267,
+    "youtube": 378267,
+    "reddit_mean_words": 18.51,
+    "youtube_mean_words": 18.45
+  },
+  "length_matched": {
+    "R->R": {
+      "tag": "matched Reddit -> Reddit",
+      "n_train": 40000,
+      "n_test": 20001,
+      "accuracy": 0.629,
+      "macro_f1": 0.6169
+    },
+    "Y->Y": {
+      "tag": "matched YouTube -> YouTube",
+      "n_train": 40000,
+      "n_test": 20000,
+      "accuracy": 0.6188,
+      "macro_f1": 0.4753
+    },
+    "R->Y": {
+      "tag": "matched Reddit -> YouTube",
+      "n_train": 40000,
+      "n_test": 19999,
+      "accuracy": 0.4826,
+      "macro_f1": 0.4203
+    },
+    "Y->R": {
+      "tag": "matched YouTube -> Reddit",
+      "n_train": 40000,
+      "n_test": 20000,
+      "accuracy": 0.488,
+      "macro_f1": 0.4139
+    }
+  },
+  "transfer_gap": {
+    "raw": 0.1402,
+    "length_matched": 0.129
+  },
+  "cv_macro_f1": {
+    "reddit": {
+      "mean": 0.6238,
+      "ci95": 0.0041
+    },
+    "youtube": {
+      "mean": 0.4612,
+      "ci95": 0.0031
+    }
+  },
+  "permutation_importance": {
+    "reddit": {
+      "baseline_macro_f1": 0.6332,
+      "n_candidates": 74,
+      "top_features": [
+        [
+          "hamas",
+          0.02949
+        ],
+        [
+          "israel",
+          0.01463
+        ],
+        [
+          "jews",
+          0.01159
+        ],
+        [
+          "palestinians",
+          0.00808
+        ],
+        [
+          "zionists",
+          0.00669
+        ],
+        [
+          "zionist",
+          0.00591
+        ],
+        [
+          "palestine",
+          0.00374
+        ],
+        [
+          "terrorists",
+          0.00353
+        ],
+        [
+          "terrorist",
+          0.00332
+        ],
+        [
+          "genocide",
+          0.00302
+        ],
+        [
+          "jew",
+          0.00288
+        ],
+        [
+          "idf",
+          0.00287
+        ],
+        [
+          "rockets",
+          0.00211
+        ],
+        [
+          "sides",
+          0.00201
+        ],
+        [
+          "children",
+          0.00172
+        ],
+        [
+          "occupation",
+          0.00162
+        ],
+        [
+          "antisemites",
+          0.00151
+        ],
+        [
+          "terror",
+          0.00149
+        ],
+        [
+          "antisemitism",
+          0.00146
+        ],
+        [
+          "bombing",
+          0.00133
+        ]
+      ]
+    },
+    "youtube": {
+      "baseline_macro_f1": 0.4651,
+      "n_candidates": 75,
+      "top_features": [
+        [
+          "hamas",
+          0.01353
+        ],
+        [
+          "israel",
+          0.01085
+        ],
+        [
+          "sides",
+          0.0041
+        ],
+        [
+          "palestinians",
+          0.00234
+        ],
+        [
+          "free",
+          0.00207
+        ],
+        [
+          "terrorists",
+          0.00116
+        ],
+        [
+          "alex",
+          0.00114
+        ],
+        [
+          "podcast",
+          0.00111
+        ],
+        [
+          "palestina",
+          0.00107
+        ],
+        [
+          "issue",
+          0.00105
+        ],
+        [
+          "jerusalem",
+          0.00098
+        ],
+        [
+          "palestine",
+          0.00092
+        ],
+        [
+          "mosab",
+          0.00088
+        ],
+        [
+          "hammas",
+          0.00087
+        ],
+        [
+          "islamic",
+          0.00084
+        ],
+        [
+          "conflict",
+          0.00078
+        ],
+        [
+          "children",
+          0.00075
+        ],
+        [
+          "genocide",
+          0.00069
+        ],
+        [
+          "shalom",
+          0.00062
+        ],
+        [
+          "palestine hamas",
+          0.00059
+        ]
+      ]
+    }
+  }
+}

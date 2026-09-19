@@ -1,0 +1,185 @@
+{
+  "n_reddit": 300,
+  "n_youtube": 300,
+  "n_reddit_in_window": 289,
+  "n_youtube_in_window": 300,
+  "by_platform": {
+    "TOXICITY": {
+      "reddit_mean": 0.2371,
+      "youtube_mean": 0.1592,
+      "p": 1.1329762354934728e-06,
+      "rank_biserial": -0.2306
+    },
+    "SEVERE_TOXICITY": {
+      "reddit_mean": 0.0336,
+      "youtube_mean": 0.0158,
+      "p": 1.79451561185404e-05,
+      "rank_biserial": -0.2032
+    },
+    "IDENTITY_ATTACK": {
+      "reddit_mean": 0.1681,
+      "youtube_mean": 0.0823,
+      "p": 2.481398859200849e-10,
+      "rank_biserial": -0.2998
+    },
+    "INSULT": {
+      "reddit_mean": 0.1314,
+      "youtube_mean": 0.0965,
+      "p": 1.971177885598099e-05,
+      "rank_biserial": -0.2022
+    },
+    "THREAT": {
+      "reddit_mean": 0.0821,
+      "youtube_mean": 0.0436,
+      "p": 1.6830337299437455e-05,
+      "rank_biserial": -0.2039
+    },
+    "PROFANITY": {
+      "reddit_mean": 0.1115,
+      "youtube_mean": 0.0563,
+      "p": 4.051307569930171e-05,
+      "rank_biserial": -0.1945
+    }
+  },
+  "by_stance": {
+    "reddit": {
+      "TOXICITY": {
+        "means": {
+          "P": 0.27,
+          "I": 0.2701,
+          "N": 0.1704
+        },
+        "H": 22.79,
+        "p": 1.1242363287504295e-05,
+        "eps2": 0.0765
+      },
+      "IDENTITY_ATTACK": {
+        "means": {
+          "P": 0.1915,
+          "I": 0.2136,
+          "N": 0.0987
+        },
+        "H": 26.24,
+        "p": 2.0000417912373352e-06,
+        "eps2": 0.0881
+      },
+      "INSULT": {
+        "means": {
+          "P": 0.1572,
+          "I": 0.1486,
+          "N": 0.0879
+        },
+        "H": 23.03,
+        "p": 9.995996903736924e-06,
+        "eps2": 0.0773
+      },
+      "THREAT": {
+        "means": {
+          "P": 0.1015,
+          "I": 0.1157,
+          "N": 0.0286
+        },
+        "H": 45.09,
+        "p": 1.6187376438915012e-10,
+        "eps2": 0.1513
+      }
+    },
+    "youtube": {
+      "TOXICITY": {
+        "means": {
+          "P": 0.1661,
+          "I": 0.1905,
+          "N": 0.1195
+        },
+        "H": 14.23,
+        "p": 0.0008131552151945619,
+        "eps2": 0.0482
+      },
+      "IDENTITY_ATTACK": {
+        "means": {
+          "P": 0.0821,
+          "I": 0.115,
+          "N": 0.0483
+        },
+        "H": 30.42,
+        "p": 2.4793518661997395e-07,
+        "eps2": 0.1031
+      },
+      "INSULT": {
+        "means": {
+          "P": 0.0937,
+          "I": 0.1225,
+          "N": 0.0723
+        },
+        "H": 9.79,
+        "p": 0.00748147678237145,
+        "eps2": 0.0332
+      },
+      "THREAT": {
+        "means": {
+          "P": 0.0482,
+          "I": 0.0471,
+          "N": 0.0352
+        },
+        "H": 15.07,
+        "p": 0.0005345821450146414,
+        "eps2": 0.0511
+      }
+    }
+  },
+  "joint": {
+    "threshold": 0.5,
+    "reddit": {
+      "n": 288,
+      "spearman_rho": -0.4354,
+      "spearman_p": 9.448020714957623e-15,
+      "n_negative": 148,
+      "n_toxic": 26,
+      "n_negative_and_toxic": 23,
+      "n_toxic_but_not_negative": 3,
+      "pct_of_toxic_that_are_negative": 88.5,
+      "pct_of_negative_that_are_toxic": 15.5
+    },
+    "youtube": {
+      "n": 296,
+      "spearman_rho": -0.2401,
+      "spearman_p": 2.9894333919133296e-05,
+      "n_negative": 92,
+      "n_toxic": 12,
+      "n_negative_and_toxic": 8,
+      "n_toxic_but_not_negative": 4,
+      "pct_of_toxic_that_are_negative": 66.7,
+      "pct_of_negative_that_are_toxic": 8.7
+    },
+    "reddit_ols": {
+      "r2": 0.1992,
+      "coef": {
+        "intercept": 0.2363,
+        "vader_compound": -0.1374,
+        "stance_I(vs P)": -0.003,
+        "stance_N(vs P)": -0.0745
+      },
+      "p": {
+        "intercept": 4.396342215602399e-29,
+        "vader_compound": 9.711735611606819e-12,
+        "stance_I(vs P)": 0.9086390926787331,
+        "stance_N(vs P)": 0.005565421857639541
+      }
+    },
+    "youtube_ols": {
+      "r2": 0.0875,
+      "coef": {
+        "intercept": 0.1674,
+        "vader_compound": -0.0632,
+        "stance_I(vs P)": 0.0241,
+        "stance_N(vs P)": -0.0387
+      },
+      "p": {
+        "intercept": 3.827753396578942e-25,
+        "vader_compound": 7.044291853959259e-05,
+        "stance_I(vs P)": 0.2461798609016859,
+        "stance_N(vs P)": 0.0673208297135403
+      }
+    }
+  }
+}

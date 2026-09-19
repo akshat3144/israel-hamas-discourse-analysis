@@ -1,0 +1,67 @@
+{
+  "n": 270,
+  "annotators": [
+    "Akshat",
+    "Arsh",
+    "Raghav"
+  ],
+  "unanimous_pct": 78.1,
+  "acc_on_unanimous": 0.5924,
+  "by_platform": {
+    "reddit": {
+      "n": 135,
+      "acc_4class": 0.6222,
+      "n_pin": 112,
+      "acc_pin": 0.75,
+      "macro_f1_pin": 0.7397,
+      "irrelevant_pct": 17.0,
+      "human_kappa_mean": 0.8134
+    },
+    "youtube": {
+      "n": 135,
+      "acc_4class": 0.4667,
+      "n_pin": 112,
+      "acc_pin": 0.5625,
+      "macro_f1_pin": 0.5638,
+      "irrelevant_pct": 17.0,
+      "human_kappa_mean": 0.7744
+    }
+  },
+  "irrelevant": {
+    "reddit/High": 18.9,
+    "reddit/LowMed": 13.3,
+    "youtube/High": 15.6,
+    "youtube/LowMed": 20.0
+  },
+  "high_tier": {
+    "reddit": {
+      "n": 90,
+      "irrelevant_pct": 18.9,
+      "acc_pin": 0.8356,
+      "n_pin": 73
+    },
+    "youtube": {
+      "n": 90,
+      "irrelevant_pct": 15.6,
+      "acc_pin": 0.6184,
+      "n_pin": 76
+    }
+  },
+  "high_tier_confusion": {
+    "I": {
+      "I": 39,
+      "N": 11,
+      "P": 6
+    },
+    "N": {
+      "I": 4,
+      "N": 28,
+      "P": 6
+    },
+    "P": {
+      "I": 7,
+      "N": 7,
+      "P": 41
+    }
+  }
+}

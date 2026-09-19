@@ -1,0 +1,100 @@
+{
+  "reddit": {
+    "n_lines": 3057715,
+    "n_labelled": 3057690,
+    "tier_pct": {
+      "High": 50.99,
+      "Medium": 42.69,
+      "Low": 6.32
+    },
+    "high_non_irrelevant": 1110164,
+    "tier_by_label_pct": {
+      "High/I": 12.121,
+      "High/N": 8.01,
+      "High/P": 16.176,
+      "High/R": 14.686,
+      "Low/I": 0.586,
+      "Low/N": 4.864,
+      "Low/P": 0.731,
+      "Low/R": 0.136,
+      "Medium/I": 14.045,
+      "Medium/N": 16.233,
+      "Medium/P": 12.261,
+      "Medium/R": 0.15
+    },
+    "duplicate_consistency": {
+      "n_pairs": 12742,
+      "agreement_pct": 64.03,
+      "kappa": 0.4567,
+      "n_pairs_high": 5351,
+      "agreement_pct_high": 67.93,
+      "kappa_high": 0.5433
+    },
+    "duplicate_consistency_same_context": {
+      "n_pairs": 3791,
+      "agreement_pct": 68.98,
+      "kappa": 0.5218,
+      "n_pairs_high": 1981,
+      "agreement_pct_high": 70.42,
+      "kappa_high": 0.5366
+    },
+    "confidence_tier_validity": {
+      "n_train_high": 32761,
+      "n_test_high": 8191,
+      "n_test_medlow": 150000,
+      "acc_high": 0.6646,
+      "acc_medlow": 0.5453,
+      "macro_f1_high": 0.6588,
+      "macro_f1_medlow": 0.5137
+    }
+  },
+  "youtube": {
+    "n_lines": 741078,
+    "n_labelled": 740309,
+    "tier_pct": {
+      "High": 66.59,
+      "Medium": 28.39,
+      "Low": 5.02
+    },
+    "high_non_irrelevant": 378293,
+    "tier_by_label_pct": {
+      "High/I": 17.744,
+      "High/N": 4.688,
+      "High/P": 28.667,
+      "High/R": 15.489,
+      "Low/I": 0.279,
+      "Low/N": 4.466,
+      "Low/P": 0.104,
+      "Low/R": 0.176,
+      "Medium/I": 6.0,
+      "Medium/N": 16.515,
+      "Medium/P": 5.778,
+      "Medium/R": 0.093
+    },
+    "duplicate_consistency": {
+      "n_pairs": 4659,
+      "agreement_pct": 49.17,
+      "kappa": 0.2867,
+      "n_pairs_high": 2525,
+      "agreement_pct_high": 63.88,
+      "kappa_high": 0.4344
+    },
+    "duplicate_consistency_same_context": {
+      "n_pairs": 2632,
+      "agreement_pct": 45.86,
+      "kappa": 0.2541,
+      "n_pairs_high": 1295,
+      "agreement_pct_high": 60.85,
+      "kappa_high": 0.4104
+    },
+    "confidence_tier_validity": {
+      "n_train_high": 9978,
+      "n_test_high": 2495,
+      "n_test_medlow": 71572,
+      "acc_high": 0.5639,
+      "acc_medlow": 0.3102,
+      "macro_f1_high": 0.4742,
+      "macro_f1_medlow": 0.3093
+    }
+  }
+}

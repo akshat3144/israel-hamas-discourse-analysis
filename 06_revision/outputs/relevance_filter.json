@@ -1,0 +1,44 @@
+{
+  "reddit": {
+    "auc_vs_human": 0.8311,
+    "threshold": 0.59,
+    "human_recall": 0.6087,
+    "human_fpr": 0.1071,
+    "n_before": 1004629,
+    "n_after": 877503,
+    "removed_pct": 12.65,
+    "cramers_v_before": 0.1494,
+    "cramers_v_after": 0.1175,
+    "stance_pct_before": {
+      "P": 45.36,
+      "I": 36.07,
+      "N": 18.57
+    },
+    "stance_pct_after": {
+      "P": 47.51,
+      "I": 38.68,
+      "N": 13.81
+    }
+  },
+  "youtube": {
+    "auc_vs_human": 0.7444,
+    "threshold": 0.62,
+    "human_recall": 0.6818,
+    "human_fpr": 0.2477,
+    "n_before": 378267,
+    "n_after": 302791,
+    "removed_pct": 19.95,
+    "cramers_v_before": 0.0394,
+    "cramers_v_after": 0.0394,
+    "stance_pct_before": {
+      "P": 56.1,
+      "I": 34.73,
+      "N": 9.17
+    },
+    "stance_pct_after": {
+      "P": 56.88,
+      "I": 35.25,
+      "N": 7.87
+    }
+  }
+}

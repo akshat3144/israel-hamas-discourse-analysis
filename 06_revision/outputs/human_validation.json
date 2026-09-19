@@ -1,0 +1,82 @@
+{
+  "n_annotators": 3,
+  "n_items": 270,
+  "pairwise_cohen_kappa": {
+    "Akshat-Arsh": 0.7918,
+    "Akshat-Raghav": 0.8362,
+    "Arsh-Raghav": 0.7607
+  },
+  "fleiss_kappa": 0.7957,
+  "krippendorff_alpha": 0.796,
+  "overall": {
+    "accuracy": 0.5444,
+    "macro_f1": 0.4492,
+    "n": 270
+  },
+  "confusion": {
+    "labels": [
+      "I",
+      "N",
+      "P",
+      "R"
+    ],
+    "matrix": [
+      [
+        52,
+        7,
+        9,
+        0
+      ],
+      [
+        25,
+        43,
+        18,
+        0
+      ],
+      [
+        7,
+        11,
+        52,
+        0
+      ],
+      [
+        6,
+        29,
+        11,
+        0
+      ]
+    ]
+  },
+  "pin_only": {
+    "accuracy": 0.6562,
+    "macro_f1": 0.6557,
+    "n": 224
+  },
+  "human_irrelevant": {
+    "n": 46,
+    "pct": 17.04,
+    "pct_High": 17.22,
+    "pct_LowMed": 16.67
+  },
+  "by_platform": {
+    "reddit": {
+      "accuracy": 0.6222,
+      "n": 135
+    },
+    "youtube": {
+      "accuracy": 0.4667,
+      "n": 135
+    }
+  },
+  "by_confidence": {
+    "High": {
+      "accuracy": 0.6,
+      "n": 180
+    },
+    "LowMed": {
+      "accuracy": 0.4333,
+      "n": 90
+    }
+  },
+  "confidence_gap": 0.1667
+}

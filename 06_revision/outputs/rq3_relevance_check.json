@@ -1,0 +1,17 @@
+{
+  "before": {
+    "n_edges": 358836,
+    "reply_homophily": 0.3456,
+    "expected": 0.4363,
+    "newman_r": -0.1609,
+    "cross_partisan_pct": 61.57
+  },
+  "after": {
+    "n_edges": 299670,
+    "reply_homophily": 0.3243,
+    "expected": 0.4631,
+    "newman_r": -0.2586,
+    "cross_partisan_pct": 65.25
+  },
+  "newman_shift": -0.0977
+}

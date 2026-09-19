@@ -1,0 +1,73 @@
+{
+  "n_edges": 321112,
+  "n_active_users": 44593,
+  "mixing_counts": {
+    "P": {
+      "P": 61628,
+      "I": 95432,
+      "N": 9763
+    },
+    "I": {
+      "P": 82458,
+      "I": 45421,
+      "N": 8589
+    },
+    "N": {
+      "P": 7528,
+      "I": 7296,
+      "N": 2997
+    }
+  },
+  "mixing_row_pct": {
+    "P": {
+      "P": 40.65,
+      "I": 64.42,
+      "N": 45.73
+    },
+    "I": {
+      "P": 54.39,
+      "I": 30.66,
+      "N": 40.23
+    },
+    "N": {
+      "P": 4.97,
+      "I": 4.92,
+      "N": 14.04
+    }
+  },
+  "per_stance": {
+    "P": {
+      "n_edges": 151614,
+      "observed": 0.4065,
+      "expected": 0.5195,
+      "excess": -0.113,
+      "chance_corrected": -0.2353
+    },
+    "I": {
+      "n_edges": 148149,
+      "observed": 0.3066,
+      "expected": 0.425,
+      "excess": -0.1184,
+      "chance_corrected": -0.2059
+    },
+    "N": {
+      "n_edges": 21349,
+      "observed": 0.1404,
+      "expected": 0.0555,
+      "excess": 0.0849,
+      "chance_corrected": 0.0899
+    }
+  },
+  "overall": {
+    "observed": 0.3427,
+    "expected": 0.4451,
+    "excess": -0.1024
+  },
+  "newman_assortativity": -0.1844,
+  "mixing_chi2": {
+    "chi2": 21242.1,
+    "p": 0.0,
+    "cramers_v": 0.1819
+  },
+  "cross_partisan_reply_rate": 0.6243
+}

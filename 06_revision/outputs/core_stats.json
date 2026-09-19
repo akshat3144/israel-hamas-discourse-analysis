@@ -1,0 +1,153 @@
+{
+  "n_reddit": 1067904,
+  "n_youtube": 378267,
+  "stance_ci": {
+    "reddit": {
+      "P": {
+        "n": 487160,
+        "pct": 45.62,
+        "lo": 45.52,
+        "hi": 45.71
+      },
+      "I": {
+        "n": 363418,
+        "pct": 34.03,
+        "lo": 33.94,
+        "hi": 34.12
+      },
+      "N": {
+        "n": 217326,
+        "pct": 20.35,
+        "lo": 20.27,
+        "hi": 20.43
+      }
+    },
+    "youtube": {
+      "P": {
+        "n": 212217,
+        "pct": 56.1,
+        "lo": 55.94,
+        "hi": 56.26
+      },
+      "I": {
+        "n": 131357,
+        "pct": 34.73,
+        "lo": 34.57,
+        "hi": 34.88
+      },
+      "N": {
+        "n": 34693,
+        "pct": 9.17,
+        "lo": 9.08,
+        "hi": 9.27
+      }
+    }
+  },
+  "sentiment": {
+    "reddit_mean_compound": -0.1676,
+    "youtube_mean_compound": 0.068,
+    "mwu_U": 154066263195.0,
+    "mwu_p": 0.0,
+    "rank_biserial": 0.2372,
+    "by_stance": {
+      "reddit": {
+        "P": -0.2149,
+        "I": -0.2191,
+        "N": 0.0244
+      },
+      "reddit_cramers_v": 0.1428,
+      "reddit_kruskal_H": 32532.71,
+      "reddit_kruskal_eps2": 0.03046,
+      "youtube": {
+        "P": 0.0382,
+        "I": 0.1066,
+        "N": 0.1046
+      },
+      "youtube_cramers_v": 0.0394,
+      "youtube_kruskal_H": 1442.34,
+      "youtube_kruskal_eps2": 0.00381
+    }
+  },
+  "length": {
+    "reddit": {
+      "mean": 50.93,
+      "median": 29.0
+    },
+    "youtube": {
+      "mean": 18.45,
+      "median": 10.0
+    }
+  },
+  "readability": {
+    "reddit": {
+      "mean": 63.65,
+      "n": 143290,
+      "kruskal_H": 1097.34,
+      "eps2": 0.00766
+    },
+    "youtube": {
+      "mean": 67.11,
+      "n": 125305,
+      "kruskal_H": 1464.18,
+      "eps2": 0.01169
+    }
+  },
+  "engagement": {
+    "controversiality_sanity": {
+      "non_controversial_mean_score": 9.481,
+      "controversial_mean_score": 0.169
+    },
+    "replies_mean": 0.35,
+    "replies_by_controversiality": {
+      "0": 0.3349,
+      "1": 0.747
+    },
+    "replies_by_stance": {
+      "P": 0.3804,
+      "I": 0.3857,
+      "N": 0.2219
+    },
+    "replies_mwu_p": 0.0,
+    "replies_rank_biserial": -0.2566,
+    "ols_r2": 0.00879,
+    "ols_coef": {
+      "intercept": 11.1096,
+      "vader_compound": 2.1044,
+      "stance_I": -0.1753,
+      "stance_N": -7.6478
+    }
+  },
+  "polarization": {
+    "n_active_users": 44593,
+    "mean_consistency": 0.8029,
+    "dominant_counts": {
+      "P": 23978,
+      "I": 15670,
+      "N": 4945
+    },
+    "thread": {
+      "mean": 0.6433,
+      "pct_above_0.8": 43.41,
+      "by_stance": {
+        "P": 0.6698,
+        "I": 0.7019,
+        "N": 0.3293
+      },
+      "kruskal_H": 3725.73,
+      "eps2": 0.08355
+    },
+    "reply_network": {
+      "n_edges": 321112,
+      "n_users": 37335,
+      "mean": 0.4061,
+      "pct_above_0.8": 28.74,
+      "by_stance": {
+        "P": 0.4807,
+        "I": 0.3742,
+        "N": 0.1486
+      },
+      "kruskal_H": 2129.97,
+      "eps2": 0.05705
+    }
+  }
+}

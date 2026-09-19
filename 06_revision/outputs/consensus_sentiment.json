@@ -1,0 +1,62 @@
+{
+  "kappa": {
+    "reddit": {
+      "vader_vs_roberta": 0.2713,
+      "textblob_vs_roberta": 0.0848,
+      "vader_vs_textblob": 0.2308
+    },
+    "youtube": {
+      "vader_vs_roberta": 0.4119,
+      "textblob_vs_roberta": 0.1712,
+      "vader_vs_textblob": 0.284
+    }
+  },
+  "consensus": {
+    "reddit": {
+      "n_sample": 20000,
+      "n_consensus": 4722,
+      "coverage_pct": 23.61,
+      "distribution_pct": {
+        "negative": 55.53,
+        "neutral": 29.94,
+        "positive": 14.53
+      }
+    },
+    "youtube": {
+      "n_sample": 19999,
+      "n_consensus": 6278,
+      "coverage_pct": 31.39,
+      "distribution_pct": {
+        "neutral": 45.46,
+        "positive": 28.85,
+        "negative": 25.69
+      }
+    }
+  },
+  "consensus_platform": {
+    "reddit_pct_negative": 55.53,
+    "youtube_pct_negative": 25.69,
+    "reddit_mean_compound": -0.2789,
+    "youtube_mean_compound": 0.0487,
+    "mwu_p": 8.287708064793475e-226,
+    "rank_biserial": 0.3466
+  },
+  "consensus_stance": {
+    "reddit": {
+      "cramers_v": 0.2639,
+      "means": {
+        "P": -0.367,
+        "I": -0.3861,
+        "N": 0.0089
+      }
+    },
+    "youtube": {
+      "cramers_v": 0.0633,
+      "means": {
+        "P": 0.0178,
+        "I": 0.0895,
+        "N": 0.0838
+      }
+    }
+  }
+}

@@ -75,3 +75,28 @@ references/web/
 
 # extracted copy of overleaf_project.zip, for uploading; regenerate by extracting the zip
 springer_submission/overleaf_project/
+
+# === RELEASED ARTEFACTS (Data Availability statement in the manuscript) ===
+# The rules above exclude */outputs/, *.csv and *.json wholesale. The paper
+# undertakes to release the computed results, the human validation set and the
+# video metadata, so those specific paths are re-included here. Raw corpora and
+# anything carrying comment text at scale stay excluded: Reddit and YouTube
+# terms do not permit redistributing comment bodies.
+!06_revision/outputs/
+!06_revision/outputs/*.json
+!06_revision/outputs/*.txt
+!06_revision/outputs/context_experiment_raw.csv
+!06_revision/outputs/window_summary.csv
+06_revision/outputs/*.parquet
+06_revision/outputs/user_profiles.csv
+06_revision/outputs/homophily.csv
+
+!06_revision/validation/
+!06_revision/validation/*.csv
+
+!00_data_collection_and_labeling/outputs/
+00_data_collection_and_labeling/outputs/*
+!00_data_collection_and_labeling/outputs/youtube_video_metadata.csv
+
+!references/
+!references/*.json

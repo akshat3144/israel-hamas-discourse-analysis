@@ -1,0 +1,271 @@
+﻿item_id,platform,row_index,model_label,confidence,model_reasoning
+V0001,reddit,384844,P,LowMed,"The comment expresses hope for an end to the conflict, potentially sympathizing with Palestinian perspectives."
+V0002,reddit,2260556,N,High,"The comment is a neutral request for information, without taking a stance on the issue."
+V0003,reddit,1395254,I,LowMed,"The comment accuses pro-Palestinians of referring to Jews as white on purpose and mentions the Quran telling Muslims to lie to achieve their goals, showing some support for the Israeli perspective."
+V0004,reddit,946110,N,LowMed,The post and comment express a neutral stance by criticizing the assumption of bias and encouraging self-reflection.
+V0005,youtube,539429,I,High,"The comment expresses support for Israel and implies that the protesters are misinformed, indicating a pro-Israel stance."
+V0006,youtube,4738,P,High,The comment implies that the Israeli government is responsible for the suffering of Palestinians and that the US is complicit in this suffering.
+V0007,youtube,305628,I,High,"The comment expresses support for Israel, showing support for the Israeli perspective."
+V0008,reddit,1658442,I,High,"The comment defends the idea that being in a car with terrorists justifies being targeted, implying support for Israel's actions in targeting such vehicles."
+V0009,youtube,398232,P,High,"The comment states that innocent civilians must not be harmed and suggests a two-state solution, implying support for Palestine."
+V0010,youtube,688489,N,High,The comment discusses personal struggles and does not take a clear stance on the conflict.
+V0011,youtube,335376,I,High,The comment 'the amount of BS against Israel in the international press is appauling.' expresses a clear stance in support of Israel.
+V0012,youtube,229078,N,LowMed,The comment asks a question about a promise made by someone and does not take a clear stance.
+V0013,youtube,513770,N,High,The comment asks if someone has evidence for their claims.
+V0014,reddit,1931794,I,LowMed,"The comment argues that a one-state solution is impossible if Israel is to maintain its identity, which supports Israel's perspective."
+V0015,youtube,737509,P,LowMed,"The comment appears to be supportive of Palestine, but the language is vague."
+V0016,youtube,372543,I,High,The comment presents a historical narrative that supports Israel's claim to the land.
+V0017,youtube,579968,N,High,The comment '😢😢😢😢' is an emotional expression that does not clearly support either side.
+V0018,youtube,409148,P,High,The comment expresses support for Palestine and includes a Palestinian flag emoji.
+V0019,reddit,26540,N,High,"The comment discusses economic struggles in the US, not directly related to the Israel-Gaza conflict."
+V0020,reddit,2100010,I,High,"The comment criticizes the Israeli government for negotiating from a point of weakness, indicating a pro-Israel stance and a desire for stronger action."
+V0021,youtube,704867,I,LowMed,"The comment suggests that the UK should focus on its internal issues before addressing the Israel-Gaza conflict, but also mentions the need for a two-state solution, indicating a nuanced but slightly supportive stance towards Israel."
+V0022,youtube,510617,N,LowMed,The comment presents a balanced view of the conflict and does not take a clear stance.
+V0023,reddit,1627006,I,High,The comment highlights the dangers faced by the LGBTQ+ community in Palestine and implies that Israel is a safer haven.
+V0024,reddit,228767,P,LowMed,"The comment expects Israel to ignore or deny actions against Palestinians, implying criticism of Israel."
+V0025,youtube,198349,I,High,The comment includes an Israeli flag and expresses support for Israel.
+V0026,reddit,946856,P,High,"The comment accuses Israel of genocide and criticizes its actions, implying a strong pro-Palestinian stance."
+V0027,reddit,758857,P,High,"The comment criticizes the idea that Palestinians support Hamas, implying that the majority do not, and shows support for the Palestinian people."
+V0028,youtube,177047,I,High,The comment '💪💪💪🇮🇱🇮🇱' indicates support for Israel.
+V0029,reddit,37905,N,High,The post is about a favorite Mena country and doesn't mention the Israel-Gaza conflict.
+V0030,reddit,3039301,P,High,"The post and comment support Palestine refugees and encourage donations, indicating pro-Palestine stance."
+V0031,reddit,2834592,N,High,"The comment mentions an expired link, which is unclear and unrelated to taking a stance."
+V0032,reddit,1598748,I,High,The comment argues that the West Bank should be partitioned and that residents should be guaranteed citizenship.
+V0033,youtube,187857,P,High,The comment criticizes Netanyahu and implies that he is a warmonger.
+V0034,youtube,225787,I,LowMed,"The comment 'Uh... Arabs are not the same blood as Israelis' suggests a critique of the idea that Arabs and Israelis are connected, and implies a support for Israeli actions."
+V0035,youtube,630591,N,High,The comment '🕋🕋🫡🫡' is a neutral statement that includes symbols but does not clearly take a stance on the Israel-Gaza conflict.
+V0036,reddit,943681,P,High,The comment implies that Israel is committing genocide and that the Arab population in Israel is not a counterargument.
+V0037,reddit,1262459,N,LowMed,"The comment discusses the possibility of an underground train, which is unrelated to the conflict or takes a neutral, solution-focused stance."
+V0038,reddit,1192920,I,High,"The comment criticizes assuming minority groups cannot reason beyond themselves, specifically mentioning Jews, which could indicate a defense of Israeli or Jewish perspectives."
+V0039,reddit,1352311,N,High,The comment is a neutral and factual statement about the purpose of hospitals.
+V0040,reddit,1871971,N,High,The comment is a request for evidence and does not express a stance on the conflict.
+V0041,reddit,1723008,P,High,"The comment argues that Israel's offers are not sensible or fair, showing support for Palestinian interests."
+V0042,reddit,1864268,N,LowMed,"The comment provides a neutral analysis of the situation, without taking a clear stance."
+V0043,youtube,248971,N,High,The comment is a series of heart emojis and does not convey any stance on the conflict.
+V0044,reddit,2452609,P,High,"The comment expresses frustration with the conflict and implies that Israelis are bringing their problems to others, suggesting a pro-Palestinian stance."
+V0045,reddit,2158225,I,LowMed,"The post praises the Assyrian language and seems to be celebrating Israeli diversity, indicating a pro-Israel stance."
+V0046,youtube,637685,I,LowMed,"The comment argues that Israel's decision to give up the Sinai was a necessary step for peace with Egypt, which implies that Israel's actions are justified."
+V0047,reddit,1054675,N,High,"The comment describes the relationship between Israel and the US, implying a neutral stance."
+V0048,youtube,429794,I,High,The comment expresses support for Israel and criticizes Hamas.
+V0049,reddit,3066031,N,High,The comment 'Thx' is too brief and does not provide enough context to determine a stance on the Israel-Gaza conflict.
+V0050,youtube,227242,I,High,"The comment criticizes the idea of 'armed resistance' and frames it as a 'bad idea', indicating a pro-Israel stance."
+V0051,reddit,455841,P,High,"The comment criticizes Israel for its propaganda and alleged atrocities, indicating a pro-Palestine stance."
+V0052,youtube,144291,P,High,The comment explicitly states that Gaza is an 'open air prison'.
+V0053,youtube,228359,N,High,The comment is a vague expression of curiosity and does not express a clear stance on the conflict.
+V0054,youtube,276167,N,High,The comment 'Exactly' is a neutral statement that agrees with a previous comment without taking a clear stance on the conflict.
+V0055,reddit,1414786,N,High,"The comment discusses Musk's views on Jews, without taking a clear stance on the conflict."
+V0056,reddit,570384,P,LowMed,"The comment describes a video of the resistance tunnel ambush as 'awesome', indicating support for Palestine."
+V0057,youtube,558708,I,High,"The comment warns against messing with Israel, implying support for the country."
+V0058,youtube,782427,P,High,"The comment uses a heart emoji and a Palestinian flag emoji, indicating a pro-Palestine stance."
+V0059,youtube,218243,I,High,The comment defends Israel's right to self-defense and implies that Hamas uses human shields.
+V0060,reddit,2627902,P,LowMed,"Post title suggests a pro-Palestine stance, framing one side as an oppressor and the other as fighting for liberation."
+V0061,reddit,2111250,P,High,"The comment implies that Israel is funding Hamas to destroy Palestine, which suggests a pro-Palestine stance."
+V0062,reddit,2368065,I,LowMed,"The comment questions the ease of making statements when not living in Israel, implying that living in Israel would provide a different perspective, possibly supportive of Israel's situation."
+V0063,youtube,233117,P,High,"The comment '@US  IDF don't have to pay anything, they get theirs from the “free people of America” tax money' implies criticism of US support for Israel."
+V0064,reddit,365896,P,High,"The comment expresses support for Palestine and criticizes Western powers, showing support for the Palestinian cause."
+V0065,youtube,66183,N,High,The comment is a statement and does not express a clear stance towards the Israel-Gaza conflict.
+V0066,reddit,745447,I,High,"The comment discusses Jordan's airspace and implies that they are justified in asking for help to defend against violations, indicating support for Israel."
+V0067,youtube,272584,N,High,"The comment praises the video, but does not express a stance on the Israel-Gaza conflict."
+V0068,youtube,731060,N,High,The comment is a single word and does not provide any context or opinion on the conflict.
+V0069,youtube,367181,I,High,"The comment accuses Hamas of being cowards and implies that they are terrorists, using the phrase 'Penjahat mah bebas.pengecut', indicating a strong anti-Hamas and pro-Israel sentiment."
+V0070,reddit,1532328,I,High,"The comment defends Israel's actions and criticizes Hamas, indicating support for Israel."
+V0071,reddit,257181,P,High,"The post and comment share footage of an incident involving a Palestinian girl and Israeli actions, indicating support for Palestine."
+V0072,reddit,543707,N,High,The post is a vague comment and does not take a clear stance on the Israel-Gaza conflict.
+V0073,youtube,91166,I,High,"The comment describes the killing of a child as a terrorist act, implying support for Israel's stance on the issue."
+V0074,reddit,2278590,N,High,"The comment discusses the potential outcome of an election and crime rates, which is unrelated to the Israel-Palestine conflict."
+V0075,youtube,627900,P,LowMed,"The comment suggests that the individuals in the video are not Hamas fighters, but rather Qasam brigade fighters, which implies a level of nuance and distinction in the speaker's understanding of the conflict."
+V0076,reddit,524888,I,LowMed,"The comment is a personal attack and does not take a clear stance, but the tone is oppositional to Palestine."
+V0077,reddit,2080303,I,High,"The comment expresses horror at the situation and support for Israel, opposing ceasefire and criticizing hate towards Jews."
+V0078,reddit,1147835,N,High,"The comment asks someone to quote a relevant section, which does not indicate a clear stance on the issue."
+V0079,youtube,208457,I,High,"The comment expresses love and support for Israel, citing biblical references and Christian beliefs."
+V0080,reddit,1364387,P,LowMed,"The comment provides evidence to support the Palestinian casualty figures and suggests that the health ministry is a reliable source, indicating some level of support for the Palestinian perspective."
+V0081,youtube,61682,P,High,"The comment expresses disgust, which suggests a pro-Palestinian stance."
+V0082,reddit,1504058,I,LowMed,"The comment discusses genetic studies related to Ashkenazi Jews and their connection to the Middle East, which could be seen as supporting Israeli claims to the land."
+V0083,youtube,740351,N,High,The comment is neutral and only expresses appreciation for the interview.
+V0084,reddit,933971,N,High,The comment questions the age of the poster without taking a stance on the conflict.
+V0085,youtube,320425,I,High,The comment implies that Hamas is responsible for the suffering of the Palestinian people and that they should be blamed for it.
+V0086,reddit,51125,N,LowMed,"The post discusses religious buildings and violence, but the context is unclear and does not explicitly relate to the Israel-Gaza conflict."
+V0087,reddit,2592267,N,LowMed,The comment 'Hey man free speech only works if you listen to things you don't agree with and accept that person's right to say it' appears to be a statement about free speech and does not take a clear stance on the conflict.
+V0088,reddit,2251449,I,LowMed,"The comment is implying that John Fetterman's constituents support his criticism of pro-Palestine protesters, suggesting support for Israel."
+V0089,youtube,770883,I,High,The comment expresses support for Israel and condemns the actions of Hamas.
+V0090,reddit,2113302,N,High,"The comment is a expression of kindness and appreciation, lacking any content related to the Israel-Gaza conflict or any political stance."
+V0091,youtube,347280,N,High,The comment is a neutral statement about the complexity of the conflict and the need for understanding.
+V0092,youtube,151219,N,LowMed,"The comment discusses the algorithmic feeds, but does not provide enough context to determine the stance."
+V0093,youtube,697376,N,LowMed,"The comment 'It’s just funny humor I like it' is unclear and lacks context, making it difficult to determine a stance."
+V0094,youtube,685136,I,LowMed,The comment 'Fox has been reporting on this from day 1' implies support for Fox News and potentially Israel.
+V0095,youtube,555538,I,High,The comment states that Hamas should not have attacked Israel.
+V0096,youtube,713772,P,High,"The comment questions the idea of recreating a state for a group of people who have not lived in the land for 2000 years, which is a pro-Palestinian stance."
+V0097,reddit,1957607,I,High,"The comment dismisses concerns about Israel's actions, indicating support for Israel."
+V0098,reddit,983915,P,High,The comment provides a link to an article that documents Israeli violence against Palestinians and implies that Israel is responsible for the violence.
+V0099,reddit,1284960,I,LowMed,"The comment discusses the potential for Hezbollah to attack Israel, implying support for the Israeli perspective."
+V0100,youtube,70180,P,High,The comment implies that Israel is responsible for the violence and that Palestinians are victims.
+V0101,youtube,234613,P,High,"The comment uses emojis that are often associated with support for Palestine, such as 💔 and 🇵🇸, and expresses emotional distress, indicating a pro-Palestinian stance."
+V0102,youtube,369874,P,High,"The comment describes the danger of living under a theocracy, implying criticism of Israel's actions."
+V0103,reddit,1157906,N,High,"The comment is a request for sources and an expression of a desire to understand the conflict better, without taking a stance."
+V0104,reddit,1704316,N,High,The comment is a notice from a bot about Nazi comparisons and does not express a stance on the conflict.
+V0105,youtube,470512,P,High,"The comment contains the phrase 'Free Palestine' and a sad emoji, indicating support for Palestine."
+V0106,youtube,242821,P,LowMed,"The comment is a prayer, but the context is unclear."
+V0107,youtube,341284,N,LowMed,"The comment 'Yes, agreed' is neutral, as it expresses agreement without taking a clear stance on the Israel-Palestine conflict."
+V0108,reddit,915860,I,High,"The comment criticizes Hamas for allegedly stealing international aid and implies that the UN might be illegally providing aid to Hamas, supporting Israel's narrative."
+V0109,reddit,266248,N,High,"The comment asks a question about the link between Red Army veterans and the Israeli army, which is unrelated to the Israel-Gaza conflict."
+V0110,reddit,2757689,P,High,The comment provides suggestions for a Palestinian in Canada to help the Palestinian cause.
+V0111,youtube,301053,I,LowMed,"The comment provides a psychological analysis of a speaker's facial expressions, suggesting that they have deep-seated resentment and hate for Israel, which could be seen as supportive of Israel's perspective."
+V0112,youtube,650332,I,High,The comment accuses the ambassador of being a big liar.
+V0113,youtube,663035,N,High,The comment criticizes the provision of incomplete information and does not take a clear stance on the conflict.
+V0114,youtube,126315,P,LowMed,The comment implies that Israel is responsible for violence and suffering in Palestine.
+V0115,youtube,213800,N,LowMed,The comment is a statement about a situation and does not express a clear stance on the Israel-Gaza conflict.
+V0116,reddit,1418235,P,High,"The comment argues that the IDF kidnaps children and implies that Israel is responsible for human rights violations, indicating support for Palestine."
+V0117,reddit,2420305,I,High,"The post asks about unhinged claims against Israel, implying support for Israel."
+V0118,youtube,648863,N,LowMed,The comment 'And nothing else. Si disarmed' is too vague to determine a stance.
+V0119,youtube,87203,P,LowMed,"The comment suggests that people are turning away from the truth and that there is an attempt to suppress information, implying sympathy for Palestine."
+V0120,youtube,254399,P,High,"The comment expresses a strong sentiment against the treatment of Palestinians, using phrases like 'I will never forgive or forget what is happening to Palestinian people 😢', indicating a clear stance in favor of Palestine."
+V0121,reddit,2532570,I,High,"The comment expresses support for Israel and celebrates a perceived victory, indicating a pro-Israel stance."
+V0122,youtube,755804,P,High,"The comment criticizes Israel's actions, suggesting support for the Palestinian perspective."
+V0123,reddit,352636,I,LowMed,"The comment agrees with a previous statement, which seems to defend Israel, indicating a pro-Israeli stance."
+V0124,reddit,2132212,N,High,"The post asks about the meaning of the word 'Zion,' which is related to the conflict but does not in itself express a stance or opinion on the issue."
+V0125,youtube,663044,N,High,"The comment states 'मानवता के खिलाफ जो भी काम करता में उनके खिलाफ इंसानियत सबसे पहले जाती धर्म बाद में', which focuses on humanity and does not take a clear stance."
+V0126,youtube,137177,P,LowMed,The comment implies that the speaker is criticizing Israel's actions and supporting Palestine.
+V0127,reddit,951027,P,LowMed,"The comment expresses gratitude for new information, but the context implies criticism of Israel's actions."
+V0128,reddit,3027317,P,High,"The comment promotes donating to support Palestine refugees and provides information on how to do so, showing clear support for Palestine."
+V0129,reddit,1778650,P,LowMed,"The comment criticizes Israel's actions and implies that Palestinians are being unfairly treated, indicating support for Palestine."
+V0130,reddit,560542,P,High,The post content expresses admiration for Palestinian strength and implies a pro-Palestinian stance.
+V0131,reddit,1611486,N,LowMed,"The comment is a neutral response that mentions rich Zionist organizations, but does not express a clear stance on the conflict."
+V0132,reddit,1625419,I,High,"The comment implies that all adults in Gaza are guilty and deserving of punishment, expressing a strong anti-Palestinian stance."
+V0133,reddit,866838,N,High,"The comment states that no one will prompt an attack on Lebanon or Iran without a good reason, taking a neutral and cautious stance."
+V0134,youtube,16447,P,LowMed,The comment 'Allah o Akbar' can be interpreted as a expression of faith and support for the Palestinian side.
+V0135,youtube,315576,P,LowMed,"The comment 'he is a virgin but not part of the 72' responds to the previous comment, possibly in support of Palestine."
+V0136,reddit,2723809,P,LowMed,"The post is in the Palestine subreddit and the comment mentions Israel bombing a hospital, but the context is unclear."
+V0137,youtube,660911,N,High,"The comment supports the idea of two nations and peace, without explicitly taking sides."
+V0138,youtube,395046,P,LowMed,The comment emphasizes that Israel is not following international law and is committing war crimes.
+V0139,youtube,82336,P,High,"The comment explicitly states 'Free Palestine', indicating support for the Palestinian cause."
+V0140,reddit,2298683,P,High,"The comment suggests that Netanyahu should follow the ICJ's ruling to prove Israel is not committing genocide, indicating criticism of Israel."
+V0141,youtube,316493,N,LowMed,The comment is brief and does not express a clear stance on the Israel-Gaza conflict.
+V0142,youtube,142773,P,High,The comment 'Pure evil IDF' implies strong criticism of Israel and support for Palestine.
+V0143,youtube,52752,P,High,"The comment explicitly states that Israel wants to occupy Palestine and that Palestinians will never give up, which shows support for the Palestinian cause."
+V0144,reddit,809255,P,High,"The comment criticizes someone for calling for war and genocide, and accuses them of being an extremist, which suggests support for the Palestinian side."
+V0145,youtube,768168,N,High,The comment 'A normal Human being !!' is neutral and does not express a specific stance towards the Israel-Gaza conflict.
+V0146,reddit,801133,N,High,"The comment discusses the potential financial consequences of the conflict for individuals, which is neutral and doesn't take a stance."
+V0147,youtube,703901,N,High,The comment 'Just amazing and astonishing' is a general expression of admiration and does not indicate a specific stance towards the conflict.
+V0148,youtube,290077,I,High,The comment implies that Israel is justified in its actions and that Palestinians are responsible for their own situation.
+V0149,reddit,137448,N,High,The comment discusses historical relations between Persia and the Ottoman Empire and does not express a stance on the Israel-Gaza conflict.
+V0150,reddit,2845254,P,LowMed,"The comment expresses enthusiasm for the Chinese Weibo page's comments, which are likely critical of Israel."
+V0151,reddit,1347355,I,High,"The comment defends Israeli actions and criticizes Al-Jazeera's reporting, indicating a pro-Israeli stance."
+V0152,youtube,535031,P,High,"The comment states that Israel is committing 'war crimes' and implies that Sunak is complicit, indicating a pro-Palestine stance."
+V0153,youtube,317332,I,LowMed,"The comment 'Fake' may be dismissing Palestinian claims or perspectives, potentially indicating support for Israel."
+V0154,youtube,239713,N,LowMed,"The comment expresses a desire for peace and an end to violence, but doesn't explicitly support either side."
+V0155,reddit,3054819,P,High,"The comment provides a link to donate to UNRWA, which supports Palestine refugees, indicating support for Palestine."
+V0156,youtube,467453,N,LowMed,"The comment questions the reporter's attire, but does not take a clear stance on the conflict."
+V0157,youtube,406750,N,High,"The comment is a neutral expression of gratitude for the video's clarity, without taking a stance on the Israel-Gaza conflict."
+V0158,reddit,1311896,P,High,"The comment criticizes the idea of an ethnic group giving up their ancestral homelands, implying support for Palestine."
+V0159,youtube,337025,P,LowMed,The comment implies that Israel's actions are unjust and that the Palestinian cause is legitimate.
+V0160,reddit,1571485,P,High,"The comment criticizes the IDF's actions and implies a deliberate targeting of civilians, supporting Palestine."
+V0161,reddit,1585209,N,LowMed,The comment provides a factual statement about the occupation without taking a clear stance.
+V0162,reddit,335475,P,LowMed,"The comment discusses the repetition of Israel's actions, implying criticism of Israel."
+V0163,youtube,470858,I,High,"The comment accuses Hamas of using aid for weapons, which aligns with the Israeli perspective of criticizing Hamas's actions."
+V0164,youtube,409083,P,High,"The comment expresses support for Palestine and humanity, indicating strong support for the Palestinian people."
+V0165,youtube,51964,P,LowMed,"The comment agrees with another user's statement that Israeli people cannot justify their actions, implying a stance in support of Palestine."
+V0166,youtube,271605,I,High,"The comment accuses someone of being antisemitic, implying support for Israel."
+V0167,youtube,248497,P,High,The comment includes a statement and emojis that symbolize support for Palestine and the people affected by the conflict.
+V0168,reddit,1799960,I,High,"The comment defends Israel's right to exist and implies that critics of Israel do not understand the situation, which is a clear pro-Israeli stance."
+V0169,youtube,108941,P,High,"The comment implies that Israel is 'evil' and accuses them of being responsible for the suffering of the Palestinian people, suggesting a strong anti-Israel stance."
+V0170,reddit,1816885,N,LowMed,"The comment states that the user is not going to listen to a podcast, but does not take a clear stance on the conflict."
+V0171,youtube,326185,N,LowMed,The comment is a question and does not take a clear stance on the Israel-Gaza conflict.
+V0172,youtube,699523,N,High,The comment is a generic positive statement and does not provide any information related to the Israel-Gaza conflict.
+V0173,reddit,842631,I,High,"The comment criticizes someone for justifying terrorism and implies that they have an antisemitic ideology, indicating support for Israel."
+V0174,youtube,187461,I,LowMed,"The comment defends Israel's actions and implies that the US benefits from its alliance with Israel, which aligns with a pro-Israel stance."
+V0175,reddit,227740,I,High,The comment describes a personal experience of being affected by Hamas's actions and implies a strong anti-Hamas stance.
+V0176,reddit,2678004,P,LowMed,"The comment mentions a Telegram channel with information on Palestine, suggesting an interest in the Palestinian cause."
+V0177,youtube,530697,I,High,"The comment 'Well, it does. Get used to it.' responds to the previous comment by acknowledging Israel's existence and implying that it is a fact that must be accepted, which is a common pro-Israel narrative."
+V0178,youtube,261108,P,High,"The comment 'The question should be what led people to believe these types of acts are acceptable. It's starts with understanding the grievences and root causes of the sentiment. A certain country's policies have led to such conditions, where ppl have turned to an outlet that will cause destruction. Stop blaming and take responsibility and come to a resolution.' implies criticism of Israel's policies."
+V0179,reddit,1347392,P,LowMed,The comment implies that Palestinians have a right to return to their homes and that a two-state solution could be a viable option.
+V0180,reddit,1735627,N,LowMed,"The comment acknowledges the cultural achievements of the Arab world and Palestinians, presenting a nuanced view."
+V0181,youtube,570714,P,High,"The comment explicitly states 'Free Palestine', indicating support for Palestine."
+V0182,reddit,474431,P,High,The post title and content explicitly criticize Israel's actions and imply support for Palestine.
+V0183,youtube,558727,I,LowMed,The comment accuses Hamas of starting the war and implies that Israel is justified in its actions.
+V0184,youtube,732544,I,LowMed,The comment shares a personal experience and implies that one side is more violent or intolerant than the other.
+V0185,reddit,1739252,I,LowMed,"The comment defends Israel's actions and implies that the destruction of Israel is not justified, showing a pro-Israel stance."
+V0186,reddit,2845399,P,LowMed,"The post and comment express outrage and criticize those who defend Israeli actions, indicating a pro-Palestine stance."
+V0187,youtube,538720,N,High,The comment promotes respectful conversations and does not take a stance on the Israel-Gaza conflict.
+V0188,reddit,1954334,I,High,"The comment describes the Zionist immigration into Palestine as negligible and the immigrants as refugees, which aligns with a pro-Israel narrative."
+V0189,reddit,1625005,N,High,"The comment acknowledges the freed hostage's trauma and emphasizes the importance of understanding the context, without taking a clear stance."
+V0190,youtube,312802,I,LowMed,"The comment contains a derogatory phrase, but its relevance to the Israel-Gaza conflict is unclear."
+V0191,youtube,211812,N,High,"The comment 'or tumay dimag ki' is a neutral message, not taking sides in the conflict."
+V0192,youtube,559910,P,High,"The comment contains only emojis expressing sadness and grief, which is a common way to show support for the Palestinian people in the context of the Israel-Gaza conflict."
+V0193,reddit,3041776,P,LowMed,"The post asks why Israel is pushing for a ban on TikTok, implying criticism of Israel's actions, indicating a pro-Palestine stance."
+V0194,youtube,190483,P,High,"The comment implies that Israel is committing genocide against the Palestinian people, suggesting a critique of Israel's actions and defense of Palestinian rights."
+V0195,youtube,135103,I,High,"The comment suggests that Palestinians are being misled into thinking they will return to their homes, and that Israel is preparing to remove them from the country, indicating support for Israel's actions."
+V0196,youtube,272010,I,LowMed,"The comment '1 Tunnel has been killed' implies that the IDF is successfully targeting Hamas tunnels, which could be seen as supportive of Israel."
+V0197,reddit,429038,P,High,"The comment questions the reliability of statements made by the 'occupying apartheid force', implying a strong pro-Palestine stance."
+V0198,reddit,3039156,N,High,"The post discusses poverty and inequality in general terms, without referencing the Israel-Palestine conflict, indicating a neutral stance."
+V0199,reddit,1585934,I,High,"The comment defends Israel's actions, including the siege, and argues that it is legal under international law, showing support for Israel's perspective."
+V0200,reddit,151658,N,LowMed,"The post and comment ask a question, but do not express a clear stance on the conflict."
+V0201,reddit,2937720,P,High,"The post content criticizes Western media for their coverage of the conflict and implies that they are biased against Palestinians, indicating a pro-Palestine stance."
+V0202,youtube,205205,I,LowMed,"The comment is defending the interviewer's actions and criticizing the Palestinian guest, indicating a pro-Israeli stance."
+V0203,reddit,2565223,N,High,The comment is a neutral discussion about an artist's support for Palestine and does not express a clear stance on the conflict.
+V0204,reddit,2647711,I,High,"The comment blames Palestinian Islamists for the hospital bombing, which is a pro-Israeli perspective."
+V0205,youtube,501785,P,High,"The comment 'Lies !!!!!!!!!!!!!!!!!!!' accuses the opposing side of lying, implying support for Palestinians."
+V0206,reddit,2405478,I,LowMed,"The post and comment criticize the left for their views on Israel, indicating a pro-Israel stance."
+V0207,youtube,196870,I,High,The comment expresses support for Israel and the speaker's message.
+V0208,reddit,2858172,P,LowMed,"The comment discusses Netanyahu's actions and the protests in Tel Aviv, implying support for Palestine."
+V0209,youtube,427711,N,High,The comment only contains emojis and does not express a clear opinion or stance.
+V0210,reddit,2936644,P,High,"The post content explicitly criticizes Israeli actions and implies a negative view of Zionism, indicating strong support for Palestine."
+V0211,youtube,781142,P,LowMed,"The comment 'The World needs Truthful people like you.  There's way too many liars.' implies admiration for someone speaking the truth, potentially in support of Palestinian interests."
+V0212,youtube,394836,I,High,The comment implies that Israel has the right to defend itself and that Hamas is responsible for war crimes.
+V0213,youtube,159447,N,High,"The comment provides a neutral view of the conflict, focusing on the idea that people should learn history."
+V0214,reddit,1463956,N,High,The comment is a notice from a bot and does not express a stance on the conflict.
+V0215,reddit,901908,N,High,"The comment mentions the US watching the situation, but does not take a clear stance on the conflict."
+V0216,reddit,1007348,I,LowMed,"The post implies that Israel has a right to exist and that Palestinians may not have a legitimate claim to the land, indicating support for Israel."
+V0217,reddit,275136,N,LowMed,The comment discusses the circulation of misinformation and does not express a clear stance on the Israel-Palestine conflict.
+V0218,reddit,2174404,I,High,"The comment attacks liberals, implying that they are mentally ill and do not think straight, showing a strong bias towards Israel."
+V0219,reddit,1615159,I,LowMed,"The comment discusses the use of human shields and suggests that culpability lies with the party using them, which could imply support for Israel's actions."
+V0220,reddit,589271,P,High,The comment discusses stopping genocide and implies criticism of Israel's actions.
+V0221,reddit,1987998,P,High,The comment implies that the idea of Palestinians having Jewish artifacts is nonsense and that Palestinians are thoroughly Arab.
+V0222,reddit,1324457,I,High,"The comment acknowledges Palestinian suffering but also criticizes the education system in Gaza, indicating support for Israel."
+V0223,youtube,48744,N,High,The comment is an expression of shock and does not take a stance on the conflict.
+V0224,reddit,1114415,N,LowMed,The comment is discussing statistics and not taking a clear stance on the conflict.
+V0225,reddit,2958069,P,High,"The comment expresses admiration for Palestinians' courage and resilience, indicating strong support for Palestine."
+V0226,youtube,249743,P,LowMed,The comment criticizes Israel's actions and implies support for Palestinian rights.
+V0227,reddit,2249144,I,High,The post and comment express support for Israel and accuse Al Jazeera journalists of being involved in terrorist activities.
+V0228,youtube,758868,N,High,The comment '❤❤' is a neutral expression of emotion without clear reference to the conflict.
+V0229,reddit,1448079,N,LowMed,The post does not provide enough information to determine a clear stance on the Israel-Gaza conflict.
+V0230,youtube,250596,N,High,"The comment discusses the idea that the speaker is trying to understand the conflict, but does not take a clear stance."
+V0231,youtube,688889,N,High,"The comment tells someone to stop preaching and mentions other countries, which is too vague to determine a stance."
+V0232,youtube,350623,N,LowMed,"The comment 'So she knew when to leave Britain, as it is in total chaos now😮' is a neutral observation about the person's decision to leave Britain."
+V0233,reddit,2556829,I,High,"The post discusses the difference in approval ratings between Israel and Palestine, suggesting that the world is not turning against Israel, and implies that western journalism is pushing an agenda against Israel."
+V0234,reddit,1575060,I,High,The comment accuses the commenter of being a Hamas supporter and implies that Israel is justified in its actions.
+V0235,reddit,1290113,N,High,"The comment appreciates input from someone, showing a neutral and open stance."
+V0236,reddit,258372,I,High,The comment implies that Palestinians have no historical claim to the land and criticizes Palestinian actions.
+V0237,youtube,463007,N,High,The comment asks a question and does not provide any clear stance on the conflict.
+V0238,youtube,510963,P,LowMed,"The comment 'Look, unarmed innocent civilians!' implies a concern for the Palestinian civilians, which aligns with the P label."
+V0239,youtube,543995,N,High,"The comment 'We need better media coverage. At his age, why is he still believing the media. Seems like a personal problem' is a neutral expression of criticism towards media coverage and does not take a stance on the Israel-Gaza conflict."
+V0240,youtube,121786,I,High,"The author is mentioning the Golan Heights, which is a disputed territory, but does not provide clear support for either side."
+V0241,reddit,2356200,P,High,"The comment expresses grief over the slaughter of 30k people, implying a concern for Palestinian casualties."
+V0242,youtube,685224,I,High,"The comment implies that Islam is a violent religion, which is a pro-Israel stance."
+V0243,youtube,699497,N,LowMed,"The comment 'So much true' is a neutral expression of agreement or approval, but it does not provide any context or information related to the Israel-Gaza conflict."
+V0244,youtube,712260,I,LowMed,"The comment implies that someone is being closed-minded, but does not directly relate to the Israel-Gaza conflict."
+V0245,youtube,99113,P,LowMed,The comment 'everyday like this in Gaza' implies a focus on the struggles of Gaza and could be seen as supportive of Palestine.
+V0246,reddit,3044514,I,High,"The comment describes an Israeli soldier showing restraint during an attack, framing Israel's actions in a positive light."
+V0247,youtube,673658,I,LowMed,"The comment implies that someone is 'indoctrinated', which could imply that the commenter is supportive of Israel's actions."
+V0248,reddit,1488778,I,High,The comment is accusing Hamas leaders of stealing aid and implying that they are responsible for the conflict.
+V0249,reddit,2586851,I,LowMed,"The comment criticizes Palestinian actions and mentions Israeli citizens being held hostage, indicating support for Israel."
+V0250,youtube,514737,N,High,The comment responds to a previous comment and does not express a clear stance on the Israel-Gaza war.
+V0251,reddit,1840865,P,High,"The comment criticizes Israel's actions and implies that they are responsible for the violence, which is a stance supportive of Palestine."
+V0252,reddit,1801867,I,High,"The comment dehumanizes a protester and implies that their actions are meaningless, which is a perspective often associated with support for Israel."
+V0253,youtube,303439,I,High,"The comment is defending the idea that the IDF's goal is not to kill civilians, whereas Hamas' goal is to kill civilians."
+V0254,youtube,330380,P,High,The comment 'He needs to talk a leaf out of king fasal book an make oil alot more expensive to america then everything will fall into place by it self he dont even have to deal with israel' implies a strategy to support the Palestinian cause by affecting Israel's supporters.
+V0255,youtube,664622,N,LowMed,"The comment is a expression of sadness and concern for the children, without taking a clear stance on the conflict."
+V0256,youtube,578398,I,High,The comment agrees with a fact but the context implies support for Israel's narrative or actions.
+V0257,youtube,750819,I,High,"The comment 'Well said, what Hamas did was extremely wrong and they started this war on October 7th' implies strong support for Israel."
+V0258,youtube,227802,P,High,The comment implies criticism of Israel's actions by mentioning a ceasefire.
+V0259,reddit,1093971,N,LowMed,The comment is a warning from a bot and does not take a clear stance on the conflict.
+V0260,youtube,53530,P,High,"The comment 'Ia God, why we are so weak' is a lamentation of the suffering in Gaza, indicating a pro-Palestine stance."
+V0261,reddit,1392435,N,High,"The comment discusses the historical context of racial categorization in the US, without expressing a clear stance on the conflict."
+V0262,reddit,1715777,I,LowMed,"The comment suggests that turning the conflict into a religious issue could reignite fervor among Muslims, implying concern about the escalation of the conflict."
+V0263,youtube,746482,I,LowMed,"The comment consists of emojis that could be interpreted as support for Israel, but lacks clear context or indication of the author's stance."
+V0264,reddit,1238887,N,LowMed,"The comment discusses Hamas's goals and implies that they are seeking justice, without taking a clear stance."
+V0265,youtube,469280,N,LowMed,"The comment mentions feeling something wrong with the bias, but does not provide enough context to determine their stance."
+V0266,reddit,395501,P,High,"The comment explicitly states support for Palestinians, mentioning it's the right thing to do."
+V0267,youtube,624498,I,High,The comment expresses support for Israel and its actions.
+V0268,reddit,864973,I,High,"The post content implies a pro-Israel stance, with the mention of 'Hamas burned babys' and the implication that Hamas is responsible for the situation suggesting a condemnation of Hamas' actions."
+V0269,reddit,2788890,N,High,"Comment is a moderator message, neutral in tone and content."
+V0270,reddit,380613,N,High,"The post is about Atatürk and the Turkish Republic, which is not directly related to the Israel-Gaza conflict."

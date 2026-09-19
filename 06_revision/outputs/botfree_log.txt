@@ -1,0 +1,24 @@
+Loading windowed data ...
+Reddit  : 1,067,904 -> dropping 63,275 bot/deleted (5.93%)
+YouTube : 378,267 (no automated-account exclusion applies)
+
+FINAL ANALYTIC CORPUS: Reddit 1,004,629 + YouTube 378,267 = 1,382,896
+
+=== Stance distribution (bot-free, matched window) ===
+  reddit:
+    Pro-Palestine    455,709   45.36%  [45.26, 45.46]
+    Pro-Israel       362,340   36.07%  [35.97, 36.16]
+    Neutral          186,580   18.57%  [18.50, 18.65]
+  youtube:
+    Pro-Palestine    212,217   56.10%  [55.94, 56.26]
+    Pro-Israel       131,357   34.73%  [34.57, 34.88]
+    Neutral           34,693    9.17%  [9.08, 9.27]
+
+=== Sentiment (bot-free) ===
+  Reddit -0.164  YouTube 0.068  r=+0.2338
+  reddit: {'P': -0.198, 'I': -0.2194, 'N': 0.0266}  V=0.1494
+  youtube: {'P': 0.0382, 'I': 0.1066, 'N': 0.1046}  V=0.0394
+
+=== Length === reddit {'mean': 49.32, 'median': 27.0}  youtube {'mean': 18.45, 'median': 10.0}
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\botfree_stats.json

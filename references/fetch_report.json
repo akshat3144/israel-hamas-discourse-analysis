@@ -1,0 +1,407 @@
+{
+  "antonakaki2025": {
+    "key": "antonakaki2025",
+    "status": "OK",
+    "file": "antonakaki2025.pdf",
+    "bytes": 2126465,
+    "hits": {
+      "We combine traditional LDA with a refined BERTopic": [
+        1
+      ],
+      "workflow": [
+        1
+      ],
+      "Captures narrative strategies, amplification": [
+        4
+      ]
+    },
+    "highlight_count": 3
+  },
+  "bail2018": {
+    "key": "bail2018",
+    "status": "OK",
+    "file": "bail2018.pdf",
+    "bytes": 841543,
+    "hits": {
+      "Republicans who": [
+        1
+      ],
+      "followed a liberal Twitter bot became": [
+        1
+      ],
+      "Democrats exhibited slight increases": [
+        1
+      ],
+      "in liberal attitudes after following a conservative": [
+        1
+      ]
+    },
+    "highlight_count": 4
+  },
+  "blei2003": {
+    "key": "blei2003",
+    "status": "OK",
+    "file": "blei2003.pdf",
+    "bytes": 479909,
+    "hits": {
+      "( ) g p t documents are represented as random mixtures over ": [
+        4
+      ]
+    },
+    "highlight_count": 1
+  },
+  "boulianne2025": {
+    "key": "boulianne2025",
+    "status": "OK",
+    "file": "boulianne2025.pdf",
+    "bytes": 988783,
+    "hits": {
+      "(user connectivity, anonymity, and": [
+        2
+      ],
+      "privacy settings)": [
+        2
+      ],
+      "(perceived audiences, temporary vs strong ties,": [
+        2
+      ],
+      "and social norms of interaction)": [
+        2
+      ],
+      "We": [
+        4
+      ],
+      "compare": [
+        4
+      ],
+      "seven": [
+        4
+      ],
+      "social": [
+        4
+      ],
+      "media": [
+        4
+      ],
+      "platforms": [
+        4
+      ],
+      "based": [
+        4
+      ],
+      "on": [
+        4
+      ],
+      "their": [
+        4
+      ],
+      "networking": [
+        4
+      ],
+      "features.": [
+        4
+      ]
+    },
+    "highlight_count": 15
+  },
+  "cinelli2021": {
+    "key": "cinelli2021",
+    "status": "OK",
+    "file": "cinelli2021.pdf",
+    "bytes": 1190122,
+    "hits": {
+      "favor the emergence of": [
+        2
+      ],
+      "echo chambers.": [
+        2
+      ],
+      "distinction emerges between social media having a feed": [
+        6
+      ]
+    },
+    "highlight_count": 3
+  },
+  "defrancisci2021": {
+    "key": "defrancisci2021",
+    "status": "OK",
+    "file": "defrancisci2021.pdf",
+    "bytes": 1308694,
+    "hits": {
+      "p y p pp . We observe a preference for cross-cutting politic": [
+        1
+      ],
+      "p interactions between the two communities r": [
+        1
+      ],
+      "g g a network rewiring which preserves the activity of nodes": [
+        1
+      ],
+      "p pp ( ) p pp . The same effect is visible for Trump support": [
+        3
+      ]
+    },
+    "highlight_count": 4
+  },
+  "devlin2019": {
+    "key": "devlin2019",
+    "status": "OK",
+    "file": "devlin2019.pdf",
+    "bytes": 856499,
+    "hits": {
+      "is a multi-layer bidirectional Transformer": [
+        3
+      ]
+    },
+    "highlight_count": 1
+  },
+  "gilardi2023": {
+    "key": "gilardi2023",
+    "status": "OK",
+    "file": "gilardi2023.pdf",
+    "bytes": 597848,
+    "hits": {
+      "outperforms crowd workers for several annotation tasks, incl": [
+        1
+      ]
+    },
+    "highlight_count": 1
+  },
+  "grootendorst2022": {
+    "key": "grootendorst2022",
+    "status": "OK",
+    "file": "grootendorst2022.pdf",
+    "bytes": 560894,
+    "hits": {
+      "clusters these embeddings,": [
+        1
+      ]
+    },
+    "highlight_count": 1
+  },
+  "guerra2025": {
+    "key": "guerra2025",
+    "status": "OK",
+    "file": "guerra2025.pdf",
+    "bytes": 1360678,
+    "hits": {
+      "by considering factors such as": [
+        1
+      ],
+      "anger, polarity, and subjectivity.": [
+        1
+      ],
+      "peaks in extremism scores that": [
+        1
+      ],
+      "correspond to pivotal real-life events,": [
+        1
+      ]
+    },
+    "highlight_count": 4
+  },
+  "hayes2007": {
+    "key": "hayes2007",
+    "status": "OK",
+    "file": "hayes2007.pdf",
+    "bytes": 461071,
+    "hits": {
+      "alpha as the": [
+        1
+      ],
+      "g g standard reliability measure.": [
+        1
+      ]
+    },
+    "highlight_count": 2
+  },
+  "hofmann2026": {
+    "key": "hofmann2026",
+    "status": "OK",
+    "file": "hofmann2026.pdf",
+    "bytes": 697318,
+    "hits": {
+      "a higher incidence of HS in public sources": [
+        1
+      ],
+      "annotated dataset of 4983 YouTube comments labeled for HS an": [
+        2
+      ],
+      "sentiment.": [
+        2
+      ],
+      "AUROC scores between 0.83 to 0.90": [
+        2
+      ]
+    },
+    "highlight_count": 4
+  },
+  "hutto2014": {
+    "key": "hutto2014",
+    "status": "OK",
+    "file": "hutto2014.pdf",
+    "bytes": 1148110,
+    "hits": {
+      "y attuned": [
+        1
+      ],
+      "y ) to sentiment in microblog-like contexts.": [
+        1
+      ],
+      "initialisms, emoticons, or slang,": [
+        2
+      ],
+      "Punctuation, namely the exclamation point": [
+        6
+      ],
+      "y q y (negation, degree modifiers, and contrastive conjuncti": [
+        9
+      ]
+    },
+    "highlight_count": 5
+  },
+  "leeseung2000": {
+    "key": "leeseung2000",
+    "status": "OK",
+    "file": "leeseung2000.pdf",
+    "bytes": 1153681,
+    "hits": {
+      "has previously been shown to": [
+        1
+      ],
+      "No egat ve at acto at o (N ) as p ev be a useful decompositi": [
+        1
+      ]
+    },
+    "highlight_count": 2
+  },
+  "newman2003": {
+    "key": "newman2003",
+    "status": "OK",
+    "file": "newman2003.pdf",
+    "bytes": 451219,
+    "hits": {
+      "the tendency for vertices in networks to be connected to": [
+        1
+      ],
+      "other vertices that are like": [
+        1
+      ],
+      "We consider mixing according to discrete": [
+        1
+      ],
+      "characteristics": [
+        1
+      ],
+      "indicating perfect assortativity": [
+        5
+      ]
+    },
+    "highlight_count": 5
+  },
+  "ngchow2025": {
+    "key": "ngchow2025",
+    "status": "OK",
+    "file": "ngchow2025.pdf",
+    "bytes": 1721462,
+    "hits": {
+      "negative (59%), neutral (31%), and": [
+        2
+      ],
+      "positive (10%),": [
+        2
+      ],
+      "=\u20091,079,676,984)": [
+        3
+      ],
+      "8 prominent peaks and emergent events": [
+        6
+      ]
+    },
+    "highlight_count": 4
+  },
+  "pedregosa2011": {
+    "key": "pedregosa2011",
+    "status": "OK",
+    "file": "pedregosa2011.pdf",
+    "bytes": 87489,
+    "hits": {
+      "s a Python module integrating a wide range of s": [
+        2
+      ]
+    },
+    "highlight_count": 1
+  },
+  "wulczyn2017": {
+    "key": "wulczyn2017",
+    "status": "OK",
+    "file": "wulczyn2017.pdf",
+    "bytes": 817140,
+    "hits": {
+      "combines": [
+        1
+      ],
+      "crowdsourcing and machine learning to analyze personal attac": [
+        1
+      ],
+      "at scale.": [
+        1
+      ]
+    },
+    "highlight_count": 3
+  },
+  "ng2022": {
+    "key": "ng2022",
+    "status": "NOT_RETRIEVABLE",
+    "why": "open access (CC BY-NC-ND); Elsevier returns 403 to scripts. Downloaded by hand from doi.org/10.1016/j.ipm.2022.103070",
+    "hits": {
+      "models do not generalize well": [
+        1
+      ],
+      "models tend to perform poorly on unseen": [
+        2
+      ],
+      "cases,": [
+        2
+      ]
+    },
+    "highlight_count": 3
+  },
+  "rosen2025": {
+    "key": "rosen2025",
+    "status": "NOT_RETRIEVABLE",
+    "why": "gold open access; SAGE returns 403 to scripts. Downloaded by hand from doi.org/10.1177/20563051251383635",
+    "hits": {
+      "y g examined anti-Jewish and anti-Muslim hate posts on X.com": [
+        1
+      ],
+      "g hate": [
+        1
+      ],
+      "p p J posts led individuals to post more hatefully in their ": [
+        1
+      ]
+    },
+    "highlight_count": 3
+  },
+  "shugars2025": {
+    "key": "shugars2025",
+    "status": "NOT_RETRIEVABLE",
+    "why": "gold open access (CC BY-NC); SAGE returns 403 to scripts. Downloaded by hand from doi.org/10.1177/20563051251332427",
+    "hits": {
+      "the": [
+        3
+      ],
+      "ability of users to see and engage in full conversations.": [
+        3
+      ],
+      "from conversational visibility but": [
+        7
+      ],
+      "from the affordance of community.": [
+        7
+      ]
+    },
+    "highlight_count": 4
+  }
+}

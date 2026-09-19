@@ -1,0 +1,18 @@
+{
+  "corruption_rate": 0.2599,
+  "observed": {
+    "reddit_v": 0.1494,
+    "youtube_v": 0.0394
+  },
+  "reddit_degraded_v": {
+    "mean": 0.0819,
+    "ci95": [
+      0.0807,
+      0.0831
+    ],
+    "n_sims": 200
+  },
+  "retained_pct": 54.8,
+  "ratio_to_youtube": 2.08,
+  "robust": true
+}

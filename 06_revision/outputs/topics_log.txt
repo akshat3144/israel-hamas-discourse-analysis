@@ -1,0 +1,979 @@
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 184,923 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, genocide, support, land, right, im, state, jewish, civilians, thats, world, hate, did, youre, country, children, israelis, idf
+  Pro-Palestine : palestinians, dont, genocide, support, jews, hate, land, zionist, right, state
+  Pro-Israel    : jews, dont, palestinians, jewish, civilians, land, state, right, world, thats
+  Neutral       : dont, bot, comments, action, questions, automatically, contact, concerns, moderators, performed
+
+LDA topics (descriptive term lists only):
+  T1: israel, jews, palestinians, land, state, jewish, palestine, people, palestinian, arab
+  T2: comments, bot, posts, action, questions, community, genocide, hate, automatically, concerns
+  T3: content, palestine, support, post, community, hate, war, speech, action, join
+  T4: hamas, israel, gaza, civilians, war, people, idf, children, israeli, palestinians
+  T5: people, dont, just, like, im, think, know, israel, youre, say
+NMF topics:
+  T1: people, dont, jews, just, like, think, palestinians, know, im, want
+  T2: community, speech, hate, content, denial, genocide, support, posts, war, palestine
+  T3: hamas, civilians, gaza, idf, children, hostages, killed, war, terrorist, terrorists
+  T4: bot, subredditmessagecomposetorisraelpalestine, rule, action, using, comments, automatically, contact, questions, moderators
+  T5: israel, gaza, palestinians, state, palestine, war, west, bank, peace, land
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, support, zionist, right, jews, land
+  TF-IDF Pro-Israel    : jews, dont, palestinians, jewish, civilians, im, land, thats
+  TF-IDF Neutral       : dont, bot, comments, im, action, rule, questions, automatically
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 184,923 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, genocide, support, land, right, im, state, jewish, civilians, thats, world, hate, did, youre, country, children, israelis, idf
+  Pro-Palestine : palestinians, dont, genocide, support, jews, hate, land, zionist, right, state
+  Pro-Israel    : jews, dont, palestinians, jewish, civilians, land, state, right, world, thats
+  Neutral       : dont, bot, comments, action, questions, automatically, contact, concerns, moderators, performed
+
+LDA topics (descriptive term lists only):
+  T1: israel, jews, palestinians, land, state, jewish, palestine, people, palestinian, arab
+  T2: comments, bot, posts, action, questions, community, genocide, hate, automatically, concerns
+  T3: content, palestine, support, post, community, hate, war, speech, action, join
+  T4: hamas, israel, gaza, civilians, war, people, idf, children, israeli, palestinians
+  T5: people, dont, just, like, im, think, know, israel, youre, say
+NMF topics:
+  T1: people, dont, jews, just, like, think, palestinians, know, im, want
+  T2: community, speech, hate, content, denial, genocide, support, posts, war, palestine
+  T3: hamas, civilians, gaza, idf, children, hostages, killed, war, terrorist, terrorists
+  T4: bot, subredditmessagecomposetorisraelpalestine, rule, action, using, comments, automatically, contact, questions, moderators
+  T5: israel, gaza, palestinians, state, palestine, war, west, bank, peace, land
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, support, zionist, right, jews, land
+  TF-IDF Pro-Israel    : jews, dont, palestinians, jewish, civilians, im, land, thats
+  TF-IDF Neutral       : dont, bot, comments, im, action, rule, questions, automatically
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json
+Loading ...
+  reddit: 186,336 docs for topic modelling
+  youtube: 151,602 docs for topic modelling
+
+============================================================
+REDDIT
+============================================================
+Top 20 words: palestinians, dont, jews, land, right, im, state, jewish, thats, civilians, world, genocide, did, youre, country, support, idf, doesnt, years, children
+  Pro-Palestine : palestinians, dont, genocide, land, jews, right, state, im, civilians, world
+  Pro-Israel    : jews, dont, palestinians, jewish, land, civilians, state, world, right, thats
+  Neutral       : dont, im, jews, thats, right, palestinians, did, youre, jewish, state
+
+LDA topics (descriptive term lists only):
+  T1: israel, palestinians, gaza, state, war, west, palestinian, peace, hamas, israeli
+  T2: israel, genocide, support, israeli, people, propaganda, palestine, just, media, zionist
+  T3: jews, jewish, land, israel, people, arabs, arab, palestine, palestinians, state
+  T4: dont, people, just, like, im, think, know, youre, want, say
+  T5: hamas, israel, civilians, gaza, people, idf, children, war, killed, killing
+NMF topics:
+  T1: dont, just, like, im, think, know, youre, thats, want, say
+  T2: hamas, civilians, gaza, idf, palestinians, hostages, killed, war, children, israeli
+  T3: israel, gaza, war, state, west, palestinians, genocide, support, bank, country
+  T4: jews, land, palestinians, palestine, jewish, arabs, state, arab, palestinian, muslims
+  T5: people, jewish, innocent, support, palestinian, genocide, killed, killing, world, hate
+  TF-IDF Pro-Palestine : palestinians, dont, genocide, right, land, jews, im, thats
+  TF-IDF Pro-Israel    : jews, dont, palestinians, civilians, jewish, thats, im, right
+  TF-IDF Neutral       : dont, im, thats, did, youre, right, jews, good
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+============================================================
+YOUTUBE
+============================================================
+Top 20 words: god, dont, palestinians, world, land, allah, free, did, right, idf, peace, children, support, years, bless, jews, civilians, state, country, love
+  Pro-Palestine : palestinians, allah, dont, free, world, land, right, did, children, god
+  Pro-Israel    : god, dont, palestinians, bless, land, world, idf, did, peace, support
+  Neutral       : dont, god, peace, world, did, right, thank, good, im, sides
+
+LDA topics (descriptive term lists only):
+  T1: israel, land, palestinians, palestinian, jews, years, people, state, gaza, palestine
+  T2: palestine, allah, free, support, israel, help, ya, muslim, india, isreal
+  T3: hamas, people, just, dont, like, war, know, did, think, israel
+  T4: hamas, israel, hai, gaza, hostages, aid, ke, ko, ki, food
+  T5: god, israel, people, bless, love, thank, truth, peace, world, jesus
+NMF topics:
+  T1: israel, stand, support, love, india, land, state, hai, gaza, praying
+  T2: palestine, free, allah, stand, support, river, sea, ya, freedom, land
+  T3: hamas, palestinians, gaza, did, civilians, idf, hostages, blame, attack, terrorist
+  T4: people, dont, like, just, gaza, war, know, palestinians, world, palestinian
+  T5: god, bless, protect, idf, allah, thank, love, jesus, amen, lord
+  TF-IDF Pro-Palestine : free, allah, palestinians, dont, world, land, god, right
+  TF-IDF Pro-Israel    : god, bless, dont, idf, palestinians, support, love, stand
+  TF-IDF Neutral       : dont, god, peace, world, thank, video, good, did
+  coherence skipped: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+
+Saved -> C:\Users\nitro 5\Desktop\Projects\israel_hamas_discourse_analysis\06_revision\outputs\topics.json

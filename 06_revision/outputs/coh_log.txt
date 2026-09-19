@@ -1,0 +1,5 @@
+reddit lda: c_v = 0.4786
+reddit nmf: c_v = 0.5018
+youtube lda: c_v = 0.4186
+youtube nmf: c_v = 0.4307
+saved coherence.json
