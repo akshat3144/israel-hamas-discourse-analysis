@@ -21,8 +21,9 @@ polarization and interaction structure.
 
 1. [Research Questions](#research-questions)
 2. [Key Findings](#key-findings)
-3. [Repository Layout](#repository-layout)
-4. [The Full Data Pipeline](#the-full-data-pipeline)
+3. [What Is Released Here](#what-is-released-here)
+4. [Repository Layout](#repository-layout)
+5. [The Full Data Pipeline](#the-full-data-pipeline)
    - [Stage 0 · Overview diagram](#stage-0--overview)
    - [Stage 1 · Reddit collection (Arctic Shift)](#stage-1--reddit-collection-arctic-shift)
    - [Stage 2 · Reddit preprocessing](#stage-2--reddit-preprocessing)
@@ -30,16 +31,16 @@ polarization and interaction structure.
    - [Stage 4 · YouTube preprocessing](#stage-4--youtube-preprocessing)
    - [Stage 5 · LLM stance labeling](#stage-5--llm-stance-labeling)
    - [Stage 6 · Final datasets](#stage-6--final-datasets)
-5. [Annotation Guidelines (stance labels)](#annotation-guidelines-stance-labels)
-6. [Final Dataset Schemas](#final-dataset-schemas)
-7. [Analysis Modules (01–05)](#analysis-modules-0105)
-8. [Setup](#setup)
-9. [How to Run](#how-to-run)
-10. [Methodology Details](#methodology-details)
-11. [Configuration (.env)](#configuration-env)
-12. [Tech Stack](#tech-stack)
-13. [Limitations &amp; Ethics](#limitations--ethics)
-14. [Authors, Citation, License](#authors-citation-license)
+6. [Annotation Guidelines (stance labels)](#annotation-guidelines-stance-labels)
+7. [Final Dataset Schemas](#final-dataset-schemas)
+8. [Analysis Modules (01–05)](#analysis-modules-0105)
+9. [Setup](#setup)
+10. [How to Run](#how-to-run)
+11. [Methodology Details](#methodology-details)
+12. [Configuration (.env)](#configuration-env)
+13. [Tech Stack](#tech-stack)
+14. [Limitations &amp; Ethics](#limitations--ethics)
+15. [Authors, Citation, License](#authors-citation-license)
 
 ---
 
@@ -93,6 +94,34 @@ Three annotators independently labelled a stratified 270-comment sample blind
 **0.836** accurate on Reddit but **0.618** on YouTube, and roughly one comment in
 six carries a stance label humans judge irrelevant. The manuscript reports this in
 full and shows the platform contrast survives three separate robustness checks.
+
+---
+
+## What Is Released Here
+
+Everything needed to check or rerun the analysis, but **not the comment corpora
+themselves**.
+
+| Released | What it is |
+| --- | --- |
+| `06_revision/outputs/*.json` | the computed results behind every figure, table and number in the manuscript |
+| `06_revision/validation/` | the 270-item human validation set: blind sheets, the three annotators' responses, and the key |
+| `06_revision/figs/` | every figure in the paper |
+| `00_data_collection_and_labeling/` | collection scripts, the LLM labelling pipeline, and the annotation guidelines |
+| `00_.../outputs/youtube_video_index.csv` | the 2,637 videos used in the video-context experiment |
+| `01_`–`06_` | all analysis code and notebooks |
+| `references/` | the citation audit: which passage in each cited paper supports which claim |
+
+**Not released: the Reddit and YouTube comment corpora, and video titles and
+descriptions.** Both platforms' terms of service restrict republishing user
+content, and the YouTube API Services Developer Policies restrict sharing and
+retention of video metadata, in neither case with an exception for research.
+
+This is a deliberate choice rather than an omission. The collection code in
+`00_data_collection_and_labeling/` rebuilds both corpora from their original
+sources, `youtube_video_index.csv` carries the ids needed to re-fetch the video
+titles and descriptions, and every intermediate result is published above, so
+the reported numbers can be checked without the raw text.
 
 ---
 
@@ -159,7 +188,9 @@ israel_hamas_discourse_analysis/
 │   ├── reddit_labeled.csv                   1,110,153 rows
 │   └── youtube_labeled.csv                  378,267 rows
 │
-├── docs/                                    report (markdown / IEEE / PDF), annotation PDF
+├── references/                              citation audit (INDEX, PROVENANCE, scripts)
+├── springer_submission/                     the manuscript as submitted
+├── docs/                                    earlier draft reports (gitignored)
 ├── requirements.txt
 ├── .env                                     secrets (gitignored)
 └── README.md
@@ -572,7 +603,8 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
 
 ## Authors, Citation, License
 
-**Authors:** Akshat Gupta, Raghav Sarna, Arsh Arora.
+**Authors:** Akshat Gupta, Raghav Sarna, Arsh Arora, Uku Kangur,
+Sakthi Balan Muthiah, Rajesh Sharma.
 
 License: see [`LICENSE`](LICENSE).
 
