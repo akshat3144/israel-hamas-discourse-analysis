@@ -12,7 +12,12 @@ import requests
 # CONFIG
 # =====================
 
-API_KEY = "AIzaSyBhaCRR6AftskQ69ZX37Hu9bZ_JPYkpjrk"
+API_KEY = os.environ.get("YOUTUBE_API_KEY")
+if not API_KEY:
+    raise SystemExit(
+        "Set YOUTUBE_API_KEY in the environment (see .env) before running.\n"
+        "A key was previously hardcoded here and has been revoked."
+    )
 
 COMMENTS_FILE = "youtube_war_comments.csv"
 METADATA_FILE = "youtube_video_metadata.csv"
