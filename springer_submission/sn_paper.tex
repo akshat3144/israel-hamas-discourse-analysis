@@ -12,8 +12,10 @@
 \usepackage{textcomp}%
 \usepackage{manyfoot}%
 \usepackage{enumitem}%
+\usepackage{soul}
 \usepackage{xurl}%   long report URLs in the bibliography must be breakable
 
+\newcommand{\fixme}[1]{{\color{red!70} ||| {\textbf{Rajesh: }}\color{blue!70}{#1}{\color{red} |||}}}
 %% sn-jnl places \bmhead several levels below \section, so the backmatter
 %% declarations make hyperref's bookmark depth jump and it warns. Limiting
 %% bookmarks to section level keeps both the navigation tree and the log clean.
