@@ -1,0 +1,629 @@
+{
+  "instrument": "detoxify-unbiased",
+  "threshold": 0.5,
+  "coverage": {
+    "reddit": {
+      "scored": 1004629,
+      "corpus": 1004629,
+      "pct": 100.0
+    },
+    "youtube": {
+      "scored": 378267,
+      "corpus": 378267,
+      "pct": 100.0
+    }
+  },
+  "by_platform": {
+    "toxicity": {
+      "reddit_mean": 0.2051,
+      "youtube_mean": 0.0878,
+      "reddit_pct_over_T": 17.82,
+      "youtube_pct_over_T": 6.21,
+      "rank_biserial": -0.2658,
+      "p": 0.0
+    },
+    "severe_toxicity": {
+      "reddit_mean": 0.0026,
+      "youtube_mean": 0.0002,
+      "reddit_pct_over_T": 0.01,
+      "youtube_pct_over_T": 0.0,
+      "rank_biserial": -0.2601,
+      "p": 0.0
+    },
+    "identity_attack": {
+      "reddit_mean": 0.0608,
+      "youtube_mean": 0.0187,
+      "reddit_pct_over_T": 3.1,
+      "youtube_pct_over_T": 0.52,
+      "rank_biserial": -0.2992,
+      "p": 0.0
+    },
+    "insult": {
+      "reddit_mean": 0.0975,
+      "youtube_mean": 0.0438,
+      "reddit_pct_over_T": 8.5,
+      "youtube_pct_over_T": 3.6,
+      "rank_biserial": -0.2433,
+      "p": 0.0
+    },
+    "threat": {
+      "reddit_mean": 0.0146,
+      "youtube_mean": 0.0034,
+      "reddit_pct_over_T": 0.76,
+      "youtube_pct_over_T": 0.08,
+      "rank_biserial": -0.2674,
+      "p": 0.0
+    },
+    "obscene": {
+      "reddit_mean": 0.0514,
+      "youtube_mean": 0.0098,
+      "reddit_pct_over_T": 5.25,
+      "youtube_pct_over_T": 0.77,
+      "rank_biserial": -0.2017,
+      "p": 0.0
+    }
+  },
+  "by_stance": {
+    "reddit": {
+      "toxicity": {
+        "means": {
+          "P": 0.2356,
+          "I": 0.2286,
+          "N": 0.0852
+        },
+        "pct_over_T": {
+          "P": 20.68,
+          "I": 19.78,
+          "N": 7.04
+        },
+        "eps2": 0.0954,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": -0.0102
+      },
+      "severe_toxicity": {
+        "means": {
+          "P": 0.0034,
+          "I": 0.0026,
+          "N": 0.0007
+        },
+        "pct_over_T": {
+          "P": 0.01,
+          "I": 0.01,
+          "N": 0.0
+        },
+        "eps2": 0.0892,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": -0.0735
+      },
+      "identity_attack": {
+        "means": {
+          "P": 0.0635,
+          "I": 0.0793,
+          "N": 0.0182
+        },
+        "pct_over_T": {
+          "P": 3.16,
+          "I": 4.3,
+          "N": 0.66
+        },
+        "eps2": 0.1118,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": -0.0715
+      },
+      "insult": {
+        "means": {
+          "P": 0.1175,
+          "I": 0.1016,
+          "N": 0.0411
+        },
+        "pct_over_T": {
+          "P": 10.37,
+          "I": 8.8,
+          "N": 3.37
+        },
+        "eps2": 0.0875,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0018
+      },
+      "threat": {
+        "means": {
+          "P": 0.0154,
+          "I": 0.0195,
+          "N": 0.0033
+        },
+        "pct_over_T": {
+          "P": 0.79,
+          "I": 1.05,
+          "N": 0.13
+        },
+        "eps2": 0.1044,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": -0.0603
+      },
+      "obscene": {
+        "means": {
+          "P": 0.0645,
+          "I": 0.0482,
+          "N": 0.0255
+        },
+        "pct_over_T": {
+          "P": 6.69,
+          "I": 4.8,
+          "N": 2.6
+        },
+        "eps2": 0.0724,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": -0.042
+      }
+    },
+    "youtube": {
+      "toxicity": {
+        "means": {
+          "P": 0.0945,
+          "I": 0.0855,
+          "N": 0.0555
+        },
+        "pct_over_T": {
+          "P": 6.67,
+          "I": 6.06,
+          "N": 3.98
+        },
+        "eps2": 0.0127,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0491
+      },
+      "severe_toxicity": {
+        "means": {
+          "P": 0.0002,
+          "I": 0.0002,
+          "N": 0.0001
+        },
+        "pct_over_T": {
+          "P": 0.0,
+          "I": 0.0,
+          "N": 0.0
+        },
+        "eps2": 0.0138,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0165
+      },
+      "identity_attack": {
+        "means": {
+          "P": 0.0194,
+          "I": 0.0205,
+          "N": 0.0084
+        },
+        "pct_over_T": {
+          "P": 0.51,
+          "I": 0.62,
+          "N": 0.19
+        },
+        "eps2": 0.0175,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0196
+      },
+      "insult": {
+        "means": {
+          "P": 0.0477,
+          "I": 0.0419,
+          "N": 0.0277
+        },
+        "pct_over_T": {
+          "P": 3.93,
+          "I": 3.44,
+          "N": 2.2
+        },
+        "eps2": 0.0102,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0468
+      },
+      "threat": {
+        "means": {
+          "P": 0.0034,
+          "I": 0.0035,
+          "N": 0.0028
+        },
+        "pct_over_T": {
+          "P": 0.08,
+          "I": 0.08,
+          "N": 0.07
+        },
+        "eps2": 0.0103,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0369
+      },
+      "obscene": {
+        "means": {
+          "P": 0.0107,
+          "I": 0.0087,
+          "N": 0.0083
+        },
+        "pct_over_T": {
+          "P": 0.84,
+          "I": 0.69,
+          "N": 0.7
+        },
+        "eps2": 0.0116,
+        "p": 0.0,
+        "I_vs_P_rank_biserial": 0.0486
+      }
+    }
+  },
+  "joint": {
+    "reddit": {
+      "roberta": {
+        "n": 1004629,
+        "n_toxic": 179061,
+        "n_negative": 714184,
+        "pct_toxic_that_are_negative": 95.3,
+        "pct_negative_that_are_toxic": 23.9
+      },
+      "vader": {
+        "n": 1004629,
+        "n_toxic": 179061,
+        "n_negative": 519054,
+        "pct_toxic_that_are_negative": 75.3,
+        "pct_negative_that_are_toxic": 26.0
+      },
+      "textblob": {
+        "n": 1004629,
+        "n_toxic": 179061,
+        "n_negative": 180300,
+        "pct_toxic_that_are_negative": 36.2,
+        "pct_negative_that_are_toxic": 35.9
+      },
+      "spearman_vader_toxicity": -0.3467,
+      "spearman_roberta_toxicity": -0.5743,
+      "ols": {
+        "r2": 0.0912,
+        "n": 1004629,
+        "coef": {
+          "intercept": {
+            "b": 0.20913,
+            "ci95": [
+              0.20822,
+              0.21005
+            ],
+            "p": 0.0
+          },
+          "vader_compound": {
+            "b": -0.13392,
+            "ci95": [
+              -0.13496,
+              -0.13289
+            ],
+            "p": 0.0
+          },
+          "I_vs_P": {
+            "b": -0.00996,
+            "ci95": [
+              -0.01134,
+              -0.00858
+            ],
+            "p": 1.4691482555920173e-45
+          },
+          "N_vs_P": {
+            "b": -0.12042,
+            "ci95": [
+              -0.12179,
+              -0.11905
+            ],
+            "p": 0.0
+          }
+        }
+      },
+      "ols_no_sentiment": {
+        "r2": 0.0331,
+        "n": 1004629,
+        "coef": {
+          "intercept": {
+            "b": 0.23565,
+            "ci95": [
+              0.23469,
+              0.23661
+            ],
+            "p": 0.0
+          },
+          "I_vs_P": {
+            "b": -0.0071,
+            "ci95": [
+              -0.00852,
+              -0.00568
+            ],
+            "p": 1.2059333720426868e-22
+          },
+          "N_vs_P": {
+            "b": -0.15049,
+            "ci95": [
+              -0.15189,
+              -0.14909
+            ],
+            "p": 0.0
+          }
+        }
+      },
+      "ols_roberta": {
+        "r2": 0.1303,
+        "n": 1004629,
+        "coef": {
+          "intercept": {
+            "b": 0.10008,
+            "ci95": [
+              0.09914,
+              0.10103
+            ],
+            "p": 0.0
+          },
+          "rb_score": {
+            "b": -0.22277,
+            "ci95": [
+              -0.22388,
+              -0.22167
+            ],
+            "p": 0.0
+          },
+          "I_vs_P": {
+            "b": -0.00156,
+            "ci95": [
+              -0.0029,
+              -0.00021
+            ],
+            "p": 0.023092961574500217
+          },
+          "N_vs_P": {
+            "b": -0.07391,
+            "ci95": [
+              -0.07529,
+              -0.07253
+            ],
+            "p": 0.0
+          }
+        }
+      }
+    },
+    "youtube": {
+      "roberta": {
+        "n": 378267,
+        "n_toxic": 23502,
+        "n_negative": 170342,
+        "pct_toxic_that_are_negative": 89.0,
+        "pct_negative_that_are_toxic": 12.3
+      },
+      "vader": {
+        "n": 378267,
+        "n_toxic": 23502,
+        "n_negative": 118452,
+        "pct_toxic_that_are_negative": 66.1,
+        "pct_negative_that_are_toxic": 13.1
+      },
+      "textblob": {
+        "n": 378267,
+        "n_toxic": 23502,
+        "n_negative": 45159,
+        "pct_toxic_that_are_negative": 35.0,
+        "pct_negative_that_are_toxic": 18.2
+      },
+      "spearman_vader_toxicity": -0.3018,
+      "spearman_roberta_toxicity": -0.4842,
+      "ols": {
+        "r2": 0.0628,
+        "n": 378267,
+        "coef": {
+          "intercept": {
+            "b": 0.09818,
+            "ci95": [
+              0.09728,
+              0.09908
+            ],
+            "p": 0.0
+          },
+          "vader_compound": {
+            "b": -0.09517,
+            "ci95": [
+              -0.09653,
+              -0.09382
+            ],
+            "p": 0.0
+          },
+          "I_vs_P": {
+            "b": -0.00254,
+            "ci95": [
+              -0.00392,
+              -0.00115
+            ],
+            "p": 0.00033347758528558296
+          },
+          "N_vs_P": {
+            "b": -0.03275,
+            "ci95": [
+              -0.03472,
+              -0.03079
+            ],
+            "p": 6.095299247724344e-234
+          }
+        }
+      },
+      "ols_no_sentiment": {
+        "r2": 0.0029,
+        "n": 378267,
+        "coef": {
+          "intercept": {
+            "b": 0.09454,
+            "ci95": [
+              0.09364,
+              0.09545
+            ],
+            "p": 0.0
+          },
+          "I_vs_P": {
+            "b": -0.00905,
+            "ci95": [
+              -0.01048,
+              -0.00762
+            ],
+            "p": 2.3992616730564842e-35
+          },
+          "N_vs_P": {
+            "b": -0.03908,
+            "ci95": [
+              -0.04108,
+              -0.03707
+            ],
+            "p": 0.0
+          }
+        }
+      },
+      "ols_roberta": {
+        "r2": 0.0983,
+        "n": 378267,
+        "coef": {
+          "intercept": {
+            "b": 0.07267,
+            "ci95": [
+              0.07191,
+              0.07343
+            ],
+            "p": 0.0
+          },
+          "rb_score": {
+            "b": -0.09958,
+            "ci95": [
+              -0.10056,
+              -0.09861
+            ],
+            "p": 0.0
+          },
+          "I_vs_P": {
+            "b": 0.00215,
+            "ci95": [
+              0.00079,
+              0.00352
+            ],
+            "p": 0.0019697863480140337
+          },
+          "N_vs_P": {
+            "b": -0.02637,
+            "ci95": [
+              -0.02831,
+              -0.02443
+            ],
+            "p": 8.423078051458951e-157
+          }
+        }
+      }
+    }
+  },
+  "reddit_replies": {
+    "n_partisan_replies": 280097,
+    "n_cross": 154282,
+    "n_same": 125815,
+    "mean_tox_cross": 0.2416,
+    "mean_tox_same": 0.2177,
+    "pct_toxic_cross": 20.49,
+    "pct_toxic_same": 19.13,
+    "rank_biserial_cross_vs_same": -0.1313,
+    "p": 0.0,
+    "ols_controls_sentiment_and_stance": {
+      "r2": 0.0558,
+      "n": 280097,
+      "coef": {
+        "intercept": {
+          "b": 0.19897,
+          "ci95": [
+            0.19706,
+            0.20088
+          ],
+          "p": 0.0
+        },
+        "cross_stance": {
+          "b": 0.00241,
+          "ci95": [
+            3e-05,
+            0.0048
+          ],
+          "p": 0.047456578688390094
+        },
+        "vader_compound": {
+          "b": -0.12856,
+          "ci95": [
+            -0.1305,
+            -0.12662
+          ],
+          "p": 0.0
+        },
+        "replier_I": {
+          "b": 0.0014,
+          "ci95": [
+            -0.00094,
+            0.00375
+          ],
+          "p": 0.24092805424064379
+        }
+      }
+    },
+    "ols_controls_roberta_and_stance": {
+      "r2": 0.1012,
+      "n": 280097,
+      "coef": {
+        "intercept": {
+          "b": 0.06858,
+          "ci95": [
+            0.06661,
+            0.07055
+          ],
+          "p": 0.0
+        },
+        "cross_stance": {
+          "b": -0.01815,
+          "ci95": [
+            -0.02052,
+            -0.01577
+          ],
+          "p": 1.1830712648647237e-50
+        },
+        "rb_score": {
+          "b": -0.26473,
+          "ci95": [
+            -0.26726,
+            -0.26219
+          ],
+          "p": 0.0
+        },
+        "replier_I": {
+          "b": 0.01278,
+          "ci95": [
+            0.01049,
+            0.01507
+          ],
+          "p": 7.19317956375758e-28
+        }
+      }
+    },
+    "pct_negative_roberta": {
+      "cross": 85.47,
+      "same": 73.24
+    },
+    "by_direction": {
+      "P->P": {
+        "n": 78431,
+        "mean": 0.2153,
+        "pct_toxic": 18.91
+      },
+      "P->I": {
+        "n": 71667,
+        "mean": 0.2418,
+        "pct_toxic": 20.37
+      },
+      "I->I": {
+        "n": 47384,
+        "mean": 0.2217,
+        "pct_toxic": 19.51
+      },
+      "I->P": {
+        "n": 82615,
+        "mean": 0.2415,
+        "pct_toxic": 20.6
+      }
+    }
+  }
+}

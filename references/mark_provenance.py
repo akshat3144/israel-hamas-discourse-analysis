@@ -59,6 +59,14 @@ PROVENANCE = {
         ("tested against a degree-preserving rewiring null",
          ["a network rewiring which preserves the activity of nodes"]),
     ],
+    "detoxify2020": [
+        ("Detoxify's unbiased model is a RoBERTa classifier",
+         ["`unbiased`| `roberta-base`"]),
+        ("trained on the Jigsaw toxicity challenge data",
+         ["trained on both datasets from the first 2 Jigsaw challenges"]),
+        ("including the Unintended Bias benchmark built to reduce identity-related bias",
+         ["recognizes toxicity and minimizes this type of unintended bias"]),
+    ],
     "devlin2019": [
         ("the BERT architecture our RoBERTa sentiment model builds on",
          ["model architecture is a multi-layer bidirectional Transformer encoder"]),
@@ -97,6 +105,12 @@ PROVENANCE = {
          ["acronyms, initialisms, emoticons, or slang"]),
         ("captures negation",
          ["negation, degree modifiers, and contrastive conjunctions"]),
+    ],
+    "loureiro2022": [
+        ("the sentiment model is a RoBERTa model trained on Twitter data",
+         ["trained on 124M tweets on top of the original RoBERTa-base model"]),
+        ("released under the cardiffnlp name used for the model we apply",
+         ["available through the Hugging Face hub"]),
     ],
     "leeseung2000": [
         ("NMF as a matrix decomposition",

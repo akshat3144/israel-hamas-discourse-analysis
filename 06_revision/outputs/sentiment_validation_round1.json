@@ -1,0 +1,294 @@
+{
+  "agreement": {
+    "all": {
+      "n": 270,
+      "pct_agree": 91.1,
+      "cohen_kappa": 0.85,
+      "kappa_ci95": [
+        0.789,
+        0.906
+      ],
+      "krippendorff_alpha": 0.85
+    },
+    "reddit": {
+      "n": 135,
+      "pct_agree": 91.1,
+      "cohen_kappa": 0.847,
+      "kappa_ci95": [
+        0.757,
+        0.924
+      ],
+      "krippendorff_alpha": 0.847
+    },
+    "youtube": {
+      "n": 135,
+      "pct_agree": 91.1,
+      "cohen_kappa": 0.842,
+      "kappa_ci95": [
+        0.756,
+        0.92
+      ],
+      "krippendorff_alpha": 0.842
+    }
+  },
+  "confusion": {
+    "negative": {
+      "negative": 138,
+      "neutral": 6,
+      "positive": 3
+    },
+    "neutral": {
+      "negative": 9,
+      "neutral": 68,
+      "positive": 0
+    },
+    "positive": {
+      "negative": 1,
+      "neutral": 5,
+      "positive": 40
+    }
+  },
+  "distribution": {
+    "Akshat": {
+      "negative": 148,
+      "neutral": 79,
+      "positive": 43
+    },
+    "Raghav": {
+      "negative": 147,
+      "neutral": 77,
+      "positive": 46
+    }
+  },
+  "annotators": [
+    "Akshat",
+    "Raghav"
+  ],
+  "adjudicator": "Arsh",
+  "gold": {
+    "n_agreed": 246,
+    "n_adjudicated": 24,
+    "n_disagreements": 24,
+    "n_gold": 270
+  },
+  "rescoring_fidelity": {
+    "reddit": {
+      "n_in_window": 87,
+      "vader_match_pct": 100.0,
+      "textblob_match_pct": 100.0
+    },
+    "youtube": {
+      "n_in_window": 90,
+      "vader_match_pct": 100.0,
+      "textblob_match_pct": 100.0
+    }
+  },
+  "instrument_vs_human": {
+    "all": {
+      "vader": {
+        "n": 270,
+        "accuracy": 0.544,
+        "macro_f1": 0.516,
+        "kappa": 0.305,
+        "negative_recall": 0.557,
+        "negative_precision": 0.783
+      },
+      "textblob": {
+        "n": 270,
+        "accuracy": 0.337,
+        "macro_f1": 0.332,
+        "kappa": 0.064,
+        "negative_recall": 0.174,
+        "negative_precision": 0.684
+      },
+      "roberta": {
+        "n": 270,
+        "accuracy": 0.73,
+        "macro_f1": 0.712,
+        "kappa": 0.541,
+        "negative_recall": 0.792,
+        "negative_precision": 0.803
+      }
+    },
+    "reddit": {
+      "vader": {
+        "n": 135,
+        "accuracy": 0.526,
+        "macro_f1": 0.487,
+        "kappa": 0.274,
+        "negative_recall": 0.606,
+        "negative_precision": 0.705
+      },
+      "textblob": {
+        "n": 135,
+        "accuracy": 0.356,
+        "macro_f1": 0.342,
+        "kappa": 0.073,
+        "negative_recall": 0.183,
+        "negative_precision": 0.619
+      },
+      "roberta": {
+        "n": 135,
+        "accuracy": 0.756,
+        "macro_f1": 0.731,
+        "kappa": 0.569,
+        "negative_recall": 0.901,
+        "negative_precision": 0.771
+      }
+    },
+    "youtube": {
+      "vader": {
+        "n": 135,
+        "accuracy": 0.563,
+        "macro_f1": 0.542,
+        "kappa": 0.343,
+        "negative_recall": 0.513,
+        "negative_precision": 0.889
+      },
+      "textblob": {
+        "n": 135,
+        "accuracy": 0.319,
+        "macro_f1": 0.322,
+        "kappa": 0.089,
+        "negative_recall": 0.167,
+        "negative_precision": 0.765
+      },
+      "roberta": {
+        "n": 135,
+        "accuracy": 0.704,
+        "macro_f1": 0.689,
+        "kappa": 0.519,
+        "negative_recall": 0.692,
+        "negative_precision": 0.844
+      }
+    }
+  },
+  "n_toxicity_rescored_locally": 100,
+  "joint_on_validation_sample": {
+    "n": 270,
+    "n_toxic": 19,
+    "gold": {
+      "pct_toxic_that_are_negative": 68.4,
+      "pct_negative_that_are_toxic": 8.7
+    },
+    "vader": {
+      "pct_toxic_that_are_negative": 78.9,
+      "pct_negative_that_are_toxic": 14.2
+    },
+    "textblob": {
+      "pct_toxic_that_are_negative": 31.6,
+      "pct_negative_that_are_toxic": 15.8
+    },
+    "roberta": {
+      "pct_toxic_that_are_negative": 94.7,
+      "pct_negative_that_are_toxic": 12.2
+    }
+  },
+  "platform_comparison_high_tier": {
+    "stance_mix": {
+      "reddit": {
+        "P": 0.4536092428150093,
+        "I": 0.36067045645706025,
+        "N": 0.18572030072793042
+      },
+      "youtube": {
+        "P": 0.5610243558121645,
+        "I": 0.3472600041769438,
+        "N": 0.09171564001089177
+      }
+    },
+    "pct_negative_gold": {
+      "reddit": 61.0,
+      "youtube": 61.2,
+      "diff_pp": -0.2,
+      "diff_ci95_pp": [
+        -15.1,
+        15.1
+      ]
+    },
+    "pct_negative_roberta": {
+      "reddit": 69.5,
+      "youtube": 54.9,
+      "diff_pp": 14.6,
+      "diff_ci95_pp": [
+        0.2,
+        29.7
+      ]
+    },
+    "pct_negative_vader": {
+      "reddit": 56.5,
+      "youtube": 35.3,
+      "diff_pp": 21.2,
+      "diff_ci95_pp": [
+        5.6,
+        36.3
+      ]
+    },
+    "pct_negative_textblob": {
+      "reddit": 20.0,
+      "youtube": 12.3,
+      "diff_pp": 7.6,
+      "diff_ci95_pp": [
+        -3.9,
+        19.6
+      ]
+    },
+    "stance_tone_v_gold": {
+      "reddit": {
+        "n": 73,
+        "v": 0.355,
+        "ci95": [
+          0.222,
+          0.509
+        ]
+      },
+      "youtube": {
+        "n": 76,
+        "v": 0.222,
+        "ci95": [
+          0.167,
+          0.378
+        ]
+      },
+      "ratio": 1.6
+    },
+    "stance_tone_v_roberta": {
+      "reddit": {
+        "n": 73,
+        "v": 0.33,
+        "ci95": [
+          0.204,
+          0.51
+        ]
+      },
+      "youtube": {
+        "n": 76,
+        "v": 0.222,
+        "ci95": [
+          0.123,
+          0.397
+        ]
+      },
+      "ratio": 1.49
+    },
+    "stance_tone_v_vader": {
+      "reddit": {
+        "n": 73,
+        "v": 0.173,
+        "ci95": [
+          0.087,
+          0.382
+        ]
+      },
+      "youtube": {
+        "n": 76,
+        "v": 0.139,
+        "ci95": [
+          0.084,
+          0.34
+        ]
+      },
+      "ratio": 1.24
+    }
+  }
+}

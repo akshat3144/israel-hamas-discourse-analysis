@@ -1,0 +1,208 @@
+{
+  "model": "detoxify-unbiased",
+  "threshold": 0.5,
+  "fp16_vs_fp32_max_abs_diff": {
+    "reddit": 0.0005887150764465332,
+    "youtube": 0.0007235407829284668
+  },
+  "throughput_per_s_fp32": {
+    "reddit": 11.0,
+    "youtube": 11.8
+  },
+  "agreement": {
+    "reddit": {
+      "toxicity": {
+        "spearman": 0.905,
+        "pearson": 0.818,
+        "mean_perspective": 0.2371,
+        "mean_detoxify": 0.1782,
+        "n_flag_perspective": 28,
+        "n_flag_detoxify": 45,
+        "n_flag_both": 23,
+        "kappa_at_0.5": 0.582,
+        "auc_detox_vs_persp_flag": 0.966
+      },
+      "severe_toxicity": {
+        "spearman": 0.86,
+        "pearson": 0.698,
+        "mean_perspective": 0.0336,
+        "mean_detoxify": 0.0032,
+        "n_flag_perspective": 2,
+        "n_flag_detoxify": 0,
+        "n_flag_both": 0,
+        "kappa_at_0.5": 0.0,
+        "auc_detox_vs_persp_flag": 1.0
+      },
+      "identity_attack": {
+        "spearman": 0.877,
+        "pearson": 0.672,
+        "mean_perspective": 0.1681,
+        "mean_detoxify": 0.0539,
+        "n_flag_perspective": 19,
+        "n_flag_detoxify": 11,
+        "n_flag_both": 10,
+        "kappa_at_0.5": 0.65,
+        "auc_detox_vs_persp_flag": 0.962
+      },
+      "insult": {
+        "spearman": 0.881,
+        "pearson": 0.765,
+        "mean_perspective": 0.1314,
+        "mean_detoxify": 0.0668,
+        "n_flag_perspective": 17,
+        "n_flag_detoxify": 18,
+        "n_flag_both": 12,
+        "kappa_at_0.5": 0.666,
+        "auc_detox_vs_persp_flag": 0.988
+      },
+      "threat": {
+        "spearman": 0.767,
+        "pearson": 0.65,
+        "mean_perspective": 0.0821,
+        "mean_detoxify": 0.0201,
+        "n_flag_perspective": 12,
+        "n_flag_detoxify": 4,
+        "n_flag_both": 4,
+        "kappa_at_0.5": 0.49,
+        "auc_detox_vs_persp_flag": 0.989
+      },
+      "obscene": {
+        "spearman": 0.831,
+        "pearson": 0.838,
+        "mean_perspective": 0.1115,
+        "mean_detoxify": 0.0511,
+        "n_flag_perspective": 16,
+        "n_flag_detoxify": 14,
+        "n_flag_both": 13,
+        "kappa_at_0.5": 0.86,
+        "auc_detox_vs_persp_flag": 0.997
+      }
+    },
+    "youtube": {
+      "toxicity": {
+        "spearman": 0.693,
+        "pearson": 0.644,
+        "mean_perspective": 0.1592,
+        "mean_detoxify": 0.0776,
+        "n_flag_perspective": 12,
+        "n_flag_detoxify": 17,
+        "n_flag_both": 7,
+        "kappa_at_0.5": 0.457,
+        "auc_detox_vs_persp_flag": 0.899
+      },
+      "severe_toxicity": {
+        "spearman": 0.625,
+        "pearson": 0.34,
+        "mean_perspective": 0.0158,
+        "mean_detoxify": 0.0001,
+        "n_flag_perspective": 1,
+        "n_flag_detoxify": 0,
+        "n_flag_both": 0,
+        "kappa_at_0.5": 0.0,
+        "auc_detox_vs_persp_flag": 0.664
+      },
+      "identity_attack": {
+        "spearman": 0.691,
+        "pearson": 0.559,
+        "mean_perspective": 0.0823,
+        "mean_detoxify": 0.0175,
+        "n_flag_perspective": 3,
+        "n_flag_detoxify": 2,
+        "n_flag_both": 2,
+        "kappa_at_0.5": 0.798,
+        "auc_detox_vs_persp_flag": 1.0
+      },
+      "insult": {
+        "spearman": 0.663,
+        "pearson": 0.661,
+        "mean_perspective": 0.0965,
+        "mean_detoxify": 0.0374,
+        "n_flag_perspective": 8,
+        "n_flag_detoxify": 10,
+        "n_flag_both": 6,
+        "kappa_at_0.5": 0.656,
+        "auc_detox_vs_persp_flag": 0.878
+      },
+      "threat": {
+        "spearman": 0.58,
+        "pearson": 0.563,
+        "mean_perspective": 0.0436,
+        "mean_detoxify": 0.005,
+        "n_flag_perspective": 3,
+        "n_flag_detoxify": 0,
+        "n_flag_both": 0,
+        "kappa_at_0.5": 0.0,
+        "auc_detox_vs_persp_flag": 0.985
+      },
+      "obscene": {
+        "spearman": 0.588,
+        "pearson": 0.422,
+        "mean_perspective": 0.0563,
+        "mean_detoxify": 0.0039,
+        "n_flag_perspective": 0,
+        "n_flag_detoxify": 0,
+        "n_flag_both": 0
+      }
+    }
+  },
+  "joint_perspective": {
+    "reddit": {
+      "n": 288,
+      "n_toxic": 26,
+      "n_negative": 148,
+      "pct_toxic_that_are_negative": 88.5,
+      "pct_negative_that_are_toxic": 15.5,
+      "spearman_sentiment_toxicity": -0.435,
+      "ols_b_sentiment": -0.1374,
+      "ols_p_sentiment": 9.711735611606478e-12,
+      "ols_b_I_vs_P": -0.003,
+      "ols_p_I_vs_P": 0.9086390926787363,
+      "ols_b_N_vs_P": -0.0745,
+      "ols_p_N_vs_P": 0.005565421857639536
+    },
+    "youtube": {
+      "n": 296,
+      "n_toxic": 12,
+      "n_negative": 92,
+      "pct_toxic_that_are_negative": 66.7,
+      "pct_negative_that_are_toxic": 8.7,
+      "spearman_sentiment_toxicity": -0.24,
+      "ols_b_sentiment": -0.0632,
+      "ols_p_sentiment": 7.044291853959389e-05,
+      "ols_b_I_vs_P": 0.0241,
+      "ols_p_I_vs_P": 0.24617986090168806,
+      "ols_b_N_vs_P": -0.0387,
+      "ols_p_N_vs_P": 0.0673208297135401
+    }
+  },
+  "joint_detoxify": {
+    "reddit": {
+      "n": 289,
+      "n_toxic": 43,
+      "n_negative": 148,
+      "pct_toxic_that_are_negative": 88.4,
+      "pct_negative_that_are_toxic": 25.7,
+      "spearman_sentiment_toxicity": -0.449,
+      "ols_b_sentiment": -0.1702,
+      "ols_p_sentiment": 3.410793011559703e-08,
+      "ols_b_I_vs_P": 0.0539,
+      "ols_p_I_vs_P": 0.1800994600927807,
+      "ols_b_N_vs_P": -0.0179,
+      "ols_p_N_vs_P": 0.6647083791426245
+    },
+    "youtube": {
+      "n": 300,
+      "n_toxic": 17,
+      "n_negative": 94,
+      "pct_toxic_that_are_negative": 70.6,
+      "pct_negative_that_are_toxic": 12.8,
+      "spearman_sentiment_toxicity": -0.205,
+      "ols_b_sentiment": -0.07,
+      "ols_p_sentiment": 0.00037099687952003835,
+      "ols_b_I_vs_P": -0.0039,
+      "ols_p_I_vs_P": 0.879382382404474,
+      "ols_b_N_vs_P": -0.0103,
+      "ols_p_N_vs_P": 0.6910001777416046
+    }
+  }
+}

@@ -163,6 +163,41 @@ defrancisci2021
        factors.
 
 
+detoxify2020
+--------------------------------------------------------------------------
+  CLAIM: Detoxify's unbiased model is a RoBERTa classifier
+    SOURCE: p.3
+       ### Jigsaw Multilingual Toxic Comment Classification Since this
+       challenge combines the data from the previous 2 challenges, it
+       includes all labels from above, however the final evaluation is
+       only on: - `toxicity` ## How to run First, install dependencies
+       ```bash # clone project git clone
+       https://github.com/unitaryai/detoxify # create virtual env
+       python3 -m venv toxic-env source toxic-env/bin/activate #
+       install project pip install -e detoxify # or for training pip
+       install -e 'detoxify[dev]' cd detoxify ``` ## Prediction Trained
+       models summary: |Model name| Transformer type| Data from
+       |:--:|:--:|:--:| |`original`| `bert-base-uncased` | Toxic
+       Comment Classification Challenge |`unbiased`| `roberta-base`|
+       Unintended Bias in Toxicity Classification |`multilingual`|
+       `xlm-roberta-base`| Multilingual Toxic Comment Classification
+
+  CLAIM: trained on the Jigsaw toxicity challenge data
+    SOURCE: p.1
+       ### 03-09-2021: New improved unbiased model - Updated the
+       `unbiased` model weights used by Detoxify with a model trained
+       on both datasets from the first 2 Jigsaw challenges.
+
+  CLAIM: including the Unintended Bias benchmark built to reduce identity-related bias
+    SOURCE: p.1
+       | Wikipedia Comments | `original` | 98.86 | 98.64 | [Jigsaw
+       Unintended Bias in Toxicity
+       w.kaggle.com/c/jigsaw-unintended-biasin-toxicity-classification)
+       | 2019 | build a model that recognizes toxicity and minimizes
+       this type of unintended bias with respect to mentions of
+       identities.
+
+
 devlin2019
 --------------------------------------------------------------------------
   the manuscript says:
@@ -311,6 +346,21 @@ hutto2014
        conjunctions) also help make VADER successful, and is consistent
        with prior work (Agarwal et al., 2011; Ding, Liu, & Yu, 2008;
        Lu, Castellanos, Dayal, & Zhai, 2011; Socher et al., 2013).
+
+
+loureiro2022
+--------------------------------------------------------------------------
+  CLAIM: the sentiment model is a RoBERTa model trained on Twitter data
+    SOURCE: p.3
+       released models, which are 2021-Q4 and 2021124M (the latter was
+       re-trained only once with all the data from 2020 and 2021), are
+       trained on 124M tweets on top of the original RoBERTa-base model
+       (Liu et al., 2019).
+
+  CLAIM: released under the cardiffnlp name used for the model we apply
+    SOURCE: p.3
+       All models are currently available through the Hugging Face hub
+       at https: //huggingface.co/cardiffnlp.
 
 
 leeseung2000

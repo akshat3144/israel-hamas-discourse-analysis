@@ -96,11 +96,11 @@ over a matched 7~October~2023 to 7~May~2024 window, to ask
 how political discourse differs across two contrasting platform architectures.
 Three findings are not
 predictable from platform design alone. First, emotional tone is politicised on
-Reddit, where both partisan camps are negative and only neutral comments are
-positive, but largely decoupled from stance on YouTube. Second, negativity and
-toxicity are related but not interchangeable: 88.5\% of toxic Reddit comments are
-negative, yet only 15.5\% of negative comments are toxic, and once sentiment is
-controlled the apparent toxicity gap between the two partisan camps disappears.
+Reddit, where both partisan camps are far more negative than neutral comments, but
+only weakly coupled to stance on YouTube, a contrast that human labels reproduce.
+Second, negativity and toxicity are related but not interchangeable: most toxic
+Reddit comments are negative, yet only about one negative comment in four is toxic,
+and the two partisan camps are equally toxic while both exceed neutral comments.
 Third, Reddit's reply network is disassortative by stance (Newman $r=-0.184$
 against a degree-preserving null centred on zero), with 62.4\% of partisan replies
 crossing the divide, yet the same users appear strongly clustered when measured by
@@ -151,7 +151,8 @@ Not applicable.
 The collection and labelling pipeline, the analysis and revision code, the
 computed results underlying every figure and table reported here, the three
 completed human validation annotation sets with their blind sheets and scoring
-scripts, and an index of the 2{,}637 videos are available at \url{GITHUB_HERE}.
+scripts, the sentiment labels of both annotators and the adjudicator, and an
+index of the 2{,}637 videos are available at \url{GITHUB_HERE}.
 
 The comment corpora themselves are not redistributed. Reddit comments were
 obtained from the Arctic Shift archive and YouTube comments by scraping the
@@ -173,7 +174,8 @@ analysis (RQ1), the topic and vocabulary analysis (RQ2) and the label validation
 and robustness analyses, and drafted the manuscript. R.Sa. collected the YouTube
 data and carried out the polarization and interaction structure analysis (RQ3).
 A.A. implemented the LLM-assisted stance labelling pipeline. A.G., R.Sa. and A.A.
-independently annotated the 270-comment human validation sample. U.K., S.B.M. and
+independently annotated the 270-comment human validation sample; A.G. and R.Sa.
+annotated its sentiment, and A.A. adjudicated their disagreements. U.K., S.B.M. and
 R.Sh. supervised the work, reviewed the methodology and revised the manuscript
 critically for important intellectual content. All authors read and approved the
 final manuscript.

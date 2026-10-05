@@ -90,6 +90,13 @@ springer_submission/overleaf_project/
 06_revision/outputs/*.parquet
 06_revision/outputs/user_profiles.csv
 06_revision/outputs/homophily.csv
+06_revision/outputs/detoxify/
+06_revision/outputs/roberta/
+# sentiment annotation workbooks show parent comments and YouTube video titles as
+# reading context, which cannot be redistributed; validation/sentiment_labels*.csv
+# carries the labels themselves
+06_revision/validation/sentiment_*.xlsx
+06_revision/validation/sentiment_round1/
 
 !06_revision/validation/
 !06_revision/validation/*.csv

@@ -14,11 +14,11 @@ marked CORRECTED below.
 
 WHAT IS IN THIS FOLDER
 
-  references in the manuscript           21
-  with a local full text                 21
+  references in the manuscript           23
+  with a local full text                 23
   without                                 0
 
-  PDF files in references/pdf            21
+  PDF files in references/pdf            23
 
   One PDF per reference, no extras. Run audit_folder.py to
   re-check this after any change to the bibliography.
@@ -220,7 +220,12 @@ WHAT IS IN THIS FOLDER
       aligning with specific events on the ground.
 
 
-[11] hayes2007
+[11] detoxify2020
+------------------------------------------------------------------------
+  status     : NOT CHECKED
+  local copy : pdf/detoxify2020.pdf
+
+[12] hayes2007
 ------------------------------------------------------------------------
   title      : Answering the Call for a Standard Reliability Measure for Coding Data
   authors    : Hayes et al.
@@ -240,7 +245,7 @@ WHAT IS IN THIS FOLDER
       Krippendorff .
 
 
-[12] hofmann2026
+[13] hofmann2026
 ------------------------------------------------------------------------
   title      : Hate Speech and Sentiment of YouTube Video Comments From Public and Private Sources Covering the Israel-Palestine Conflict
   authors    : Hofmann et al.
@@ -267,7 +272,7 @@ WHAT IS IN THIS FOLDER
       news channels.
 
 
-[13] hutto2014
+[14] hutto2014
 ------------------------------------------------------------------------
   title      : VADER: A Parsimonious Rule-Based Model for Sentiment Analysis of Social Media Text
   authors    : Hutto et al.
@@ -283,7 +288,7 @@ WHAT IS IN THIS FOLDER
       intensity, slang, and negation.
 
 
-[14] leeseung2000
+[15] leeseung2000
 ------------------------------------------------------------------------
   status     : VERIFIED from full text, REFERENCE SWAPPED
                The paywalled Nature 1999 letter was replaced with the same authors'
@@ -300,7 +305,12 @@ WHAT IS IN THIS FOLDER
       matrix decomposition that tends to produce sparser topics.
 
 
-[15] newman2003
+[16] loureiro2022
+------------------------------------------------------------------------
+  status     : NOT CHECKED
+  local copy : pdf/loureiro2022.pdf
+
+[17] newman2003
 ------------------------------------------------------------------------
   title      : Mixing patterns in networks
   authors    : Newman et al.
@@ -335,7 +345,7 @@ WHAT IS IN THIS FOLDER
       chambers.
 
 
-[16] ng2022
+[18] ng2022
 ------------------------------------------------------------------------
   title      : Is my stance the same as your stance? A cross validation study of stance detection datasets
   authors    : Ng et al.
@@ -358,7 +368,7 @@ WHAT IS IN THIS FOLDER
       we claim no novelty for the effect itself.
 
 
-[17] ngchow2025
+[19] ngchow2025
 ------------------------------------------------------------------------
   title      : Prominent peaks and social discourses of the 2023 Escalation in the Ongoing Israel–Hamas armed conflict
   authors    : Ng et al.
@@ -376,7 +386,7 @@ WHAT IS IN THIS FOLDER
       alone, 59\
 
 
-[18] pedregosa2011
+[20] pedregosa2011
 ------------------------------------------------------------------------
   status     : VERIFIED
                JMLR open access. An automated search for 'classif' first missed
@@ -389,7 +399,7 @@ WHAT IS IN THIS FOLDER
       Krippendorff .
 
 
-[19] rosen2025
+[21] rosen2025
 ------------------------------------------------------------------------
   title      : Social Processes in the Intensification of Online Hate: The Effects of Verbal Replies to Anti-Muslim and Anti-Jewish Posts Following 7 October 2023
   authors    : Rosen et al.
@@ -411,7 +421,7 @@ WHAT IS IN THIS FOLDER
       their authors post next.
 
 
-[20] shugars2025
+[22] shugars2025
 ------------------------------------------------------------------------
   title      : The Character of Connection: Platform Affordances and Connective Democracy
   authors    : Shugars et al.
@@ -439,7 +449,7 @@ WHAT IS IN THIS FOLDER
       network-level signature of exactly that affordance.
 
 
-[21] wulczyn2017
+[23] wulczyn2017
 ------------------------------------------------------------------------
   title      : Ex Machina
   authors    : Wulczyn et al.

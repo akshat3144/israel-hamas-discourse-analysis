@@ -41,6 +41,14 @@ SOURCES = {
     "pedregosa2011": dict(
         pdf="https://www.jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf"),
     "wulczyn2017": dict(pdf="https://arxiv.org/pdf/1610.08914"),
+    "loureiro2022": dict(pdf="https://aclanthology.org/2022.acl-demo.25.pdf"),
+
+    # ---- software cited by its repository: README archived as PDF ---------
+    "detoxify2020": dict(
+        pdf=None,
+        why="software with no accompanying paper; its README is the citable "
+            "documentation, archived to pdf/ by archive_software_readme.py "
+            "from github.com/unitaryai/detoxify"),
 
     # ---- open access, but the publisher refuses automated clients ---------
     "ng2022": dict(

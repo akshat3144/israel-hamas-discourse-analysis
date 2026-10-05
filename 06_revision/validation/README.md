@@ -27,6 +27,32 @@ section. Headline: Krippendorff's alpha 0.796 between annotators; model stance
 accuracy 0.836 on Reddit and 0.618 on YouTube; 17% of stance-labelled items judged
 irrelevant by humans.
 
+## Sentiment validation (same 270 items)
+
+Two annotators (Akshat, Raghav) labelled the tone of each comment as positive,
+negative or neutral, blind to every instrument's output; a third (Arsh) resolved
+the items on which they disagreed, choosing between the two disputed labels.
+
+| File | What it is |
+|---|---|
+| `sentiment_labels.csv` | round 2, the reported labels: both annotators, the adjudication, and the final gold label |
+| `sentiment_labels_round1.csv` | round 1, superseded: annotators saw the comment but not the comment it replied to |
+
+Round 1 was relabelled because the reading context was inadequate - most
+Reddit items are replies, and the sheet did not show what they replied to. Round
+2 adds the parent comment and, for YouTube, the video title
+(`build_validation_context.py`, `make_sentiment_workbooks.py`). Both rounds lead to
+the same conclusions; round 2 is reported. The workbooks themselves are not
+released because that reading context includes content the platforms' terms do
+not allow us to redistribute; item IDs join to `validation_blind.csv`.
+
+Scoring: `python 06_revision/sentiment_validation.py [--round1]`, written to
+`06_revision/outputs/sentiment_validation[_round1].json`. Headline (round 2):
+Cohen's kappa 0.78 between annotators; accuracy against the gold label RoBERTa
+0.68, VADER 0.52, TextBlob 0.32; human labels reproduce the stance-tone
+association contrast (Cramer's V 0.355 Reddit vs 0.175 YouTube) but not a platform
+difference in overall negativity.
+
 ## How to annotate (for re-running or extending the sample)
 
 Open your workbook. It has two sheets:

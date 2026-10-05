@@ -1,0 +1,27 @@
+{
+  "reddit": {
+    "n": 1004629,
+    "kappa": {
+      "vader_vs_roberta": 0.2906,
+      "vader_vs_textblob": 0.2165,
+      "textblob_vs_roberta": 0.103
+    },
+    "unanimous_pct": 23.7,
+    "unanimous_pct_negative": 57.2,
+    "unanimous_cramers_v": 0.2708,
+    "unanimous_mean_rb_score": -0.389
+  },
+  "youtube": {
+    "n": 378267,
+    "kappa": {
+      "vader_vs_roberta": 0.4133,
+      "vader_vs_textblob": 0.2909,
+      "textblob_vs_roberta": 0.1746
+    },
+    "unanimous_pct": 31.7,
+    "unanimous_pct_negative": 25.9,
+    "unanimous_cramers_v": 0.0647,
+    "unanimous_mean_rb_score": 0.0064
+  },
+  "unanimous_rank_biserial_youtube_vs_reddit": -0.3514
+}

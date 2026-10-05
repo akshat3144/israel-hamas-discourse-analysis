@@ -1,0 +1,123 @@
+{
+  "instrument": "vader",
+  "platform": {
+    "reddit_mean": -0.164,
+    "youtube_mean": 0.068,
+    "reddit_pct_negative": 51.7,
+    "youtube_pct_negative": 31.3,
+    "reddit_dist": {
+      "negative": 0.5167,
+      "positive": 0.3212,
+      "neutral": 0.1622
+    },
+    "youtube_dist": {
+      "positive": 0.4113,
+      "negative": 0.3131,
+      "neutral": 0.2755
+    },
+    "rank_biserial_youtube_vs_reddit": -0.2338,
+    "p": 0.0
+  },
+  "stance": {
+    "reddit": {
+      "means": {
+        "P": -0.198,
+        "I": -0.2194,
+        "N": 0.0266
+      },
+      "pct_negative": {
+        "P": 55.1,
+        "I": 57.4,
+        "N": 32.0
+      },
+      "cramers_v": 0.1494
+    },
+    "youtube": {
+      "means": {
+        "P": 0.0382,
+        "I": 0.1066,
+        "N": 0.1046
+      },
+      "pct_negative": {
+        "P": 32.9,
+        "I": 29.5,
+        "N": 28.1
+      },
+      "cramers_v": 0.0394
+    }
+  },
+  "check_degraded": {
+    "reddit_v": 0.0819,
+    "ci95": [
+      0.0807,
+      0.0831
+    ],
+    "ratio_to_youtube": 2.08
+  },
+  "check_offtopic": {
+    "reddit": {
+      "n": 877503,
+      "v": 0.1175,
+      "means": {
+        "P": -0.2142,
+        "I": -0.2355,
+        "N": -0.001
+      }
+    },
+    "youtube": {
+      "n": 302791,
+      "v": 0.0394,
+      "means": {
+        "P": 0.0293,
+        "I": 0.0947,
+        "N": 0.0908
+      }
+    },
+    "ratio": 2.98
+  },
+  "check_disattenuated": {
+    "reddit": {
+      "n_validation_items": 73,
+      "accuracy": 0.8356,
+      "v": 0.2071,
+      "ci95": [
+        0.1671,
+        0.3048
+      ],
+      "n_boot_valid": 2000
+    },
+    "youtube": {
+      "n_validation_items": 76,
+      "accuracy": 0.6184,
+      "v": 0.0544,
+      "ci95": [
+        0.0242,
+        0.1439
+      ],
+      "n_boot_valid": 2000
+    },
+    "ratio": 3.81
+  },
+  "joint_toxicity": {
+    "reddit": {
+      "pct_toxic_that_are_negative": 75.3,
+      "pct_negative_that_are_toxic": 26.0,
+      "spearman": -0.3467,
+      "ols_b": {
+        "score": -0.1339,
+        "I_vs_P": -0.01,
+        "N_vs_P": -0.1204
+      }
+    },
+    "youtube": {
+      "pct_toxic_that_are_negative": 66.1,
+      "pct_negative_that_are_toxic": 13.1,
+      "spearman": -0.3018,
+      "ols_b": {
+        "score": -0.0952,
+        "I_vs_P": -0.0025,
+        "N_vs_P": -0.0328
+      }
+    }
+  }
+}
