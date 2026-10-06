@@ -67,14 +67,18 @@ From the manuscript, computed by `06_revision/` over the matched, bot-filtered
 corpus. The `01_`-`05_` notebooks explore the full labelled corpus and may differ
 in scope; see [Which pipeline produces the paper's numbers](#which-pipeline-produces-the-papers-numbers).
 
-- **Affective tone is politicised on Reddit, weak on YouTube.** Reddit averages a
-  VADER compound of -0.164 against YouTube's +0.068, but the informative contrast
-  is *where* emotion attaches to politics: on Reddit both partisan camps are
-  negative and only neutrals positive (Cramer's V = 0.149), while on YouTube tone
-  is nearly independent of stance (V = 0.039).
-- **Toxicity is not strong negativity.** 88.5% of toxic Reddit comments are
-  negative, yet only 15.5% of negative comments are toxic. The apparent gap
-  between the partisan camps disappears once sentiment is controlled.
+- **Affective tone is politicised on Reddit, only weakly coupled to stance on
+  YouTube.** With RoBERTa, the sentiment instrument closest to human labels, both
+  Reddit partisan camps are strongly negative and neutrals far less so (Cramer's
+  V = 0.210), while on YouTube the stances sit much closer together (V = 0.073).
+  VADER gives the same contrast (0.149 vs 0.039), human labels reproduce it (0.355
+  vs 0.175), and it holds in every full month of the window. Human labels do *not*
+  reproduce a platform difference in overall negativity, so the paper makes no claim
+  that Reddit is more negative.
+- **Toxicity is not strong negativity.** Scored with Detoxify on all 1.38M
+  comments, most toxic comments are negative, yet only about one negative Reddit
+  comment in four is toxic. The two partisan camps are equally toxic, and both are
+  more toxic than neutral comments.
 - **Vocabulary splits by platform, not just by stance.** Reddit argues in political
   and legal terms, YouTube in devotional and slogan terms, with a large
   Hindi/Urdu and Arabic-script stream absent from the Reddit sample.
@@ -82,7 +86,12 @@ in scope; see [Which pipeline produces the paper's numbers](#which-pipeline-prod
   homophily at 0.643, a textbook echo chamber. The user-user reply graph for the
   *same users* gives 0.406, below chance and disassortative (Newman r = -0.184
   against a degree-preserving null centred on zero), with 62.4% of partisan
-  replies crossing the divide.
+  replies crossing the divide. YouTube shows the same distinction at the comment
+  level: partisans mostly answer their own side (41.7% cross), but within a video
+  they cross slightly more than its audience predicts, so the clustering sits in
+  who watches which video, not in whom people reply to. On both platforms
+  cross-stance replies are more negative but not more toxic than that negativity
+  accounts for.
 - **Stance classifiers transfer poorly across platforms** (macro-F1 0.640 within
   Reddit, 0.470 within YouTube, lower across), and this survives length matching,
   so it reflects vocabulary rather than comment length.
@@ -95,6 +104,12 @@ Three annotators independently labelled a stratified 270-comment sample blind
 six carries a stance label humans judge irrelevant. The manuscript reports this in
 full and shows the platform contrast survives three separate robustness checks.
 
+The same 270 comments were also labelled for **sentiment** by two annotators, with a
+third adjudicating disagreements (Cohen's kappa = 0.78). Against those labels
+RoBERTa is the most accurate sentiment instrument (accuracy 0.68), ahead of VADER
+(0.52) and TextBlob (0.32), which is why RoBERTa is the paper's primary tone
+measure.
+
 ---
 
 ## What Is Released Here
@@ -105,7 +120,7 @@ themselves**.
 | Released | What it is |
 | --- | --- |
 | `06_revision/outputs/*.json` | the computed results behind every figure, table and number in the manuscript |
-| `06_revision/validation/` | the 270-item human validation set: blind sheets, the three annotators' responses, and the key |
+| `06_revision/validation/` | the 270-item human validation set: blind sheets, the three annotators' stance responses, the key, and the sentiment labels (`sentiment_labels*.csv`) |
 | `06_revision/figs/` | every figure in the paper |
 | `00_data_collection_and_labeling/` | collection scripts, the LLM labelling pipeline, and the annotation guidelines |
 | `00_.../outputs/youtube_video_index.csv` | the 2,637 videos used in the video-context experiment |
@@ -412,6 +427,31 @@ It also contains the validation and robustness work: the human annotation packag
 and scoring, the annotation reliability measures, the relevance filter, the
 label-noise sensitivity simulation, and the controlled video-context experiment.
 
+### Reproducing the tone and toxicity results
+
+The paper scores **every comment** with two transformer models, which needs a GPU
+(about 15-20 minutes each on an A30/A5000; roughly a day on a laptop CPU):
+
+```bash
+python 06_revision/detoxify_score_corpus.py --fp16   # toxicity: Detoxify 'unbiased'
+python 06_revision/roberta_score_corpus.py --fp16    # tone: twitter-roberta sentiment
+```
+
+Both also accept `--text` to score a text-only extract on a rented GPU. The
+per-comment scores are written to `06_revision/outputs/{detoxify,roberta}/` and are
+not released (they are keyed to comments that cannot be redistributed). Then:
+
+| Script | Produces |
+|---|---|
+| `detoxify_vs_perspective.py` | agreement between Detoxify and Perspective on the 600 comments both scored |
+| `toxicity_full.py` | platform, stance and joint sentiment x toxicity results |
+| `rq1_tone.py --sent roberta` (and `vader`) | RQ1 tone results and the three robustness checks |
+| `sentiment_agreement_full.py` | agreement among the three sentiment instruments |
+| `sentiment_validation.py` | human sentiment validation (`--round1` re-scores the superseded first round) |
+| `reply_mixing_platforms.py` | comment-level reply mixing on Reddit and YouTube |
+| `monthly_stability.py` | month-by-month stability of the RQ1 contrasts |
+| `make_figs_revision.py` | the revised Figures 2, 3 and 6 |
+
 ## Analysis Modules (01–05)
 
 All analysis notebooks are **self-contained, run top-to-bottom, resolve paths relative
@@ -443,7 +483,7 @@ in-notebook) so each notebook finishes in a reasonable time.
 
 ### `05_toxicity_analysis/` - RQ1 (toxicity component)
 
-- **`toxicity_assessment.ipynb`** - scores a stratified sample with **Google Perspective API** across TOXICITY, SEVERE_TOXICITY, IDENTITY_ATTACK, INSULT, THREAT, PROFANITY; compares by platform and stance; **Mann-Whitney U** (platform) + **Kruskal-Wallis** (stance) tests with **rank-biserial / epsilon-squared** effect sizes. Requires a Perspective API key (see [Configuration](#configuration-env)); without one the notebook stops gracefully with setup instructions.
+- **`toxicity_assessment.ipynb`** - the original exploratory toxicity analysis. The paper's toxicity results come instead from Detoxify on the full corpus (`06_revision/`), with this notebook's Perspective sample kept as a cross-check. It scores a stratified sample with **Google Perspective API** across TOXICITY, SEVERE_TOXICITY, IDENTITY_ATTACK, INSULT, THREAT, PROFANITY; compares by platform and stance; **Mann-Whitney U** (platform) + **Kruskal-Wallis** (stance) tests with **rank-biserial / epsilon-squared** effect sizes. Requires a Perspective API key (see [Configuration](#configuration-env)); without one the notebook stops gracefully with setup instructions.
 
 ---
 
@@ -490,9 +530,11 @@ equivalents kept for reference.
 
 ## Methodology Details
 
-- **Sentiment** - VADER (primary, intensity-aware) + TextBlob (polarity/subjectivity) +
-  a **transformer** (`twitter-roberta-base-sentiment`) on a stratified sample. Standard
-  VADER thresholds (compound ≥ 0.05 positive, ≤ −0.05 negative). With ~1.5M observations,
+- **Sentiment** - VADER (intensity-aware) + TextBlob (polarity/subjectivity) in the
+  notebooks; the paper additionally scores every comment with a **transformer**
+  (`twitter-roberta-base-sentiment-latest`), which is its primary tone measure because
+  it agrees best with the human sentiment labels. Standard VADER thresholds
+  (compound ≥ 0.05 positive, ≤ −0.05 negative). With ~1.5M observations,
   **effect sizes** (Cramér's V for chi-square, rank-biserial for Mann-Whitney, epsilon-squared
   for Kruskal-Wallis) accompany every p-value so significance isn't mistaken for importance.
   Inter-method **agreement is reported with Cohen's kappa**.
@@ -508,8 +550,10 @@ equivalents kept for reference.
   LinearSVC + RandomForest). Trained on a **capped stratified 60k sample** (so the SVM is
   tractable), evaluated within-platform and cross-platform with macro-F1, confusion matrices,
   and **Stratified 5-fold cross-validated macro-F1 (mean ± 95% CI)**.
-- **Toxicity** - Google Perspective API on a stratified per-stance sample (rate-limit aware);
-  scored samples are persisted so the API work is reusable; effect sizes accompany the tests.
+- **Toxicity** - the paper scores every comment with **Detoxify** (`unbiased`), an openly
+  released model that anyone can re-run; the Google Perspective API, which is being
+  retired, scored a 600-comment stratified sample in the notebooks and serves as a
+  cross-check. Effect sizes accompany every test.
 
 ---
 
@@ -567,7 +611,7 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
 - **Stats:** scipy (chi-square, Kruskal-Wallis, Mann-Whitney), numpy OLS, effect sizes (Cramér's V, rank-biserial, epsilon-squared), Cohen's kappa
 - **ML:** scikit-learn (LogisticRegression, LinearSVC + CalibratedClassifierCV, RandomForest, VotingClassifier, Stratified K-fold CV)
 - **Networks:** networkx
-- **Toxicity:** google-api-python-client (Perspective API)
+- **Toxicity:** detoxify + torch (primary); google-api-python-client (Perspective API, cross-check)
 - **Collection / labeling:** requests, google-api-python-client (YouTube Data API v3), youtube-transcript-api, openai (AsyncOpenAI → dcompute), Arctic Shift (Reddit, web)
 - **Viz:** matplotlib, seaborn
 
@@ -579,14 +623,17 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
 
 ## Limitations & Ethics
 
-- **Automated labeling.** Stances were assigned by an LLM (Llama-3.3-70B), not human
-  annotators. Only non-`R`, high-confidence labels are kept, but residual model bias /
-  error is possible; `Reasoning` is retained for auditability.
+- **Automated labeling.** Stances were assigned by an LLM (Llama-3.3-70B). Only non-`R`,
+  high-confidence labels are kept, and their accuracy is measured against human
+  annotators rather than assumed (see [Label quality](#label-quality)); `Reasoning` is
+  retained for auditability.
 - **Sampling & coverage.** YouTube comments were scraped (not via the official comment
   API) within a fixed window and query set; Reddit covers five subreddits. Neither is a
   complete census of the discourse.
-- **Platform asymmetry.** Reddit (threaded) and YouTube (flat) differ structurally;
-  cross-platform comparisons control for this where possible but are not perfectly matched.
+- **Platform asymmetry.** Reddit threads nest arbitrarily deep; YouTube threads are two
+  levels deep, so YouTube replies to replies are recovered from `@`-mentions, and the
+  user-level reply network is Reddit's alone. Cross-platform comparisons control for
+  this where possible but are not perfectly matched.
 - **Identifiers & bots.** YouTube `created_time` is a scrape-date artifact, so YouTube
   timelines use `video_date` (see the temporal note above). On Reddit, automated accounts
   (`AutoModerator`, `*-ModTeam`) and the `[deleted]` author (which collapses many distinct
@@ -597,7 +644,12 @@ python 00_data_collection_and_labeling/scripts/label_youtube.py
 - **Sensitive topic.** This studies real discourse about an active conflict. Findings
   describe *online text patterns*, not ground truth about the conflict, and should not be
   read as endorsement of any stance.
-- **Toxicity scores** come from a third-party model (Perspective) with its own known biases.
+- **Automated tone and toxicity instruments.** Toxicity comes from trained classifiers
+  (Detoxify, cross-checked with Perspective) with their own known biases and no human
+  toxicity labels behind them. The human sentiment labels show that automated
+  instruments under-read negativity in YouTube's short, informal comments, so
+  platform-level differences in tone, and possibly in toxicity, should be read as
+  instrument results.
 
 ---
 
@@ -611,4 +663,4 @@ License: see [`LICENSE`](LICENSE).
 > If you use this work, please cite the manuscript *Clustered by Thread, Arguing
 > Across the Divide: Echo Chambers and the Choice of Measure in Israel-Hamas
 > Discourse on Reddit and YouTube* and credit the data sources (Reddit via Arctic
-> Shift; YouTube Data API v3).
+> Shift; YouTube videos identified through the YouTube Data API v3).
