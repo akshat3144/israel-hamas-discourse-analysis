@@ -163,8 +163,8 @@ attributes~\cite{newman2003} alongside a chance-corrected homophily index; raw
 same-stance rates are uninterpretable without the baseline expected under random
 mixing.
 
-\subsection{Toxicity and Harmful Speech}
-The Perspective API operationalizes online harm through the framework of Wulczyn,
+\subsection{Toxicity}
+The Perspective API operationalizes toxicity through the framework of Wulczyn,
 Thain and Dixon~\cite{wulczyn2017}, scoring the probability that a rater would find a
 comment rude or disrespectful across six attributes. We use classifiers of this
 kind in preference to zero-shot toxicity prompting of a general-purpose LLM for three
@@ -682,7 +682,7 @@ by VADER, and 74\% of the 19 toxic comments in the human-labelled validation sam
 - but the converse fails badly: only \textbf{23.9\%} of negative Reddit comments and
 \textbf{12.3\%} of negative YouTube comments are toxic (26.0\% and 13.1\% by VADER).
 Toxicity is therefore a distinct subset of negative discourse, and treating
-negativity as a proxy for harm would overcount it roughly fourfold.
+negativity as a proxy for toxicity would overcount it roughly fourfold.
 
 \begin{figure*}[t]
   \centering
@@ -903,10 +903,10 @@ can intensify rather than soften partisan feeling, which is consistent with the
 pattern we observe in Reddit's argumentative, high-exposure environment.
 
 \subsection{Toxicity Is Not Simply Strong Negativity}
-Treating negative sentiment as a proxy for harmful speech would be a substantial
+Treating negative sentiment as a proxy for toxic speech would be a substantial
 error: only about one negative Reddit comment in four is toxic. The practical
 implication for moderation research is that sentiment filters are poor triage tools
-for harm. The finding also disciplines the partisan comparison. The two camps differ
+for toxicity. The finding also disciplines the partisan comparison. The two camps differ
 slightly attribute by attribute, but on overall toxicity the difference between them
 is negligible, with or without sentiment controlled, while the
 partisan-versus-neutral gap remains. We therefore make no claim that either side is
