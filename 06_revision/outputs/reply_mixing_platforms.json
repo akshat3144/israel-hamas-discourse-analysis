@@ -1,0 +1,197 @@
+{
+  "reddit": {
+    "n_edges": 358836,
+    "n_threads_with_edges": 27630,
+    "mixing_counts": {
+      "P": {
+        "P": 76697,
+        "I": 82516,
+        "N": 18123
+      },
+      "I": {
+        "P": 71582,
+        "I": 46712,
+        "N": 17122
+      },
+      "N": {
+        "P": 8755,
+        "I": 9142,
+        "N": 28187
+      }
+    },
+    "mixing_row_pct": {
+      "P": {
+        "P": 48.84,
+        "I": 59.63,
+        "N": 28.57
+      },
+      "I": {
+        "P": 45.58,
+        "I": 33.76,
+        "N": 26.99
+      },
+      "N": {
+        "P": 5.58,
+        "I": 6.61,
+        "N": 44.44
+      }
+    },
+    "per_stance": {
+      "P": {
+        "observed": 0.4884,
+        "expected": 0.4942,
+        "excess": -0.0058
+      },
+      "I": {
+        "observed": 0.3376,
+        "expected": 0.3774,
+        "excess": -0.0398
+      },
+      "N": {
+        "observed": 0.4444,
+        "expected": 0.1284,
+        "excess": 0.316
+      }
+    },
+    "partisan_pairs": 277507,
+    "cross_share_partisan": 0.5553,
+    "newman_r_comment": 0.0617,
+    "within_thread_null": {
+      "cross_share_mean": 0.3729,
+      "cross_share_sd": 0.00077,
+      "newman_r_mean": 0.2249,
+      "newman_r_sd": 0.00106,
+      "z_cross": 236.9,
+      "z_r": -153.4,
+      "n_perm": 200
+    },
+    "edges_by_resolution": {
+      "parent_id": 358836
+    },
+    "toxicity": {
+      "n": 277507,
+      "pct_toxic_cross": 20.49,
+      "pct_toxic_same": 19.22,
+      "pct_negative_cross": 85.48,
+      "pct_negative_same": 73.36,
+      "ols_cross_b_controlling_roberta": -0.01875,
+      "ols_cross_ci95": [
+        -0.02114,
+        -0.01636
+      ],
+      "ols_cross_p": 2.3272102434702386e-53,
+      "ols_cross_b_controlling_vader": 0.00146,
+      "ols_cross_vader_ci95": [
+        -0.00094,
+        0.00386
+      ]
+    },
+    "user_level": {
+      "n_active_users": 44593,
+      "n_edges": 321112,
+      "newman_r": -0.1844,
+      "cross_share_partisan": 0.6243
+    }
+  },
+  "youtube": {
+    "n_edges": 85885,
+    "n_threads_with_edges": 1311,
+    "mixing_counts": {
+      "P": {
+        "P": 27474,
+        "I": 15155,
+        "N": 3732
+      },
+      "I": {
+        "P": 14168,
+        "I": 13585,
+        "N": 2300
+      },
+      "N": {
+        "P": 3407,
+        "I": 2348,
+        "N": 3716
+      }
+    },
+    "mixing_row_pct": {
+      "P": {
+        "P": 60.99,
+        "I": 48.75,
+        "N": 38.28
+      },
+      "I": {
+        "P": 31.45,
+        "I": 43.7,
+        "N": 23.59
+      },
+      "N": {
+        "P": 7.56,
+        "I": 7.55,
+        "N": 38.12
+      }
+    },
+    "per_stance": {
+      "P": {
+        "observed": 0.6099,
+        "expected": 0.5398,
+        "excess": 0.0701
+      },
+      "I": {
+        "observed": 0.437,
+        "expected": 0.3499,
+        "excess": 0.0871
+      },
+      "N": {
+        "observed": 0.3812,
+        "expected": 0.1103,
+        "excess": 0.2709
+      }
+    },
+    "partisan_pairs": 70382,
+    "cross_share_partisan": 0.4166,
+    "newman_r_comment": 0.1714,
+    "within_thread_null": {
+      "cross_share_mean": 0.386,
+      "cross_share_sd": 0.00152,
+      "newman_r_mean": 0.1615,
+      "newman_r_sd": 0.00229,
+      "z_cross": 20.1,
+      "z_r": 4.3,
+      "n_perm": 200
+    },
+    "edges_by_resolution": {
+      "top_level": 67338,
+      "mention": 18547
+    },
+    "toxicity": {
+      "n": 70382,
+      "pct_toxic_cross": 6.87,
+      "pct_toxic_same": 5.81,
+      "pct_negative_cross": 55.07,
+      "pct_negative_same": 45.09,
+      "ols_cross_b_controlling_roberta": -0.00463,
+      "ols_cross_ci95": [
+        -0.00777,
+        -0.0015
+      ],
+      "ols_cross_p": 0.00373566910855355,
+      "ols_cross_b_controlling_vader": 0.00857,
+      "ols_cross_vader_ci95": [
+        0.00543,
+        0.01171
+      ]
+    },
+    "user_level": {
+      "n_active_users": 20320,
+      "n_edges": 9944,
+      "newman_r": 0.035,
+      "cross_share_partisan": 0.4416
+    },
+    "reply_resolution": {
+      "replies_total": 131541,
+      "with_mention": 33935,
+      "mention_resolved": 18547,
+      "mention_unresolved_dropped": 15388
+    }
+  }
+}

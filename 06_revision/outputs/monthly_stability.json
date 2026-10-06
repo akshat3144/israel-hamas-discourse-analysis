@@ -1,0 +1,232 @@
+{
+  "reddit": {
+    "2023-10": {
+      "n": 210621,
+      "v_roberta": 0.2109,
+      "v_vader": 0.1514,
+      "pct_negative_roberta": 75.2,
+      "pct_toxic": 20.04,
+      "partisan_minus_neutral_toxicity": 0.1638,
+      "partial_month": false
+    },
+    "2023-11": {
+      "n": 212390,
+      "v_roberta": 0.2055,
+      "v_vader": 0.1502,
+      "pct_negative_roberta": 71.7,
+      "pct_toxic": 17.88,
+      "partisan_minus_neutral_toxicity": 0.1479,
+      "partial_month": false
+    },
+    "2023-12": {
+      "n": 149535,
+      "v_roberta": 0.208,
+      "v_vader": 0.1486,
+      "pct_negative_roberta": 70.6,
+      "pct_toxic": 17.08,
+      "partisan_minus_neutral_toxicity": 0.1395,
+      "partial_month": false
+    },
+    "2024-01": {
+      "n": 113295,
+      "v_roberta": 0.2059,
+      "v_vader": 0.1368,
+      "pct_negative_roberta": 69.0,
+      "pct_toxic": 16.92,
+      "partisan_minus_neutral_toxicity": 0.1384,
+      "partial_month": false
+    },
+    "2024-02": {
+      "n": 95335,
+      "v_roberta": 0.2169,
+      "v_vader": 0.1511,
+      "pct_negative_roberta": 69.5,
+      "pct_toxic": 17.85,
+      "partisan_minus_neutral_toxicity": 0.1504,
+      "partial_month": false
+    },
+    "2024-03": {
+      "n": 102490,
+      "v_roberta": 0.2184,
+      "v_vader": 0.1523,
+      "pct_negative_roberta": 69.7,
+      "pct_toxic": 17.99,
+      "partisan_minus_neutral_toxicity": 0.1502,
+      "partial_month": false
+    },
+    "2024-04": {
+      "n": 98149,
+      "v_roberta": 0.2079,
+      "v_vader": 0.1515,
+      "pct_negative_roberta": 67.6,
+      "pct_toxic": 15.38,
+      "partisan_minus_neutral_toxicity": 0.1254,
+      "partial_month": false
+    },
+    "2024-05": {
+      "n": 22814,
+      "v_roberta": 0.2165,
+      "v_vader": 0.1478,
+      "pct_negative_roberta": 68.6,
+      "pct_toxic": 15.87,
+      "partisan_minus_neutral_toxicity": 0.1377,
+      "partial_month": true
+    }
+  },
+  "youtube": {
+    "2023-10": {
+      "n": 129681,
+      "v_roberta": 0.0593,
+      "v_vader": 0.0262,
+      "pct_negative_roberta": 43.0,
+      "pct_toxic": 4.99,
+      "partisan_minus_neutral_toxicity": 0.0312,
+      "partial_month": false,
+      "n_videos": 528,
+      "top3_video_share_pct": 4.7
+    },
+    "2023-11": {
+      "n": 48891,
+      "v_roberta": 0.0888,
+      "v_vader": 0.0459,
+      "pct_negative_roberta": 41.3,
+      "pct_toxic": 5.9,
+      "partisan_minus_neutral_toxicity": 0.0321,
+      "partial_month": false,
+      "n_videos": 240,
+      "top3_video_share_pct": 8.3
+    },
+    "2023-12": {
+      "n": 56278,
+      "v_roberta": 0.1096,
+      "v_vader": 0.0593,
+      "pct_negative_roberta": 43.2,
+      "pct_toxic": 5.99,
+      "partisan_minus_neutral_toxicity": 0.0256,
+      "partial_month": false,
+      "n_videos": 233,
+      "top3_video_share_pct": 7.5
+    },
+    "2024-01": {
+      "n": 23015,
+      "v_roberta": 0.0598,
+      "v_vader": 0.0543,
+      "pct_negative_roberta": 47.1,
+      "pct_toxic": 7.16,
+      "partisan_minus_neutral_toxicity": 0.0254,
+      "partial_month": false,
+      "n_videos": 124,
+      "top3_video_share_pct": 19.2
+    },
+    "2024-02": {
+      "n": 25931,
+      "v_roberta": 0.0729,
+      "v_vader": 0.0529,
+      "pct_negative_roberta": 50.0,
+      "pct_toxic": 7.1,
+      "partisan_minus_neutral_toxicity": 0.0465,
+      "partial_month": false,
+      "n_videos": 165,
+      "top3_video_share_pct": 15.6
+    },
+    "2024-03": {
+      "n": 39349,
+      "v_roberta": 0.0459,
+      "v_vader": 0.0306,
+      "pct_negative_roberta": 45.7,
+      "pct_toxic": 5.49,
+      "partisan_minus_neutral_toxicity": 0.025,
+      "partial_month": false,
+      "n_videos": 250,
+      "top3_video_share_pct": 13.2
+    },
+    "2024-04": {
+      "n": 49425,
+      "v_roberta": 0.0936,
+      "v_vader": 0.0515,
+      "pct_negative_roberta": 52.4,
+      "pct_toxic": 9.94,
+      "partisan_minus_neutral_toxicity": 0.0538,
+      "partial_month": false,
+      "n_videos": 158,
+      "top3_video_share_pct": 43.7
+    },
+    "2024-05": {
+      "n": 5662,
+      "v_roberta": 0.2475,
+      "v_vader": 0.1345,
+      "pct_negative_roberta": 40.9,
+      "pct_toxic": 3.6,
+      "partisan_minus_neutral_toxicity": 0.0079,
+      "partial_month": true,
+      "n_videos": 55,
+      "top3_video_share_pct": 38.8
+    }
+  },
+  "comparison": {
+    "2023-10": {
+      "v_ratio_roberta": 3.56,
+      "v_ratio_vader": 5.78,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2023-11": {
+      "v_ratio_roberta": 2.31,
+      "v_ratio_vader": 3.27,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2023-12": {
+      "v_ratio_roberta": 1.9,
+      "v_ratio_vader": 2.51,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2024-01": {
+      "v_ratio_roberta": 3.44,
+      "v_ratio_vader": 2.52,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2024-02": {
+      "v_ratio_roberta": 2.98,
+      "v_ratio_vader": 2.86,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2024-03": {
+      "v_ratio_roberta": 4.76,
+      "v_ratio_vader": 4.98,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2024-04": {
+      "v_ratio_roberta": 2.22,
+      "v_ratio_vader": 2.94,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    },
+    "2024-05": {
+      "v_ratio_roberta": 0.87,
+      "v_ratio_vader": 1.1,
+      "reddit_more_toxic": true,
+      "partisan_gap_positive_both": true
+    }
+  },
+  "summary_full_months": {
+    "months": [
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04"
+    ],
+    "reddit_v_exceeds_youtube_roberta": 7,
+    "v_ratio_roberta_min": 1.9,
+    "v_ratio_roberta_max": 4.76,
+    "reddit_more_toxic_months": 7,
+    "partisan_gap_positive_both_months": 7
+  }
+}
