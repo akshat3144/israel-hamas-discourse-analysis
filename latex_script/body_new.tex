@@ -132,7 +132,7 @@ measurement question in its own right rather than an assumption. Because agreeme
 among instruments does not establish which of them is right, we also validate all
 three against human labels (Section~\ref{sec:sentval}).
 
-\subsection{Topic Modeling}
+\subsection{Topic Modelling}
 Latent Dirichlet Allocation~\cite{blei2003} and Non-negative Matrix
 Factorization~\cite{leeseung2000} represent documents as mixtures over latent
 topics; LDA assumes a Bayesian generative process while NMF performs a matrix
@@ -167,7 +167,7 @@ same-stance rates are uninterpretable without the baseline expected under random
 mixing.
 
 \subsection{Toxicity}
-The Perspective API operationalizes toxicity through the framework of Wulczyn,
+The Perspective API operationalises toxicity through the framework of Wulczyn,
 Thain and Dixon~\cite{wulczyn2017}, scoring the probability that a rater would find a
 comment rude or disrespectful across six attributes. We use classifiers of this
 kind in preference to zero-shot toxicity prompting of a general-purpose LLM for three
@@ -187,7 +187,7 @@ avoid the vaguer term ``harm'', which we never define independently of these
 scores.
 
 \subsection{LLM-Assisted Annotation}
-Manually labeling millions of comments is impractical at this scale. Gilardi,
+Manually labelling millions of comments is impractical at this scale. Gilardi,
 Alizadeh and Kubli~\cite{gilardi2023} showed that LLMs can outperform crowd workers
 on stance and frame detection. We use Llama-3.3-70B-Instruct, retaining per-label
 confidence tiers and free-text justifications. Because automated annotation without
@@ -240,7 +240,7 @@ the resulting monthly volume on both platforms over that window.
 
 
 
-\subsection{Stance Labeling}
+\subsection{Stance Labelling}
 Both platforms were annotated by the \emph{same} automated annotator, so the stance
 scheme is consistent across them. We used \texttt{Llama-3.3-70B-Instruct} with an
 expert-annotator system prompt embedding the full guidelines. Each item was presented
@@ -572,14 +572,15 @@ cross-stance interaction. YouTube stores replies too: a reply's comment identifi
 encodes the top-level comment it sits under. Its threads are only two levels deep,
 so a reply that answers another reply is recovered from its leading
 \texttt{@}-mention when that resolves to a single comment by the mentioned user in
-the same thread (18{,}547 replies), and dropped when it does not (15{,}388). Few
-YouTube users comment often enough for a user-level graph, so the two platforms are
-compared at the comment level, linking each reply's stance to that of the comment it
+the same thread (18{,}547 replies), and dropped when it does not (15{,}388).
+YouTube's user-level reply graph is sparse (9{,}944 edges among users with at least
+three comments, against 321{,}112 on Reddit), so the two platforms are compared at
+the comment level, linking each reply's stance to that of the comment it
 answers.
 
 \subsection{Analytical Methods}
 Emotional tone is scored on every comment with VADER, TextBlob and
-\texttt{twitter-roberta-base-sentiment}; RoBERTa, the instrument closest to the
+\texttt{twitter-roberta-base-sentiment-latest}; RoBERTa, the instrument closest to the
 human labels (Section~\ref{sec:sentval}), is primary, its continuous score being
 $p(\text{positive}) - p(\text{negative})$. We report pairwise Cohen's $\kappa$ and
 analyse the subset on which all three agree. Topics combine word frequency and
@@ -768,12 +769,14 @@ thread homophily is \textbf{0.643} and 43.4\% of active users exceed $0.8$, with
 Pro-Israel ($0.702$) and Pro-Palestine ($0.670$) far above Neutral ($0.329$).
 
 The reply network tells a different story (Figure~\ref{fig:homcmp}). Across
-\textbf{321{,}112} user-user reply edges, mean reply homophily is only
-\textbf{0.406}. More importantly, that figure must be read against chance: because
-52.0\% of reply targets are Pro-Palestine, a Pro-Palestine user replying at random
-would already match 52\% of the time. Both partisan groups fall \emph{below} their
-random-mixing baseline (Table~\ref{tab:mixing}), and the graph as a whole is
-disassortative, with Newman $r=\mathbf{-0.184}$.
+\textbf{321{,}112} user-user reply edges, the average user's reply homophily is only
+\textbf{0.406}, and pooled over all edges just 34.3\% of replies stay within stance.
+More importantly, these figures must be read against chance: because 52.0\% of reply
+targets are Pro-Palestine, a Pro-Palestine user replying at random would already
+match 52\% of the time, and random mixing would keep 44.5\% of all replies within
+stance. Both partisan groups fall \emph{below} their random-mixing baseline
+(Table~\ref{tab:mixing}), and the graph as a whole is disassortative, with Newman
+$r=\mathbf{-0.184}$.
 
 A marginal baseline alone would not settle this, because activity and popularity are
 unevenly distributed across stances: if Pro-Palestine users are both more numerous
@@ -955,8 +958,9 @@ absolute levels.
 \subsection{Co-Presence Is Not Interaction}
 Our clearest methodological result is that the two standard operationalisations of
 echo chambers disagree in sign. Thread co-membership yields homophily of $0.643$ and
-supports an echo-chamber reading; the reply network yields $0.406$, below chance, and
-a disassortative graph ($r=-0.184$) in which most partisan replies cross the divide.
+supports an echo-chamber reading; the reply network yields $0.406$, with fewer
+same-stance replies than chance (34.3\% against 44.5\%), and a disassortative graph
+($r=-0.184$) in which most partisan replies cross the divide.
 Since homophily is defined on networks~\cite{newman2003}, the
 reply-graph measure is the appropriate one, and it indicates that Reddit in this
 corpus functions as a contested arena rather than a set of sealed chambers. That
@@ -1016,8 +1020,8 @@ holds under both classifiers. Third, YouTube lacks usable comment timestamps, so
 its temporal anchor is the video publish date and no within-video temporal dynamics
 can be recovered. Fourth, YouTube threads are only two levels deep, so replies to
 replies are recovered from \texttt{@}-mentions and the 15{,}388 we cannot resolve are
-dropped; and few YouTube users comment often enough for a user-level graph, so the
-user-level assortativity result is Reddit's alone, with YouTube compared at the
+dropped; and YouTube's user-level reply graph is too sparse for a reliable
+assortativity estimate, so the user-level result is Reddit's alone, with YouTube compared at the
 comment level. Fifth, coverage is partial - five subreddits and a fixed YouTube
 query set - and the two platforms differ in language composition, so neither corpus is
 a census nor are their speaker populations matched. Finally, sentiment instruments
