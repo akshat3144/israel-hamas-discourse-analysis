@@ -104,12 +104,13 @@ Second, negativity and toxicity are related but not interchangeable: most toxic
 Reddit comments are negative, yet only about one negative comment in four is toxic,
 and the two partisan camps are equally toxic while both exceed neutral comments.
 Third, Reddit's reply network is disassortative by stance (Newman $r=-0.184$
-against a degree-preserving null centred on zero), with 62.4\% of partisan replies
-crossing the divide, yet the same users appear strongly clustered when measured by
-thread co-membership. This locates the long-running echo-chamber disagreement in
-the choice of measure rather than in the platform. Stance classifiers transfer
-poorly across platforms, and this survives length matching, so it reflects
-vocabulary rather than comment length. We release a reproducible LLM-assisted
+against a degree-preserving null), with 62.4\% of partisan replies
+crossing the divide, yet the same users appear strongly clustered by
+thread co-membership; on YouTube, same-side replying likewise reflects which videos
+users gather under rather than whom they answer. This locates the long-running
+echo-chamber disagreement in the choice of measure rather than in the platform.
+Stance classifiers transfer poorly across platforms, even after length matching.
+We release a reproducible LLM-assisted
 labelling pipeline together with a three-annotator human validation
 (Krippendorff's $\alpha=0.796$), which finds stance accuracy of $0.836$ on Reddit
 but $0.618$ on YouTube, and we subject the platform contrast to three adversarial

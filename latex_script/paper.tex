@@ -94,8 +94,10 @@ Plaksha University, Mohali, Punjab 140306, India}
   partisan replies cross the divide. This replicates, in a geopolitical-conflict
   corpus, the cross-cutting interaction already reported for US party politics; what
   is new is that the \emph{same users} appear strongly clustered when measured by
-  thread co-membership, which locates the long-running echo-chamber disagreement in
-  the choice of measure rather than in the platform. Stance classifiers transfer poorly across
+  thread co-membership, and on YouTube same-side replying likewise reflects which
+  videos users gather under rather than whom they answer, which locates the
+  long-running echo-chamber disagreement in the choice of measure rather than in the
+  platform. Stance classifiers transfer poorly across
   platforms, and we show this survives length matching, so it reflects vocabulary
   rather than comment length. We release a reproducible LLM-assisted labelling
   pipeline together with a three-annotator human validation (Krippendorff's $\alpha=0.796$), which finds stance accuracy of $0.836$ on Reddit but $0.618$ on YouTube. We subject the platform contrast to three adversarial checks built from that validation - degrading Reddit's labels to YouTube's measured quality, removing off-topic comments with a validated relevance classifier, and correcting both platforms for their measured misclassification - and it survives all three.
@@ -135,8 +137,8 @@ design decides who can reply to whom, at what length, and with what visibility.
 Because platforms differ in architecture, they may shape that argument in
 systematically different ways. We compare two with sharply contrasting designs:
 \textbf{Reddit}, a threaded forum with voting and unlimited comment length, and
-\textbf{YouTube}, a media-centric platform where flat, length-limited comments react
-to video content.
+\textbf{YouTube}, a media-centric platform where length-limited comments, with replies
+nested only one level deep, react to video content.
 
 We treat the structural contrast between these designs as a \emph{premise and a
 control}, not as a result. That Reddit hosts longer threaded exchanges while YouTube
@@ -1107,7 +1109,8 @@ Toxicity is a distinct and much rarer phenomenon than negativity, and the two
 partisan camps are equally toxic while both exceed neutral comments. Most consequentially, Reddit's users cluster by thread but
 argue across stance lines: the reply network is disassortative, and 62.4\% of
 partisan replies cross the divide, so echo-chamber conclusions drawn from co-presence
-invert when interaction is measured directly. Stance remains encoded in
+invert when interaction is measured directly. On YouTube, same-side replying likewise
+reflects which videos users gather under rather than whom they answer. Stance remains encoded in
 platform-specific vocabulary, and we show this is not an artifact of comment length.
 
 We also report what the labels will and will not support. Three blind annotators put
