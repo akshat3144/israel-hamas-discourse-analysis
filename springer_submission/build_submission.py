@@ -176,7 +176,7 @@ analysis (RQ1), the topic and vocabulary analysis (RQ2) and the label validation
 and robustness analyses, and drafted the manuscript. R.Sa. collected the YouTube
 data and carried out the polarization and interaction structure analysis (RQ3).
 A.A. implemented the LLM-assisted stance labelling pipeline. A.G., R.Sa. and A.A.
-carried out the stance and sentiment human validation. U.K., S.B.M. and
+annotated the stance and sentiment validation samples. U.K., S.B.M. and
 R.Sh. supervised the work, reviewed the methodology and revised the manuscript
 critically for important intellectual content. All authors read and approved the
 final manuscript.
