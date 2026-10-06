@@ -969,7 +969,11 @@ that humans judge irrelevant. Cross-platform comparisons therefore carry unequal
 attenuation; our simulation shows the headline contrast survives it at about half its
 raw size, but YouTube stance-conditional effects should be read as directional.
 We release a relevance classifier that removes most of this content, and show the reported comparisons survive it, but do not adopt it as the primary corpus because it also discards genuine Neutral comments. The clearest routes to tightening these estimates are specific rather than general, and we measure both: supplying video-level context to the YouTube annotator raises stance accuracy by roughly eight points but degrades relevance judgement, so it must be paired with an explicit relevance decision ahead of
-stance assignment. Second, toxicity is measured by automated classifiers with no
+stance assignment. We did not re-annotate the YouTube corpus under that design: it
+requires a separate relevance stage and a fresh human validation of the combined
+pipeline, which we leave to future work, and the three adversarial checks of
+Section~\ref{sec:validation} bound the effect of YouTube's weaker labels on the
+central comparison. Second, toxicity is measured by automated classifiers with no
 human toxicity labels behind them. Detoxify agrees with Perspective on the 600
 comments both scored ($\rho=0.91$ on Reddit, $0.69$ on YouTube), but both are
 trained on English-language rater data, and the sentiment validation shows that
