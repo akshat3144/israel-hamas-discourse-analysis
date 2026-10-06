@@ -92,6 +92,12 @@ PROVENANCE = {
     "hofmann2026": [
         ("hate speech in 40.4 percent of public and 31.6 percent of private source comments",
          ["higher incidence of HS in public sources"]),
+        ("these rates come from the trained classifiers applied to new comments",
+         ["These models were applied to the extracted comment sections"]),
+        ("comments from German public and private news channels",
+         ["German public and private news services"]),
+        ("a broad hate-speech definition including derogatory, vulgar and profane language",
+         ["expanded definition including derogatory, sexist, vulgar, or profane language"]),
         ("4,983 hand-annotated YouTube comments, classifiers at AUROC 0.83 to 0.90",
          ["annotated dataset of 4983 YouTube comments labeled for HS and sentiment",
           "AUROC scores between 0.83 to 0.90"]),

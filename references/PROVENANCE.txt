@@ -295,6 +295,24 @@ hofmann2026
        higher incidence of HS in public sources (40.4%) compared to
        private sources (31.6%).
 
+  CLAIM: these rates come from the trained classifiers applied to new comments
+    SOURCE: p.1
+       These models were applied to the extracted comment sections of
+       YouTube videos from public and private sources, uncovering a
+       higher incidence of HS in public sources (40.4%) compared to
+       private sources (31.6%).
+
+  CLAIM: comments from German public and private news channels
+    SOURCE: p.4
+       We gathered comments from videos of German public and private
+       news services to ensure diverse perspectives.
+
+  CLAIM: a broad hate-speech definition including derogatory, vulgar and profane language
+    SOURCE: p.4
+       We used a binary system to label comments for the presence of
+       hate speech, with an expanded definition including derogatory,
+       sexist, vulgar, or profane language.
+
   CLAIM: 4,983 hand-annotated YouTube comments, classifiers at AUROC 0.83 to 0.90
     SOURCE: p.2
        First, we provide a carefully annotated dataset of 4983 YouTube
